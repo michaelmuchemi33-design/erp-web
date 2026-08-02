@@ -43,3 +43,28 @@ npm run dev
 Connect the GitHub repo. Add the same env vars in Project Settings → Environment Variables.
 
 Build: `npm run build` · Output: `dist`
+
+## Demo confirmation email
+
+1. Run `supabase-schema.sql` (includes `phone` on `leads`).
+2. Install Supabase CLI: `npm i -g supabase`
+3. Login and link project:
+   ```bash
+   supabase login
+   supabase link --project-ref otuhzmexmljmdmvetfym
+   ```
+4. Deploy the function:
+   ```bash
+   supabase functions deploy send-demo-email
+   ```
+5. Add Resend (free tier) for real email:
+   - Create key at https://resend.com
+   - Set secret:
+     ```bash
+     supabase secrets set RESEND_API_KEY=re_xxx
+     supabase secrets set DEMO_URL=https://erpftc.vercel.app
+     supabase secrets set SITE_URL=https://erpftc.vercel.app
+     supabase secrets set FROM_EMAIL="Knight ERP <onboarding@yourdomain.com>"
+     ```
+
+Without `RESEND_API_KEY`, leads still save; email is skipped (logged only).

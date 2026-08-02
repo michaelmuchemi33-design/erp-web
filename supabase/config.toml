@@ -1,0 +1,3 @@
+# Minimal config for Edge Functions
+[functions.send-demo-email]
+verify_jwt = false

@@ -51,6 +51,7 @@ type Answers = {
   need: string;
   email: string;
   name: string;
+  phone: string;
 };
 
 const initial: Answers = {
@@ -59,6 +60,7 @@ const initial: Answers = {
   need: "",
   email: "",
   name: "",
+  phone: "",
 };
 
 export function SignupWizard({
@@ -83,22 +85,42 @@ export function SignupWizard({
     (step === 3 &&
       answers.email.includes("@") &&
       answers.email.includes(".") &&
-      answers.name.trim().length > 1);
+      answers.name.trim().length > 1 &&
+      answers.phone.replace(/\D/g, "").length >= 9);
 
   async function submit() {
     setLoading(true);
     setError("");
     try {
-      const { error: dbError } = await supabase.from("leads").insert({
+      const payload = {
         name: answers.name.trim(),
         email: answers.email.trim().toLowerCase(),
+        phone: answers.phone.trim(),
         industry: answers.industry,
         company_size: answers.companySize,
         primary_need: answers.need,
         source: "signup_wizard",
         created_at: new Date().toISOString(),
-      });
+      };
+      const { error: dbError } = await supabase.from("leads").insert(payload);
       if (dbError) throw dbError;
+
+      // Send confirmation email via Edge Function (best-effort)
+      try {
+        await supabase.functions.invoke("send-demo-email", {
+          body: {
+            name: payload.name,
+            email: payload.email,
+            phone: payload.phone,
+            industry: payload.industry,
+            company_size: payload.company_size,
+            primary_need: payload.primary_need,
+          },
+        });
+      } catch (mailErr) {
+        console.warn("Demo email function:", mailErr);
+      }
+
       setDone(true);
     } catch (e: unknown) {
       const msg = e instanceof Error ? e.message : "Something went wrong";
@@ -143,7 +165,7 @@ export function SignupWizard({
             </div>
             <h3 className="text-2xl font-bold text-slate-950">You are on the list</h3>
             <p className="mt-3 text-slate-600 leading-relaxed">
-              We received your request. A confirmation with your demo access details
+              We received your request. A confirmation email with your demo access link
               will be sent to <span className="font-semibold text-slate-900">{answers.email}</span> shortly.
             </p>
             <Button
@@ -313,6 +335,15 @@ export function SignupWizard({
                       value={answers.email}
                       onChange={(e) =>
                         setAnswers((a) => ({ ...a, email: e.target.value }))
+                      }
+                      className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none ring-amber-500/20 focus:ring-2"
+                    />
+                    <input
+                      type="tel"
+                      placeholder="Phone number (e.g. +254 7XX XXX XXX)"
+                      value={answers.phone}
+                      onChange={(e) =>
+                        setAnswers((a) => ({ ...a, phone: e.target.value }))
                       }
                       className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none ring-amber-500/20 focus:ring-2"
                     />
