@@ -112,10 +112,10 @@ export function Header({ onOpenSignup }: { onOpenSignup?: () => void } = {}) {
         <a href="/" className="flex items-center gap-2.5">
           <img
             src="/knight-logo.png"
-            alt="Knight ERP"
+            alt="Unity ERP"
             className="h-9 w-9 rounded-lg bg-black object-contain p-0.5"
           />
-          <span className="text-xl font-bold tracking-tight text-slate-900">Knight ERP</span>
+          <span className="text-xl font-bold tracking-tight text-slate-900">Unity ERP</span>
         </a>
 
         <nav className="hidden items-center gap-8 md:flex">

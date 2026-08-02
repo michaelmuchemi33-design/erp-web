@@ -16,10 +16,10 @@ import {
   Clock,
 } from "lucide-react";
 
-const EMAIL = "unity-erp-software@protonmail.com";
-const WHATSAPP = "+254778903044";
+const EMAIL = "erpintergration@gmail.com";
+const WHATSAPP = "+254793832286";
 const CALL = "+254793832286";
-const WHATSAPP_LINK = `https://wa.me/254778903044`;
+const WHATSAPP_LINK = `https://wa.me/254793832286`;
 const CALL_LINK = `tel:+254793832286`;
 const MAIL_LINK = `mailto:${EMAIL}`;
 
@@ -245,7 +245,7 @@ export function ContactPageContent() {
 
               <div>
                 <span className="inline-flex rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs font-medium text-white/90">
-                  Knight ERP
+                  Unity ERP
                 </span>
                 <h2 className="mt-6 text-2xl font-bold leading-snug md:text-3xl">
                   Ready to run your whole business in one place?

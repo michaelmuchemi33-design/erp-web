@@ -25,11 +25,11 @@ export default function PricingPage() {
               <div className="flex items-center gap-2.5">
                 <img
                   src="/knight-logo.png"
-                  alt="Knight ERP"
+                  alt="Unity ERP"
                   className="h-9 w-9 rounded-lg bg-black object-contain p-0.5"
                 />
                 <span className="text-xl font-bold tracking-tight text-slate-900">
-                  Knight ERP
+                  Unity ERP
                 </span>
               </div>
               <p className="max-w-xs text-sm leading-relaxed text-slate-500">
@@ -128,7 +128,7 @@ export default function PricingPage() {
 
           <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-slate-200 pt-8 sm:flex-row">
             <p className="text-sm text-slate-500">
-              © {new Date().getFullYear()} Knight ERP. All rights reserved.
+              © {new Date().getFullYear()} Unity ERP. All rights reserved.
             </p>
             <div className="flex gap-6 text-sm text-slate-500">
               <a href="#" className="transition hover:text-slate-950">

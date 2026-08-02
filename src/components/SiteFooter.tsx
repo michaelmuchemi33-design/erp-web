@@ -67,16 +67,19 @@ export function SiteFooter() {
               <div className="flex items-center gap-2.5">
                 <img
                   src="/knight-logo.png"
-                  alt="Knight ERP"
+                  alt="Unity ERP"
                   className="h-9 w-9 rounded-lg bg-black object-contain p-0.5"
                 />
-                <span className="text-xl font-bold tracking-tight text-slate-900">
-                  Knight ERP
-                </span>
+                <div>
+                  <span className="block text-xl font-bold tracking-tight text-slate-900">
+                    Unity ERP
+                  </span>
+                  <p className="text-xs font-medium text-slate-400">Unity Software Solutions</p>
+                </div>
               </div>
               <p className="max-w-sm text-sm leading-relaxed text-slate-500">
-                Enterprise resource planning for manufacturing, retail, healthcare,
-                education and more. Built in Kenya for growing businesses.
+                Unity Software Solutions — ERP for manufacturing, retail, healthcare,
+                education and more. Offices in Kenya, South Africa and Egypt.
               </p>
             </div>
 
@@ -113,9 +116,12 @@ export function SiteFooter() {
                 Company
               </h4>
               <ul className="space-y-2.5 text-sm text-slate-600">
+                <li className="text-slate-500">
+                  Kenya · South Africa · Egypt
+                </li>
                 <li>
-                  <a href="mailto:unity-erp-software@protonmail.com" className="transition hover:text-slate-950">
-                    unity-erp-software@protonmail.com
+                  <a href="mailto:erpintergration@gmail.com" className="transition hover:text-slate-950">
+                    erpintergration@gmail.com
                   </a>
                 </li>
                 <li>
@@ -124,8 +130,8 @@ export function SiteFooter() {
                   </a>
                 </li>
                 <li>
-                  <a href="https://wa.me/254778903044" target="_blank" rel="noopener noreferrer" className="transition hover:text-slate-950">
-                    WhatsApp +254 778 903 044
+                  <a href="https://wa.me/254793832286" target="_blank" rel="noopener noreferrer" className="transition hover:text-slate-950">
+                    WhatsApp +254 793 832 286
                   </a>
                 </li>
               </ul>
@@ -245,7 +251,7 @@ export function SiteFooter() {
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-slate-200 pt-8 sm:flex-row">
           <p className="text-sm text-slate-500">
-            © {new Date().getFullYear()} Knight ERP. All rights reserved.
+            © {new Date().getFullYear()} Unity Software Solutions. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm text-slate-500">
             <a href="#" className="transition hover:text-slate-950">
