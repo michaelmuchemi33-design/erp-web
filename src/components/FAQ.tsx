@@ -39,6 +39,11 @@ const faqs = [
       "Manufacturing, Construction, Hospital, Retail & POS, Education, Agriculture, Hospitality, Logistics, Finance & Accounting — all included in one plan.",
   },
   {
+    question: "Do I get a free website with Unity ERP?",
+    answer:
+      "Yes. As a royalty benefit for active Unity ERP customers, Unity Software Solutions includes a free custom website design tailored to your business — layout, branding and core pages. It is our way of investing back in customers who run their operations on Unity ERP.",
+  },
+  {
     question: "How do I pay?",
     answer:
       "Click the Pay Now button to complete payment securely via Swypt. You can also contact us to arrange alternative payment methods.",

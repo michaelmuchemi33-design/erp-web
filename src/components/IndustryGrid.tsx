@@ -622,6 +622,14 @@ function IndustryOverlay({
           on the standard plan.
         </div>
 
+        <div className="mt-3 rounded-2xl border border-amber-100 bg-amber-50/60 p-4 text-sm text-slate-700">
+          <p className="font-semibold text-amber-900">Royalty benefit — free custom website</p>
+          <p className="mt-1 text-slate-600">
+            Subscribe to Unity ERP and get a free website design custom-built for your business
+            (layout, branding and core pages). A complimentary creative royalty for customers who grow with us.
+          </p>
+        </div>
+
         <div className="mt-6 rounded-2xl border border-slate-100 bg-slate-50/80 p-5">
           {done ? (
             <div className="flex items-center gap-2 text-sm font-medium text-emerald-700">
@@ -688,7 +696,7 @@ export function IndustryGrid() {
           </h2>
           <p className="mt-4 text-lg text-slate-600">
             Specialized dashboards, workflows, and KPIs tailored to how your business operates.
-            Click any card to see how Knight ERP fits.
+            Click any card to see how Unity ERP fits — plus a free custom business website as a customer royalty benefit.
           </p>
         </motion.div>
 

@@ -24,6 +24,7 @@ import {
 } from "lucide-react";
 
 const industryModules = [
+  "Free custom business website design",
   { label: "Manufacturing", icon: Factory },
   { label: "Construction", icon: HardHat },
   { label: "Hospital", icon: Building2 },
@@ -184,7 +185,7 @@ export function PricingCard({ onOpenSignup }: { onOpenSignup?: () => void } = {}
                         2-Month Free Trial Included
                       </p>
                       <p className="mt-1 text-sm leading-relaxed text-amber-800/90">
-                        Full access to every module for 60 days. No credit card
+                        Full access to every module for 60 days. Active plans include a free custom website design for your business (royalty benefit). No credit card
                         required to start.
                       </p>
                     </div>
