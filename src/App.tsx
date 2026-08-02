@@ -14,6 +14,8 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SignupWizard } from "@/components/SignupWizard";
 import { AboutPageShell } from "@/pages/AboutPage";
 import { ContactPageShell } from "@/pages/ContactPage";
+import { ResourcePageShell } from "@/pages/ResourcePage";
+import { pagesBySlug } from "@/content/resourcePages";
 
 function HomePage({ onOpenSignup }: { onOpenSignup: () => void }) {
   return (
@@ -38,17 +40,20 @@ function HomePage({ onOpenSignup }: { onOpenSignup: () => void }) {
   );
 }
 
+function normalizePath(pathname: string) {
+  return pathname.replace(/\/+$/, "") || "/";
+}
+
 export default function App() {
   const [signupOpen, setSignupOpen] = useState(false);
-  const [path, setPath] = useState(
-    typeof window !== "undefined" ? window.location.pathname : "/"
+  const [path, setPath] = useState(() =>
+    typeof window !== "undefined" ? normalizePath(window.location.pathname) : "/"
   );
 
   useEffect(() => {
-    const onNav = () => setPath(window.location.pathname);
+    const onNav = () => setPath(normalizePath(window.location.pathname));
     window.addEventListener("popstate", onNav);
 
-    // Intercept internal links for SPA navigation
     const onClick = (e: MouseEvent) => {
       const a = (e.target as HTMLElement).closest("a");
       if (!a) return;
@@ -58,8 +63,9 @@ export default function App() {
       if (href.startsWith("#")) return;
       if (a.target === "_blank") return;
       e.preventDefault();
-      window.history.pushState({}, "", href);
-      setPath(href.split("?")[0].split("#")[0] || "/");
+      const next = href.split("?")[0].split("#")[0] || "/";
+      window.history.pushState({}, "", next);
+      setPath(normalizePath(next));
       window.scrollTo(0, 0);
     };
     document.addEventListener("click", onClick);
@@ -69,8 +75,10 @@ export default function App() {
     };
   }, []);
 
-  const isAbout = path === "/about" || path.startsWith("/about/");
-  const isContact = path === "/contact" || path.startsWith("/contact/");
+  const isAbout = path === "/about";
+  const isContact = path === "/contact";
+  const resourceSlug = path.startsWith("/") ? path.slice(1) : path;
+  const resourcePage = pagesBySlug[resourceSlug];
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-white font-sans text-slate-950 selection:bg-emerald-100 selection:text-emerald-900">
@@ -78,10 +86,12 @@ export default function App() {
         <AboutPageShell />
       ) : isContact ? (
         <ContactPageShell />
+      ) : resourcePage ? (
+        <ResourcePageShell page={resourcePage} />
       ) : (
         <HomePage onOpenSignup={() => setSignupOpen(true)} />
       )}
-      {!isAbout && !isContact && (
+      {!isAbout && !isContact && !resourcePage && (
         <SignupWizard open={signupOpen} onClose={() => setSignupOpen(false)} />
       )}
     </div>

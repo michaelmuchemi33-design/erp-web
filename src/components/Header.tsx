@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Globe, ChevronDown, ArrowRight, Menu, X, BookOpen, Rocket, Video, Lightbulb, Bot, FileText, Building2, Code2, Webhook, Boxes, FileStack, Newspaper, HelpCircle, Headphones, MessageCircle, Activity, Users, Calculator, BarChart3, TrendingUp, Leaf, ShoppingCart, GraduationCap, Truck, Utensils, Landmark, Home, HardHat, Factory, HeartHandshake } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { slugFromLabel } from "@/content/resourcePages";
 
 const links = [
   { label: "Features", href: "/#features" },
@@ -191,7 +192,7 @@ export function Header({ onOpenSignup }: { onOpenSignup?: () => void } = {}) {
                                   {section.items.map((item) => (
                                     <li key={item.label}>
                                       <a
-                                        href="#"
+                                        href={`/${slugFromLabel(sectionKey, item.label)}`}
                                         onClick={() => setResourcesOpen(false)}
                                         className="group flex items-center gap-2.5 rounded-xl px-2 py-2 text-sm font-medium text-slate-700 transition-all hover:bg-amber-50 hover:text-slate-950"
                                       >
