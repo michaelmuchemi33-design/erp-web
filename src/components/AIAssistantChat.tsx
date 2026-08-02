@@ -55,10 +55,10 @@ function MetricCards({ kind }: { kind?: Msg["kind"] }) {
   if (kind === "sales") {
     return (
       <div className="mt-3 grid grid-cols-2 gap-2">
-        <div className="rounded-xl bg-white p-3 shadow-sm">
-          <div className="text-[10px] font-medium text-slate-500">Sales</div>
+        <div className="rounded-xl bg-white/10 p-3 ring-1 ring-white/10">
+          <div className="text-[10px] font-medium text-slate-400">Sales</div>
           <div className="mt-0.5 text-lg font-bold text-emerald-600">+18%</div>
-          <div className="mt-2 h-1.5 w-full rounded-full bg-slate-100">
+          <div className="mt-2 h-1.5 w-full rounded-full bg-white/10">
             <motion.div
               initial={{ width: 0 }}
               animate={{ width: "78%" }}
@@ -67,15 +67,15 @@ function MetricCards({ kind }: { kind?: Msg["kind"] }) {
             />
           </div>
         </div>
-        <div className="rounded-xl bg-white p-3 shadow-sm">
-          <div className="text-[10px] font-medium text-slate-500">Revenue</div>
-          <div className="mt-0.5 text-lg font-bold text-slate-900">KES 12.8M</div>
-          <div className="mt-2 h-1.5 w-full rounded-full bg-slate-100">
+        <div className="rounded-xl bg-white/10 p-3 ring-1 ring-white/10">
+          <div className="text-[10px] font-medium text-slate-400">Revenue</div>
+          <div className="mt-0.5 text-lg font-bold text-white">KES 12.8M</div>
+          <div className="mt-2 h-1.5 w-full rounded-full bg-white/10">
             <motion.div
               initial={{ width: 0 }}
               animate={{ width: "65%" }}
               transition={{ duration: 0.7, delay: 0.1 }}
-              className="h-1.5 rounded-full bg-slate-800"
+              className="h-1.5 rounded-full bg-white/70"
             />
           </div>
         </div>
@@ -85,12 +85,12 @@ function MetricCards({ kind }: { kind?: Msg["kind"] }) {
   if (kind === "inventory") {
     return (
       <div className="mt-3 grid grid-cols-2 gap-2">
-        <div className="rounded-xl bg-white p-3 shadow-sm">
-          <div className="text-[10px] font-medium text-slate-500">Widget A</div>
+        <div className="rounded-xl bg-white/10 p-3 ring-1 ring-white/10">
+          <div className="text-[10px] font-medium text-slate-400">Widget A</div>
           <div className="mt-0.5 text-lg font-bold text-amber-600">12 left</div>
         </div>
-        <div className="rounded-xl bg-white p-3 shadow-sm">
-          <div className="text-[10px] font-medium text-slate-500">Coil B</div>
+        <div className="rounded-xl bg-white/10 p-3 ring-1 ring-white/10">
+          <div className="text-[10px] font-medium text-slate-400">Coil B</div>
           <div className="mt-0.5 text-lg font-bold text-rose-600">8 left</div>
         </div>
       </div>
@@ -99,13 +99,13 @@ function MetricCards({ kind }: { kind?: Msg["kind"] }) {
   if (kind === "finance") {
     return (
       <div className="mt-3 grid grid-cols-2 gap-2">
-        <div className="rounded-xl bg-white p-3 shadow-sm">
-          <div className="text-[10px] font-medium text-slate-500">Cash</div>
+        <div className="rounded-xl bg-white/10 p-3 ring-1 ring-white/10">
+          <div className="text-[10px] font-medium text-slate-400">Cash</div>
           <div className="mt-0.5 text-lg font-bold text-emerald-600">Strong</div>
         </div>
-        <div className="rounded-xl bg-white p-3 shadow-sm">
-          <div className="text-[10px] font-medium text-slate-500">AR days</div>
-          <div className="mt-0.5 text-lg font-bold text-slate-900">18</div>
+        <div className="rounded-xl bg-white/10 p-3 ring-1 ring-white/10">
+          <div className="text-[10px] font-medium text-slate-400">AR days</div>
+          <div className="mt-0.5 text-lg font-bold text-white">18</div>
         </div>
       </div>
     );
@@ -113,7 +113,7 @@ function MetricCards({ kind }: { kind?: Msg["kind"] }) {
   if (kind === "purchase") {
     return (
       <div className="mt-3 rounded-xl bg-white p-3 shadow-sm">
-        <div className="text-[10px] font-medium text-slate-500">Suggested savings</div>
+        <div className="text-[10px] font-medium text-slate-400">Suggested savings</div>
         <div className="mt-0.5 text-lg font-bold text-emerald-600">KES 180K</div>
       </div>
     );
@@ -180,9 +180,9 @@ export function AIAssistantChat() {
   }
 
   return (
-    <div className="flex h-full min-h-[420px] flex-col rounded-3xl border border-slate-100 bg-white/95 p-5 shadow-2xl shadow-slate-900/10 backdrop-blur-xl md:p-6">
+    <div className="flex h-full min-h-[480px] flex-col rounded-3xl border border-slate-200/80 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 p-5 shadow-[0_0_60px_rgba(16,185,129,0.15),0_25px_50px_rgba(0,0,0,0.35)] ring-1 ring-emerald-500/20 md:p-6">
       {/* Header */}
-      <div className="mb-4 flex items-center justify-between border-b border-slate-100 pb-4">
+      <div className="mb-4 flex items-center justify-between border-b border-white/10 pb-4">
         <div className="flex items-center gap-2.5">
           <motion.div
             animate={{ rotate: [0, 8, -8, 0] }}
@@ -192,12 +192,12 @@ export function AIAssistantChat() {
           </motion.div>
           <div>
             <div className="flex items-center gap-2">
-              <span className="font-bold text-slate-900">Knight AI Assistant</span>
+              <span className="font-bold text-white">Knight AI Assistant</span>
               <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-emerald-700">
                 Live
               </span>
             </div>
-            <p className="text-[11px] text-slate-400">Powered by your ERP data</p>
+            <p className="text-[11px] text-slate-400">Powered by your ERP data · Unity ERP</p>
           </div>
         </div>
         <div className="flex items-center gap-1.5 text-slate-400">
@@ -205,7 +205,7 @@ export function AIAssistantChat() {
             type="button"
             onClick={reset}
             title="Reset chat"
-            className="rounded-lg p-1.5 transition-colors hover:bg-slate-100 hover:text-slate-700"
+            className="rounded-lg p-1.5 transition-colors hover:bg-white/10 hover:text-white"
           >
             <RefreshCw className="h-4 w-4" />
           </button>
@@ -233,10 +233,10 @@ export function AIAssistantChat() {
             >
               {msg.role === "ai" && <AiAvatar size={26} />}
               <div
-                className={`max-w-[85%] rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed ${
+                className={`max-w-[90%] rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed ${
                   msg.role === "user"
-                    ? "rounded-tr-md bg-slate-950 text-white"
-                    : "rounded-tl-md bg-slate-100 text-slate-700"
+                    ? "rounded-tr-md bg-emerald-500/20 text-emerald-50 ring-1 ring-emerald-400/30"
+                    : "rounded-tl-md bg-black text-slate-100 shadow-[0_0_24px_rgba(16,185,129,0.25)] ring-1 ring-emerald-500/40"
                 }`}
               >
                 {msg.text}
@@ -253,9 +253,9 @@ export function AIAssistantChat() {
             className="flex items-center gap-2.5"
           >
             <AiAvatar size={26} />
-            <div className="flex items-center gap-1.5 rounded-2xl rounded-tl-md bg-slate-100 px-4 py-3">
+            <div className="flex items-center gap-1.5 rounded-2xl rounded-tl-md bg-black px-4 py-3 ring-1 ring-emerald-500/30 shadow-[0_0_20px_rgba(16,185,129,0.2)]">
               <Loader2 className="h-3.5 w-3.5 animate-spin text-emerald-600" />
-              <span className="text-xs text-slate-500">Knight AI is thinking…</span>
+              <span className="text-xs text-slate-300">Knight AI is thinking…</span>
             </div>
           </motion.div>
         )}
@@ -265,19 +265,19 @@ export function AIAssistantChat() {
       {/* Input */}
       <form
         onSubmit={onSubmit}
-        className="flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-3 py-2.5 shadow-sm focus-within:ring-2 focus-within:ring-emerald-500/20"
+        className="flex items-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-3 py-2.5 shadow-sm focus-within:ring-2 focus-within:ring-emerald-500/30"
       >
         <input
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Ask Knight AI anything…"
-          className="flex-1 bg-transparent text-sm text-slate-700 outline-none placeholder:text-slate-400"
+          className="flex-1 bg-transparent text-sm text-white outline-none placeholder:text-slate-500"
         />
         <button
           type="submit"
           disabled={typing || !input.trim()}
-          className="rounded-xl bg-slate-950 p-2 text-white transition hover:scale-105 disabled:opacity-40"
+          className="rounded-xl bg-emerald-500 p-2 text-white transition hover:scale-105 hover:bg-emerald-400 disabled:opacity-40"
         >
           <Send className="h-4 w-4" />
         </button>
@@ -291,7 +291,7 @@ export function AIAssistantChat() {
             type="button"
             disabled={typing}
             onClick={() => ask(prompt)}
-            className="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-600 transition-all hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-800 disabled:opacity-50"
+            className="rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs font-medium text-slate-200 transition-all hover:border-emerald-400/50 hover:bg-emerald-500/10 hover:text-emerald-200 disabled:opacity-50"
           >
             {prompt}
           </button>

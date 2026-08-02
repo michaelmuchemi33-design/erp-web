@@ -5,9 +5,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { slugFromLabel } from "@/content/resourcePages";
 
 const links = [
-  { label: "Features", href: "/#features" },
-  { label: "Industries", href: "/#industries" },
-  { label: "Pricing", href: "/#pricing" },
+  { label: "Home", href: "/" },
+  { label: "Features", href: "/features" },
+  { label: "Industries", href: "/industries" },
+  { label: "Pricing", href: "/pricing" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];

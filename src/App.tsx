@@ -14,6 +14,9 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SignupWizard } from "@/components/SignupWizard";
 import { AboutPageShell } from "@/pages/AboutPage";
 import { ContactPageShell } from "@/pages/ContactPage";
+import { FeaturesPageShell } from "@/pages/FeaturesPage";
+import { IndustriesPageShell } from "@/pages/IndustriesPage";
+import { PricingStandaloneShell } from "@/pages/PricingStandalonePage";
 import { ResourcePageShell } from "@/pages/ResourcePage";
 import { pagesBySlug } from "@/content/resourcePages";
 
@@ -77,6 +80,9 @@ export default function App() {
 
   const isAbout = path === "/about";
   const isContact = path === "/contact";
+  const isFeatures = path === "/features";
+  const isIndustries = path === "/industries";
+  const isPricing = path === "/pricing";
   const resourceSlug = path.startsWith("/") ? path.slice(1) : path;
   const resourcePage = pagesBySlug[resourceSlug];
 
@@ -86,12 +92,18 @@ export default function App() {
         <AboutPageShell />
       ) : isContact ? (
         <ContactPageShell />
+      ) : isFeatures ? (
+        <FeaturesPageShell />
+      ) : isIndustries ? (
+        <IndustriesPageShell />
+      ) : isPricing ? (
+        <PricingStandaloneShell />
       ) : resourcePage ? (
         <ResourcePageShell page={resourcePage} />
       ) : (
         <HomePage onOpenSignup={() => setSignupOpen(true)} />
       )}
-      {!isAbout && !isContact && !resourcePage && (
+      {!isAbout && !isContact && !isFeatures && !isIndustries && !isPricing && !resourcePage && (
         <SignupWizard open={signupOpen} onClose={() => setSignupOpen(false)} />
       )}
     </div>

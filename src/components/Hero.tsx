@@ -29,7 +29,7 @@ export function Hero({ onOpenSignup }: { onOpenSignup?: () => void } = {}) {
         <div className="absolute right-0 top-1/3 h-[500px] w-[500px] rounded-full bg-slate-100/60 blur-3xl" />
       </div>
 
-      <div className="mx-auto grid max-w-7xl items-center gap-16 px-6 lg:grid-cols-2">
+      <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 lg:grid-cols-[1fr_1.15fr]">
         <motion.div variants={container} initial="hidden" animate="show" className="flex flex-col gap-7">
           <motion.div variants={item} className="w-fit rounded-full border border-emerald-100 bg-emerald-50/80 px-4 py-2 text-xs font-semibold text-emerald-800 backdrop-blur">
             <span className="mr-2 inline-block h-2 w-2 animate-pulse rounded-full bg-emerald-500" />
@@ -70,7 +70,7 @@ export function Hero({ onOpenSignup }: { onOpenSignup?: () => void } = {}) {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="relative flex justify-center lg:justify-end"
         >
-          <motion.div animate={float} className="w-full max-w-md">
+          <motion.div animate={float} className="w-full max-w-lg lg:max-w-xl">
             <AIAssistantChat />
           </motion.div>
         </motion.div>

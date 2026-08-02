@@ -563,7 +563,7 @@ function IndustryOverlay({
         animate={{ opacity: 1, y: 0, scale: 1 }}
         exit={{ opacity: 0, y: 16, scale: 0.98 }}
         transition={{ duration: 0.25 }}
-        className="relative z-10 max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-3xl border border-slate-100 bg-white p-6 shadow-2xl md:p-8"
+        className="relative z-10 max-h-[92vh] w-full max-w-3xl overflow-y-auto rounded-3xl border border-slate-100 bg-white p-6 shadow-2xl md:p-10"
       >
         <button
           type="button"
@@ -576,8 +576,8 @@ function IndustryOverlay({
         <div className={`mb-4 flex h-12 w-12 items-center justify-center rounded-2xl ${industry.light} ${industry.accent}`}>
           <Icon className="h-6 w-6" />
         </div>
-        <h3 className="text-2xl font-bold text-slate-950">{industry.name}</h3>
-        <p className="mt-2 text-sm leading-relaxed text-slate-600">{industry.summary}</p>
+        <h3 className="text-3xl font-bold tracking-tight text-slate-950">{industry.name}</h3>
+        <p className="mt-3 text-base leading-relaxed text-slate-600">{industry.summary}</p>
 
         <div className="mt-5">
           <p className="text-xs font-bold uppercase tracking-wider text-slate-400">
@@ -595,7 +595,34 @@ function IndustryOverlay({
           </ul>
         </div>
 
-        <div className="mt-6 rounded-2xl border border-slate-100 bg-slate-50/80 p-4">
+        <div className="mt-6 grid gap-4 sm:grid-cols-2">
+          <div className="rounded-2xl border border-slate-100 bg-slate-50/80 p-4">
+            <p className="text-xs font-bold uppercase tracking-wider text-slate-400">Included modules</p>
+            <ul className="mt-2 space-y-1.5 text-sm text-slate-700">
+              <li>CRM & sales pipeline</li>
+              <li>Inventory & purchasing</li>
+              <li>Finance & invoicing</li>
+              <li>AI Assistant insights</li>
+            </ul>
+          </div>
+          <div className="rounded-2xl border border-slate-100 bg-slate-50/80 p-4">
+            <p className="text-xs font-bold uppercase tracking-wider text-slate-400">Typical outcomes</p>
+            <ul className="mt-2 space-y-1.5 text-sm text-slate-700">
+              <li>One system of record</li>
+              <li>Fewer stockouts & delays</li>
+              <li>Faster month-end close</li>
+              <li>Clear industry KPIs</li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="mt-4 rounded-2xl border border-emerald-100 bg-emerald-50/50 p-4 text-sm text-slate-700">
+          <span className="font-semibold text-emerald-800">Unity ERP</span> by Unity Software Solutions
+          unifies CRM, operations and AI for teams in Kenya, South Africa and Egypt — with unlimited users
+          on the standard plan.
+        </div>
+
+        <div className="mt-6 rounded-2xl border border-slate-100 bg-slate-50/80 p-5">
           {done ? (
             <div className="flex items-center gap-2 text-sm font-medium text-emerald-700">
               <Check className="h-4 w-4" />
