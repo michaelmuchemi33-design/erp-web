@@ -114,19 +114,19 @@ export function SiteFooter() {
               </h4>
               <ul className="space-y-2.5 text-sm text-slate-600">
                 <li>
-                  <a href="mailto:billing@knighterp.com" className="transition hover:text-slate-950">
-                    billing@knighterp.com
+                  <a href="mailto:unity-erp-software@protonmail.com" className="transition hover:text-slate-950">
+                    unity-erp-software@protonmail.com
                   </a>
                 </li>
                 <li>
-                  <a href="tel:+18005550199" className="transition hover:text-slate-950">
-                    +1 (800) 555-0199
+                  <a href="tel:+254793832286" className="transition hover:text-slate-950">
+                    +254 793 832 286
                   </a>
                 </li>
-                <li className="text-slate-500">
-                  1200 Tech Boulevard, Suite 400
-                  <br />
-                  Austin, TX 78701
+                <li>
+                  <a href="https://wa.me/254778903044" target="_blank" rel="noopener noreferrer" className="transition hover:text-slate-950">
+                    WhatsApp +254 778 903 044
+                  </a>
                 </li>
               </ul>
             </div>

@@ -6,8 +6,8 @@ import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 
 const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
 const FROM_EMAIL = Deno.env.get("FROM_EMAIL") || "Knight ERP <onboarding@resend.dev>";
-const DEMO_URL = Deno.env.get("DEMO_URL") || "https://erpftc.vercel.app";
-const SITE_URL = Deno.env.get("SITE_URL") || "https://erpftc.vercel.app";
+const DEMO_URL = Deno.env.get("DEMO_URL") || "https://erp-web-chi-three.vercel.app";
+const SITE_URL = Deno.env.get("SITE_URL") || "https://erp-web-chi-three.vercel.app";
 
 const cors = {
   "Access-Control-Allow-Origin": "*",
