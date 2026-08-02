@@ -13,6 +13,7 @@ import { BottomCTA } from "@/components/BottomCTA";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SignupWizard } from "@/components/SignupWizard";
 import { AboutPageShell } from "@/pages/AboutPage";
+import { ContactPageShell } from "@/pages/ContactPage";
 
 function HomePage({ onOpenSignup }: { onOpenSignup: () => void }) {
   return (
@@ -69,15 +70,18 @@ export default function App() {
   }, []);
 
   const isAbout = path === "/about" || path.startsWith("/about/");
+  const isContact = path === "/contact" || path.startsWith("/contact/");
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-white font-sans text-slate-950 selection:bg-emerald-100 selection:text-emerald-900">
       {isAbout ? (
         <AboutPageShell />
+      ) : isContact ? (
+        <ContactPageShell />
       ) : (
         <HomePage onOpenSignup={() => setSignupOpen(true)} />
       )}
-      {!isAbout && (
+      {!isAbout && !isContact && (
         <SignupWizard open={signupOpen} onClose={() => setSignupOpen(false)} />
       )}
     </div>
