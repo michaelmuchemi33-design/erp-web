@@ -1,19 +1,19 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
-import { Bot, Workflow, Package, Calculator, Users, Factory, ShoppingCart, Briefcase, Banknote, FileBarChart, BarChart3 } from "lucide-react";
+import { Bot, GitBranch, Package, Calculator, Users, Factory, ShoppingCart, Briefcase, Wallet, FileText, BarChart3 } from "lucide-react";
 
 const features = [
   { icon: Bot, title: "AI Assistant", description: "Ask questions, get forecasts, and receive proactive recommendations." },
-  { icon: Workflow, title: "Workflow Automation", description: "Automate approvals, notifications, and repetitive tasks." },
+  { icon: GitBranch, title: "Workflow Automation", description: "Automate approvals, notifications, and repetitive tasks." },
   { icon: Package, title: "Inventory", description: "Real-time stock levels, reordering, and warehouse management." },
   { icon: Calculator, title: "Accounting", description: "General ledger, invoicing, payments, and reconciliation." },
   { icon: Users, title: "CRM", description: "Track leads, opportunities, and customer communications." },
   { icon: Factory, title: "Manufacturing", description: "BOMs, production planning, shop floor control, and quality." },
   { icon: ShoppingCart, title: "Purchasing", description: "Purchase orders, vendor management, and spend analytics." },
   { icon: Briefcase, title: "HR", description: "Recruiting, onboarding, time-off, and employee records." },
-  { icon: Banknote, title: "Payroll", description: "Accurate payroll processing, taxes, and compliance." },
-  { icon: FileBarChart, title: "Reports", description: "Custom reports and scheduled exports for every team." },
+  { icon: Wallet, title: "Payroll", description: "Accurate payroll processing, taxes, and compliance." },
+  { icon: FileText, title: "Reports", description: "Custom reports and scheduled exports for every team." },
   { icon: BarChart3, title: "Analytics", description: "Live dashboards and predictive business intelligence." },
 ];
 

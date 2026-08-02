@@ -4,7 +4,7 @@ import {
   ShieldCheck,
   Bot,
   Users,
-  Infinity,
+  Infinity as InfinityIcon,
   LayoutGrid,
   Mail,
   RefreshCw,
@@ -15,7 +15,7 @@ const items = [
   { icon: LayoutGrid, label: "Full ERP access" },
   { icon: Bot, label: "AI Assistant" },
   { icon: Users, label: "Unlimited users" },
-  { icon: Infinity, label: "Unlimited transactions" },
+  { icon: InfinityIcon, label: "Unlimited transactions" },
   { icon: LayoutGrid, label: "All industry modules" },
   { icon: Mail, label: "Email support" },
   { icon: RefreshCw, label: "Product updates" },
@@ -57,7 +57,7 @@ export function Guarantee() {
               className="flex items-center gap-4 rounded-2xl border border-slate-100 bg-white p-5 shadow-sm transition-all hover:border-slate-200 hover:shadow-md"
             >
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-slate-100 text-slate-700">
-                <item.icon className="h-5 w-5" />
+                {item.icon ? <item.icon className="h-5 w-5" /> : null}
               </div>
               <span className="font-semibold text-slate-800">{item.label}</span>
             </motion.div>

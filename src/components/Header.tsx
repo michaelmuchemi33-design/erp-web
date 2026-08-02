@@ -197,7 +197,7 @@ export function Header({ onOpenSignup }: { onOpenSignup?: () => void } = {}) {
                                         onClick={() => setResourcesOpen(false)}
                                         className="group flex items-center gap-2.5 rounded-xl px-2 py-2 text-sm font-medium text-slate-700 transition-all hover:bg-amber-50 hover:text-slate-950"
                                       >
-                                        <item.icon className="h-4 w-4 shrink-0 text-slate-400 transition-colors group-hover:text-amber-500" />
+                                        {item.icon ? <item.icon className="h-4 w-4 shrink-0 text-slate-400 transition-colors group-hover:text-amber-500" /> : null}
                                         <span className="relative">
                                           {item.label}
                                           <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-amber-500 transition-all duration-200 group-hover:w-full" />

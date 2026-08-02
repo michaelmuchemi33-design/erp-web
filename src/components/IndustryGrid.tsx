@@ -1,5 +1,9 @@
-import { useRef, useState } from "react";
-import { motion, useInView, AnimatePresence } from "framer-motion";
+import {
+  useRef,
+  useState } from "react";
+import { motion,
+  useInView,
+  AnimatePresence } from "framer-motion";
 import {
   Factory,
   HardHat,
@@ -8,7 +12,7 @@ import {
   GraduationCap,
   Truck,
   Home,
-  Sprout,
+  Leaf,
   Utensils,
   Landmark,
   ArrowRight,
@@ -19,12 +23,12 @@ import {
   Loader2,
   Send,
   Heart,
-  Fuel,
-  Shirt,
+  Zap,
+  ShoppingBag,
   Wrench,
-  Plane,
-  Church,
-  Stethoscope,
+  Globe,
+  HeartHandshake,
+  Activity,
   Car,
   Briefcase,
 } from "lucide-react";
@@ -203,7 +207,7 @@ const industries: Industry[] = [
   },
   {
     name: "Agriculture",
-    icon: Sprout,
+    icon: Leaf,
     kpi: "+12%",
     kpiLabel: "Yield Growth",
     accent: "text-emerald-600",
@@ -314,7 +318,7 @@ const industries: Industry[] = [
   },
   {
     name: "Fashion & Apparel",
-    icon: Shirt,
+    icon: ShoppingBag,
     kpi: "64%",
     kpiLabel: "Sell-through",
     accent: "text-rose-600",
@@ -336,7 +340,7 @@ const industries: Industry[] = [
   },
   {
     name: "Energy & Utilities",
-    icon: Fuel,
+    icon: Zap,
     kpi: "99.1%",
     kpiLabel: "Uptime",
     accent: "text-lime-700",
@@ -358,7 +362,7 @@ const industries: Industry[] = [
   },
   {
     name: "Travel & Tourism",
-    icon: Plane,
+    icon: Globe,
     kpi: "1.8K",
     kpiLabel: "Bookings",
     accent: "text-blue-500",
@@ -380,7 +384,7 @@ const industries: Industry[] = [
   },
   {
     name: "Clinics & Labs",
-    icon: Stethoscope,
+    icon: Activity,
     kpi: "540",
     kpiLabel: "Daily Visits",
     accent: "text-cyan-700",
@@ -402,7 +406,7 @@ const industries: Industry[] = [
   },
   {
     name: "NGOs & Faith",
-    icon: Church,
+    icon: HeartHandshake,
     kpi: "28",
     kpiLabel: "Active Programs",
     accent: "text-indigo-500",
@@ -490,25 +494,37 @@ const industries: Industry[] = [
   },
 ];
 
-function buildPath(data: number[]) {
+function chartPoints(data: number[]) {
   const width = 100;
   const height = 40;
   const max = Math.max(...data);
   const min = Math.min(...data);
   const range = max - min || 1;
-  const step = width / (data.length - 1);
-  return data
-    .map((v, i) => {
-      const x = i * step;
-      const y = height - ((v - min) / range) * (height - 8) - 4;
-      return `${x},${y}`;
-    })
-    .join(" ");
+  const step = width / Math.max(data.length - 1, 1);
+  return data.map((v, i) => {
+    const x = i * step;
+    const y = height - ((v - min) / range) * (height - 8) - 4;
+    return { x, y };
+  });
 }
 
+/** Valid SVG path d for the area fill under the line */
 function buildAreaPath(data: number[]) {
-  const line = buildPath(data);
-  return `${line} 100,40 0,40`;
+  const pts = chartPoints(data);
+  if (!pts.length) return "M0 40 L100 40 Z";
+  const line = pts
+    .map((p, i) => `${i === 0 ? "M" : "L"}${p.x.toFixed(2)} ${p.y.toFixed(2)}`)
+    .join(" ");
+  return `${line} L100 40 L0 40 Z`;
+}
+
+/** Valid SVG path d for the stroke line */
+function buildLinePath(data: number[]) {
+  const pts = chartPoints(data);
+  if (!pts.length) return "M0 20";
+  return pts
+    .map((p, i) => `${i === 0 ? "M" : "L"}${p.x.toFixed(2)} ${p.y.toFixed(2)}`)
+    .join(" ");
 }
 
 function IndustryOverlay({
@@ -750,13 +766,13 @@ export function IndustryGrid() {
                       animate={isInView ? { opacity: 1 } : {}}
                       transition={{ duration: 0.8, delay: i * 0.03 + 0.3 }}
                     />
-                    <motion.polyline
+                    <motion.path
                       fill="none"
                       stroke={industry.chartColor}
                       strokeWidth="2.5"
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      points={buildPath(industry.data)}
+                      d={buildLinePath(industry.data)}
                       initial={{ pathLength: 0 }}
                       animate={isInView ? { pathLength: 1 } : {}}
                       transition={{ duration: 1.2, delay: i * 0.03, ease: "easeOut" }}
