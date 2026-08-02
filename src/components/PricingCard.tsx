@@ -52,7 +52,7 @@ const coreFeatures = [
   "Priority Support",
 ];
 
-export function PricingCard() {
+export function PricingCard({ onOpenSignup }: { onOpenSignup?: () => void } = {}) {
   const [yearly, setYearly] = useState(false);
 
   const monthlyPrice = 3000;
@@ -143,7 +143,7 @@ export function PricingCard() {
                   </div>
 
                   <h2 className="text-2xl font-bold text-slate-950 md:text-3xl">
-                    Unity ERP Enterprise
+                    Knight ERP Enterprise
                   </h2>
                   <p className="mt-2 text-slate-500">
                     One plan. Every industry module. Unlimited growth.
@@ -203,6 +203,7 @@ export function PricingCard() {
                     </a>
 
                     <Button
+                      onClick={onOpenSignup}
                       variant="outline"
                       className="h-12 w-full gap-2 rounded-full border-slate-200 bg-white text-base font-semibold text-slate-800 transition-all hover:border-slate-300 hover:bg-slate-50"
                     >

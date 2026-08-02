@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles, ExternalLink } from "lucide-react";
 
-export function BottomCTA() {
+export function BottomCTA({ onOpenSignup }: { onOpenSignup?: () => void } = {}) {
   return (
     <section className="relative overflow-hidden bg-slate-950 py-24">
       <div className="pointer-events-none absolute inset-0">
@@ -40,7 +40,7 @@ export function BottomCTA() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="mt-5 text-lg leading-relaxed text-slate-300"
         >
-          Start your free 2-month trial today and experience Unity ERP with every
+          Start your free 2-month trial today and experience Knight ERP with every
           feature unlocked. Pay securely when you are ready.
         </motion.p>
 
@@ -62,6 +62,7 @@ export function BottomCTA() {
           </a>
 
           <Button
+            onClick={onOpenSignup}
             variant="outline"
             className="h-13 gap-2 rounded-full border-slate-600 bg-transparent px-8 py-6 text-base font-semibold text-white transition-all hover:border-slate-400 hover:bg-white/5"
           >

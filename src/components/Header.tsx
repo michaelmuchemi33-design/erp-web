@@ -86,7 +86,7 @@ const megaMenuColumns = [
   ["Developers", "Blog"],
 ];
 
-export function Header() {
+export function Header({ onOpenSignup }: { onOpenSignup?: () => void } = {}) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [resourcesOpen, setResourcesOpen] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -112,10 +112,10 @@ export function Header() {
         <a href="/" className="flex items-center gap-2.5">
           <img
             src="https://i.postimg.cc/qBnzqpqk/blck-logo-erp.png"
-            alt="Unity ERP"
+            alt="Knight ERP"
             className="h-9 w-9 rounded-lg object-contain"
           />
-          <span className="text-xl font-bold tracking-tight text-slate-900">Unity ERP</span>
+          <span className="text-xl font-bold tracking-tight text-slate-900">Knight ERP</span>
         </a>
 
         <nav className="hidden items-center gap-8 md:flex">
@@ -194,7 +194,7 @@ export function Header() {
           <button className="rounded-full p-2 text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-950">
             <Globe className="h-5 w-5" />
           </button>
-          <Button className="group gap-2 rounded-full bg-slate-950 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:scale-105 hover:shadow-lg hover:shadow-slate-900/20">
+          <Button onClick={onOpenSignup} className="group gap-2 rounded-full bg-slate-950 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:scale-105 hover:shadow-lg hover:shadow-slate-900/20">
             Book a Demo
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Button>
@@ -237,7 +237,7 @@ export function Header() {
                 ))}
               </div>
 
-              <Button className="w-full gap-2 rounded-full bg-slate-950 text-white">
+              <Button onClick={() => { setMobileOpen(false); onOpenSignup?.(); }} className="w-full gap-2 rounded-full bg-slate-950 text-white">
                 Book a Demo <ArrowRight className="h-4 w-4" />
               </Button>
             </div>

@@ -1,50 +1,45 @@
-# Unity ERP — Website
+# Knight ERP — Website
 
-All-in-one intelligent ERP landing page. Ready for Netlify.
+Enterprise ERP landing page with wishlist, contact form, and multi-step demo signup.
 
-## Pricing
+## Pricing (KES)
 
-| Plan    | Price              |
-|---------|--------------------|
-| Monthly | **KES 3,000** / month |
-| Yearly  | **KES 33,000** / year (1 month free) |
+| Plan | Price |
+|------|-------|
+| Monthly | KES 3,000 |
+| Yearly | KES 33,000 (1 month free) |
 
-Payment: [Swypt Checkout](https://checkout.swypt.io/erp)
+Payment: [Swypt](https://checkout.swypt.io/erp)
 
-## Deploy to Netlify
+## Features
 
-### Option A — Drag & drop
-1. Run locally: `npm install && npm run build`
-2. Drag the `dist` folder to [app.netlify.com/drop](https://app.netlify.com/drop)
+- Multi-step demo signup (industry → size → need → email) → saved to Supabase `leads`
+- Footer wishlist → Supabase `wishlist`
+- Footer contact form → Supabase `contact_messages`
+- Knight ERP branding + logo
 
-### Option B — Git
-1. Push this folder to GitHub
-2. In Netlify: New site → Import from Git
-3. Build command: `npm run build`
-4. Publish directory: `dist`
+## Setup
 
-### Option C — Netlify CLI
-```bash
-npm install
-npm run build
-npx netlify deploy --prod --dir=dist
+### 1. Supabase tables
+
+In [Supabase SQL Editor](https://supabase.com/dashboard), run `supabase-schema.sql`.
+
+### 2. Environment
+
+```env
+VITE_SUPABASE_URL=https://otuhzmexmljmdmvetfym.supabase.co
+VITE_SUPABASE_PUBLISHABLE_KEY=your_publishable_key
 ```
 
-## Local development
+### 3. Local
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open http://localhost:5173
+### 4. Vercel
 
-## Stack
+Connect the GitHub repo. Add the same env vars in Project Settings → Environment Variables.
 
-- React 18 + TypeScript
-- Vite
-- Tailwind CSS
-- Framer Motion
-- Lucide icons
-- Recharts
-- Swypt payment button
+Build: `npm run build` · Output: `dist`

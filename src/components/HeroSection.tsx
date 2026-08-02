@@ -71,7 +71,7 @@ export function HeroSection() {
               <div className="mb-4 flex items-center justify-between border-b border-slate-100 pb-4">
                 <div className="flex items-center gap-2">
                   <Sparkles className="h-5 w-5 text-emerald-600" />
-                  <span className="font-semibold text-slate-900">Unity AI Assistant</span>
+                  <span className="font-semibold text-slate-900">Knight AI Assistant</span>
                   <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-xs font-semibold text-emerald-700">
                     Beta
                   </span>

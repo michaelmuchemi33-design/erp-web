@@ -6,7 +6,7 @@ const faqs = [
   {
     question: "How long is the free trial?",
     answer:
-      "You get a full 2 months (60 days) of unrestricted access to every Unity ERP module and feature — the same experience as a paying customer.",
+      "You get a full 2 months (60 days) of unrestricted access to every Knight ERP module and feature — the same experience as a paying customer.",
   },
   {
     question: "Do I need a credit card to start?",
@@ -21,7 +21,7 @@ const faqs = [
   {
     question: "What happens after the trial ends?",
     answer:
-      "Choose either KES 3,000/month or KES 33,000/year (1 month free) to keep using Unity ERP. Your data stays safe and ready — nothing is deleted.",
+      "Choose either KES 3,000/month or KES 33,000/year (1 month free) to keep using Knight ERP. Your data stays safe and ready — nothing is deleted.",
   },
   {
     question: "Will my data be deleted if I don’t continue?",
@@ -34,7 +34,7 @@ const faqs = [
       "No. Every plan includes unlimited users and unlimited transactions. Scale without worrying about per-seat or usage fees.",
   },
   {
-    question: "Which industries does Unity ERP support?",
+    question: "Which industries does Knight ERP support?",
     answer:
       "Manufacturing, Construction, Hospital, Retail & POS, Education, Agriculture, Hospitality, Logistics, Finance & Accounting — all included in one plan.",
   },

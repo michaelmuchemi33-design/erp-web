@@ -20,7 +20,7 @@ const float = {
   transition: { duration: 5, repeat: Infinity, ease: "easeInOut" },
 };
 
-export function Hero() {
+export function Hero({ onOpenSignup }: { onOpenSignup?: () => void } = {}) {
   return (
     <section className="relative overflow-hidden bg-white pt-32 pb-24">
       <div className="pointer-events-none absolute inset-0 -z-10">
@@ -49,7 +49,7 @@ export function Hero() {
           </motion.p>
 
           <motion.div variants={item} className="flex flex-wrap items-center gap-4">
-            <Button className="group relative overflow-hidden rounded-full bg-slate-950 px-7 py-6 text-base font-semibold text-white shadow-lg shadow-slate-900/20 transition-all hover:scale-105 hover:shadow-xl hover:shadow-slate-900/30">
+            <Button onClick={onOpenSignup} className="group relative overflow-hidden rounded-full bg-slate-950 px-7 py-6 text-base font-semibold text-white shadow-lg shadow-slate-900/20 transition-all hover:scale-105 hover:shadow-xl hover:shadow-slate-900/30">
               Book a Free Demo
               <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Button>
@@ -80,7 +80,7 @@ export function Hero() {
                   >
                     <Sparkles className="h-4 w-4" />
                   </motion.div>
-                  <span className="font-bold text-slate-900">Unity AI Assistant</span>
+                  <span className="font-bold text-slate-900">Knight AI Assistant</span>
                   <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-emerald-700">
                     Beta
                   </span>
@@ -163,7 +163,7 @@ export function Hero() {
                 <input
                   type="text"
                   readOnly
-                  placeholder="Ask Unity AI anything..."
+                  placeholder="Ask Knight AI anything..."
                   className="flex-1 bg-transparent text-sm text-slate-700 outline-none placeholder:text-slate-400"
                 />
                 <motion.div
