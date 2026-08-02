@@ -190,7 +190,7 @@ export function IndustryGrid() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="industries" className="scroll-mt-24 bg-slate-50/50 py-24">
+    <section id="industries" className="scroll-mt-24 bg-slate-50/50 py-16 md:py-20">
       <div className="mx-auto max-w-7xl px-6">
         <motion.div
           ref={ref}

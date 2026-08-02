@@ -8,7 +8,7 @@ export function TrustedCompanies() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="border-y border-slate-100 bg-white py-16">
+    <section className="border-y border-slate-100 bg-white py-12 md:py-14">
       <div className="mx-auto max-w-7xl px-6">
         <motion.p
           ref={ref}

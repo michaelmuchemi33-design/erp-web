@@ -41,7 +41,7 @@ export function DashboardShowcase() {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="dashboard" className="scroll-mt-24 bg-white py-24">
+    <section id="dashboard" className="scroll-mt-24 bg-white py-16 md:py-20">
       <div className="mx-auto max-w-7xl px-6">
         <motion.div
           ref={ref}

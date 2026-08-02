@@ -4,11 +4,11 @@ import { Globe, ChevronDown, ArrowRight, Menu, X, BookOpen, Rocket, Video, Light
 import { motion, AnimatePresence } from "framer-motion";
 
 const links = [
-  { label: "Features", href: "#features" },
-  { label: "Industries", href: "#industries" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "About", href: "#" },
-  { label: "Contact", href: "#" },
+  { label: "Features", href: "/#features" },
+  { label: "Industries", href: "/#industries" },
+  { label: "Pricing", href: "/#pricing" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 const resourcesMenu = {
@@ -134,57 +134,84 @@ export function Header({ onOpenSignup }: { onOpenSignup?: () => void } = {}) {
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
-            <button className="group flex items-center gap-1 text-sm font-medium text-slate-700 transition-colors hover:text-slate-950">
+            <button
+              type="button"
+              onClick={() => setResourcesOpen((v) => !v)}
+              className="group flex items-center gap-1 text-sm font-medium text-slate-700 transition-colors hover:text-slate-950"
+            >
               Resources
               <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-200 ${resourcesOpen ? "rotate-180" : ""}`} />
             </button>
 
             <AnimatePresence>
               {resourcesOpen && (
-                <motion.div
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 8 }}
-                  transition={{ duration: 0.2 }}
-                  className="absolute left-1/2 top-full mt-4 w-[720px] -translate-x-1/2 rounded-[20px] border border-slate-100 bg-white p-6 shadow-[0_24px_80px_rgb(0,0,0,0.08)]"
-                >
-                  <div className="absolute -top-2 left-1/2 h-4 w-4 -translate-x-1/2 rotate-45 border-l border-t border-slate-100 bg-white" />
-
-                  <div className="grid grid-cols-3 gap-8">
-                    {megaMenuColumns.map((column, colIndex) => (
-                      <div key={colIndex} className="space-y-6">
-                        {column.map((sectionKey) => {
-                          const section = resourcesMenu[sectionKey as keyof typeof resourcesMenu];
-                          const SectionIcon = section.icon;
-                          return (
-                            <div key={sectionKey}>
-                              <div className="mb-3 flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-400">
-                                <SectionIcon className="h-4 w-4" />
-                                {sectionKey}
-                              </div>
-                              <ul className="space-y-1">
-                                {section.items.map((item) => (
-                                  <li key={item.label}>
-                                    <a
-                                      href="#"
-                                      className="group flex items-center gap-2.5 rounded-xl px-2 py-2 text-sm font-medium text-slate-700 transition-all hover:bg-slate-50 hover:text-slate-950"
-                                    >
-                                      <item.icon className="h-4 w-4 text-slate-400 transition-colors group-hover:text-amber-500" />
-                                      <span className="relative">
-                                        {item.label}
-                                        <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-amber-500 transition-all duration-200 group-hover:w-full" />
-                                      </span>
-                                    </a>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                          );
-                        })}
+                <>
+                  {/* Dim backdrop so menu is never "hidden" behind content */}
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="fixed inset-0 z-[90] bg-slate-950/20 backdrop-blur-[2px]"
+                    onClick={() => setResourcesOpen(false)}
+                  />
+                  <motion.div
+                    initial={{ opacity: 0, y: 10, scale: 0.98 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 8, scale: 0.98 }}
+                    transition={{ duration: 0.2 }}
+                    className="fixed left-1/2 top-20 z-[100] w-[min(920px,calc(100vw-2rem))] -translate-x-1/2 rounded-[24px] border border-slate-200 bg-white p-6 shadow-[0_32px_100px_rgba(0,0,0,0.18)] md:p-8"
+                  >
+                    <div className="mb-5 flex items-center justify-between border-b border-slate-100 pb-4">
+                      <div>
+                        <p className="text-xs font-bold uppercase tracking-wider text-amber-600">Resources</p>
+                        <p className="text-sm text-slate-500">Guides, industries, support and developer docs</p>
                       </div>
-                    ))}
-                  </div>
-                </motion.div>
+                      <button
+                        type="button"
+                        onClick={() => setResourcesOpen(false)}
+                        className="rounded-full p-2 text-slate-400 hover:bg-slate-100 hover:text-slate-700"
+                      >
+                        <X className="h-4 w-4" />
+                      </button>
+                    </div>
+
+                    <div className="grid max-h-[min(70vh,560px)] grid-cols-2 gap-6 overflow-y-auto pr-1 md:grid-cols-3 md:gap-8">
+                      {megaMenuColumns.map((column, colIndex) => (
+                        <div key={colIndex} className="space-y-6">
+                          {column.map((sectionKey) => {
+                            const section = resourcesMenu[sectionKey as keyof typeof resourcesMenu];
+                            const SectionIcon = section.icon;
+                            return (
+                              <div key={sectionKey}>
+                                <div className="mb-3 flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-400">
+                                  <SectionIcon className="h-4 w-4 text-amber-500" />
+                                  {sectionKey}
+                                </div>
+                                <ul className="space-y-0.5">
+                                  {section.items.map((item) => (
+                                    <li key={item.label}>
+                                      <a
+                                        href="#"
+                                        onClick={() => setResourcesOpen(false)}
+                                        className="group flex items-center gap-2.5 rounded-xl px-2 py-2 text-sm font-medium text-slate-700 transition-all hover:bg-amber-50 hover:text-slate-950"
+                                      >
+                                        <item.icon className="h-4 w-4 shrink-0 text-slate-400 transition-colors group-hover:text-amber-500" />
+                                        <span className="relative">
+                                          {item.label}
+                                          <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-amber-500 transition-all duration-200 group-hover:w-full" />
+                                        </span>
+                                      </a>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      ))}
+                    </div>
+                  </motion.div>
+                </>
               )}
             </AnimatePresence>
           </div>

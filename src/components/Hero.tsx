@@ -22,7 +22,7 @@ const float = {
 
 export function Hero({ onOpenSignup }: { onOpenSignup?: () => void } = {}) {
   return (
-    <section className="relative overflow-hidden bg-white pt-32 pb-24">
+    <section className="relative overflow-hidden bg-white pt-28 pb-16 md:pt-32 md:pb-20">
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute left-1/4 top-0 h-96 w-96 rounded-full bg-emerald-100/40 blur-3xl" />
         <div className="absolute right-0 top-1/3 h-[500px] w-[500px] rounded-full bg-slate-100/60 blur-3xl" />
