@@ -1,9 +1,9 @@
-import { useRef } from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { Header } from "@/components/Header";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SignupWizard } from "@/components/SignupWizard";
-import { useState } from "react";
+import { useRef, useState, useEffect } from "react";
+import { PageSkeleton } from "@/components/PageSkeleton";
 import { Button } from "@/components/ui/button";
 import {
   ArrowRight,
@@ -22,7 +22,7 @@ const timeline = [
   {
     year: "2019",
     title: "The idea",
-    body: "Founders working with manufacturers and retailers in East Africa kept watching the same story: spreadsheets, paper, and three different systems that never talked to each other. Knight ERP began as a question — what if one platform could run the whole business?",
+    body: "Founders working with manufacturers and retailers in East Africa kept watching the same story: spreadsheets, paper, and three different systems that never talked to each other. Unity ERP began as a question — what if one platform could run the whole business?",
   },
   {
     year: "2020",
@@ -47,7 +47,7 @@ const timeline = [
   {
     year: "2026",
     title: "Today",
-    body: "Knight ERP powers teams across manufacturing, construction, healthcare, education, retail, and logistics. We are still building in the open with customers who push us to go further.",
+    body: "Unity ERP powers teams across manufacturing, construction, healthcare, education, retail, and logistics. We are still building in the open with customers who push us to go further.",
   },
 ];
 
@@ -82,59 +82,40 @@ function TimelineItem({
   index: number;
 }) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-10% 0px -10% 0px" });
-  const isLeft = index % 2 === 0;
+  const isInView = useInView(ref, { once: true, amount: 0.35 });
 
   return (
-    <div ref={ref} className="relative md:grid md:grid-cols-2 md:gap-16">
-      {/* Left column */}
-      <div className={`pb-14 md:pb-20 ${isLeft ? "md:pr-10 md:text-right" : "md:order-2 md:pl-10 md:text-left"}`}>
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-          className="relative"
-        >
-          {/* Mobile node */}
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={isInView ? { scale: 1 } : {}}
-            transition={{ duration: 0.4, delay: 0.1 }}
-            className="absolute -left-[2.15rem] top-2 z-10 md:hidden"
-          >
-            <span className="relative flex h-5 w-5 items-center justify-center">
-              <span className="absolute h-full w-full animate-ping rounded-full bg-amber-400/35" />
-              <span className="relative h-3.5 w-3.5 rounded-full bg-amber-500 shadow-[0_0_18px_rgba(245,158,11,0.9)] ring-4 ring-slate-50" />
-            </span>
-          </motion.div>
-
-          <div className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm hover:shadow-md md:p-7">
-            <div className="mb-2 inline-flex items-center gap-2 rounded-full bg-amber-50 px-3 py-1 text-xs font-bold uppercase tracking-wider text-amber-700">
-              <Sparkles className="h-3.5 w-3.5" />
-              {item.year}
-            </div>
-            <h3 className="text-xl font-bold text-slate-950 md:text-2xl">{item.title}</h3>
-            <p className="mt-3 text-sm leading-relaxed text-slate-600 md:text-[0.95rem]">
-              {item.body}
-            </p>
-          </div>
-        </motion.div>
-      </div>
-
-      {/* Right spacer / alternate side empty for grid balance */}
-      <div className={`hidden md:block ${isLeft ? "md:order-2" : "md:order-1"}`} />
-
-      {/* Desktop center node */}
+    <div ref={ref} className="relative pl-12 md:pl-16">
+      {/* Node */}
       <motion.div
-        initial={{ scale: 0, opacity: 0 }}
+        initial={{ scale: 0.6, opacity: 0 }}
         animate={isInView ? { scale: 1, opacity: 1 } : {}}
-        transition={{ duration: 0.4, delay: 0.12 }}
-        className="pointer-events-none absolute left-1/2 top-3 z-10 hidden -translate-x-1/2 md:block"
+        transition={{ duration: 0.35, ease: "easeOut" }}
+        className="absolute left-0 top-2 z-10 flex h-8 w-8 -translate-x-1/2 items-center justify-center"
+        style={{ left: 15 }}
       >
         <span className="relative flex h-5 w-5 items-center justify-center">
-          <span className="absolute h-full w-full animate-ping rounded-full bg-amber-400/40" />
-          <span className="relative h-3.5 w-3.5 rounded-full bg-amber-500 shadow-[0_0_22px_rgba(245,158,11,0.95)] ring-4 ring-slate-50" />
+          {isInView && (
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-amber-400/30" />
+          )}
+          <span className="relative h-3.5 w-3.5 rounded-full bg-amber-500 shadow-[0_0_16px_rgba(245,158,11,0.8)] ring-4 ring-slate-50" />
         </span>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, x: -12 }}
+        animate={isInView ? { opacity: 1, x: 0 } : {}}
+        transition={{ duration: 0.45, delay: 0.05, ease: "easeOut" }}
+        className="mb-10 rounded-2xl border border-slate-100 bg-white p-5 shadow-sm md:mb-12 md:p-7"
+      >
+        <div className="mb-2 inline-flex items-center gap-2 rounded-full bg-amber-50 px-3 py-1 text-xs font-bold uppercase tracking-wider text-amber-700">
+          <Sparkles className="h-3.5 w-3.5" />
+          {item.year}
+        </div>
+        <h3 className="text-xl font-bold text-slate-950 md:text-2xl">{item.title}</h3>
+        <p className="mt-3 text-sm leading-relaxed text-slate-600 md:text-base">
+          {item.body}
+        </p>
       </motion.div>
     </div>
   );
@@ -144,14 +125,14 @@ function Timeline() {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start 80%", "end 20%"],
+    offset: ["start 70%", "end 50%"],
   });
-  const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+  const lineScale = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
-    <section className="relative bg-slate-50/60 py-20 md:py-28">
-      <div className="mx-auto max-w-5xl px-6">
-        <div className="mb-14 max-w-2xl">
+    <section className="relative bg-slate-50/60 py-16 md:py-24">
+      <div className="mx-auto max-w-3xl px-6">
+        <div className="mb-12 max-w-2xl">
           <p className="text-xs font-bold uppercase tracking-wider text-amber-600">
             Our journey
           </p>
@@ -159,23 +140,21 @@ function Timeline() {
             From a workshop problem to a full ERP
           </h2>
           <p className="mt-4 text-lg text-slate-600">
-            A short timeline of how Knight ERP grew — one module, one customer, one hard lesson at a time.
+            A short timeline of how Unity ERP grew — one module, one customer, one hard lesson at a time.
           </p>
         </div>
 
         <div ref={containerRef} className="relative">
           {/* Base track */}
-          <div className="absolute left-3 top-0 h-full w-px bg-slate-200 md:left-1/2 md:-translate-x-1/2" />
+          <div className="absolute left-[15px] top-0 h-full w-px -translate-x-1/2 bg-slate-200" />
 
-          {/* Glowing progress line that grows on scroll */}
+          {/* Progress line */}
           <motion.div
-            style={{ height: lineHeight }}
-            className="absolute left-3 top-0 w-px origin-top md:left-1/2 md:-translate-x-1/2"
-          >
-            <div className="h-full w-full bg-gradient-to-b from-amber-400 via-amber-500 to-amber-300 shadow-[0_0_12px_rgba(245,158,11,0.7)]" />
-          </motion.div>
+            style={{ scaleY: lineScale }}
+            className="absolute left-[15px] top-0 h-full w-px origin-top -translate-x-1/2 bg-gradient-to-b from-amber-400 via-amber-500 to-amber-300 shadow-[0_0_12px_rgba(245,158,11,0.65)]"
+          />
 
-          <div className="space-y-0 pl-10 md:pl-0">
+          <div>
             {timeline.map((item, i) => (
               <TimelineItem key={item.year} item={item} index={i} />
             ))}
@@ -207,7 +186,7 @@ export default function AboutPage({
             className="mb-5 inline-flex items-center gap-2 rounded-full border border-amber-100 bg-amber-50/80 px-4 py-1.5 text-xs font-semibold text-amber-800"
           >
             <Building2 className="h-3.5 w-3.5" />
-            About Knight ERP
+            About Unity ERP
           </motion.div>
 
           <motion.h1
@@ -227,7 +206,7 @@ export default function AboutPage({
             transition={{ delay: 0.12 }}
             className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-slate-600"
           >
-            Knight ERP was born in the gap between ambition and tools. Founders and operators
+            Unity ERP was born in the gap between ambition and tools. Founders and operators
             deserved one intelligent system — not a patchwork of spreadsheets, disconnected apps,
             and expensive seats. We build that system, module by module, with the people who use it.
           </motion.p>
@@ -270,7 +249,7 @@ export default function AboutPage({
                 or priced for corporations that did not look like our customers.
               </p>
               <p>
-                So we built Knight ERP as a single cloud platform: inventory, finance, CRM, HR,
+                So we built Unity ERP as a single cloud platform: inventory, finance, CRM, HR,
                 manufacturing, and more — with an AI assistant that speaks the language of the business.
                 Unlimited users. Transparent pricing. A two-month trial with everything unlocked.
               </p>
@@ -339,7 +318,7 @@ export default function AboutPage({
       <section className="bg-slate-950 py-20">
         <div className="mx-auto max-w-3xl px-6 text-center">
           <h2 className="text-3xl font-bold text-white sm:text-4xl">
-            Join teams building with Knight ERP
+            Join teams building with Unity ERP
           </h2>
           <p className="mt-4 text-slate-300">
             Start a free two-month trial. Every module. No credit card required.
@@ -360,11 +339,20 @@ export default function AboutPage({
 // Full page shell used when routed
 export function AboutPageShell() {
   const [signupOpen, setSignupOpen] = useState(false);
+  const [ready, setReady] = useState(false);
+  useEffect(() => {
+    const id = window.setTimeout(() => setReady(true), 160);
+    return () => window.clearTimeout(id);
+  }, []);
   return (
     <div className="min-h-screen overflow-x-hidden bg-white font-sans text-slate-950 selection:bg-emerald-100 selection:text-emerald-900">
       <Header onOpenSignup={() => setSignupOpen(true)} />
       <main>
-        <AboutPage onOpenSignup={() => setSignupOpen(true)} />
+        {ready ? (
+          <AboutPage onOpenSignup={() => setSignupOpen(true)} />
+        ) : (
+          <PageSkeleton />
+        )}
       </main>
       <SiteFooter />
       <SignupWizard open={signupOpen} onClose={() => setSignupOpen(false)} />

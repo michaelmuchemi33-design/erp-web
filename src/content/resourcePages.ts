@@ -53,6 +53,22 @@ export const resourcePages: ResourcePage[] = [
         heading: "Stay current",
         body: "Docs track every release. Check Release Notes after upgrades for new fields, reports and AI capabilities.",
       },
+      {
+        heading: "Module map",
+        body: "Unity ERP covers the operational stack end to end so CRM, stock and cash stay aligned.",
+        bullets: [
+          "CRM: leads, deals, activities, customer history",
+          "Inventory: warehouses, transfers, reorder points",
+          "Purchasing: POs, receipts, supplier scores",
+          "Finance: invoices, bills, payments, reports",
+          "Manufacturing: BOM, work orders, costing",
+          "AI Assistant: natural-language operational answers",
+        ],
+      },
+      {
+        heading: "Implementation path",
+        body: "Most teams go live in phases: company setup, stock and customers, then CRM and AI. Unity Software Solutions can assist with data migration and training.",
+      },
     ],
     cta: "Start free trial",
   }),
@@ -84,6 +100,16 @@ export const resourcePages: ResourcePage[] = [
       {
         heading: "Go live safely",
         body: "Run parallel for a short period if needed, then make Unity ERP the system of record for orders, stock and cash.",
+      },
+      {
+        heading: "Week 1 goals",
+        body: "Aim for one complete sales cycle and one complete purchase cycle recorded in Unity ERP — that proves the loop from CRM to stock to cash.",
+        bullets: [
+          "Create a quote and convert to order",
+          "Deliver and invoice",
+          "Receive supplier stock",
+          "Ask AI for a daily sales summary",
+        ],
       },
     ],
   }),
