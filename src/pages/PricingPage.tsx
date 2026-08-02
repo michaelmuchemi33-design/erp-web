@@ -24,9 +24,9 @@ export default function PricingPage() {
             <div className="space-y-4">
               <div className="flex items-center gap-2.5">
                 <img
-                  src="https://i.postimg.cc/qBnzqpqk/blck-logo-erp.png"
+                  src="/knight-logo.png"
                   alt="Knight ERP"
-                  className="h-9 w-9 rounded-lg object-contain"
+                  className="h-9 w-9 rounded-lg bg-black object-contain p-0.5"
                 />
                 <span className="text-xl font-bold tracking-tight text-slate-900">
                   Knight ERP

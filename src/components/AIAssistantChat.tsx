@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { RefreshCw, Maximize2, MoreHorizontal, Send, Loader2 } from "lucide-react";
 
-const AI_LOGO = "https://i.postimg.cc/ncbHMWw5/ai-logo.jpg";
+const AI_LOGO = "/ai-logo.jpg";
 
 type Msg = {
   id: string;
