@@ -124,6 +124,18 @@ export function BlogPostShell({ post }: { post: BlogPost }) {
           <a href="/blog" className="mt-8 inline-block text-sm font-medium text-slate-500 hover:text-slate-900">
             ← All articles
           </a>
+        
+          <nav className="mt-12 rounded-2xl border border-slate-100 bg-slate-50 p-5">
+            <p className="text-xs font-bold uppercase tracking-wider text-slate-500">Related ERP topics</p>
+            <ul className="mt-3 flex flex-wrap gap-2">
+              <li><a className="text-sm font-medium text-emerald-700 underline" href="/erp-system-kenya">ERP system Kenya</a></li>
+              <li><a className="text-sm font-medium text-emerald-700 underline" href="/best-erp-systems-kenya">Best ERP systems in Kenya</a></li>
+              <li><a className="text-sm font-medium text-emerald-700 underline" href="/what-is-erp">What is ERP</a></li>
+              <li><a className="text-sm font-medium text-emerald-700 underline" href="/mpesa-erp-integration">M-Pesa ERP</a></li>
+              <li><a className="text-sm font-medium text-emerald-700 underline" href="/pricing">Pricing</a></li>
+            </ul>
+          </nav>
+
         </article>
       </main>
       <SiteFooter />
