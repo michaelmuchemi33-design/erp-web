@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ShieldCheck, Zap, Infinity } from "lucide-react";
+import { ShieldCheck, Zap, Infinity as InfinityIcon } from "lucide-react";
 
 export function PricingHero() {
   return (
@@ -57,7 +57,7 @@ export function PricingHero() {
             <span>Cancel anytime</span>
           </div>
           <div className="flex items-center gap-2">
-            <Infinity className="h-4 w-4 text-slate-700" />
+            <InfinityIcon className="h-4 w-4 text-slate-700" />
             <span>Unlimited everything</span>
           </div>
         </motion.div>
