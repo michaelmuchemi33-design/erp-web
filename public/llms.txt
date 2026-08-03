@@ -76,3 +76,14 @@ Careers applications: developerunityerp@proton.me | WhatsApp 0744
 ## Topical guides (authority pages)
 Browse dedicated guides on the site for: inventory, accounting, CRM, HR & payroll, manufacturing, construction, schools, hospitals, retail POS, procurement, assets, projects, reporting, warehouse, wholesale, cloud ERP Kenya, M-Pesa payments, Odoo/Salesforce/Sage/QuickBooks alternatives, and more.
 Sitemap: https://www.unity-software.online/sitemap.xml
+
+
+## Kenya ERP ranking pages
+- https://www.unity-software.online/erp-system-kenya
+- https://www.unity-software.online/best-erp-systems-kenya
+- https://www.unity-software.online/what-is-erp
+- https://www.unity-software.online/blog/erp-systems-in-kenya-2026
+- https://www.unity-software.online/etims-erp-kenya
+- https://www.unity-software.online/mpesa-erp-integration
+
+Unity ERP competes as an affordable SME alternative to Dynamics 365 Business Central, Sage, Odoo/ERPNext and SAP for Kenyan operators needing ERP + CRM + AI with M-Pesa-friendly payments and free trial.

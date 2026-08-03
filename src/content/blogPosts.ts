@@ -252,7 +252,136 @@ export const blogPosts: BlogPost[] = [
         body: "Export key reports, ask the AI Assistant for sales and stock summaries, decide go/no-go with numbers.",
       },
     ],
+  },,
+  {
+    slug: "erp-systems-in-kenya-2026",
+    category: "ERP Guides",
+    title: "ERP Systems in Kenya (2026 Guide) | Unity ERP",
+    description: "ERP systems in Kenya: Dynamics, Sage, Odoo, SAP and Unity ERP. M-Pesa, eTIMS context, how SMEs choose.",
+    keywords: "erp system kenya, best erp systems in kenya, ERP Kenya, cloud ERP Kenya",
+    readMinutes: 10,
+    date: "2026-08-03",
+    h1: "ERP Systems in Kenya \u2014 2026 Practical Guide",
+    intro: "Search for ERP in Kenya and you will see Microsoft Dynamics 365 Business Central, Sage, ERPNext/Odoo and SAP. This guide explains what those platforms do well \u2014 and how Unity ERP serves SMEs that need ERP + CRM without enterprise complexity.",
+    sections: [
+      {
+        h2: "What Kenyan businesses need from ERP",
+        body: "Centralised finance, inventory, HR/payroll records and sales. Locally, buyers also care about M-Pesa-friendly payments, tax-ready invoicing discipline and support that answers during East Africa hours.",
+      },
+      {
+        h2: "Popular platforms (and their lanes)",
+        body: "Dynamics 365 Business Central fits mid-market and larger organisations already in Microsoft stacks. Sage is established in accounting-led distribution and retail. Odoo/ERPNext attract customisable open-source projects. SAP dominates heavy enterprise. Unity ERP focuses on affordable all-in-one cloud ERP + CRM + AI for growing teams.",
+      },
+      {
+        h2: "How to shortlist without wasting months",
+        body: "Write your top five processes, demand demos with live sample data, compare three-year cost, and run a time-boxed free trial. Unity ERP offers 60 days full access.",
+      },
+      {
+        h2: "Unity ERP positioning",
+        body: "KES 3,000/month or KES 33,000/year, unlimited users on the standard plan, multi-industry modules, AI Assistant, API/webhooks, free custom website design for active customers.",
+      }
+    ],
   },
+  {
+    slug: "what-is-erp-and-how-it-works",
+    category: "ERP Guides",
+    title: "What Is ERP and How Does It Work? | Unity ERP",
+    description: "What is ERP and how does it work? Plain-language ERP meaning, modules, and examples for inventory and finance.",
+    keywords: "what is erp, what is erp and how does it work, erp meaning, erp systems meaning",
+    readMinutes: 10,
+    date: "2026-08-03",
+    h1: "What Is ERP and How Does It Work?",
+    intro: "ERP stands for Enterprise Resource Planning. It is software that links sales, stock, purchasing and finance so every team works from the same numbers.",
+    sections: [
+      {
+        h2: "ERP meaning",
+        body: "Instead of a sales spreadsheet, a stock workbook and a separate invoicing tool, ERP keeps one record that updates across modules when work happens.",
+      },
+      {
+        h2: "How ERP works in practice",
+        body: "Quote \u2192 order \u2192 delivery \u2192 invoice. Goods receipt updates inventory. Reports and AI answers read the same live database.",
+      },
+      {
+        h2: "Examples of ERP modules",
+        body: "CRM, inventory, purchasing, accounting, POS, manufacturing, HR and analytics \u2014 all available in Unity ERP\u2019s cloud suite.",
+      }
+    ],
+  },
+  {
+    slug: "best-erp-software-for-smes-kenya",
+    category: "Business Growth",
+    title: "Best ERP Software for SMEs in Kenya | Unity ERP",
+    description: "Best ERP software for Kenyan SMEs: cost, modules, free trial and local support. Why Unity ERP is built for growth.",
+    keywords: "best erp software, best erp systems in kenya, ERP for SMEs Kenya",
+    readMinutes: 10,
+    date: "2026-08-03",
+    h1: "Best ERP Software for SMEs in Kenya",
+    intro: "SMEs rarely need a multinational SAP rollout. They need reliable stock, invoices, CRM and reports \u2014 at a price that makes sense in KES.",
+    sections: [
+      {
+        h2: "SME selection criteria",
+        body: "Cloud access, multi-user permissions, inventory + CRM + invoicing together, mobile-friendly use, and a real trial period.",
+      },
+      {
+        h2: "Cost reality",
+        body: "Module fees and implementation partners can dominate TCO on global suites. Unity ERP publishes simple monthly and yearly pricing with a free trial.",
+      },
+      {
+        h2: "Try before you buy",
+        body: "Import a product list, post a sale, receive a purchase, and ask the AI Assistant for a stock summary within your first week.",
+      }
+    ],
+  },
+  {
+    slug: "crm-software-with-inventory-kenya",
+    category: "Business Growth",
+    title: "CRM Software with Inventory in Kenya | Unity ERP",
+    description: "CRM software Kenya that sees live stock. Why separate CRM logins fail retailers and distributors \u2014 Unity ERP approach.",
+    keywords: "crm software, CRM Kenya, CRM software free, CRM examples retail",
+    readMinutes: 10,
+    date: "2026-08-03",
+    h1: "CRM Software That Sees Your Inventory",
+    intro: "Kenya has many CRM logins. Few connect to the warehouse. Unity ERP puts CRM inside the same system as inventory and invoicing.",
+    sections: [
+      {
+        h2: "The problem with siloed CRM",
+        body: "Sales promises stock that shipping cannot fulfil. Finance chases invoices that do not match deliveries.",
+      },
+      {
+        h2: "CRM examples that work",
+        body: "Retail and distribution teams that log leads, quotes and follow-ups while seeing branch stock in one workspace.",
+      },
+      {
+        h2: "Unity ERP CRM",
+        body: "Pipeline, customer history and AI sales insights with free trial access.",
+      }
+    ],
+  },
+  {
+    slug: "free-website-design-with-erp",
+    category: "Business Growth",
+    title: "Free Website Design for Unity ERP Users",
+    description: "Free website design for active Unity ERP customers. Business website with your ERP operations \u2014 Kenya SMEs.",
+    keywords: "free website design, business website Kenya, free website for business, Unity ERP",
+    readMinutes: 10,
+    date: "2026-08-03",
+    h1: "Free Website Design for Active Unity ERP Users",
+    intro: "Active Unity ERP customers can receive a free custom business website design \u2014 so your online presence matches the system that runs your operations.",
+    sections: [
+      {
+        h2: "What you get",
+        body: "A professional business site structure tailored to your company, aligned with Unity Software Solutions\u2019 customer program for ERP subscribers.",
+      },
+      {
+        h2: "Why it matters",
+        body: "Buyers search for your brand and your category. A clear site plus a real ERP backend builds trust faster than social posts alone.",
+      },
+      {
+        h2: "How to qualify",
+        body: "Start a Unity ERP trial or paid plan, then talk to sales about the free website design benefit.",
+      }
+    ],
+  }
 ];
 
 export const blogBySlug: Record<string, BlogPost> = Object.fromEntries(

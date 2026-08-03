@@ -1568,6 +1568,176 @@ export const seoPages: SeoPage[] = [
         body: "Start with 60 days full access (no credit card required). Then KES 3,000 per month or KES 33,000 per year. Active customers may receive a free custom business website design.",
       },
     ],
+  },
+  {
+    slug: "erp-system-kenya",
+    title: "ERP System Kenya | Unity ERP",
+    h1: "ERP System Kenya \u2014 Cloud ERP for Local Businesses",
+    description: "ERP system Kenya for SMEs: inventory, CRM, accounting, POS, payroll. M-Pesa friendly, free trial. Unity ERP vs Dynamics, Sage, Odoo.",
+    keywords: "erp system kenya, ERP Kenya, best ERP systems in Kenya, cloud ERP Kenya, Unity ERP, Unity ERP, Unity Software Solutions",
+    intro: "Kenyan companies need one system for stock, sales, cash and compliance \u2014 not five disconnected tools. Unity ERP is a cloud ERP system built for Kenya and African SMEs, with CRM, inventory, accounting, POS and AI in one platform.",
+    sections: [
+      {
+        h2: "What an ERP system does in Kenya",
+        body: "Enterprise Resource Planning (ERP) connects finance, HR, inventory, purchasing and sales in one database. In Kenya that usually includes invoicing, multi-branch stock, and workflows that fit retail, wholesale, manufacturing, SACCOs, NGOs, schools and clinics.",
+      },
+      {
+        h2: "Popular ERP platforms in Kenya",
+        body: "Many organisations evaluate Microsoft Dynamics 365 Business Central, Sage 200/300, ERPNext/Odoo and SAP Business One. Those platforms are strong \u2014 and often expensive or complex for growing SMEs. Unity ERP targets the same core jobs (finance, inventory, CRM, payroll-ready records) with simpler KES pricing and a full free trial.",
+      },
+      {
+        h2: "Local needs: M-Pesa, tax and payroll",
+        body: "Modern Kenyan deployments expect M-Pesa-friendly payment flows, clear invoicing for tax processes such as eTIMS-oriented operations, and statutory-aware payroll parameters (PAYE, NSSF, SHIF/NHIF patterns). Unity ERP is designed around operational reality for East African teams, with API and webhook integrations for payments and other systems.",
+      },
+      {
+        h2: "Who Unity ERP is for",
+        body: "Retail and POS chains, distributors, light manufacturers, clinics, schools and service firms that want cloud access, unlimited users on the standard plan, and AI assistance for sales and stock questions.",
+      },
+      {
+        h2: "Start free",
+        body: "Try Unity ERP for 60 days with full modules, then continue from KES 3,000 per month or KES 33,000 per year. Sales support is available on WhatsApp +254 778 903 044.",
+      }
+    ],
+  },
+  {
+    slug: "best-erp-systems-kenya",
+    title: "Best ERP Systems in Kenya (2026)",
+    h1: "Best ERP Systems in Kenya \u2014 Practical Buyer Guide",
+    description: "Best ERP systems in Kenya compared: Dynamics, Sage, Odoo/ERPNext, SAP and Unity ERP for SMEs. Features, cost and free trial.",
+    keywords: "best erp systems in kenya, best ERP software Kenya, ERP comparison Kenya, Unity ERP, Unity ERP, Unity Software Solutions",
+    intro: "\u201cBest\u201d depends on size, industry and budget. This guide explains how Kenyan buyers shortlist ERP systems \u2014 and where Unity ERP fits against Dynamics, Sage, Odoo/ERPNext and SAP.",
+    sections: [
+      {
+        h2: "How to judge the best ERP for your company",
+        body: "Rank must-have modules (inventory, CRM, invoicing, POS, manufacturing, payroll). Demand a demo with your real products and invoices. Check support hours, data export, API access and total cost over three years.",
+      },
+      {
+        h2: "Enterprise and mid-market options",
+        body: "Microsoft Dynamics 365 Business Central is common in larger firms and NGOs. Sage remains popular in distribution and retail accounting. SAP is typical for heavy manufacturing and multinationals. Odoo/ERPNext attract teams that want open-source flexibility.",
+      },
+      {
+        h2: "SME-friendly alternative: Unity ERP",
+        body: "Unity ERP combines ERP + CRM + AI with transparent KES pricing, unlimited users on the standard plan, multi-branch stock, POS, and a 60-day free trial \u2014 so SMEs can prove value before they commit.",
+      },
+      {
+        h2: "Next step",
+        body: "Shortlist two systems, run parallel demos, and measure time-to-first-invoice and stock accuracy. Start Unity ERP free at unity-software.online.",
+      }
+    ],
+  },
+  {
+    slug: "what-is-erp",
+    title: "What Is ERP? Meaning & How It Works",
+    h1: "What Is ERP? Meaning, Modules and How It Works",
+    description: "What is ERP? Enterprise Resource Planning meaning, core modules, how ERP works for inventory, finance and CRM. Unity ERP free trial.",
+    keywords: "what is erp, erp meaning, erp systems meaning, what is an erp system, how erp works, Unity ERP, Unity Software Solutions",
+    intro: "ERP means Enterprise Resource Planning \u2014 software that integrates core business processes into one system so teams stop working from conflicting spreadsheets.",
+    sections: [
+      {
+        h2: "ERP meaning in simple terms",
+        body: "ERP is a shared system of record for orders, stock, purchases, invoices, customers and often HR. When sales, warehouse and finance use the same data, errors and delays drop.",
+      },
+      {
+        h2: "Core ERP modules",
+        body: "Typical modules include inventory, purchasing, sales/CRM, accounting/invoicing, manufacturing, retail POS, HR/payroll and reporting. Unity ERP includes these operational areas plus an AI Assistant.",
+      },
+      {
+        h2: "Cloud ERP vs on-premise",
+        body: "Cloud ERP is accessed in the browser, updates centrally, and suits multi-location Kenyan teams. On-premise can fit strict offline cases but costs more to maintain.",
+      },
+      {
+        h2: "How ERP works day to day",
+        body: "A sale reduces stock, updates the customer record and creates an invoice. A purchase order receives goods into inventory. Reports and AI answers use the same live data.",
+      }
+    ],
+  },
+  {
+    slug: "cloud-erp",
+    title: "Cloud ERP Software | Unity ERP",
+    h1: "Cloud ERP Software for Growing Teams",
+    description: "Cloud ERP software with CRM, inventory and accounting online. Unity ERP free trial for Kenya and Africa. KES pricing.",
+    keywords: "cloud erp, cloud ERP software, online ERP, SaaS ERP Kenya, Unity ERP, Unity Software Solutions",
+    intro: "Cloud ERP lets your team run inventory, CRM and finance from anywhere with a browser \u2014 without maintaining servers on site.",
+    sections: [
+      {
+        h2: "Why cloud ERP wins for SMEs",
+        body: "Faster go-live, automatic updates, multi-branch access and lower IT overhead compared with heavy on-premise installs.",
+      },
+      {
+        h2: "What Unity Cloud ERP includes",
+        body: "CRM, inventory, purchasing, invoicing, POS, manufacturing support, HR records, AI Assistant, API and webhooks.",
+      },
+      {
+        h2: "Security and access",
+        body: "Role-based access, cloud backups and controlled user permissions so only the right people see finance or stock tools.",
+      }
+    ],
+  },
+  {
+    slug: "crm-software-kenya",
+    title: "CRM Software Kenya | With ERP",
+    h1: "CRM Software Kenya \u2014 Sales Pipeline Inside ERP",
+    description: "CRM software Kenya with live inventory and invoicing. Unity ERP CRM for SMEs \u2014 free trial, not a separate login silo.",
+    keywords: "crm software, CRM Kenya, CRM software Kenya, CRM for SMEs, Unity ERP CRM, Unity ERP, Unity Software Solutions",
+    intro: "Kenyan sales teams need CRM that sees stock and invoices \u2014 not a separate app that ignores the warehouse. Unity ERP includes CRM in the same system as inventory and finance.",
+    sections: [
+      {
+        h2: "What CRM software should do",
+        body: "Capture leads, manage pipeline, log follow-ups, issue quotes and keep customer history \u2014 linked to real fulfilment.",
+      },
+      {
+        h2: "CRM + ERP advantage",
+        body: "When CRM and inventory share data, sales stop promising out-of-stock items and finance gets cleaner invoices.",
+      },
+      {
+        h2: "Unity ERP CRM",
+        body: "Pipeline, customers, activities and AI sales summaries inside one cloud workspace with a free trial.",
+      }
+    ],
+  },
+  {
+    slug: "etims-erp-kenya",
+    title: "eTIMS & ERP Kenya | Invoicing Ready",
+    h1: "ERP Kenya with Tax-Ready Invoicing (eTIMS Context)",
+    description: "ERP in Kenya needs clean invoicing for tax workflows including eTIMS-oriented operations. Unity ERP invoicing and finance modules.",
+    keywords: "eTIMS ERP, KRA eTIMS, ERP Kenya tax, electronic tax invoice Kenya, Unity ERP, Unity Software Solutions",
+    intro: "Kenyan businesses increasingly need disciplined electronic invoicing and tax-ready records. Unity ERP centralises sales and invoices so compliance workflows start from clean operational data.",
+    sections: [
+      {
+        h2: "Why ERP matters for tax invoicing",
+        body: "Scattered Excel invoices create risk. An ERP that posts sales to finance keeps invoice history consistent for reporting and integrations.",
+      },
+      {
+        h2: "Unity ERP approach",
+        body: "Operational invoicing, receivables and customer history in one place, with API/webhooks for connecting specialised tax or payment services as required.",
+      },
+      {
+        h2: "Talk to sales",
+        body: "Ask how Unity ERP fits your industry\u2019s invoicing process \u2014 WhatsApp +254 778 903 044.",
+      }
+    ],
+  },
+  {
+    slug: "mpesa-erp-integration",
+    title: "M-Pesa ERP Integration Kenya",
+    h1: "M-Pesa-Friendly ERP for Kenyan Payments",
+    description: "M-Pesa ERP integration patterns for C2B payments and reconciliation. Unity ERP supports M-Pesa-friendly payment flows in Kenya.",
+    keywords: "M-Pesa ERP, M-Pesa integration, Daraja ERP, payment ERP Kenya, Unity ERP, Unity Software Solutions",
+    intro: "Kenyan customers pay on M-Pesa. Your ERP should make reconciliation practical \u2014 not a weekend of matching screenshots.",
+    sections: [
+      {
+        h2: "Payment reality for SMEs",
+        body: "C2B collections, payouts and daily reconciliation are part of retail, services and distribution. Unity ERP is built with M-Pesa-friendly commerce and payment gateway patterns in mind.",
+      },
+      {
+        h2: "API and webhooks",
+        body: "Connect payment providers and automation through REST API and webhooks so receipts can flow into operational records.",
+      },
+      {
+        h2: "Next step",
+        body: "Book a demo and describe your payment mix \u2014 M-Pesa, card, bank \u2014 so onboarding matches how you collect cash.",
+      }
+    ],
   }
 ];
 

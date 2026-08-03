@@ -481,5 +481,89 @@
     "h1": "Free Cloud ERP Trial: What to Test in 60 Days",
     "description": "How to run a free cloud ERP trial: stock, invoices, CRM pipeline and reports checklist for SMEs.",
     "intro": "A free trial only helps if you test real work. Use this checklist during your Unity ERP trial window."
+  },
+  {
+    "path": "/erp-system-kenya",
+    "title": "ERP System Kenya | Unity ERP",
+    "h1": "ERP System Kenya \u2014 Cloud ERP for Local Businesses",
+    "description": "ERP system Kenya for SMEs: inventory, CRM, accounting, POS, payroll. M-Pesa friendly, free trial. Unity ERP vs Dynamics, Sage, Odoo.",
+    "intro": "Kenyan companies need one system for stock, sales, cash and compliance \u2014 not five disconnected tools. Unity ERP is a cloud ERP system built for Kenya and African SMEs, with CRM, inventory, accounting, POS and AI in one platform."
+  },
+  {
+    "path": "/best-erp-systems-kenya",
+    "title": "Best ERP Systems in Kenya (2026)",
+    "h1": "Best ERP Systems in Kenya \u2014 Practical Buyer Guide",
+    "description": "Best ERP systems in Kenya compared: Dynamics, Sage, Odoo/ERPNext, SAP and Unity ERP for SMEs. Features, cost and free trial.",
+    "intro": "\u201cBest\u201d depends on size, industry and budget. This guide explains how Kenyan buyers shortlist ERP systems \u2014 and where Unity ERP fits against Dynamics, Sage, Odoo/ERPNext and SAP."
+  },
+  {
+    "path": "/what-is-erp",
+    "title": "What Is ERP? Meaning & How It Works",
+    "h1": "What Is ERP? Meaning, Modules and How It Works",
+    "description": "What is ERP? Enterprise Resource Planning meaning, core modules, how ERP works for inventory, finance and CRM. Unity ERP free trial.",
+    "intro": "ERP means Enterprise Resource Planning \u2014 software that integrates core business processes into one system so teams stop working from conflicting spreadsheets."
+  },
+  {
+    "path": "/cloud-erp",
+    "title": "Cloud ERP Software | Unity ERP",
+    "h1": "Cloud ERP Software for Growing Teams",
+    "description": "Cloud ERP software with CRM, inventory and accounting online. Unity ERP free trial for Kenya and Africa. KES pricing.",
+    "intro": "Cloud ERP lets your team run inventory, CRM and finance from anywhere with a browser \u2014 without maintaining servers on site."
+  },
+  {
+    "path": "/crm-software-kenya",
+    "title": "CRM Software Kenya | With ERP",
+    "h1": "CRM Software Kenya \u2014 Sales Pipeline Inside ERP",
+    "description": "CRM software Kenya with live inventory and invoicing. Unity ERP CRM for SMEs \u2014 free trial, not a separate login silo.",
+    "intro": "Kenyan sales teams need CRM that sees stock and invoices \u2014 not a separate app that ignores the warehouse. Unity ERP includes CRM in the same system as inventory and finance."
+  },
+  {
+    "path": "/etims-erp-kenya",
+    "title": "eTIMS & ERP Kenya | Invoicing Ready",
+    "h1": "ERP Kenya with Tax-Ready Invoicing (eTIMS Context)",
+    "description": "ERP in Kenya needs clean invoicing for tax workflows including eTIMS-oriented operations. Unity ERP invoicing and finance modules.",
+    "intro": "Kenyan businesses increasingly need disciplined electronic invoicing and tax-ready records. Unity ERP centralises sales and invoices so compliance workflows start from clean operational data."
+  },
+  {
+    "path": "/mpesa-erp-integration",
+    "title": "M-Pesa ERP Integration Kenya",
+    "h1": "M-Pesa-Friendly ERP for Kenyan Payments",
+    "description": "M-Pesa ERP integration patterns for C2B payments and reconciliation. Unity ERP supports M-Pesa-friendly payment flows in Kenya.",
+    "intro": "Kenyan customers pay on M-Pesa. Your ERP should make reconciliation practical \u2014 not a weekend of matching screenshots."
+  },
+  {
+    "path": "/blog/erp-systems-in-kenya-2026",
+    "title": "ERP Systems in Kenya (2026 Guide) | Unity ERP",
+    "h1": "ERP Systems in Kenya \u2014 2026 Practical Guide",
+    "description": "ERP systems in Kenya: Dynamics, Sage, Odoo, SAP and Unity ERP. M-Pesa, eTIMS context, how SMEs choose.",
+    "intro": "Search for ERP in Kenya and you will see Microsoft Dynamics 365 Business Central, Sage, ERPNext/Odoo and SAP. This guide explains what those platforms do well \u2014 and how Unity ERP serves SMEs that need ERP + CRM without enterprise complexity."
+  },
+  {
+    "path": "/blog/what-is-erp-and-how-it-works",
+    "title": "What Is ERP and How Does It Work? | Unity ERP",
+    "h1": "What Is ERP and How Does It Work?",
+    "description": "What is ERP and how does it work? Plain-language ERP meaning, modules, and examples for inventory and finance.",
+    "intro": "ERP stands for Enterprise Resource Planning. It is software that links sales, stock, purchasing and finance so every team works from the same numbers."
+  },
+  {
+    "path": "/blog/best-erp-software-for-smes-kenya",
+    "title": "Best ERP Software for SMEs in Kenya | Unity ERP",
+    "h1": "Best ERP Software for SMEs in Kenya",
+    "description": "Best ERP software for Kenyan SMEs: cost, modules, free trial and local support. Why Unity ERP is built for growth.",
+    "intro": "SMEs rarely need a multinational SAP rollout. They need reliable stock, invoices, CRM and reports \u2014 at a price that makes sense in KES."
+  },
+  {
+    "path": "/blog/crm-software-with-inventory-kenya",
+    "title": "CRM Software with Inventory in Kenya | Unity ERP",
+    "h1": "CRM Software That Sees Your Inventory",
+    "description": "CRM software Kenya that sees live stock. Why separate CRM logins fail retailers and distributors \u2014 Unity ERP approach.",
+    "intro": "Kenya has many CRM logins. Few connect to the warehouse. Unity ERP puts CRM inside the same system as inventory and invoicing."
+  },
+  {
+    "path": "/blog/free-website-design-with-erp",
+    "title": "Free Website Design for Unity ERP Users",
+    "h1": "Free Website Design for Active Unity ERP Users",
+    "description": "Free website design for active Unity ERP customers. Business website with your ERP operations \u2014 Kenya SMEs.",
+    "intro": "Active Unity ERP customers can receive a free custom business website design \u2014 so your online presence matches the system that runs your operations."
   }
 ]
