@@ -13,30 +13,29 @@ export const seoPages: SeoPage[] = [
     slug: "best-erp-software-kenya",
     title: "Best ERP Software in Kenya (2026) | Unity ERP Free Trial",
     h1: "Best ERP Software in Kenya for Growing Businesses",
-    description:
-      "Unity ERP is cloud ERP software in Kenya for inventory, accounting, CRM, payroll, POS and manufacturing. 2-month free trial. KES 3,000/month. Support across Kenya, South Africa and Egypt.",
-    keywords:
-      "best ERP software Kenya, ERP Kenya, ERP software Kenya, cloud ERP Kenya, business software Kenya, Unity ERP",
+    description: "Unity ERP is cloud ERP software in Kenya for inventory, accounting, CRM, payroll, POS and manufacturing. 2-month free trial.",
+    keywords: "best ERP software Kenya, ERP Kenya, ERP software Kenya, Unity ERP, Unity Software Solutions, cloud ERP",
     intro:
-      "Kenyan teams need one system for stock, sales, cash and customers — without enterprise pricing. Unity ERP is built for that: ERP + CRM + AI in one cloud platform, with a full free trial.",
+      "Unity ERP by Unity Software Solutions helps teams run best erp software in kenya for growing businesses alongside CRM, inventory and finance in one affordable cloud platform — with a 2-month free trial and support across Kenya, South Africa and Egypt.",
     sections: [
       {
-        h2: "What to look for in ERP software in Kenya",
-        body: "Look for inventory accuracy, invoicing, multi-user access, CRM, and support that understands M-Pesa-friendly payments and local operations.",
+        h2: "What you get with Unity ERP",
+        body: "An all-in-one system so best work is not trapped in spreadsheets or disconnected apps.",
         bullets: [
-          "Real-time inventory and multi-branch stock",
-          "CRM pipeline with quotes and follow-ups",
-          "Accounting-ready invoices and reports",
-          "Affordable KES pricing and free trial",
+          "CRM pipeline and customer history",
+          "Inventory and purchasing visibility",
+          "Invoicing and operational reports",
+          "AI Assistant for live business questions",
+          "Unlimited users on the standard plan",
         ],
       },
       {
-        h2: "Why teams choose Unity ERP",
-        body: "Unity Software Solutions delivers Unity ERP as an all-in-one alternative to stacking multiple tools. Unlimited users on the standard plan, AI Assistant, and regional support.",
+        h2: "Built for real operators",
+        body: "Whether you run manufacturing, retail, services or distribution, Unity ERP keeps sales, stock and cash aligned — with API and webhook integrations when you need to connect other platforms.",
       },
       {
-        h2: "Start free",
-        body: "Try every module for 60 days — no credit card required. Then continue from KES 3,000 per month or KES 33,000 per year.",
+        h2: "Free trial and pricing",
+        body: "Start with 60 days full access (no credit card required). Then KES 3,000 per month or KES 33,000 per year. Active customers may receive a free custom business website design.",
       },
     ],
   },
@@ -44,190 +43,1532 @@ export const seoPages: SeoPage[] = [
     slug: "free-erp-software",
     title: "Free ERP Software Trial | Unity ERP Cloud",
     h1: "Free ERP Software Trial — Full Access for 2 Months",
-    description:
-      "Start free ERP software with Unity ERP: inventory, CRM, accounting, POS, manufacturing and AI. 60-day free trial, no credit card. Then simple KES pricing.",
-    keywords:
-      "free ERP software, free ERP trial, free cloud ERP, free inventory software, Unity ERP trial",
+    description: "Start free ERP software with Unity ERP: inventory, CRM, accounting, POS, manufacturing and AI. 60-day free trial.",
+    keywords: "free ERP software, free ERP trial, free cloud ERP, Unity ERP, Unity Software Solutions, cloud ERP",
     intro:
-      "Unity ERP offers a genuine free trial with unrestricted module access for 60 days — the same product paying customers use.",
+      "Unity ERP by Unity Software Solutions helps teams run free erp software trial — full access for 2 months alongside CRM, inventory and finance in one affordable cloud platform — with a 2-month free trial and support across Kenya, South Africa and Egypt.",
     sections: [
       {
-        h2: "What is included in the free trial",
-        body: "CRM, inventory, purchasing, finance, manufacturing, retail POS capabilities, HR support, AI Assistant, reports and multi-user access.",
+        h2: "What you get with Unity ERP",
+        body: "An all-in-one system so free work is not trapped in spreadsheets or disconnected apps.",
+        bullets: [
+          "CRM pipeline and customer history",
+          "Inventory and purchasing visibility",
+          "Invoicing and operational reports",
+          "AI Assistant for live business questions",
+          "Unlimited users on the standard plan",
+        ],
       },
       {
-        h2: "After the trial",
-        body: "Continue on transparent pricing: KES 3,000/month or KES 33,000/year. Active customers may receive a free custom business website design.",
+        h2: "Built for real operators",
+        body: "Whether you run manufacturing, retail, services or distribution, Unity ERP keeps sales, stock and cash aligned — with API and webhook integrations when you need to connect other platforms.",
+      },
+      {
+        h2: "Free trial and pricing",
+        body: "Start with 60 days full access (no credit card required). Then KES 3,000 per month or KES 33,000 per year. Active customers may receive a free custom business website design.",
       },
     ],
   },
   {
-    slug: "inventory-management-software",
-    title: "Inventory Management Software | Unity ERP",
-    h1: "Inventory Management Software That Stays Accurate",
-    description:
-      "Unity ERP inventory management software: multi-warehouse stock, transfers, reorder points, POS deduction and AI low-stock alerts. Free trial available.",
-    keywords:
-      "inventory management software, stock control software, warehouse software, inventory software Kenya",
+    slug: "inventory-management",
+    title: "Inventory Management Software",
+    h1: "Inventory Management",
+    description: "Inventory management software for multi-warehouse stock, transfers, reorder points and POS. Unity ERP free trial.",
+    keywords: "inventory management, stock control, warehouse management software Kenya, Unity ERP, Unity Software Solutions, cloud ERP",
     intro:
-      "Stop losing margin to stockouts and spreadsheet errors. Unity ERP keeps inventory, purchasing and sales in one ledger of truth.",
+      "Unity ERP by Unity Software Solutions helps teams run inventory management alongside CRM, inventory and finance in one affordable cloud platform — with a 2-month free trial and support across Kenya, South Africa and Egypt.",
     sections: [
       {
-        h2: "Inventory capabilities",
-        body: "Multi-warehouse, transfers, adjustments, reorder points, branch stock and retail POS deduction in real time.",
+        h2: "What you get with Unity ERP",
+        body: "An all-in-one system so inventory work is not trapped in spreadsheets or disconnected apps.",
+        bullets: [
+          "CRM pipeline and customer history",
+          "Inventory and purchasing visibility",
+          "Invoicing and operational reports",
+          "AI Assistant for live business questions",
+          "Unlimited users on the standard plan",
+        ],
       },
       {
-        h2: "AI stock alerts",
-        body: "Ask the AI Assistant which SKUs are below safety stock and get purchase recommendations from live data.",
+        h2: "Built for real operators",
+        body: "Whether you run manufacturing, retail, services or distribution, Unity ERP keeps sales, stock and cash aligned — with API and webhook integrations when you need to connect other platforms.",
+      },
+      {
+        h2: "Free trial and pricing",
+        body: "Start with 60 days full access (no credit card required). Then KES 3,000 per month or KES 33,000 per year. Active customers may receive a free custom business website design.",
       },
     ],
   },
   {
-    slug: "manufacturing-erp-software",
-    title: "Manufacturing ERP Software | Unity ERP",
-    h1: "Manufacturing ERP for Production and Cost Control",
-    description:
-      "Manufacturing ERP software with BOM, work orders, WIP, finished goods and costing — plus CRM and inventory. Unity ERP free trial.",
-    keywords: "manufacturing ERP, production ERP, BOM software, factory ERP Kenya",
+    slug: "accounting",
+    title: "Accounting Software & Accounting ERP",
+    h1: "Accounting",
+    description: "Accounting software connected to sales and stock: invoices, AR, AP, payments and reports. Unity ERP.",
+    keywords: "accounting software, accounting ERP, invoicing software Kenya, Unity ERP, Unity Software Solutions, cloud ERP",
     intro:
-      "Connect materials, production and sales. Unity ERP manufacturing tools sit beside CRM and finance so cost and delivery stay visible.",
+      "Unity ERP by Unity Software Solutions helps teams run accounting alongside CRM, inventory and finance in one affordable cloud platform — with a 2-month free trial and support across Kenya, South Africa and Egypt.",
     sections: [
       {
-        h2: "Shop floor to invoice",
-        body: "Bill of materials, work orders, finished goods stock and batch-oriented costing patterns — with inventory already linked.",
+        h2: "What you get with Unity ERP",
+        body: "An all-in-one system so accounting work is not trapped in spreadsheets or disconnected apps.",
+        bullets: [
+          "CRM pipeline and customer history",
+          "Inventory and purchasing visibility",
+          "Invoicing and operational reports",
+          "AI Assistant for live business questions",
+          "Unlimited users on the standard plan",
+        ],
+      },
+      {
+        h2: "Built for real operators",
+        body: "Whether you run manufacturing, retail, services or distribution, Unity ERP keeps sales, stock and cash aligned — with API and webhook integrations when you need to connect other platforms.",
+      },
+      {
+        h2: "Free trial and pricing",
+        body: "Start with 60 days full access (no credit card required). Then KES 3,000 per month or KES 33,000 per year. Active customers may receive a free custom business website design.",
       },
     ],
   },
   {
-    slug: "construction-erp-software",
-    title: "Construction ERP Software | Unity ERP",
-    h1: "Construction ERP for Projects, Materials and Billing",
-    description:
-      "Construction ERP software for job costing, site materials, subcontractors and progress billing. Unity ERP free trial.",
-    keywords: "construction ERP, project ERP, job costing software, construction software Kenya",
+    slug: "crm",
+    title: "CRM Software with Live Inventory",
+    h1: "CRM",
+    description: "CRM software with pipeline, quotes and customer history inside ERP — see stock before you promise. Unity ERP.",
+    keywords: "CRM software, sales CRM Kenya, CRM with inventory, Unity ERP, Unity Software Solutions, cloud ERP",
     intro:
-      "Keep every site on budget. Unity ERP links materials, purchasing and billing for construction and project teams.",
+      "Unity ERP by Unity Software Solutions helps teams run crm alongside CRM, inventory and finance in one affordable cloud platform — with a 2-month free trial and support across Kenya, South Africa and Egypt.",
     sections: [
       {
-        h2: "Project control",
-        body: "Job costing, material issues, supplier POs and progress-oriented invoicing in one operational system.",
+        h2: "What you get with Unity ERP",
+        body: "An all-in-one system so crm work is not trapped in spreadsheets or disconnected apps.",
+        bullets: [
+          "CRM pipeline and customer history",
+          "Inventory and purchasing visibility",
+          "Invoicing and operational reports",
+          "AI Assistant for live business questions",
+          "Unlimited users on the standard plan",
+        ],
+      },
+      {
+        h2: "Built for real operators",
+        body: "Whether you run manufacturing, retail, services or distribution, Unity ERP keeps sales, stock and cash aligned — with API and webhook integrations when you need to connect other platforms.",
+      },
+      {
+        h2: "Free trial and pricing",
+        body: "Start with 60 days full access (no credit card required). Then KES 3,000 per month or KES 33,000 per year. Active customers may receive a free custom business website design.",
       },
     ],
   },
   {
-    slug: "school-management-erp",
-    title: "School Management ERP Software | Unity ERP",
-    h1: "School Management ERP for Fees, Staff and Stores",
-    description:
-      "School management ERP and education software for admissions-style CRM, fees, payroll and institutional inventory. Unity ERP.",
-    keywords:
-      "school management ERP, school ERP, education ERP, school management software Kenya",
+    slug: "hr-payroll",
+    title: "HR & Payroll Software",
+    h1: "HR & Payroll",
+    description: "HR and payroll software inside Unity ERP — employee records, time-off and payroll support with full ERP.",
+    keywords: "HR software, payroll software Kenya, HR payroll, Unity ERP, Unity Software Solutions, cloud ERP",
     intro:
-      "Schools run smoother when fees, inventory and staff costs share one system. Unity ERP supports education operations without separate silos.",
+      "Unity ERP by Unity Software Solutions helps teams run hr & payroll alongside CRM, inventory and finance in one affordable cloud platform — with a 2-month free trial and support across Kenya, South Africa and Egypt.",
     sections: [
       {
-        h2: "Education operations",
-        body: "CRM-style admissions pipelines, fee collection patterns, staff payroll support and campus store inventory.",
+        h2: "What you get with Unity ERP",
+        body: "An all-in-one system so hr work is not trapped in spreadsheets or disconnected apps.",
+        bullets: [
+          "CRM pipeline and customer history",
+          "Inventory and purchasing visibility",
+          "Invoicing and operational reports",
+          "AI Assistant for live business questions",
+          "Unlimited users on the standard plan",
+        ],
+      },
+      {
+        h2: "Built for real operators",
+        body: "Whether you run manufacturing, retail, services or distribution, Unity ERP keeps sales, stock and cash aligned — with API and webhook integrations when you need to connect other platforms.",
+      },
+      {
+        h2: "Free trial and pricing",
+        body: "Start with 60 days full access (no credit card required). Then KES 3,000 per month or KES 33,000 per year. Active customers may receive a free custom business website design.",
       },
     ],
   },
   {
-    slug: "hospital-erp-software",
-    title: "Hospital ERP Software | Unity ERP",
-    h1: "Hospital ERP for Pharmacy, Billing and Supplies",
-    description:
-      "Hospital and clinic ERP software for pharmacy stock, consumables, department costs and operational reporting. Unity ERP free trial.",
-    keywords: "hospital ERP, clinic ERP, pharmacy inventory software, healthcare ERP Kenya",
+    slug: "manufacturing",
+    title: "Manufacturing ERP Software",
+    h1: "Manufacturing",
+    description: "Manufacturing ERP with BOM, work orders, WIP and costing plus CRM and inventory. Unity ERP free trial.",
+    keywords: "manufacturing ERP, production software, factory ERP Kenya, Unity ERP, Unity Software Solutions, cloud ERP",
     intro:
-      "Reduce critical stockouts and speed operational billing cycles with one backbone for supplies and commercial records.",
+      "Unity ERP by Unity Software Solutions helps teams run manufacturing alongside CRM, inventory and finance in one affordable cloud platform — with a 2-month free trial and support across Kenya, South Africa and Egypt.",
     sections: [
       {
-        h2: "Healthcare operations",
-        body: "Pharmacy and consumables inventory, supplier lead times, department cost centres and management dashboards.",
+        h2: "What you get with Unity ERP",
+        body: "An all-in-one system so manufacturing work is not trapped in spreadsheets or disconnected apps.",
+        bullets: [
+          "CRM pipeline and customer history",
+          "Inventory and purchasing visibility",
+          "Invoicing and operational reports",
+          "AI Assistant for live business questions",
+          "Unlimited users on the standard plan",
+        ],
+      },
+      {
+        h2: "Built for real operators",
+        body: "Whether you run manufacturing, retail, services or distribution, Unity ERP keeps sales, stock and cash aligned — with API and webhook integrations when you need to connect other platforms.",
+      },
+      {
+        h2: "Free trial and pricing",
+        body: "Start with 60 days full access (no credit card required). Then KES 3,000 per month or KES 33,000 per year. Active customers may receive a free custom business website design.",
       },
     ],
   },
   {
-    slug: "pos-software",
-    title: "POS Software & Retail System | Unity ERP",
-    h1: "POS Software Connected to Real Inventory",
-    description:
-      "POS software and retail system with multi-branch stock, CRM customer profiles and daily cash-up. Unity ERP free trial.",
-    keywords: "POS software, POS system, retail POS Kenya, point of sale software",
+    slug: "construction",
+    title: "Construction ERP Software",
+    h1: "Construction",
+    description: "Construction ERP for job costing, site materials, suppliers and progress billing. Unity ERP.",
+    keywords: "construction ERP, job costing software, construction software Kenya, Unity ERP, Unity Software Solutions, cloud ERP",
     intro:
-      "Unity ERP POS posts straight to stock and finance — so retail teams stop reconciling three systems at closing time.",
+      "Unity ERP by Unity Software Solutions helps teams run construction alongside CRM, inventory and finance in one affordable cloud platform — with a 2-month free trial and support across Kenya, South Africa and Egypt.",
     sections: [
       {
-        h2: "Retail that scales",
-        body: "Fast checkout, branch transfers, customer CRM profiles, cash-up reports and AI slow-mover alerts.",
+        h2: "What you get with Unity ERP",
+        body: "An all-in-one system so construction work is not trapped in spreadsheets or disconnected apps.",
+        bullets: [
+          "CRM pipeline and customer history",
+          "Inventory and purchasing visibility",
+          "Invoicing and operational reports",
+          "AI Assistant for live business questions",
+          "Unlimited users on the standard plan",
+        ],
+      },
+      {
+        h2: "Built for real operators",
+        body: "Whether you run manufacturing, retail, services or distribution, Unity ERP keeps sales, stock and cash aligned — with API and webhook integrations when you need to connect other platforms.",
+      },
+      {
+        h2: "Free trial and pricing",
+        body: "Start with 60 days full access (no credit card required). Then KES 3,000 per month or KES 33,000 per year. Active customers may receive a free custom business website design.",
       },
     ],
   },
   {
-    slug: "accounting-software",
-    title: "Accounting Software & Accounting ERP | Unity ERP",
-    h1: "Accounting Software Tied to Real Operations",
-    description:
-      "Accounting software and accounting ERP: invoices, bills, payments, AR/AP and reports fed by live sales and stock. Unity ERP.",
-    keywords:
-      "accounting software, accounting ERP, invoicing software Kenya, bookkeeping software",
+    slug: "schools",
+    title: "School Management ERP",
+    h1: "Schools",
+    description: "School management ERP for fees, staff, admissions-style CRM and campus stores. Unity ERP education.",
+    keywords: "school management software, school ERP Kenya, education ERP, Unity ERP, Unity Software Solutions, cloud ERP",
     intro:
-      "When sales and stock post correctly, month-end stops being forensic work. Unity ERP connects operations to the books.",
+      "Unity ERP by Unity Software Solutions helps teams run schools alongside CRM, inventory and finance in one affordable cloud platform — with a 2-month free trial and support across Kenya, South Africa and Egypt.",
     sections: [
       {
-        h2: "Finance capabilities",
-        body: "Chart of accounts patterns, receivables, payables, invoicing, payment recording and management reports.",
+        h2: "What you get with Unity ERP",
+        body: "An all-in-one system so schools work is not trapped in spreadsheets or disconnected apps.",
+        bullets: [
+          "CRM pipeline and customer history",
+          "Inventory and purchasing visibility",
+          "Invoicing and operational reports",
+          "AI Assistant for live business questions",
+          "Unlimited users on the standard plan",
+        ],
+      },
+      {
+        h2: "Built for real operators",
+        body: "Whether you run manufacturing, retail, services or distribution, Unity ERP keeps sales, stock and cash aligned — with API and webhook integrations when you need to connect other platforms.",
+      },
+      {
+        h2: "Free trial and pricing",
+        body: "Start with 60 days full access (no credit card required). Then KES 3,000 per month or KES 33,000 per year. Active customers may receive a free custom business website design.",
       },
     ],
   },
   {
-    slug: "crm-software",
-    title: "CRM Software with ERP | Unity ERP",
-    h1: "CRM Software That Sees Stock and Cash",
-    description:
-      "CRM software built into ERP: pipeline, customers, quotes and AI sales insights — with live inventory visibility. Unity ERP free trial.",
-    keywords: "CRM software, CRM Kenya, sales CRM, CRM with inventory",
+    slug: "hospitals",
+    title: "Hospital & Clinic ERP",
+    h1: "Hospitals",
+    description: "Hospital ERP for pharmacy, consumables, departments and operational reporting. Unity ERP healthcare.",
+    keywords: "hospital ERP, clinic software, pharmacy inventory Kenya, Unity ERP, Unity Software Solutions, cloud ERP",
     intro:
-      "Sales should never promise what you cannot deliver. Unity ERP CRM sits next to inventory and finance in one platform.",
+      "Unity ERP by Unity Software Solutions helps teams run hospitals alongside CRM, inventory and finance in one affordable cloud platform — with a 2-month free trial and support across Kenya, South Africa and Egypt.",
     sections: [
       {
-        h2: "CRM capabilities",
-        body: "Leads, deals, activities, follow-ups, quotes, customer history and AI sales summaries.",
+        h2: "What you get with Unity ERP",
+        body: "An all-in-one system so hospitals work is not trapped in spreadsheets or disconnected apps.",
+        bullets: [
+          "CRM pipeline and customer history",
+          "Inventory and purchasing visibility",
+          "Invoicing and operational reports",
+          "AI Assistant for live business questions",
+          "Unlimited users on the standard plan",
+        ],
+      },
+      {
+        h2: "Built for real operators",
+        body: "Whether you run manufacturing, retail, services or distribution, Unity ERP keeps sales, stock and cash aligned — with API and webhook integrations when you need to connect other platforms.",
+      },
+      {
+        h2: "Free trial and pricing",
+        body: "Start with 60 days full access (no credit card required). Then KES 3,000 per month or KES 33,000 per year. Active customers may receive a free custom business website design.",
       },
     ],
   },
   {
-    slug: "payroll-software",
-    title: "Payroll Software | Unity ERP HR & Payroll",
-    h1: "Payroll Software with HR Records in One ERP",
-    description:
-      "Payroll software and HR records inside Unity ERP — employee data, payroll support and operational ERP in one place. Free trial.",
-    keywords: "payroll software, payroll Kenya, HR payroll software, HR software",
+    slug: "retail-pos",
+    title: "Retail POS Software",
+    h1: "Retail POS",
+    description: "Retail POS software linked to real inventory, multi-branch stock and CRM. Unity ERP free trial.",
+    keywords: "POS software, retail POS Kenya, point of sale system, Unity ERP, Unity Software Solutions, cloud ERP",
     intro:
-      "Unity ERP includes HR and payroll support so people costs stay connected to the same business system as stock and sales.",
+      "Unity ERP by Unity Software Solutions helps teams run retail pos alongside CRM, inventory and finance in one affordable cloud platform — with a 2-month free trial and support across Kenya, South Africa and Egypt.",
     sections: [
       {
-        h2: "HR & payroll",
-        body: "Employee records, onboarding basics, time-off patterns and payroll processing support.",
+        h2: "What you get with Unity ERP",
+        body: "An all-in-one system so retail work is not trapped in spreadsheets or disconnected apps.",
+        bullets: [
+          "CRM pipeline and customer history",
+          "Inventory and purchasing visibility",
+          "Invoicing and operational reports",
+          "AI Assistant for live business questions",
+          "Unlimited users on the standard plan",
+        ],
+      },
+      {
+        h2: "Built for real operators",
+        body: "Whether you run manufacturing, retail, services or distribution, Unity ERP keeps sales, stock and cash aligned — with API and webhook integrations when you need to connect other platforms.",
+      },
+      {
+        h2: "Free trial and pricing",
+        body: "Start with 60 days full access (no credit card required). Then KES 3,000 per month or KES 33,000 per year. Active customers may receive a free custom business website design.",
       },
     ],
   },
   {
-    slug: "cloud-erp-software",
-    title: "Cloud ERP Software | Unity ERP",
-    h1: "Cloud ERP Software — Access Anywhere",
-    description:
-      "Cloud ERP software for inventory, CRM, accounting, POS and manufacturing. Unity ERP with AI Assistant and free trial.",
-    keywords: "cloud ERP, cloud ERP software, online ERP, SaaS ERP Kenya",
+    slug: "procurement",
+    title: "Procurement Software",
+    h1: "Procurement",
+    description: "Procurement software for purchase orders, suppliers, receipts and spend visibility. Unity ERP purchasing.",
+    keywords: "procurement software, purchasing software, purchase order system, Unity ERP, Unity Software Solutions, cloud ERP",
     intro:
-      "Unity ERP runs in the cloud so teams across branches can work from one system of record — with API and webhook integrations.",
+      "Unity ERP by Unity Software Solutions helps teams run procurement alongside CRM, inventory and finance in one affordable cloud platform — with a 2-month free trial and support across Kenya, South Africa and Egypt.",
     sections: [
       {
-        h2: "Cloud benefits",
-        body: "No heavy on-premise footprint, multi-user access, backups, and integrations via REST API and webhooks.",
+        h2: "What you get with Unity ERP",
+        body: "An all-in-one system so procurement work is not trapped in spreadsheets or disconnected apps.",
+        bullets: [
+          "CRM pipeline and customer history",
+          "Inventory and purchasing visibility",
+          "Invoicing and operational reports",
+          "AI Assistant for live business questions",
+          "Unlimited users on the standard plan",
+        ],
+      },
+      {
+        h2: "Built for real operators",
+        body: "Whether you run manufacturing, retail, services or distribution, Unity ERP keeps sales, stock and cash aligned — with API and webhook integrations when you need to connect other platforms.",
+      },
+      {
+        h2: "Free trial and pricing",
+        body: "Start with 60 days full access (no credit card required). Then KES 3,000 per month or KES 33,000 per year. Active customers may receive a free custom business website design.",
       },
     ],
   },
+  {
+    slug: "asset-management",
+    title: "Asset Management Software",
+    h1: "Asset Management",
+    description: "Asset management patterns inside Unity ERP — track operational assets alongside inventory and finance.",
+    keywords: "asset management software, fixed assets ERP, asset tracking, Unity ERP, Unity Software Solutions, cloud ERP",
+    intro:
+      "Unity ERP by Unity Software Solutions helps teams run asset management alongside CRM, inventory and finance in one affordable cloud platform — with a 2-month free trial and support across Kenya, South Africa and Egypt.",
+    sections: [
+      {
+        h2: "What you get with Unity ERP",
+        body: "An all-in-one system so asset work is not trapped in spreadsheets or disconnected apps.",
+        bullets: [
+          "CRM pipeline and customer history",
+          "Inventory and purchasing visibility",
+          "Invoicing and operational reports",
+          "AI Assistant for live business questions",
+          "Unlimited users on the standard plan",
+        ],
+      },
+      {
+        h2: "Built for real operators",
+        body: "Whether you run manufacturing, retail, services or distribution, Unity ERP keeps sales, stock and cash aligned — with API and webhook integrations when you need to connect other platforms.",
+      },
+      {
+        h2: "Free trial and pricing",
+        body: "Start with 60 days full access (no credit card required). Then KES 3,000 per month or KES 33,000 per year. Active customers may receive a free custom business website design.",
+      },
+    ],
+  },
+  {
+    slug: "project-management",
+    title: "Project Management ERP",
+    h1: "Project Management",
+    description: "Project management and job costing in Unity ERP for services and construction-style delivery.",
+    keywords: "project management ERP, job costing, project software Kenya, Unity ERP, Unity Software Solutions, cloud ERP",
+    intro:
+      "Unity ERP by Unity Software Solutions helps teams run project management alongside CRM, inventory and finance in one affordable cloud platform — with a 2-month free trial and support across Kenya, South Africa and Egypt.",
+    sections: [
+      {
+        h2: "What you get with Unity ERP",
+        body: "An all-in-one system so project work is not trapped in spreadsheets or disconnected apps.",
+        bullets: [
+          "CRM pipeline and customer history",
+          "Inventory and purchasing visibility",
+          "Invoicing and operational reports",
+          "AI Assistant for live business questions",
+          "Unlimited users on the standard plan",
+        ],
+      },
+      {
+        h2: "Built for real operators",
+        body: "Whether you run manufacturing, retail, services or distribution, Unity ERP keeps sales, stock and cash aligned — with API and webhook integrations when you need to connect other platforms.",
+      },
+      {
+        h2: "Free trial and pricing",
+        body: "Start with 60 days full access (no credit card required). Then KES 3,000 per month or KES 33,000 per year. Active customers may receive a free custom business website design.",
+      },
+    ],
+  },
+  {
+    slug: "reporting-analytics",
+    title: "Reporting & Analytics",
+    h1: "Reporting & Analytics",
+    description: "ERP reporting and analytics dashboards for sales, stock, cash and operations. Unity ERP AI insights.",
+    keywords: "ERP reporting, business analytics software, KPI dashboard, Unity ERP, Unity Software Solutions, cloud ERP",
+    intro:
+      "Unity ERP by Unity Software Solutions helps teams run reporting & analytics alongside CRM, inventory and finance in one affordable cloud platform — with a 2-month free trial and support across Kenya, South Africa and Egypt.",
+    sections: [
+      {
+        h2: "What you get with Unity ERP",
+        body: "An all-in-one system so reporting work is not trapped in spreadsheets or disconnected apps.",
+        bullets: [
+          "CRM pipeline and customer history",
+          "Inventory and purchasing visibility",
+          "Invoicing and operational reports",
+          "AI Assistant for live business questions",
+          "Unlimited users on the standard plan",
+        ],
+      },
+      {
+        h2: "Built for real operators",
+        body: "Whether you run manufacturing, retail, services or distribution, Unity ERP keeps sales, stock and cash aligned — with API and webhook integrations when you need to connect other platforms.",
+      },
+      {
+        h2: "Free trial and pricing",
+        body: "Start with 60 days full access (no credit card required). Then KES 3,000 per month or KES 33,000 per year. Active customers may receive a free custom business website design.",
+      },
+    ],
+  },
+  {
+    slug: "warehouse-management",
+    title: "Warehouse Management Software",
+    h1: "Warehouse Management",
+    description: "Warehouse management with bins, transfers and multi-location stock in Unity ERP.",
+    keywords: "warehouse management software, WMS Kenya, multi-warehouse, Unity ERP, Unity Software Solutions, cloud ERP",
+    intro:
+      "Unity ERP by Unity Software Solutions helps teams run warehouse management alongside CRM, inventory and finance in one affordable cloud platform — with a 2-month free trial and support across Kenya, South Africa and Egypt.",
+    sections: [
+      {
+        h2: "What you get with Unity ERP",
+        body: "An all-in-one system so warehouse work is not trapped in spreadsheets or disconnected apps.",
+        bullets: [
+          "CRM pipeline and customer history",
+          "Inventory and purchasing visibility",
+          "Invoicing and operational reports",
+          "AI Assistant for live business questions",
+          "Unlimited users on the standard plan",
+        ],
+      },
+      {
+        h2: "Built for real operators",
+        body: "Whether you run manufacturing, retail, services or distribution, Unity ERP keeps sales, stock and cash aligned — with API and webhook integrations when you need to connect other platforms.",
+      },
+      {
+        h2: "Free trial and pricing",
+        body: "Start with 60 days full access (no credit card required). Then KES 3,000 per month or KES 33,000 per year. Active customers may receive a free custom business website design.",
+      },
+    ],
+  },
+  {
+    slug: "order-management",
+    title: "Order Management Software",
+    h1: "Order Management",
+    description: "Order management from quote to fulfilment with inventory and invoicing in one ERP.",
+    keywords: "order management software, sales order system, Unity ERP, Unity Software Solutions, cloud ERP",
+    intro:
+      "Unity ERP by Unity Software Solutions helps teams run order management alongside CRM, inventory and finance in one affordable cloud platform — with a 2-month free trial and support across Kenya, South Africa and Egypt.",
+    sections: [
+      {
+        h2: "What you get with Unity ERP",
+        body: "An all-in-one system so order work is not trapped in spreadsheets or disconnected apps.",
+        bullets: [
+          "CRM pipeline and customer history",
+          "Inventory and purchasing visibility",
+          "Invoicing and operational reports",
+          "AI Assistant for live business questions",
+          "Unlimited users on the standard plan",
+        ],
+      },
+      {
+        h2: "Built for real operators",
+        body: "Whether you run manufacturing, retail, services or distribution, Unity ERP keeps sales, stock and cash aligned — with API and webhook integrations when you need to connect other platforms.",
+      },
+      {
+        h2: "Free trial and pricing",
+        body: "Start with 60 days full access (no credit card required). Then KES 3,000 per month or KES 33,000 per year. Active customers may receive a free custom business website design.",
+      },
+    ],
+  },
+  {
+    slug: "supplier-management",
+    title: "Supplier Management Software",
+    h1: "Supplier Management",
+    description: "Supplier records, POs, receipts and performance visibility in Unity ERP procurement.",
+    keywords: "supplier management, vendor management software, Unity ERP, Unity Software Solutions, cloud ERP",
+    intro:
+      "Unity ERP by Unity Software Solutions helps teams run supplier management alongside CRM, inventory and finance in one affordable cloud platform — with a 2-month free trial and support across Kenya, South Africa and Egypt.",
+    sections: [
+      {
+        h2: "What you get with Unity ERP",
+        body: "An all-in-one system so supplier work is not trapped in spreadsheets or disconnected apps.",
+        bullets: [
+          "CRM pipeline and customer history",
+          "Inventory and purchasing visibility",
+          "Invoicing and operational reports",
+          "AI Assistant for live business questions",
+          "Unlimited users on the standard plan",
+        ],
+      },
+      {
+        h2: "Built for real operators",
+        body: "Whether you run manufacturing, retail, services or distribution, Unity ERP keeps sales, stock and cash aligned — with API and webhook integrations when you need to connect other platforms.",
+      },
+      {
+        h2: "Free trial and pricing",
+        body: "Start with 60 days full access (no credit card required). Then KES 3,000 per month or KES 33,000 per year. Active customers may receive a free custom business website design.",
+      },
+    ],
+  },
+  {
+    slug: "invoice-software",
+    title: "Invoicing Software",
+    h1: "Invoicing",
+    description: "Invoicing software with receivables tracking tied to real sales and stock. Unity ERP.",
+    keywords: "invoicing software Kenya, invoice system, billing software, Unity ERP, Unity Software Solutions, cloud ERP",
+    intro:
+      "Unity ERP by Unity Software Solutions helps teams run invoicing alongside CRM, inventory and finance in one affordable cloud platform — with a 2-month free trial and support across Kenya, South Africa and Egypt.",
+    sections: [
+      {
+        h2: "What you get with Unity ERP",
+        body: "An all-in-one system so invoicing work is not trapped in spreadsheets or disconnected apps.",
+        bullets: [
+          "CRM pipeline and customer history",
+          "Inventory and purchasing visibility",
+          "Invoicing and operational reports",
+          "AI Assistant for live business questions",
+          "Unlimited users on the standard plan",
+        ],
+      },
+      {
+        h2: "Built for real operators",
+        body: "Whether you run manufacturing, retail, services or distribution, Unity ERP keeps sales, stock and cash aligned — with API and webhook integrations when you need to connect other platforms.",
+      },
+      {
+        h2: "Free trial and pricing",
+        body: "Start with 60 days full access (no credit card required). Then KES 3,000 per month or KES 33,000 per year. Active customers may receive a free custom business website design.",
+      },
+    ],
+  },
+  {
+    slug: "multi-branch-erp",
+    title: "Multi-Branch ERP Software",
+    h1: "Multi-Branch ERP",
+    description: "Multi-branch ERP for retail and wholesale chains — shared catalog, branch stock and central reports.",
+    keywords: "multi-branch ERP, multi-store POS, chain retail software, Unity ERP, Unity Software Solutions, cloud ERP",
+    intro:
+      "Unity ERP by Unity Software Solutions helps teams run multi-branch erp alongside CRM, inventory and finance in one affordable cloud platform — with a 2-month free trial and support across Kenya, South Africa and Egypt.",
+    sections: [
+      {
+        h2: "What you get with Unity ERP",
+        body: "An all-in-one system so multi-branch work is not trapped in spreadsheets or disconnected apps.",
+        bullets: [
+          "CRM pipeline and customer history",
+          "Inventory and purchasing visibility",
+          "Invoicing and operational reports",
+          "AI Assistant for live business questions",
+          "Unlimited users on the standard plan",
+        ],
+      },
+      {
+        h2: "Built for real operators",
+        body: "Whether you run manufacturing, retail, services or distribution, Unity ERP keeps sales, stock and cash aligned — with API and webhook integrations when you need to connect other platforms.",
+      },
+      {
+        h2: "Free trial and pricing",
+        body: "Start with 60 days full access (no credit card required). Then KES 3,000 per month or KES 33,000 per year. Active customers may receive a free custom business website design.",
+      },
+    ],
+  },
+  {
+    slug: "wholesale-erp",
+    title: "Wholesale ERP Software",
+    h1: "Wholesale ERP",
+    description: "Wholesale ERP for bulk orders, pricing, inventory and B2B CRM. Unity ERP free trial.",
+    keywords: "wholesale ERP, distribution software, B2B ERP Kenya, Unity ERP, Unity Software Solutions, cloud ERP",
+    intro:
+      "Unity ERP by Unity Software Solutions helps teams run wholesale erp alongside CRM, inventory and finance in one affordable cloud platform — with a 2-month free trial and support across Kenya, South Africa and Egypt.",
+    sections: [
+      {
+        h2: "What you get with Unity ERP",
+        body: "An all-in-one system so wholesale work is not trapped in spreadsheets or disconnected apps.",
+        bullets: [
+          "CRM pipeline and customer history",
+          "Inventory and purchasing visibility",
+          "Invoicing and operational reports",
+          "AI Assistant for live business questions",
+          "Unlimited users on the standard plan",
+        ],
+      },
+      {
+        h2: "Built for real operators",
+        body: "Whether you run manufacturing, retail, services or distribution, Unity ERP keeps sales, stock and cash aligned — with API and webhook integrations when you need to connect other platforms.",
+      },
+      {
+        h2: "Free trial and pricing",
+        body: "Start with 60 days full access (no credit card required). Then KES 3,000 per month or KES 33,000 per year. Active customers may receive a free custom business website design.",
+      },
+    ],
+  },
+  {
+    slug: "distribution-software",
+    title: "Distribution Software",
+    h1: "Distribution",
+    description: "Distribution software for inventory, logistics cost capture and customer orders. Unity ERP.",
+    keywords: "distribution software, logistics ERP, distribution management, Unity ERP, Unity Software Solutions, cloud ERP",
+    intro:
+      "Unity ERP by Unity Software Solutions helps teams run distribution alongside CRM, inventory and finance in one affordable cloud platform — with a 2-month free trial and support across Kenya, South Africa and Egypt.",
+    sections: [
+      {
+        h2: "What you get with Unity ERP",
+        body: "An all-in-one system so distribution work is not trapped in spreadsheets or disconnected apps.",
+        bullets: [
+          "CRM pipeline and customer history",
+          "Inventory and purchasing visibility",
+          "Invoicing and operational reports",
+          "AI Assistant for live business questions",
+          "Unlimited users on the standard plan",
+        ],
+      },
+      {
+        h2: "Built for real operators",
+        body: "Whether you run manufacturing, retail, services or distribution, Unity ERP keeps sales, stock and cash aligned — with API and webhook integrations when you need to connect other platforms.",
+      },
+      {
+        h2: "Free trial and pricing",
+        body: "Start with 60 days full access (no credit card required). Then KES 3,000 per month or KES 33,000 per year. Active customers may receive a free custom business website design.",
+      },
+    ],
+  },
+  {
+    slug: "erp-for-smes",
+    title: "ERP for SMEs in Kenya",
+    h1: "ERP for SMEs",
+    description: "ERP for SMEs in Kenya: affordable cloud ERP + CRM + AI. KES pricing and 2-month free trial.",
+    keywords: "ERP for SMEs Kenya, small business ERP, SME software, Unity ERP, Unity Software Solutions, cloud ERP",
+    intro:
+      "Unity ERP by Unity Software Solutions helps teams run erp for smes alongside CRM, inventory and finance in one affordable cloud platform — with a 2-month free trial and support across Kenya, South Africa and Egypt.",
+    sections: [
+      {
+        h2: "What you get with Unity ERP",
+        body: "An all-in-one system so erp work is not trapped in spreadsheets or disconnected apps.",
+        bullets: [
+          "CRM pipeline and customer history",
+          "Inventory and purchasing visibility",
+          "Invoicing and operational reports",
+          "AI Assistant for live business questions",
+          "Unlimited users on the standard plan",
+        ],
+      },
+      {
+        h2: "Built for real operators",
+        body: "Whether you run manufacturing, retail, services or distribution, Unity ERP keeps sales, stock and cash aligned — with API and webhook integrations when you need to connect other platforms.",
+      },
+      {
+        h2: "Free trial and pricing",
+        body: "Start with 60 days full access (no credit card required). Then KES 3,000 per month or KES 33,000 per year. Active customers may receive a free custom business website design.",
+      },
+    ],
+  },
+  {
+    slug: "cloud-erp-kenya",
+    title: "Cloud ERP Kenya",
+    h1: "Cloud ERP Kenya",
+    description: "Cloud ERP Kenya — Unity ERP online for inventory, CRM, accounting and POS with free trial.",
+    keywords: "cloud ERP Kenya, online ERP Kenya, SaaS ERP Kenya, Unity ERP, Unity Software Solutions, cloud ERP",
+    intro:
+      "Unity ERP by Unity Software Solutions helps teams run cloud erp kenya alongside CRM, inventory and finance in one affordable cloud platform — with a 2-month free trial and support across Kenya, South Africa and Egypt.",
+    sections: [
+      {
+        h2: "What you get with Unity ERP",
+        body: "An all-in-one system so cloud work is not trapped in spreadsheets or disconnected apps.",
+        bullets: [
+          "CRM pipeline and customer history",
+          "Inventory and purchasing visibility",
+          "Invoicing and operational reports",
+          "AI Assistant for live business questions",
+          "Unlimited users on the standard plan",
+        ],
+      },
+      {
+        h2: "Built for real operators",
+        body: "Whether you run manufacturing, retail, services or distribution, Unity ERP keeps sales, stock and cash aligned — with API and webhook integrations when you need to connect other platforms.",
+      },
+      {
+        h2: "Free trial and pricing",
+        body: "Start with 60 days full access (no credit card required). Then KES 3,000 per month or KES 33,000 per year. Active customers may receive a free custom business website design.",
+      },
+    ],
+  },
+  {
+    slug: "erp-with-ai",
+    title: "ERP with AI Assistant",
+    h1: "ERP with AI",
+    description: "ERP with AI: ask sales, stock and finance questions in plain language. Unity ERP Knight AI.",
+    keywords: "AI ERP, ERP with AI, intelligent ERP software, Unity ERP, Unity Software Solutions, cloud ERP",
+    intro:
+      "Unity ERP by Unity Software Solutions helps teams run erp with ai alongside CRM, inventory and finance in one affordable cloud platform — with a 2-month free trial and support across Kenya, South Africa and Egypt.",
+    sections: [
+      {
+        h2: "What you get with Unity ERP",
+        body: "An all-in-one system so erp work is not trapped in spreadsheets or disconnected apps.",
+        bullets: [
+          "CRM pipeline and customer history",
+          "Inventory and purchasing visibility",
+          "Invoicing and operational reports",
+          "AI Assistant for live business questions",
+          "Unlimited users on the standard plan",
+        ],
+      },
+      {
+        h2: "Built for real operators",
+        body: "Whether you run manufacturing, retail, services or distribution, Unity ERP keeps sales, stock and cash aligned — with API and webhook integrations when you need to connect other platforms.",
+      },
+      {
+        h2: "Free trial and pricing",
+        body: "Start with 60 days full access (no credit card required). Then KES 3,000 per month or KES 33,000 per year. Active customers may receive a free custom business website design.",
+      },
+    ],
+  },
+  {
+    slug: "business-management-software",
+    title: "Business Management Software",
+    h1: "Business Management",
+    description: "Business management software combining ERP, CRM and AI for growing companies. Unity ERP.",
+    keywords: "business management software Kenya, all-in-one business software, Unity ERP, Unity Software Solutions, cloud ERP",
+    intro:
+      "Unity ERP by Unity Software Solutions helps teams run business management alongside CRM, inventory and finance in one affordable cloud platform — with a 2-month free trial and support across Kenya, South Africa and Egypt.",
+    sections: [
+      {
+        h2: "What you get with Unity ERP",
+        body: "An all-in-one system so business work is not trapped in spreadsheets or disconnected apps.",
+        bullets: [
+          "CRM pipeline and customer history",
+          "Inventory and purchasing visibility",
+          "Invoicing and operational reports",
+          "AI Assistant for live business questions",
+          "Unlimited users on the standard plan",
+        ],
+      },
+      {
+        h2: "Built for real operators",
+        body: "Whether you run manufacturing, retail, services or distribution, Unity ERP keeps sales, stock and cash aligned — with API and webhook integrations when you need to connect other platforms.",
+      },
+      {
+        h2: "Free trial and pricing",
+        body: "Start with 60 days full access (no credit card required). Then KES 3,000 per month or KES 33,000 per year. Active customers may receive a free custom business website design.",
+      },
+    ],
+  },
+  {
+    slug: "stock-control-software",
+    title: "Stock Control Software",
+    h1: "Stock Control",
+    description: "Stock control software with reorder points, transfers and POS updates. Unity ERP inventory.",
+    keywords: "stock control software, stock management Kenya, Unity ERP, Unity Software Solutions, cloud ERP",
+    intro:
+      "Unity ERP by Unity Software Solutions helps teams run stock control alongside CRM, inventory and finance in one affordable cloud platform — with a 2-month free trial and support across Kenya, South Africa and Egypt.",
+    sections: [
+      {
+        h2: "What you get with Unity ERP",
+        body: "An all-in-one system so stock work is not trapped in spreadsheets or disconnected apps.",
+        bullets: [
+          "CRM pipeline and customer history",
+          "Inventory and purchasing visibility",
+          "Invoicing and operational reports",
+          "AI Assistant for live business questions",
+          "Unlimited users on the standard plan",
+        ],
+      },
+      {
+        h2: "Built for real operators",
+        body: "Whether you run manufacturing, retail, services or distribution, Unity ERP keeps sales, stock and cash aligned — with API and webhook integrations when you need to connect other platforms.",
+      },
+      {
+        h2: "Free trial and pricing",
+        body: "Start with 60 days full access (no credit card required). Then KES 3,000 per month or KES 33,000 per year. Active customers may receive a free custom business website design.",
+      },
+    ],
+  },
+  {
+    slug: "sales-management-software",
+    title: "Sales Management Software",
+    h1: "Sales Management",
+    description: "Sales management with CRM pipeline, quotes and AI sales summaries inside Unity ERP.",
+    keywords: "sales management software, sales CRM Kenya, Unity ERP, Unity Software Solutions, cloud ERP",
+    intro:
+      "Unity ERP by Unity Software Solutions helps teams run sales management alongside CRM, inventory and finance in one affordable cloud platform — with a 2-month free trial and support across Kenya, South Africa and Egypt.",
+    sections: [
+      {
+        h2: "What you get with Unity ERP",
+        body: "An all-in-one system so sales work is not trapped in spreadsheets or disconnected apps.",
+        bullets: [
+          "CRM pipeline and customer history",
+          "Inventory and purchasing visibility",
+          "Invoicing and operational reports",
+          "AI Assistant for live business questions",
+          "Unlimited users on the standard plan",
+        ],
+      },
+      {
+        h2: "Built for real operators",
+        body: "Whether you run manufacturing, retail, services or distribution, Unity ERP keeps sales, stock and cash aligned — with API and webhook integrations when you need to connect other platforms.",
+      },
+      {
+        h2: "Free trial and pricing",
+        body: "Start with 60 days full access (no credit card required). Then KES 3,000 per month or KES 33,000 per year. Active customers may receive a free custom business website design.",
+      },
+    ],
+  },
+  {
+    slug: "financial-management-software",
+    title: "Financial Management Software",
+    h1: "Financial Management",
+    description: "Financial management software for invoices, payments, AR/AP and reports. Unity ERP finance.",
+    keywords: "financial management software, finance ERP Kenya, Unity ERP, Unity Software Solutions, cloud ERP",
+    intro:
+      "Unity ERP by Unity Software Solutions helps teams run financial management alongside CRM, inventory and finance in one affordable cloud platform — with a 2-month free trial and support across Kenya, South Africa and Egypt.",
+    sections: [
+      {
+        h2: "What you get with Unity ERP",
+        body: "An all-in-one system so financial work is not trapped in spreadsheets or disconnected apps.",
+        bullets: [
+          "CRM pipeline and customer history",
+          "Inventory and purchasing visibility",
+          "Invoicing and operational reports",
+          "AI Assistant for live business questions",
+          "Unlimited users on the standard plan",
+        ],
+      },
+      {
+        h2: "Built for real operators",
+        body: "Whether you run manufacturing, retail, services or distribution, Unity ERP keeps sales, stock and cash aligned — with API and webhook integrations when you need to connect other platforms.",
+      },
+      {
+        h2: "Free trial and pricing",
+        body: "Start with 60 days full access (no credit card required). Then KES 3,000 per month or KES 33,000 per year. Active customers may receive a free custom business website design.",
+      },
+    ],
+  },
+  {
+    slug: "ngo-erp",
+    title: "NGO ERP Software",
+    h1: "NGO Operations",
+    description: "Operational ERP patterns for NGOs — inventory, purchasing and reporting discipline. Unity ERP.",
+    keywords: "NGO ERP, nonprofit inventory software, NGO management, Unity ERP, Unity Software Solutions, cloud ERP",
+    intro:
+      "Unity ERP by Unity Software Solutions helps teams run ngo operations alongside CRM, inventory and finance in one affordable cloud platform — with a 2-month free trial and support across Kenya, South Africa and Egypt.",
+    sections: [
+      {
+        h2: "What you get with Unity ERP",
+        body: "An all-in-one system so ngo work is not trapped in spreadsheets or disconnected apps.",
+        bullets: [
+          "CRM pipeline and customer history",
+          "Inventory and purchasing visibility",
+          "Invoicing and operational reports",
+          "AI Assistant for live business questions",
+          "Unlimited users on the standard plan",
+        ],
+      },
+      {
+        h2: "Built for real operators",
+        body: "Whether you run manufacturing, retail, services or distribution, Unity ERP keeps sales, stock and cash aligned — with API and webhook integrations when you need to connect other platforms.",
+      },
+      {
+        h2: "Free trial and pricing",
+        body: "Start with 60 days full access (no credit card required). Then KES 3,000 per month or KES 33,000 per year. Active customers may receive a free custom business website design.",
+      },
+    ],
+  },
+  {
+    slug: "restaurant-erp",
+    title: "Restaurant & Hospitality ERP",
+    h1: "Hospitality",
+    description: "Hospitality ERP for F&B inventory, outlets and purchasing. Unity ERP for hotels and restaurants.",
+    keywords: "restaurant ERP, hotel inventory software, hospitality ERP Kenya, Unity ERP, Unity Software Solutions, cloud ERP",
+    intro:
+      "Unity ERP by Unity Software Solutions helps teams run hospitality alongside CRM, inventory and finance in one affordable cloud platform — with a 2-month free trial and support across Kenya, South Africa and Egypt.",
+    sections: [
+      {
+        h2: "What you get with Unity ERP",
+        body: "An all-in-one system so hospitality work is not trapped in spreadsheets or disconnected apps.",
+        bullets: [
+          "CRM pipeline and customer history",
+          "Inventory and purchasing visibility",
+          "Invoicing and operational reports",
+          "AI Assistant for live business questions",
+          "Unlimited users on the standard plan",
+        ],
+      },
+      {
+        h2: "Built for real operators",
+        body: "Whether you run manufacturing, retail, services or distribution, Unity ERP keeps sales, stock and cash aligned — with API and webhook integrations when you need to connect other platforms.",
+      },
+      {
+        h2: "Free trial and pricing",
+        body: "Start with 60 days full access (no credit card required). Then KES 3,000 per month or KES 33,000 per year. Active customers may receive a free custom business website design.",
+      },
+    ],
+  },
+  {
+    slug: "agriculture-erp",
+    title: "Agriculture ERP Software",
+    h1: "Agriculture",
+    description: "Agriculture ERP for farm inputs, harvests, inventory and buyer contracts. Unity ERP agribusiness.",
+    keywords: "agriculture ERP, farm management software Kenya, agri inventory, Unity ERP, Unity Software Solutions, cloud ERP",
+    intro:
+      "Unity ERP by Unity Software Solutions helps teams run agriculture alongside CRM, inventory and finance in one affordable cloud platform — with a 2-month free trial and support across Kenya, South Africa and Egypt.",
+    sections: [
+      {
+        h2: "What you get with Unity ERP",
+        body: "An all-in-one system so agriculture work is not trapped in spreadsheets or disconnected apps.",
+        bullets: [
+          "CRM pipeline and customer history",
+          "Inventory and purchasing visibility",
+          "Invoicing and operational reports",
+          "AI Assistant for live business questions",
+          "Unlimited users on the standard plan",
+        ],
+      },
+      {
+        h2: "Built for real operators",
+        body: "Whether you run manufacturing, retail, services or distribution, Unity ERP keeps sales, stock and cash aligned — with API and webhook integrations when you need to connect other platforms.",
+      },
+      {
+        h2: "Free trial and pricing",
+        body: "Start with 60 days full access (no credit card required). Then KES 3,000 per month or KES 33,000 per year. Active customers may receive a free custom business website design.",
+      },
+    ],
+  },
+  {
+    slug: "logistics-erp",
+    title: "Logistics ERP Software",
+    h1: "Logistics",
+    description: "Logistics ERP for warehouse, delivery performance and customer billing. Unity ERP.",
+    keywords: "logistics ERP, fleet cost tracking, warehouse logistics software, Unity ERP, Unity Software Solutions, cloud ERP",
+    intro:
+      "Unity ERP by Unity Software Solutions helps teams run logistics alongside CRM, inventory and finance in one affordable cloud platform — with a 2-month free trial and support across Kenya, South Africa and Egypt.",
+    sections: [
+      {
+        h2: "What you get with Unity ERP",
+        body: "An all-in-one system so logistics work is not trapped in spreadsheets or disconnected apps.",
+        bullets: [
+          "CRM pipeline and customer history",
+          "Inventory and purchasing visibility",
+          "Invoicing and operational reports",
+          "AI Assistant for live business questions",
+          "Unlimited users on the standard plan",
+        ],
+      },
+      {
+        h2: "Built for real operators",
+        body: "Whether you run manufacturing, retail, services or distribution, Unity ERP keeps sales, stock and cash aligned — with API and webhook integrations when you need to connect other platforms.",
+      },
+      {
+        h2: "Free trial and pricing",
+        body: "Start with 60 days full access (no credit card required). Then KES 3,000 per month or KES 33,000 per year. Active customers may receive a free custom business website design.",
+      },
+    ],
+  },
+  {
+    slug: "pharmacy-software",
+    title: "Pharmacy Inventory Software",
+    h1: "Pharmacy",
+    description: "Pharmacy inventory and supply tracking patterns within hospital/clinic Unity ERP workflows.",
+    keywords: "pharmacy software Kenya, pharmacy inventory system, Unity ERP, Unity Software Solutions, cloud ERP",
+    intro:
+      "Unity ERP by Unity Software Solutions helps teams run pharmacy alongside CRM, inventory and finance in one affordable cloud platform — with a 2-month free trial and support across Kenya, South Africa and Egypt.",
+    sections: [
+      {
+        h2: "What you get with Unity ERP",
+        body: "An all-in-one system so pharmacy work is not trapped in spreadsheets or disconnected apps.",
+        bullets: [
+          "CRM pipeline and customer history",
+          "Inventory and purchasing visibility",
+          "Invoicing and operational reports",
+          "AI Assistant for live business questions",
+          "Unlimited users on the standard plan",
+        ],
+      },
+      {
+        h2: "Built for real operators",
+        body: "Whether you run manufacturing, retail, services or distribution, Unity ERP keeps sales, stock and cash aligned — with API and webhook integrations when you need to connect other platforms.",
+      },
+      {
+        h2: "Free trial and pricing",
+        body: "Start with 60 days full access (no credit card required). Then KES 3,000 per month or KES 33,000 per year. Active customers may receive a free custom business website design.",
+      },
+    ],
+  },
+  {
+    slug: "barcode-inventory",
+    title: "Barcode Inventory System",
+    h1: "Barcode Inventory",
+    description: "Barcode-ready inventory workflows in Unity ERP for faster counts and POS accuracy.",
+    keywords: "barcode inventory system, barcode stock control, Unity ERP, Unity Software Solutions, cloud ERP",
+    intro:
+      "Unity ERP by Unity Software Solutions helps teams run barcode inventory alongside CRM, inventory and finance in one affordable cloud platform — with a 2-month free trial and support across Kenya, South Africa and Egypt.",
+    sections: [
+      {
+        h2: "What you get with Unity ERP",
+        body: "An all-in-one system so barcode work is not trapped in spreadsheets or disconnected apps.",
+        bullets: [
+          "CRM pipeline and customer history",
+          "Inventory and purchasing visibility",
+          "Invoicing and operational reports",
+          "AI Assistant for live business questions",
+          "Unlimited users on the standard plan",
+        ],
+      },
+      {
+        h2: "Built for real operators",
+        body: "Whether you run manufacturing, retail, services or distribution, Unity ERP keeps sales, stock and cash aligned — with API and webhook integrations when you need to connect other platforms.",
+      },
+      {
+        h2: "Free trial and pricing",
+        body: "Start with 60 days full access (no credit card required). Then KES 3,000 per month or KES 33,000 per year. Active customers may receive a free custom business website design.",
+      },
+    ],
+  },
+  {
+    slug: "erp-integration",
+    title: "ERP Integration & API",
+    h1: "ERP Integrations",
+    description: "ERP integration via REST API and webhooks — payments, e-commerce, SMS and BI. Unity ERP.",
+    keywords: "ERP integration, ERP API, webhook ERP, Unity ERP, Unity Software Solutions, cloud ERP",
+    intro:
+      "Unity ERP by Unity Software Solutions helps teams run erp integrations alongside CRM, inventory and finance in one affordable cloud platform — with a 2-month free trial and support across Kenya, South Africa and Egypt.",
+    sections: [
+      {
+        h2: "What you get with Unity ERP",
+        body: "An all-in-one system so erp work is not trapped in spreadsheets or disconnected apps.",
+        bullets: [
+          "CRM pipeline and customer history",
+          "Inventory and purchasing visibility",
+          "Invoicing and operational reports",
+          "AI Assistant for live business questions",
+          "Unlimited users on the standard plan",
+        ],
+      },
+      {
+        h2: "Built for real operators",
+        body: "Whether you run manufacturing, retail, services or distribution, Unity ERP keeps sales, stock and cash aligned — with API and webhook integrations when you need to connect other platforms.",
+      },
+      {
+        h2: "Free trial and pricing",
+        body: "Start with 60 days full access (no credit card required). Then KES 3,000 per month or KES 33,000 per year. Active customers may receive a free custom business website design.",
+      },
+    ],
+  },
+  {
+    slug: "mpesa-erp",
+    title: "ERP with M-Pesa Friendly Payments",
+    h1: "M-Pesa & Payments",
+    description: "Unity ERP supports M-Pesa-friendly payment flows and modern payment gateways for Kenyan businesses.",
+    keywords: "M-Pesa ERP, payment ERP Kenya, mobile money ERP, Unity ERP, Unity Software Solutions, cloud ERP",
+    intro:
+      "Unity ERP by Unity Software Solutions helps teams run m-pesa & payments alongside CRM, inventory and finance in one affordable cloud platform — with a 2-month free trial and support across Kenya, South Africa and Egypt.",
+    sections: [
+      {
+        h2: "What you get with Unity ERP",
+        body: "An all-in-one system so m-pesa work is not trapped in spreadsheets or disconnected apps.",
+        bullets: [
+          "CRM pipeline and customer history",
+          "Inventory and purchasing visibility",
+          "Invoicing and operational reports",
+          "AI Assistant for live business questions",
+          "Unlimited users on the standard plan",
+        ],
+      },
+      {
+        h2: "Built for real operators",
+        body: "Whether you run manufacturing, retail, services or distribution, Unity ERP keeps sales, stock and cash aligned — with API and webhook integrations when you need to connect other platforms.",
+      },
+      {
+        h2: "Free trial and pricing",
+        body: "Start with 60 days full access (no credit card required). Then KES 3,000 per month or KES 33,000 per year. Active customers may receive a free custom business website design.",
+      },
+    ],
+  },
+  {
+    slug: "odoo-alternative-kenya",
+    title: "Odoo Alternative in Kenya",
+    h1: "Odoo Alternative",
+    description: "Looking for an Odoo alternative in Kenya? Unity ERP offers all-in-one ERP+CRM+AI with simple KES pricing and free trial.",
+    keywords: "Odoo alternative Kenya, Odoo vs Unity ERP, Unity ERP, Unity Software Solutions, cloud ERP",
+    intro:
+      "Unity ERP by Unity Software Solutions helps teams run odoo alternative alongside CRM, inventory and finance in one affordable cloud platform — with a 2-month free trial and support across Kenya, South Africa and Egypt.",
+    sections: [
+      {
+        h2: "What you get with Unity ERP",
+        body: "An all-in-one system so odoo work is not trapped in spreadsheets or disconnected apps.",
+        bullets: [
+          "CRM pipeline and customer history",
+          "Inventory and purchasing visibility",
+          "Invoicing and operational reports",
+          "AI Assistant for live business questions",
+          "Unlimited users on the standard plan",
+        ],
+      },
+      {
+        h2: "Built for real operators",
+        body: "Whether you run manufacturing, retail, services or distribution, Unity ERP keeps sales, stock and cash aligned — with API and webhook integrations when you need to connect other platforms.",
+      },
+      {
+        h2: "Free trial and pricing",
+        body: "Start with 60 days full access (no credit card required). Then KES 3,000 per month or KES 33,000 per year. Active customers may receive a free custom business website design.",
+      },
+    ],
+  },
+  {
+    slug: "salesforce-alternative-sme",
+    title: "Salesforce Alternative for SMEs",
+    h1: "CRM Alternative",
+    description: "Need CRM without enterprise complexity? Unity ERP includes CRM with inventory and finance for SMEs.",
+    keywords: "Salesforce alternative SME, affordable CRM Kenya, Unity ERP, Unity Software Solutions, cloud ERP",
+    intro:
+      "Unity ERP by Unity Software Solutions helps teams run crm alternative alongside CRM, inventory and finance in one affordable cloud platform — with a 2-month free trial and support across Kenya, South Africa and Egypt.",
+    sections: [
+      {
+        h2: "What you get with Unity ERP",
+        body: "An all-in-one system so crm work is not trapped in spreadsheets or disconnected apps.",
+        bullets: [
+          "CRM pipeline and customer history",
+          "Inventory and purchasing visibility",
+          "Invoicing and operational reports",
+          "AI Assistant for live business questions",
+          "Unlimited users on the standard plan",
+        ],
+      },
+      {
+        h2: "Built for real operators",
+        body: "Whether you run manufacturing, retail, services or distribution, Unity ERP keeps sales, stock and cash aligned — with API and webhook integrations when you need to connect other platforms.",
+      },
+      {
+        h2: "Free trial and pricing",
+        body: "Start with 60 days full access (no credit card required). Then KES 3,000 per month or KES 33,000 per year. Active customers may receive a free custom business website design.",
+      },
+    ],
+  },
+  {
+    slug: "quickbooks-alternative-kenya",
+    title: "QuickBooks Alternative Kenya",
+    h1: "Accounting Alternative",
+    description: "Unity ERP as a QuickBooks-style accounting path plus inventory, CRM and POS in one system for Kenya.",
+    keywords: "QuickBooks alternative Kenya, accounting ERP Kenya, Unity ERP, Unity Software Solutions, cloud ERP",
+    intro:
+      "Unity ERP by Unity Software Solutions helps teams run accounting alternative alongside CRM, inventory and finance in one affordable cloud platform — with a 2-month free trial and support across Kenya, South Africa and Egypt.",
+    sections: [
+      {
+        h2: "What you get with Unity ERP",
+        body: "An all-in-one system so accounting work is not trapped in spreadsheets or disconnected apps.",
+        bullets: [
+          "CRM pipeline and customer history",
+          "Inventory and purchasing visibility",
+          "Invoicing and operational reports",
+          "AI Assistant for live business questions",
+          "Unlimited users on the standard plan",
+        ],
+      },
+      {
+        h2: "Built for real operators",
+        body: "Whether you run manufacturing, retail, services or distribution, Unity ERP keeps sales, stock and cash aligned — with API and webhook integrations when you need to connect other platforms.",
+      },
+      {
+        h2: "Free trial and pricing",
+        body: "Start with 60 days full access (no credit card required). Then KES 3,000 per month or KES 33,000 per year. Active customers may receive a free custom business website design.",
+      },
+    ],
+  },
+  {
+    slug: "sage-alternative",
+    title: "Sage Alternative ERP",
+    h1: "Sage Alternative",
+    description: "Sage alternative for growing teams: Unity ERP combines finance with operations, CRM and AI.",
+    keywords: "Sage alternative, Sage vs Unity ERP, Unity ERP, Unity Software Solutions, cloud ERP",
+    intro:
+      "Unity ERP by Unity Software Solutions helps teams run sage alternative alongside CRM, inventory and finance in one affordable cloud platform — with a 2-month free trial and support across Kenya, South Africa and Egypt.",
+    sections: [
+      {
+        h2: "What you get with Unity ERP",
+        body: "An all-in-one system so sage work is not trapped in spreadsheets or disconnected apps.",
+        bullets: [
+          "CRM pipeline and customer history",
+          "Inventory and purchasing visibility",
+          "Invoicing and operational reports",
+          "AI Assistant for live business questions",
+          "Unlimited users on the standard plan",
+        ],
+      },
+      {
+        h2: "Built for real operators",
+        body: "Whether you run manufacturing, retail, services or distribution, Unity ERP keeps sales, stock and cash aligned — with API and webhook integrations when you need to connect other platforms.",
+      },
+      {
+        h2: "Free trial and pricing",
+        body: "Start with 60 days full access (no credit card required). Then KES 3,000 per month or KES 33,000 per year. Active customers may receive a free custom business website design.",
+      },
+    ],
+  },
+  {
+    slug: "free-inventory-software",
+    title: "Free Inventory Software Trial",
+    h1: "Free Inventory Trial",
+    description: "Free inventory software trial inside Unity ERP — 60 days full access including stock, CRM and finance.",
+    keywords: "free inventory software, free stock control trial, Unity ERP, Unity Software Solutions, cloud ERP",
+    intro:
+      "Unity ERP by Unity Software Solutions helps teams run free inventory trial alongside CRM, inventory and finance in one affordable cloud platform — with a 2-month free trial and support across Kenya, South Africa and Egypt.",
+    sections: [
+      {
+        h2: "What you get with Unity ERP",
+        body: "An all-in-one system so free work is not trapped in spreadsheets or disconnected apps.",
+        bullets: [
+          "CRM pipeline and customer history",
+          "Inventory and purchasing visibility",
+          "Invoicing and operational reports",
+          "AI Assistant for live business questions",
+          "Unlimited users on the standard plan",
+        ],
+      },
+      {
+        h2: "Built for real operators",
+        body: "Whether you run manufacturing, retail, services or distribution, Unity ERP keeps sales, stock and cash aligned — with API and webhook integrations when you need to connect other platforms.",
+      },
+      {
+        h2: "Free trial and pricing",
+        body: "Start with 60 days full access (no credit card required). Then KES 3,000 per month or KES 33,000 per year. Active customers may receive a free custom business website design.",
+      },
+    ],
+  },
+  {
+    slug: "free-crm-software",
+    title: "Free CRM Software Trial",
+    h1: "Free CRM Trial",
+    description: "Free CRM software trial with Unity ERP — pipeline, customers and AI sales insights for 60 days.",
+    keywords: "free CRM software, free CRM trial Kenya, Unity ERP, Unity Software Solutions, cloud ERP",
+    intro:
+      "Unity ERP by Unity Software Solutions helps teams run free crm trial alongside CRM, inventory and finance in one affordable cloud platform — with a 2-month free trial and support across Kenya, South Africa and Egypt.",
+    sections: [
+      {
+        h2: "What you get with Unity ERP",
+        body: "An all-in-one system so free work is not trapped in spreadsheets or disconnected apps.",
+        bullets: [
+          "CRM pipeline and customer history",
+          "Inventory and purchasing visibility",
+          "Invoicing and operational reports",
+          "AI Assistant for live business questions",
+          "Unlimited users on the standard plan",
+        ],
+      },
+      {
+        h2: "Built for real operators",
+        body: "Whether you run manufacturing, retail, services or distribution, Unity ERP keeps sales, stock and cash aligned — with API and webhook integrations when you need to connect other platforms.",
+      },
+      {
+        h2: "Free trial and pricing",
+        body: "Start with 60 days full access (no credit card required). Then KES 3,000 per month or KES 33,000 per year. Active customers may receive a free custom business website design.",
+      },
+    ],
+  },
+  {
+    slug: "erp-implementation-kenya",
+    title: "ERP Implementation Kenya",
+    h1: "ERP Implementation",
+    description: "ERP implementation in Kenya with Unity Software Solutions — phased go-live, data migration and training support.",
+    keywords: "ERP implementation Kenya, ERP setup, ERP onboarding, Unity ERP, Unity Software Solutions, cloud ERP",
+    intro:
+      "Unity ERP by Unity Software Solutions helps teams run erp implementation alongside CRM, inventory and finance in one affordable cloud platform — with a 2-month free trial and support across Kenya, South Africa and Egypt.",
+    sections: [
+      {
+        h2: "What you get with Unity ERP",
+        body: "An all-in-one system so erp work is not trapped in spreadsheets or disconnected apps.",
+        bullets: [
+          "CRM pipeline and customer history",
+          "Inventory and purchasing visibility",
+          "Invoicing and operational reports",
+          "AI Assistant for live business questions",
+          "Unlimited users on the standard plan",
+        ],
+      },
+      {
+        h2: "Built for real operators",
+        body: "Whether you run manufacturing, retail, services or distribution, Unity ERP keeps sales, stock and cash aligned — with API and webhook integrations when you need to connect other platforms.",
+      },
+      {
+        h2: "Free trial and pricing",
+        body: "Start with 60 days full access (no credit card required). Then KES 3,000 per month or KES 33,000 per year. Active customers may receive a free custom business website design.",
+      },
+    ],
+  },
+  {
+    slug: "erp-for-retail-kenya",
+    title: "ERP for Retail Kenya",
+    h1: "Retail ERP Kenya",
+    description: "ERP for retail in Kenya: POS, multi-branch stock, CRM and daily cash-up. Unity ERP free trial.",
+    keywords: "retail ERP Kenya, retail management software, Unity ERP, Unity Software Solutions, cloud ERP",
+    intro:
+      "Unity ERP by Unity Software Solutions helps teams run retail erp kenya alongside CRM, inventory and finance in one affordable cloud platform — with a 2-month free trial and support across Kenya, South Africa and Egypt.",
+    sections: [
+      {
+        h2: "What you get with Unity ERP",
+        body: "An all-in-one system so retail work is not trapped in spreadsheets or disconnected apps.",
+        bullets: [
+          "CRM pipeline and customer history",
+          "Inventory and purchasing visibility",
+          "Invoicing and operational reports",
+          "AI Assistant for live business questions",
+          "Unlimited users on the standard plan",
+        ],
+      },
+      {
+        h2: "Built for real operators",
+        body: "Whether you run manufacturing, retail, services or distribution, Unity ERP keeps sales, stock and cash aligned — with API and webhook integrations when you need to connect other platforms.",
+      },
+      {
+        h2: "Free trial and pricing",
+        body: "Start with 60 days full access (no credit card required). Then KES 3,000 per month or KES 33,000 per year. Active customers may receive a free custom business website design.",
+      },
+    ],
+  },
+  {
+    slug: "erp-for-manufacturing-kenya",
+    title: "ERP for Manufacturing Kenya",
+    h1: "Manufacturing Kenya",
+    description: "ERP for manufacturing in Kenya — BOM, production, inventory and costing with Unity ERP.",
+    keywords: "manufacturing ERP Kenya, factory software Kenya, Unity ERP, Unity Software Solutions, cloud ERP",
+    intro:
+      "Unity ERP by Unity Software Solutions helps teams run manufacturing kenya alongside CRM, inventory and finance in one affordable cloud platform — with a 2-month free trial and support across Kenya, South Africa and Egypt.",
+    sections: [
+      {
+        h2: "What you get with Unity ERP",
+        body: "An all-in-one system so manufacturing work is not trapped in spreadsheets or disconnected apps.",
+        bullets: [
+          "CRM pipeline and customer history",
+          "Inventory and purchasing visibility",
+          "Invoicing and operational reports",
+          "AI Assistant for live business questions",
+          "Unlimited users on the standard plan",
+        ],
+      },
+      {
+        h2: "Built for real operators",
+        body: "Whether you run manufacturing, retail, services or distribution, Unity ERP keeps sales, stock and cash aligned — with API and webhook integrations when you need to connect other platforms.",
+      },
+      {
+        h2: "Free trial and pricing",
+        body: "Start with 60 days full access (no credit card required). Then KES 3,000 per month or KES 33,000 per year. Active customers may receive a free custom business website design.",
+      },
+    ],
+  },
+  {
+    slug: "best-pos-system-kenya",
+    title: "Best POS System Kenya",
+    h1: "POS System Kenya",
+    description: "POS system Kenya connected to inventory and finance. Unity ERP retail POS with free trial.",
+    keywords: "best POS system Kenya, POS Kenya, Unity ERP, Unity Software Solutions, cloud ERP",
+    intro:
+      "Unity ERP by Unity Software Solutions helps teams run pos system kenya alongside CRM, inventory and finance in one affordable cloud platform — with a 2-month free trial and support across Kenya, South Africa and Egypt.",
+    sections: [
+      {
+        h2: "What you get with Unity ERP",
+        body: "An all-in-one system so pos work is not trapped in spreadsheets or disconnected apps.",
+        bullets: [
+          "CRM pipeline and customer history",
+          "Inventory and purchasing visibility",
+          "Invoicing and operational reports",
+          "AI Assistant for live business questions",
+          "Unlimited users on the standard plan",
+        ],
+      },
+      {
+        h2: "Built for real operators",
+        body: "Whether you run manufacturing, retail, services or distribution, Unity ERP keeps sales, stock and cash aligned — with API and webhook integrations when you need to connect other platforms.",
+      },
+      {
+        h2: "Free trial and pricing",
+        body: "Start with 60 days full access (no credit card required). Then KES 3,000 per month or KES 33,000 per year. Active customers may receive a free custom business website design.",
+      },
+    ],
+  },
+  {
+    slug: "best-crm-kenya",
+    title: "Best CRM Kenya for SMEs",
+    h1: "CRM Kenya",
+    description: "Best CRM approach for Kenyan SMEs: Unity ERP CRM with stock visibility and AI assistants.",
+    keywords: "best CRM Kenya, CRM for SMEs Kenya, Unity ERP, Unity Software Solutions, cloud ERP",
+    intro:
+      "Unity ERP by Unity Software Solutions helps teams run crm kenya alongside CRM, inventory and finance in one affordable cloud platform — with a 2-month free trial and support across Kenya, South Africa and Egypt.",
+    sections: [
+      {
+        h2: "What you get with Unity ERP",
+        body: "An all-in-one system so crm work is not trapped in spreadsheets or disconnected apps.",
+        bullets: [
+          "CRM pipeline and customer history",
+          "Inventory and purchasing visibility",
+          "Invoicing and operational reports",
+          "AI Assistant for live business questions",
+          "Unlimited users on the standard plan",
+        ],
+      },
+      {
+        h2: "Built for real operators",
+        body: "Whether you run manufacturing, retail, services or distribution, Unity ERP keeps sales, stock and cash aligned — with API and webhook integrations when you need to connect other platforms.",
+      },
+      {
+        h2: "Free trial and pricing",
+        body: "Start with 60 days full access (no credit card required). Then KES 3,000 per month or KES 33,000 per year. Active customers may receive a free custom business website design.",
+      },
+    ],
+  },
+  {
+    slug: "business-software-kenya",
+    title: "Business Software Kenya",
+    h1: "Business Software Kenya",
+    description: "Business software Kenya — all-in-one ERP, CRM, inventory and accounting with Unity ERP.",
+    keywords: "business software Kenya, company software Kenya, Unity ERP, Unity Software Solutions, cloud ERP",
+    intro:
+      "Unity ERP by Unity Software Solutions helps teams run business software kenya alongside CRM, inventory and finance in one affordable cloud platform — with a 2-month free trial and support across Kenya, South Africa and Egypt.",
+    sections: [
+      {
+        h2: "What you get with Unity ERP",
+        body: "An all-in-one system so business work is not trapped in spreadsheets or disconnected apps.",
+        bullets: [
+          "CRM pipeline and customer history",
+          "Inventory and purchasing visibility",
+          "Invoicing and operational reports",
+          "AI Assistant for live business questions",
+          "Unlimited users on the standard plan",
+        ],
+      },
+      {
+        h2: "Built for real operators",
+        body: "Whether you run manufacturing, retail, services or distribution, Unity ERP keeps sales, stock and cash aligned — with API and webhook integrations when you need to connect other platforms.",
+      },
+      {
+        h2: "Free trial and pricing",
+        body: "Start with 60 days full access (no credit card required). Then KES 3,000 per month or KES 33,000 per year. Active customers may receive a free custom business website design.",
+      },
+    ],
+  },
+  {
+    slug: "digital-transformation-sme",
+    title: "Digital Transformation for SMEs",
+    h1: "Digital Transformation",
+    description: "Digital transformation for SMEs starts with one system of record. Unity ERP for operations and growth.",
+    keywords: "digital transformation SME Kenya, SME digitization, Unity ERP, Unity Software Solutions, cloud ERP",
+    intro:
+      "Unity ERP by Unity Software Solutions helps teams run digital transformation alongside CRM, inventory and finance in one affordable cloud platform — with a 2-month free trial and support across Kenya, South Africa and Egypt.",
+    sections: [
+      {
+        h2: "What you get with Unity ERP",
+        body: "An all-in-one system so digital work is not trapped in spreadsheets or disconnected apps.",
+        bullets: [
+          "CRM pipeline and customer history",
+          "Inventory and purchasing visibility",
+          "Invoicing and operational reports",
+          "AI Assistant for live business questions",
+          "Unlimited users on the standard plan",
+        ],
+      },
+      {
+        h2: "Built for real operators",
+        body: "Whether you run manufacturing, retail, services or distribution, Unity ERP keeps sales, stock and cash aligned — with API and webhook integrations when you need to connect other platforms.",
+      },
+      {
+        h2: "Free trial and pricing",
+        body: "Start with 60 days full access (no credit card required). Then KES 3,000 per month or KES 33,000 per year. Active customers may receive a free custom business website design.",
+      },
+    ],
+  },
+  {
+    slug: "inventory-valuation",
+    title: "Inventory Valuation & Stock Reports",
+    h1: "Inventory Valuation",
+    description: "Inventory valuation and stock reports in Unity ERP for clearer margins and month-end.",
+    keywords: "inventory valuation, stock reports software, Unity ERP, Unity Software Solutions, cloud ERP",
+    intro:
+      "Unity ERP by Unity Software Solutions helps teams run inventory valuation alongside CRM, inventory and finance in one affordable cloud platform — with a 2-month free trial and support across Kenya, South Africa and Egypt.",
+    sections: [
+      {
+        h2: "What you get with Unity ERP",
+        body: "An all-in-one system so inventory work is not trapped in spreadsheets or disconnected apps.",
+        bullets: [
+          "CRM pipeline and customer history",
+          "Inventory and purchasing visibility",
+          "Invoicing and operational reports",
+          "AI Assistant for live business questions",
+          "Unlimited users on the standard plan",
+        ],
+      },
+      {
+        h2: "Built for real operators",
+        body: "Whether you run manufacturing, retail, services or distribution, Unity ERP keeps sales, stock and cash aligned — with API and webhook integrations when you need to connect other platforms.",
+      },
+      {
+        h2: "Free trial and pricing",
+        body: "Start with 60 days full access (no credit card required). Then KES 3,000 per month or KES 33,000 per year. Active customers may receive a free custom business website design.",
+      },
+    ],
+  },
+  {
+    slug: "purchase-order-software",
+    title: "Purchase Order Software",
+    h1: "Purchase Orders",
+    description: "Purchase order software with supplier POs, receipts and inventory updates. Unity ERP procurement.",
+    keywords: "purchase order software, PO system Kenya, Unity ERP, Unity Software Solutions, cloud ERP",
+    intro:
+      "Unity ERP by Unity Software Solutions helps teams run purchase orders alongside CRM, inventory and finance in one affordable cloud platform — with a 2-month free trial and support across Kenya, South Africa and Egypt.",
+    sections: [
+      {
+        h2: "What you get with Unity ERP",
+        body: "An all-in-one system so purchase work is not trapped in spreadsheets or disconnected apps.",
+        bullets: [
+          "CRM pipeline and customer history",
+          "Inventory and purchasing visibility",
+          "Invoicing and operational reports",
+          "AI Assistant for live business questions",
+          "Unlimited users on the standard plan",
+        ],
+      },
+      {
+        h2: "Built for real operators",
+        body: "Whether you run manufacturing, retail, services or distribution, Unity ERP keeps sales, stock and cash aligned — with API and webhook integrations when you need to connect other platforms.",
+      },
+      {
+        h2: "Free trial and pricing",
+        body: "Start with 60 days full access (no credit card required). Then KES 3,000 per month or KES 33,000 per year. Active customers may receive a free custom business website design.",
+      },
+    ],
+  }
 ];
 
 export const seoBySlug: Record<string, SeoPage> = Object.fromEntries(

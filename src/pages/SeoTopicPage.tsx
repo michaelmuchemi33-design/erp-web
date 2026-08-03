@@ -26,6 +26,35 @@ export function SeoTopicShell({ page }: { page: SeoPage }) {
       document.head.appendChild(k);
     }
     k.setAttribute("content", page.keywords);
+
+    const id = "seo-jsonld";
+    document.getElementById(id)?.remove();
+    const script = document.createElement("script");
+    script.id = id;
+    script.type = "application/ld+json";
+    script.text = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      name: page.h1,
+      description: page.description,
+      url: `https://www.unity-software.online/${page.slug}`,
+      isPartOf: {
+        "@type": "WebSite",
+        name: "Unity ERP",
+        url: "https://www.unity-software.online",
+      },
+      about: {
+        "@type": "SoftwareApplication",
+        name: "Unity ERP",
+        applicationCategory: "BusinessApplication",
+        offers: {
+          "@type": "Offer",
+          price: "3000",
+          priceCurrency: "KES",
+        },
+      },
+    });
+    document.head.appendChild(script);
   }, [page]);
 
   const related = seoPages.filter((p) => p.slug !== page.slug).slice(0, 6);
