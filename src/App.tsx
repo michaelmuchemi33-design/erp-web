@@ -18,6 +18,7 @@ import { FeaturesPageShell } from "@/pages/FeaturesPage";
 import { IndustriesPageShell } from "@/pages/IndustriesPage";
 import { PricingStandaloneShell } from "@/pages/PricingStandalonePage";
 import { CareersPageShell } from "@/pages/CareersPage";
+import { PaymentCallbackShell } from "@/pages/PaymentCallbackPage";
 import { ResourcePageShell } from "@/pages/ResourcePage";
 import { pagesBySlug } from "@/content/resourcePages";
 
@@ -85,6 +86,7 @@ export default function App() {
   const isIndustries = path === "/industries";
   const isPricing = path === "/pricing";
   const isCareers = path === "/careers";
+  const isPaymentCallback = path === "/payment/callback" || path === "/payment/success";
   const resourceSlug = path.startsWith("/") ? path.slice(1) : path;
   const resourcePage = pagesBySlug[resourceSlug];
 
@@ -102,12 +104,14 @@ export default function App() {
         <PricingStandaloneShell />
       ) : isCareers ? (
         <CareersPageShell />
+      ) : isPaymentCallback ? (
+        <PaymentCallbackShell />
       ) : resourcePage ? (
         <ResourcePageShell page={resourcePage} />
       ) : (
         <HomePage onOpenSignup={() => setSignupOpen(true)} />
       )}
-      {!isAbout && !isContact && !isFeatures && !isIndustries && !isPricing && !isCareers && !resourcePage && (
+      {!isAbout && !isContact && !isFeatures && !isIndustries && !isPricing && !isCareers && !isPaymentCallback && !resourcePage && (
         <SignupWizard open={signupOpen} onClose={() => setSignupOpen(false)} />
       )}
     </div>
