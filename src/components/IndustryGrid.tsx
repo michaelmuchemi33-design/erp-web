@@ -527,6 +527,58 @@ function buildLinePath(data: number[]) {
     .join(" ");
 }
 
+
+function WaveSparkline({
+  data,
+  color,
+  gradId,
+}: {
+  data: number[];
+  color: string;
+  gradId: string;
+}) {
+  const [phase, setPhase] = useState(0);
+
+  useEffect(() => {
+    let raf = 0;
+    let last = performance.now();
+    const tick = (now: number) => {
+      if (now - last > 40) {
+        setPhase((p) => p + 0.08);
+        last = now;
+      }
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, []);
+
+  const waved = useMemo(
+    () => data.map((v, i) => v + Math.sin(phase + i * 0.75) * 5.5),
+    [data, phase]
+  );
+
+  return (
+    <svg viewBox="0 0 100 40" preserveAspectRatio="none" className="h-full w-full">
+      <defs>
+        <linearGradient id={gradId} x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor={color} stopOpacity="0.28" />
+          <stop offset="100%" stopColor={color} stopOpacity="0" />
+        </linearGradient>
+      </defs>
+      <path d={buildAreaPath(waved)} fill={`url(#${gradId})`} />
+      <path
+        fill="none"
+        stroke={color}
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d={buildLinePath(waved)}
+      />
+    </svg>
+  );
+}
+
 function IndustryOverlay({
   industry,
   onClose,
@@ -752,32 +804,11 @@ export function IndustryGrid() {
                 <p className="text-xs text-slate-500">{industry.kpiLabel}</p>
 
                 <div className="relative mt-4 h-12 w-full overflow-hidden rounded-lg bg-gradient-to-b from-slate-50/50 to-transparent">
-                  <svg viewBox="0 0 100 40" preserveAspectRatio="none" className="h-full w-full">
-                    <defs>
-                      <linearGradient id={`grad-${i}`} x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor={industry.chartColor} stopOpacity="0.25" />
-                        <stop offset="100%" stopColor={industry.chartColor} stopOpacity="0" />
-                      </linearGradient>
-                    </defs>
-                    <motion.path
-                      d={buildAreaPath(industry.data)}
-                      fill={`url(#grad-${i})`}
-                      initial={{ opacity: 0 }}
-                      animate={isInView ? { opacity: 1 } : {}}
-                      transition={{ duration: 0.8, delay: i * 0.03 + 0.3 }}
-                    />
-                    <motion.path
-                      fill="none"
-                      stroke={industry.chartColor}
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d={buildLinePath(industry.data)}
-                      initial={{ pathLength: 0 }}
-                      animate={isInView ? { pathLength: 1 } : {}}
-                      transition={{ duration: 1.2, delay: i * 0.03, ease: "easeOut" }}
-                    />
-                  </svg>
+                  <WaveSparkline
+                    data={industry.data}
+                    color={industry.chartColor}
+                    gradId={`grad-${i}`}
+                  />
                 </div>
 
                 <div className="mt-4 flex items-center justify-between">

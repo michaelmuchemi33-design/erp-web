@@ -180,9 +180,9 @@ export function AIAssistantChat() {
   }
 
   return (
-    <div className="flex h-full min-h-[480px] flex-col rounded-3xl border border-slate-100 bg-white/95 p-5 shadow-2xl shadow-slate-900/10 backdrop-blur-xl md:p-6">
+    <div className="flex h-[520px] max-h-[520px] flex-col overflow-hidden rounded-3xl border border-slate-100 bg-white/95 p-5 shadow-2xl shadow-slate-900/10 backdrop-blur-xl md:h-[540px] md:max-h-[540px] md:p-6">
       {/* Header */}
-      <div className="mb-4 flex items-center justify-between border-b border-slate-100 pb-4">
+      <div className="mb-4 flex shrink-0 items-center justify-between border-b border-slate-100 pb-4">
         <div className="flex items-center gap-2.5">
           <motion.div
             animate={{ rotate: [0, 8, -8, 0] }}
@@ -219,7 +219,7 @@ export function AIAssistantChat() {
       </div>
 
       {/* Messages */}
-      <div className="mb-3 flex-1 space-y-3 overflow-y-auto pr-1" style={{ maxHeight: 280 }}>
+      <div className="mb-3 min-h-0 flex-1 space-y-3 overflow-y-auto overscroll-contain pr-1">
         <AnimatePresence initial={false}>
           {messages.map((msg) => (
             <motion.div
@@ -265,7 +265,7 @@ export function AIAssistantChat() {
       {/* Input */}
       <form
         onSubmit={onSubmit}
-        className="flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-3 py-2.5 shadow-sm focus-within:ring-2 focus-within:ring-emerald-500/20"
+        className="flex shrink-0 items-center gap-2 rounded-2xl border border-slate-200 bg-white px-3 py-2.5 shadow-sm focus-within:ring-2 focus-within:ring-emerald-500/20"
       >
         <input
           type="text"
@@ -284,7 +284,7 @@ export function AIAssistantChat() {
       </form>
 
       {/* Quick prompts */}
-      <div className="mt-3 flex flex-wrap gap-2">
+      <div className="mt-3 flex shrink-0 flex-wrap gap-2">
         {QUICK.map((prompt) => (
           <button
             key={prompt}
