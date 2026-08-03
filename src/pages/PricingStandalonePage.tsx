@@ -22,7 +22,7 @@ export function PricingStandaloneShell() {
   return (
     <div className="min-h-screen overflow-x-hidden bg-white font-sans text-slate-950">
       <Header onOpenSignup={() => setSignupOpen(true)} />
-      <main className="pt-16">
+      <main className="pt-24 md:pt-28">
         <PricingHero />
         <PricingCard onOpenSignup={() => setSignupOpen(true)} />
         <Guarantee />

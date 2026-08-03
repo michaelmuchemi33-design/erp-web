@@ -145,6 +145,11 @@ export function AIAssistantChat() {
     try {
       (document.activeElement as HTMLElement)?.blur?.();
     } catch {}
+    // Freeze window scroll so mobile/desktop don't jump when chat updates
+    const y = window.scrollY;
+    const lock = () => window.scrollTo(0, y);
+    lock();
+    requestAnimationFrame(lock);
 
     if (typing) return;
     const userMsg: Msg = {
@@ -162,6 +167,7 @@ export function AIAssistantChat() {
       "I can help with sales, inventory, finance, and purchase recommendations. Try one of the suggestions below.";
     const kind = preset?.kind;
 
+    const y = window.scrollY;
     window.setTimeout(() => {
       setMessages((m) => [
         ...m,
@@ -173,13 +179,19 @@ export function AIAssistantChat() {
         },
       ]);
       setTyping(false);
+      window.scrollTo(0, y);
+      requestAnimationFrame(() => window.scrollTo(0, y));
     }, 700 + Math.random() * 500);
   }
 
   function onSubmit(e: React.FormEvent) {
     e.preventDefault();
+    e.stopPropagation();
+    const y = window.scrollY;
     const q = input.trim();
     if (!q) return;
+    (e.target as HTMLFormElement).querySelector("input")?.blur();
+    window.scrollTo(0, y);
     // Match closest preset or free text
     const match = QUICK.find(
       (k) => k.toLowerCase() === q.toLowerCase() || q.toLowerCase().includes(k.toLowerCase().split(" ")[0])
@@ -188,7 +200,7 @@ export function AIAssistantChat() {
   }
 
   return (
-    <div className="flex h-[520px] max-h-[520px] flex-col overflow-hidden overscroll-contain rounded-3xl border border-slate-100 bg-white/95 p-5 shadow-2xl shadow-slate-900/10 backdrop-blur-xl md:h-[540px] md:max-h-[540px] md:p-6" style={{ contain: "layout paint", touchAction: "pan-y" }}>
+    <div className="flex h-[520px] max-h-[520px] flex-col overflow-hidden rounded-3xl border border-slate-100 bg-white/95 p-5 shadow-2xl shadow-slate-900/10 backdrop-blur-xl md:h-[540px] md:max-h-[540px] md:p-6" style={{ contain: "strict", touchAction: "manipulation", overscrollBehavior: "none" }}>
       {/* Header */}
       <div className="mb-4 flex shrink-0 items-center justify-between border-b border-slate-100 pb-4">
         <div className="flex items-center gap-2.5">
@@ -233,7 +245,7 @@ export function AIAssistantChat() {
       <div
         ref={listRef}
         className="mb-3 min-h-0 flex-1 space-y-3 overflow-y-auto overscroll-y-contain pr-1"
-        style={{ overscrollBehavior: "contain", WebkitOverflowScrolling: "touch" }}
+        style={{ overscrollBehavior: "contain", WebkitOverflowScrolling: "touch", touchAction: "pan-y" }}
       >
         <AnimatePresence initial={false}>
           {messages.map((msg) => (
@@ -300,7 +312,10 @@ export function AIAssistantChat() {
             disabled={typing}
             onClick={(e) => {
               e.preventDefault();
+              e.stopPropagation();
+              const y = window.scrollY;
               ask(prompt);
+              window.scrollTo(0, y);
             }}
             className="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-600 transition-all hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-800 disabled:opacity-50"
           >

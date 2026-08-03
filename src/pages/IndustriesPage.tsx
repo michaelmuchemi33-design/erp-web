@@ -19,7 +19,7 @@ export function IndustriesPageShell() {
   return (
     <div className="min-h-screen overflow-x-hidden bg-white font-sans text-slate-950">
       <Header onOpenSignup={() => setSignupOpen(true)} />
-      <main className="pt-8">
+      <main className="pt-8 md:pt-10">
         <div className="mx-auto max-w-7xl px-6 pt-20 pb-2">
           <p className="text-xs font-bold uppercase tracking-wider text-amber-600">Solutions</p>
           <h1 className="mt-2 text-4xl font-bold tracking-tight text-slate-950 sm:text-5xl">

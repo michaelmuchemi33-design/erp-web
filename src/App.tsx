@@ -66,7 +66,20 @@ export default function App() {
   );
 
   useEffect(() => {
-    const onNav = () => setPath(normalizePath(window.location.pathname));
+    const scrollTop = () => {
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    };
+
+    const onNav = () => {
+      setPath(normalizePath(window.location.pathname));
+      // next frame so new page is mounted then pin to top
+      requestAnimationFrame(() => {
+        scrollTop();
+        requestAnimationFrame(scrollTop);
+      });
+    };
     window.addEventListener("popstate", onNav);
 
     const onClick = (e: MouseEvent) => {
@@ -74,14 +87,18 @@ export default function App() {
       if (!a) return;
       const href = a.getAttribute("href");
       if (!href) return;
-      if (href.startsWith("http") || href.startsWith("mailto:") || href.startsWith("tel:")) return;
+      if (href.startsWith("http") || href.startsWith("mailto:") || href.startsWith("tel:") || href.startsWith("https://wa.me")) return;
       if (href.startsWith("#")) return;
       if (a.target === "_blank") return;
       e.preventDefault();
       const next = href.split("?")[0].split("#")[0] || "/";
       window.history.pushState({}, "", next);
       setPath(normalizePath(next));
-      window.scrollTo(0, 0);
+      scrollTop();
+      requestAnimationFrame(() => {
+        scrollTop();
+        requestAnimationFrame(scrollTop);
+      });
     };
     document.addEventListener("click", onClick);
     return () => {
@@ -89,6 +106,13 @@ export default function App() {
       document.removeEventListener("click", onClick);
     };
   }, []);
+
+  // Every route change: force viewport to top (pricing, features, SEO pages, etc.)
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }, [path]);
 
   const isAbout = path === "/about";
   const isContact = path === "/contact";
