@@ -19,6 +19,8 @@ import { IndustriesPageShell } from "@/pages/IndustriesPage";
 import { PricingStandaloneShell } from "@/pages/PricingStandalonePage";
 import { CareersPageShell } from "@/pages/CareersPage";
 import { PaymentCallbackShell } from "@/pages/PaymentCallbackPage";
+import { SeoTopicShell } from "@/pages/SeoTopicPage";
+import { seoBySlug } from "@/content/seoPages";
 import { ResourcePageShell } from "@/pages/ResourcePage";
 import { pagesBySlug } from "@/content/resourcePages";
 
@@ -89,6 +91,7 @@ export default function App() {
   const isPaymentCallback = path === "/payment/callback" || path === "/payment/success";
   const resourceSlug = path.startsWith("/") ? path.slice(1) : path;
   const resourcePage = pagesBySlug[resourceSlug];
+  const seoPage = seoBySlug[resourceSlug];
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-white font-sans text-slate-950 selection:bg-emerald-100 selection:text-emerald-900">
@@ -108,10 +111,12 @@ export default function App() {
         <PaymentCallbackShell />
       ) : resourcePage ? (
         <ResourcePageShell page={resourcePage} />
+      ) : seoPage ? (
+        <SeoTopicShell page={seoPage} />
       ) : (
         <HomePage onOpenSignup={() => setSignupOpen(true)} />
       )}
-      {!isAbout && !isContact && !isFeatures && !isIndustries && !isPricing && !isCareers && !isPaymentCallback && !resourcePage && (
+      {!isAbout && !isContact && !isFeatures && !isIndustries && !isPricing && !isCareers && !isPaymentCallback && !resourcePage && !seoPage && (
         <SignupWizard open={signupOpen} onClose={() => setSignupOpen(false)} />
       )}
     </div>

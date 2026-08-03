@@ -18,7 +18,10 @@ import {
   Send,
 } from "lucide-react";
 
-const EMAIL = "erpintergration@gmail.com";
+const EMAIL = "developerunityerp@proton.me";
+/** WhatsApp: 0744 line — update digits if needed */
+const CAREERS_PHONE_DISPLAY = "0744";
+const CAREERS_WA_LINK = "https://wa.me/254744";
 const APPLY = `mailto:${EMAIL}?subject=`;
 
 const jobs = [
@@ -96,6 +99,12 @@ function ApplyForm({ role }: { role: string }) {
         message: form.message.trim() || null,
       });
       if (dbError) throw dbError;
+      // Also open mail client so CV reaches hiring inbox
+      const subject = encodeURIComponent(`Application — ${role} — ${form.name.trim()}`);
+      const body = encodeURIComponent(
+        `Role: ${role}\nName: ${form.name.trim()}\nEmail: ${form.email.trim()}\nPhone: ${form.phone.trim()}\nPortfolio: ${form.portfolio_url.trim()}\n\n${form.message.trim()}\n\n(Also saved in Unity ERP applications database.)`
+      );
+      window.open(`mailto:${EMAIL}?subject=${subject}&body=${body}`, "_blank");
       setDone(true);
       setForm({ name: "", email: "", phone: "", portfolio_url: "", message: "" });
     } catch (err: unknown) {
@@ -113,7 +122,13 @@ function ApplyForm({ role }: { role: string }) {
     return (
       <div className="mt-6 flex items-center gap-2 rounded-2xl bg-emerald-50 px-4 py-3 text-sm font-medium text-emerald-800">
         <Check className="h-4 w-4" />
-        Application saved — we will review and contact you.
+        Application recorded. Send your CV to{" "}
+        <a href={`mailto:${EMAIL}`} className="underline">{EMAIL}</a>
+        {" "}or WhatsApp{" "}
+        <a href={CAREERS_WA_LINK} target="_blank" rel="noreferrer" className="underline">
+          {CAREERS_PHONE_DISPLAY}
+        </a>
+        .
       </div>
     );
   }
@@ -121,6 +136,17 @@ function ApplyForm({ role }: { role: string }) {
   return (
     <form onSubmit={onSubmit} className="mt-6 space-y-3 rounded-2xl border border-slate-100 bg-white p-4">
       <p className="text-sm font-semibold text-slate-900">Apply for {role}</p>
+      <p className="text-xs text-slate-500">
+        Submit here, then email your CV to{" "}
+        <a href={`mailto:${EMAIL}`} className="font-medium text-emerald-700 underline">
+          {EMAIL}
+        </a>{" "}
+        or WhatsApp{" "}
+        <a href={CAREERS_WA_LINK} target="_blank" rel="noreferrer" className="font-medium text-emerald-700 underline">
+          {CAREERS_PHONE_DISPLAY}
+        </a>
+        .
+      </p>
       <div className="grid gap-3 sm:grid-cols-2">
         <input
           required
@@ -392,12 +418,21 @@ export function CareersPageShell() {
             <div className="rounded-3xl bg-slate-950 p-8 text-center text-white">
               <h3 className="text-xl font-bold">Don&apos;t see your role?</h3>
               <p className="mx-auto mt-2 max-w-md text-sm text-slate-300">
-                Send an open application to{" "}
+                Send your CV to{" "}
                 <a
                   href={`mailto:${EMAIL}`}
                   className="text-amber-300 underline-offset-2 hover:underline"
                 >
                   {EMAIL}
+                </a>{" "}
+                or WhatsApp{" "}
+                <a
+                  href={CAREERS_WA_LINK}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-amber-300 underline-offset-2 hover:underline"
+                >
+                  {CAREERS_PHONE_DISPLAY}
                 </a>
                 . We hire exceptional people year-round.
               </p>
