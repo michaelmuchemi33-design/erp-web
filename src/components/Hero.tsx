@@ -304,9 +304,12 @@ export function Hero({ onOpenSignup }: { onOpenSignup?: () => void } = {}) {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="relative flex justify-center lg:justify-end"
         >
-          <div className="w-full max-w-lg lg:max-w-xl">
+          <div
+            className="w-full max-w-lg lg:max-w-xl"
+            style={{ minHeight: 540, height: 540, isolation: "isolate", contain: "layout" }}
+          >
             <AIAssistantChat />
-          </motion.div>
+          </div>
         </motion.div>
       </div>
     </section>
