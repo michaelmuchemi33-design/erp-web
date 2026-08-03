@@ -70,7 +70,7 @@ export function DashboardShowcase() {
                 <CardContent className="p-6">
                   <div className="mb-4 flex items-center justify-between">
                     <div className={`flex h-10 w-10 items-center justify-center rounded-xl ${stat.bg} ${stat.color}`}>
-                      <stat.icon className="h-5 w-5" />
+                      {stat.icon ? <stat.icon className="h-5 w-5" /> : null}
                     </div>
                     <span className="text-xs font-semibold text-emerald-600">{stat.change}</span>
                   </div>

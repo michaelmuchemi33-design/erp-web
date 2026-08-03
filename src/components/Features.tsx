@@ -51,7 +51,7 @@ export function Features() {
               <Card className="group h-full rounded-2xl border-slate-100 bg-white shadow-sm transition-all duration-300 hover:border-slate-200 hover:shadow-lg">
                 <CardContent className="p-6">
                   <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-slate-100 text-slate-700 transition-all duration-300 group-hover:rotate-[5deg] group-hover:bg-emerald-100 group-hover:text-emerald-600">
-                    <feature.icon className="h-5 w-5" />
+                    {feature.icon ? <feature.icon className="h-5 w-5" /> : null}
                   </div>
                   <h3 className="mb-2 text-base font-bold text-slate-900">{feature.title}</h3>
                   <p className="text-sm leading-relaxed text-slate-600">{feature.description}</p>

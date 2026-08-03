@@ -24,7 +24,6 @@ import {
 } from "lucide-react";
 
 const industryModules = [
-  "Free custom business website design",
   { label: "Manufacturing", icon: Factory },
   { label: "Construction", icon: HardHat },
   { label: "Hospital", icon: Building2 },
@@ -37,6 +36,7 @@ const industryModules = [
 ];
 
 const coreFeatures = [
+  "Free custom business website design",
   "Inventory Management",
   "Purchasing & Vendors",
   "CRM & Sales Pipeline",
@@ -240,15 +240,18 @@ export function PricingCard({ onOpenSignup }: { onOpenSignup?: () => void } = {}
                       Industry Modules
                     </p>
                     <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-3">
-                      {industryModules.map((mod) => (
+                      {industryModules.map((mod) => {
+                        const Icon = mod.icon;
+                        return (
                         <div
                           key={mod.label}
                           className="flex items-center gap-2 rounded-xl border border-slate-100 bg-slate-50/80 px-3 py-2.5 text-sm font-medium text-slate-700"
                         >
-                          <mod.icon className="h-4 w-4 shrink-0 text-amber-600" />
+                          {Icon ? <Icon className="h-4 w-4 shrink-0 text-amber-600" /> : null}
                           {mod.label}
                         </div>
-                      ))}
+                        );
+                      })}
                     </div>
                   </div>
 

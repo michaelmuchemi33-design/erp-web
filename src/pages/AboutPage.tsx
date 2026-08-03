@@ -311,7 +311,7 @@ export default function AboutPage({
                 className="rounded-2xl border border-slate-100 bg-slate-50/50 p-6 md:p-8"
               >
                 <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-amber-50 text-amber-600">
-                  <v.icon className="h-5 w-5" />
+                  {v.icon ? <v.icon className="h-5 w-5" /> : null}
                 </div>
                 <h3 className="text-lg font-bold text-slate-950">{v.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-slate-600 md:text-base">{v.body}</p>

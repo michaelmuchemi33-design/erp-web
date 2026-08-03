@@ -733,7 +733,7 @@ export function IndustryGrid() {
                   <div
                     className={`flex h-11 w-11 items-center justify-center rounded-2xl ${industry.light} ${industry.accent} transition-all duration-300 group-hover:rotate-[5deg] group-hover:scale-110`}
                   >
-                    <industry.icon className="h-5 w-5" />
+                    {industry.icon ? <industry.icon className="h-5 w-5" /> : null}
                   </div>
                   <div className="flex flex-col items-end gap-1.5">
                     <span className="flex items-center gap-1 rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-emerald-700">
