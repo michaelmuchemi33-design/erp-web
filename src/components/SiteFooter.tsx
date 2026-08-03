@@ -86,6 +86,11 @@ export function SiteFooter() {
                     FAQ
                   </a>
                 </li>
+                <li>
+                  <a href="/careers" className="transition hover:text-slate-950">
+                    Careers
+                  </a>
+                </li>
               </ul>
             </div>
 
