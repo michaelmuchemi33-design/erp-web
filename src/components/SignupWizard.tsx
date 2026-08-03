@@ -13,7 +13,7 @@ import {
   Loader2,
   Sparkles,
 } from "lucide-react";
-import { supabase } from "@/lib/supabase";
+import { supabase, trackLead } from "@/lib/supabase";
 
 const industries = [
   "Manufacturing",
@@ -102,7 +102,15 @@ export function SignupWizard({
         source: "signup_wizard",
         created_at: new Date().toISOString(),
       };
-      const { error: dbError } = await supabase.from("leads").insert(payload);
+      const { error: dbError } = await trackLead({
+        name: payload.name,
+        email: payload.email,
+        phone: payload.phone,
+        industry: payload.industry,
+        company_size: payload.company_size,
+        primary_need: payload.primary_need,
+        source: payload.source,
+      });
       if (dbError) throw dbError;
 
       // Send confirmation email via Edge Function (best-effort)

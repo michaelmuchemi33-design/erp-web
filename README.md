@@ -68,3 +68,22 @@ Build: `npm run build` · Output: `dist`
      ```
 
 Without `RESEND_API_KEY`, leads still save; email is skipped (logged only).
+
+
+## Supabase tracking (required once)
+
+1. Open [Supabase SQL Editor](https://supabase.com/dashboard/project/otuhzmexmljmdmvetfym/sql)
+2. Paste and run `supabase-schema.sql` from this repo
+3. In Vercel → Project → Settings → Environment Variables set:
+   - `VITE_SUPABASE_URL` = `https://otuhzmexmljmdmvetfym.supabase.co`
+   - `VITE_SUPABASE_PUBLISHABLE_KEY` = your publishable key
+4. Redeploy
+
+### Tables
+| Table | Tracks |
+|-------|--------|
+| `leads` | Demo wizard, industry overlays |
+| `contact_messages` | Contact + footer write-to-us |
+| `applications` | Careers job applications |
+
+View rows in Supabase → Table Editor. Never put `SUPABASE_SECRET_KEY` in the frontend.

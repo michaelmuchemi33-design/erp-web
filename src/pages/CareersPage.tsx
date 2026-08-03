@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SignupWizard } from "@/components/SignupWizard";
 import { Button } from "@/components/ui/button";
+import { trackApplication } from "@/lib/supabase";
 import {
   MapPin,
   Clock,
@@ -13,6 +14,8 @@ import {
   Headset,
   Check,
   Sparkles,
+  Loader2,
+  Send,
 } from "lucide-react";
 
 const EMAIL = "erpintergration@gmail.com";
@@ -64,6 +67,110 @@ const jobs = [
     ],
   },
 ];
+
+
+function ApplyForm({ role }: { role: string }) {
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    portfolio_url: "",
+    message: "",
+  });
+  const [loading, setLoading] = useState(false);
+  const [done, setDone] = useState(false);
+  const [error, setError] = useState("");
+
+  async function onSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (!form.email.includes("@") || !form.name.trim()) return;
+    setLoading(true);
+    setError("");
+    try {
+      const { error: dbError } = await trackApplication({
+        role,
+        name: form.name.trim(),
+        email: form.email.trim(),
+        phone: form.phone.trim() || null,
+        portfolio_url: form.portfolio_url.trim() || null,
+        message: form.message.trim() || null,
+      });
+      if (dbError) throw dbError;
+      setDone(true);
+      setForm({ name: "", email: "", phone: "", portfolio_url: "", message: "" });
+    } catch (err: unknown) {
+      setError(
+        err instanceof Error
+          ? err.message
+          : "Could not submit. Run supabase-schema.sql in your project, then try again."
+      );
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  if (done) {
+    return (
+      <div className="mt-6 flex items-center gap-2 rounded-2xl bg-emerald-50 px-4 py-3 text-sm font-medium text-emerald-800">
+        <Check className="h-4 w-4" />
+        Application saved — we will review and contact you.
+      </div>
+    );
+  }
+
+  return (
+    <form onSubmit={onSubmit} className="mt-6 space-y-3 rounded-2xl border border-slate-100 bg-white p-4">
+      <p className="text-sm font-semibold text-slate-900">Apply for {role}</p>
+      <div className="grid gap-3 sm:grid-cols-2">
+        <input
+          required
+          placeholder="Full name"
+          value={form.name}
+          onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
+          className="rounded-xl border border-slate-200 px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-emerald-500/20"
+        />
+        <input
+          required
+          type="email"
+          placeholder="Email"
+          value={form.email}
+          onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
+          className="rounded-xl border border-slate-200 px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-emerald-500/20"
+        />
+        <input
+          type="tel"
+          placeholder="Phone"
+          value={form.phone}
+          onChange={(e) => setForm((f) => ({ ...f, phone: e.target.value }))}
+          className="rounded-xl border border-slate-200 px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-emerald-500/20"
+        />
+        <input
+          type="url"
+          placeholder="Portfolio / LinkedIn (optional)"
+          value={form.portfolio_url}
+          onChange={(e) => setForm((f) => ({ ...f, portfolio_url: e.target.value }))}
+          className="rounded-xl border border-slate-200 px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-emerald-500/20"
+        />
+      </div>
+      <textarea
+        rows={3}
+        placeholder="Short note (optional)"
+        value={form.message}
+        onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))}
+        className="w-full resize-none rounded-xl border border-slate-200 px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-emerald-500/20"
+      />
+      {error && <p className="text-xs text-rose-600">{error}</p>}
+      <button
+        type="submit"
+        disabled={loading}
+        className="inline-flex h-11 items-center gap-2 rounded-full bg-slate-950 px-5 text-sm font-semibold text-white hover:bg-slate-800 disabled:opacity-50"
+      >
+        {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}
+        Submit application
+      </button>
+    </form>
+  );
+}
 
 export function CareersPageShell() {
   const [signupOpen, setSignupOpen] = useState(false);
@@ -251,16 +358,10 @@ export function CareersPageShell() {
                       </span>
                     </div>
                   </div>
-                  <a
-                    href={`${APPLY}Application%20—%20${encodeURIComponent(job.title)}`}
-                    className="inline-flex h-11 items-center gap-2 rounded-full bg-slate-950 px-5 text-sm font-semibold text-white hover:bg-slate-800"
-                  >
-                    Apply now
-                    <ArrowRight className="h-4 w-4" />
-                  </a>
                 </div>
 
                 <p className="mt-5 text-slate-600 leading-relaxed">{job.summary}</p>
+                <ApplyForm role={job.title} />
 
                 <h4 className="mt-6 text-sm font-bold uppercase tracking-wider text-slate-400">
                   Responsibilities

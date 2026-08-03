@@ -5,7 +5,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SignupWizard } from "@/components/SignupWizard";
 import { Button } from "@/components/ui/button";
 import { PageBanner } from "@/components/PageBanner";
-import { supabase } from "@/lib/supabase";
+import { trackContact } from "@/lib/supabase";
 import {
   Mail,
   Phone,
@@ -42,9 +42,9 @@ export function ContactPageContent() {
     setLoading(true);
     setError("");
     try {
-      const { error: dbError } = await supabase.from("contact_messages").insert({
+      const { error: dbError } = await trackContact({
         name: form.name.trim() || null,
-        email: form.email.trim().toLowerCase(),
+        email: form.email.trim(),
         message: [
           form.phone ? `Phone: ${form.phone}` : null,
           `Subject: ${form.subject}`,
@@ -53,7 +53,6 @@ export function ContactPageContent() {
         ]
           .filter(Boolean)
           .join("\n"),
-        created_at: new Date().toISOString(),
       });
       if (dbError) throw dbError;
       setDone(true);

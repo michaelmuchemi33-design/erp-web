@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Send, Loader2, Check, MessageSquare, Globe } from "lucide-react";
-import { supabase } from "@/lib/supabase";
+import { trackContact } from "@/lib/supabase";
 
 export function SiteFooter() {
   const [contact, setContact] = useState({ name: "", email: "", message: "" });
@@ -16,11 +16,10 @@ export function SiteFooter() {
     setContactLoading(true);
     setContactError("");
     try {
-      const { error } = await supabase.from("contact_messages").insert({
+      const { error } = await trackContact({
         name: contact.name.trim() || null,
-        email: contact.email.trim().toLowerCase(),
+        email: contact.email.trim(),
         message: contact.message.trim(),
-        created_at: new Date().toISOString(),
       });
       if (error) throw error;
       setContactDone(true);

@@ -30,7 +30,7 @@ import {
   Car,
   Briefcase,
 } from "lucide-react";
-import { supabase } from "@/lib/supabase";
+import { trackLead } from "@/lib/supabase";
 
 type Industry = {
   name: string;
@@ -597,14 +597,12 @@ function IndustryOverlay({
     setLoading(true);
     setError("");
     try {
-      const { error: dbError } = await supabase.from("leads").insert({
+      const { error: dbError } = await trackLead({
         name: name.trim() || null,
-        email: email.trim().toLowerCase(),
+        email: email.trim(),
         industry: industry.name,
-        company_size: null,
         primary_need: `Industry interest: ${industry.name}`,
         source: "industry_overlay",
-        created_at: new Date().toISOString(),
       });
       if (dbError) throw dbError;
       setDone(true);
