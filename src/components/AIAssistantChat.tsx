@@ -126,9 +126,13 @@ export function AIAssistantChat() {
   const [typing, setTyping] = useState(false);
   const [input, setInput] = useState("");
   const endRef = useRef<HTMLDivElement>(null);
+  const listRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    endRef.current?.scrollIntoView({ behavior: "smooth" });
+    const el = listRef.current;
+    if (!el) return;
+    // Scroll only inside the chat panel — never the page
+    el.scrollTop = el.scrollHeight;
   }, [messages, typing]);
 
   function reset() {
@@ -180,7 +184,7 @@ export function AIAssistantChat() {
   }
 
   return (
-    <div className="flex h-[520px] max-h-[520px] flex-col overflow-hidden rounded-3xl border border-slate-100 bg-white/95 p-5 shadow-2xl shadow-slate-900/10 backdrop-blur-xl md:h-[540px] md:max-h-[540px] md:p-6">
+    <div className="flex h-[520px] max-h-[520px] flex-col overflow-hidden overscroll-contain rounded-3xl border border-slate-100 bg-white/95 p-5 shadow-2xl shadow-slate-900/10 backdrop-blur-xl md:h-[540px] md:max-h-[540px] md:p-6">
       {/* Header */}
       <div className="mb-4 flex shrink-0 items-center justify-between border-b border-slate-100 pb-4">
         <div className="flex items-center gap-2.5">
@@ -203,7 +207,10 @@ export function AIAssistantChat() {
         <div className="flex items-center gap-1.5 text-slate-400">
           <button
             type="button"
-            onClick={reset}
+            onClick={(e) => {
+              e.preventDefault();
+              reset();
+            }}
             title="Reset chat"
             className="rounded-lg p-1.5 transition-colors hover:bg-slate-100 hover:text-slate-700"
           >
@@ -219,7 +226,11 @@ export function AIAssistantChat() {
       </div>
 
       {/* Messages */}
-      <div className="mb-3 min-h-0 flex-1 space-y-3 overflow-y-auto overscroll-contain pr-1">
+      <div
+        ref={listRef}
+        className="mb-3 min-h-0 flex-1 space-y-3 overflow-y-auto overscroll-y-contain pr-1"
+        style={{ overscrollBehavior: "contain", WebkitOverflowScrolling: "touch" }}
+      >
         <AnimatePresence initial={false}>
           {messages.map((msg) => (
             <motion.div
@@ -290,7 +301,10 @@ export function AIAssistantChat() {
             key={prompt}
             type="button"
             disabled={typing}
-            onClick={() => ask(prompt)}
+            onClick={(e) => {
+              e.preventDefault();
+              ask(prompt);
+            }}
             className="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-600 transition-all hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-800 disabled:opacity-50"
           >
             {prompt}

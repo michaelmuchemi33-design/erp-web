@@ -55,49 +55,49 @@ const rotatingLines = [
 ];
 
 const avatars = [
-  "https://i.pravatar.cc/80?img=12",
-  "https://i.pravatar.cc/80?img=32",
-  "https://i.pravatar.cc/80?img=5",
-  "https://i.pravatar.cc/80?img=47",
-  "https://i.pravatar.cc/80?img=33",
-  "https://i.pravatar.cc/80?img=15",
+  "https://randomuser.me/api/portraits/women/44.jpg",
+  "https://randomuser.me/api/portraits/men/32.jpg",
+  "https://randomuser.me/api/portraits/women/68.jpg",
+  "https://randomuser.me/api/portraits/men/75.jpg",
+  "https://randomuser.me/api/portraits/women/90.jpg",
+  "https://randomuser.me/api/portraits/men/86.jpg",
 ];
 
 const reviews = [
   {
     name: "Grace Wanjiku",
-    role: "Operations Lead · Nairobi Retail",
-    text: "Unity ERP cut our stock discrepancies by half. Multi-branch POS finally matches the warehouse counts.",
+    role: "Operations · Nairobi Retail",
+    text: "Stock finally matches the till across our Nairobi branches. Unity ERP paid for itself in fewer stockouts.",
     rating: 5,
   },
   {
     name: "James Otieno",
-    role: "Director · Manufacturing SME",
-    text: "We replaced three spreadsheets and a standalone accounting tool. CRM and production now share one truth.",
+    role: "Director · Kisumu Manufacturing",
+    text: "BOM and inventory in one place. We stopped juggling Excel and a separate invoicing app.",
     rating: 5,
   },
   {
     name: "Amina Hassan",
-    role: "Finance Manager · Wholesale",
-    text: "Month-end used to take a week. With live invoices and stock, we close faster and chase receivables with facts.",
+    role: "Finance · Mombasa Wholesale",
+    text: "Invoices and stock stay linked. Month-end is calmer and receivables are clearer.",
     rating: 5,
   },
   {
     name: "David Kimani",
-    role: "Founder · Distribution",
-    text: "The AI assistant answers sales and stock questions our team used to WhatsApp each other about all day.",
+    role: "Founder · Thika Distribution",
+    text: "The AI assistant answers sales and stock questions we used to chase on WhatsApp.",
     rating: 5,
   },
   {
     name: "Faith Naliaka",
-    role: "Clinic Administrator",
-    text: "Pharmacy and consumables are under control. Simple enough for staff, serious enough for audits.",
+    role: "Admin · Nairobi Clinic",
+    text: "Pharmacy supplies are tracked properly. Staff learned it quickly without heavy training.",
     rating: 5,
   },
   {
-    name: "Samuel Boateng",
-    role: "Retail Chain · East Africa",
-    text: "Rolled out across stores without enterprise pricing shock. Support actually picks up in our timezone.",
+    name: "Brian Ochieng",
+    role: "Owner · Kisii Retail",
+    text: "Affordable compared to bigger foreign suites. Support understands Kenyan business hours.",
     rating: 5,
   },
 ];
@@ -107,7 +107,7 @@ function TrustReviews() {
 
   return (
     <div
-      className="relative mt-2"
+      className="relative z-20 mt-2"
       onMouseLeave={() => setOpen(null)}
     >
       <div className="flex flex-wrap items-center gap-4">
@@ -148,10 +148,10 @@ function TrustReviews() {
               ))}
             </div>
             <span className="text-sm font-semibold text-slate-800">4.9/5</span>
-            <span className="text-sm text-slate-500">from 1,200+ reviews</span>
+            <span className="text-sm text-slate-500">from early customers</span>
           </div>
           <p className="text-sm font-medium text-slate-600">
-            Trusted by 2,000+ businesses worldwide
+            Trusted by 10+ businesses in Kenya alone
           </p>
         </div>
       </div>
@@ -165,7 +165,7 @@ function TrustReviews() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 6 }}
             transition={{ duration: 0.18 }}
-            className="absolute left-0 top-full z-30 mt-3 w-[min(100%,320px)] rounded-2xl border border-slate-100 bg-white p-4 shadow-xl shadow-slate-900/10"
+            className="absolute bottom-full left-0 z-[100] mb-3 w-[min(100%,300px)] rounded-2xl border border-slate-200 bg-white p-4 shadow-2xl shadow-slate-900/15 ring-1 ring-slate-900/5"
           >
             <div className="flex items-center gap-3">
               <img
@@ -211,7 +211,7 @@ export function Hero({ onOpenSignup }: { onOpenSignup?: () => void } = {}) {
   const line = rotatingLines[lineIndex];
 
   return (
-    <section className="relative overflow-hidden bg-white pt-28 pb-16 md:pt-32 md:pb-20">
+    <section className="relative overflow-visible bg-white pt-28 pb-16 md:pt-32 md:pb-20">
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute left-1/4 top-0 h-96 w-96 rounded-full bg-emerald-100/40 blur-3xl" />
         <div className="absolute right-0 top-1/3 h-[500px] w-[500px] rounded-full bg-slate-100/60 blur-3xl" />
@@ -222,7 +222,7 @@ export function Hero({ onOpenSignup }: { onOpenSignup?: () => void } = {}) {
           variants={container}
           initial="hidden"
           animate="show"
-          className="flex flex-col gap-7"
+          className="relative z-10 flex flex-col gap-7 overflow-visible"
         >
           <motion.div
             variants={item}
@@ -296,7 +296,7 @@ export function Hero({ onOpenSignup }: { onOpenSignup?: () => void } = {}) {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="relative flex justify-center lg:justify-end"
         >
-          <motion.div animate={float} className="w-full max-w-lg lg:max-w-xl">
+          <div className="w-full max-w-lg lg:max-w-xl">
             <AIAssistantChat />
           </motion.div>
         </motion.div>
