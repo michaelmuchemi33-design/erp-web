@@ -17,8 +17,7 @@ export const blogPosts: BlogPost[] = [
     slug: "choose-right-erp-business-guide",
     category: "ERP Guides",
     title: "How to Choose the Right ERP for Your Business | Unity ERP",
-    description:
-      "Practical guide to choose the right ERP for SMEs in Kenya and Africa: features, cloud vs on-premise, vendor tips, and implementation. Free Unity ERP trial.",
+    description: "Practical guide to choose the right ERP for SMEs in Kenya and Africa: features, cloud vs on-premise, vendor tips, and implementation. Free Unity ERP trial.",
     keywords: "choose the right ERP, ERP selection guide, best ERP for SMEs, ERP comparison Kenya",
     readMinutes: 12,
     date: "2026-08-01",
@@ -39,11 +38,11 @@ export const blogPosts: BlogPost[] = [
         body: "For most SMEs, prioritise inventory, purchasing, CRM/sales, invoicing, and basic financial reports. Manufacturing needs BOM and work orders; retail needs POS tied to stock; services need job costing.",
         h3: [
           {
-            title: "Scalability and flexibility",
+            title: "Scalability and flexibility | Unity ERP",
             body: "You should add users and branches without a full re-implementation. Cloud ERP with role-based access scales more gently than rigid on-premise licences.",
           },
           {
-            title: "Reporting and dashboards",
+            title: "Reporting and dashboards | Unity ERP",
             body: "Managers need live views of sales, stock and cash — not month-old exports. AI assistants that answer operational questions are becoming a practical differentiator.",
           },
         ],
@@ -75,9 +74,8 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "erp-implementation-guide-smes",
     category: "ERP Guides",
-    title: "ERP Implementation Guide for SMEs | Unity ERP Kenya",
-    description:
-      "Step-by-step ERP implementation guide for SMEs: data prep, training, go-live checklist and common pitfalls. Unity ERP free trial.",
+    title: "ERP Implementation Guide for SMEs | Unity ERP",
+    description: "Step-by-step ERP implementation guide for SMEs: data prep, training, go-live checklist and common pitfalls. Unity ERP free trial.",
     keywords: "ERP implementation, ERP implementation guide, ERP go-live Kenya",
     readMinutes: 11,
     date: "2026-08-02",
@@ -107,8 +105,7 @@ export const blogPosts: BlogPost[] = [
     slug: "grow-business-with-erp-crm",
     category: "Business Growth",
     title: "How ERP and CRM Together Grow Your Business | Unity ERP",
-    description:
-      "How unified ERP and CRM help Kenyan SMEs grow margins, retain customers and open branches without chaos.",
+    description: "How unified ERP and CRM help Kenyan SMEs grow margins, retain customers and open branches without chaos.",
     keywords: "business growth ERP, CRM for growth, SME growth Kenya",
     readMinutes: 9,
     date: "2026-07-28",
@@ -134,8 +131,7 @@ export const blogPosts: BlogPost[] = [
     slug: "ai-automation-erp-operations",
     category: "AI & Automation",
     title: "AI and Automation in ERP Operations | Unity ERP",
-    description:
-      "Practical AI in ERP: sales summaries, stock alerts and finance insights from live data — not generic chatbots.",
+    description: "Practical AI in ERP: sales summaries, stock alerts and finance insights from live data — not generic chatbots.",
     keywords: "AI ERP, ERP automation, AI inventory alerts",
     readMinutes: 8,
     date: "2026-07-20",
@@ -157,8 +153,7 @@ export const blogPosts: BlogPost[] = [
     slug: "inventory-management-best-practices",
     category: "Inventory Management",
     title: "Inventory Management Best Practices for SMEs | Unity ERP",
-    description:
-      "Inventory best practices: cycle counts, reorder points, multi-warehouse discipline and POS accuracy for Kenyan businesses.",
+    description: "Inventory best practices: cycle counts, reorder points, multi-warehouse discipline and POS accuracy for Kenyan businesses.",
     keywords: "inventory management best practices, stock control Kenya, warehouse tips",
     readMinutes: 10,
     date: "2026-07-15",
@@ -184,8 +179,7 @@ export const blogPosts: BlogPost[] = [
     slug: "accounting-tips-growing-companies",
     category: "Accounting",
     title: "Accounting Tips for Growing Companies | Unity ERP",
-    description:
-      "Accounting tips for growing SMEs: weekly bank habits, AR aging, clean invoices from operations, faster month-end.",
+    description: "Accounting tips for growing SMEs: weekly bank habits, AR aging, clean invoices from operations, faster month-end.",
     keywords: "accounting tips SMEs, month-end close, invoicing best practices Kenya",
     readMinutes: 9,
     date: "2026-07-10",
@@ -210,9 +204,8 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "best-erp-software-kenya-smes",
     category: "ERP Guides",
-    title: "Best ERP Software for Kenyan SMEs (Practical Buyer Guide)",
-    description:
-      "What “best ERP software Kenya” really means for SMEs: all-in-one ERP+CRM, local support, free trial, transparent KES pricing.",
+    title: "Best ERP Software for Kenyan SMEs (Practical Buyer | Unity ERP",
+    description: "What “best ERP software Kenya” really means for SMEs: all-in-one ERP+CRM, local support, free trial, transparent KES pricing.",
     keywords: "best ERP software Kenya, ERP Kenya SME, cloud ERP Kenya",
     readMinutes: 10,
     date: "2026-08-03",
@@ -238,8 +231,7 @@ export const blogPosts: BlogPost[] = [
     slug: "free-cloud-erp-trial-what-to-test",
     category: "ERP Guides",
     title: "Free Cloud ERP Trial: What to Test in 60 Days | Unity ERP",
-    description:
-      "How to run a free cloud ERP trial: stock, invoices, CRM pipeline and reports checklist for SMEs.",
+    description: "How to run a free cloud ERP trial: stock, invoices, CRM pipeline and reports checklist for SMEs.",
     keywords: "free cloud ERP, free ERP trial, ERP trial checklist",
     readMinutes: 7,
     date: "2026-07-05",

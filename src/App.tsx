@@ -25,6 +25,7 @@ import { BlogPostShell } from "@/pages/BlogPostPage";
 import { LoginPageShell } from "@/pages/LoginPage";
 import { blogBySlug } from "@/content/blogPosts";
 import { applyHomeMeta, detectCountryCode, getGeoPack, refineCountryFromIp } from "@/lib/geoMeta";
+import { setPageMeta, routeMeta, trimDesc, trimTitle } from "@/lib/pageMeta";
 import { PromoBanners } from "@/components/PromoBanners";
 import { SeoTopicShell } from "@/pages/SeoTopicPage";
 import { seoBySlug } from "@/content/seoPages";
@@ -104,6 +105,41 @@ export default function App() {
   const resourceSlug = path.startsWith("/") ? path.slice(1) : path;
   const resourcePage = pagesBySlug[resourceSlug];
   const seoPage = seoBySlug[resourceSlug];
+
+  // Self-canonical + short title/description on every route (SEO audit fix)
+  useEffect(() => {
+    const base = routeMeta[path];
+    if (base) {
+      setPageMeta({ title: base.title, description: base.description, path, keywords: base.keywords });
+      return;
+    }
+    if (seoPage) {
+      setPageMeta({
+        title: trimTitle(seoPage.title),
+        description: trimDesc(seoPage.description),
+        path: `/${seoPage.slug}`,
+        keywords: seoPage.keywords,
+      });
+      return;
+    }
+    if (blogPost) {
+      setPageMeta({
+        title: trimTitle(blogPost.title),
+        description: trimDesc(blogPost.description),
+        path: `/blog/${blogPost.slug}`,
+        keywords: blogPost.keywords,
+      });
+      return;
+    }
+    if (resourcePage) {
+      setPageMeta({
+        title: trimTitle(`${resourcePage.title} | Unity ERP`),
+        description: trimDesc(resourcePage.description || resourcePage.title),
+        path: `/${resourceSlug}`,
+      });
+    }
+  }, [path, seoPage, blogPost, resourcePage, resourceSlug]);
+
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-white pb-24 font-sans text-slate-950 selection:bg-emerald-100 selection:text-emerald-900">

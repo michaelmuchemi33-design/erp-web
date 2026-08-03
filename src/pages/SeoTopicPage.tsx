@@ -5,28 +5,19 @@ import { SignupWizard } from "@/components/SignupWizard";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Check } from "lucide-react";
 import type { SeoPage } from "@/content/seoPages";
+import { setPageMeta, trimDesc, trimTitle } from "@/lib/pageMeta";
 import { seoPages } from "@/content/seoPages";
 
 export function SeoTopicShell({ page }: { page: SeoPage }) {
   const [signupOpen, setSignupOpen] = useState(false);
 
   useEffect(() => {
-    document.title = page.title;
-    let d = document.querySelector('meta[name="description"]');
-    if (!d) {
-      d = document.createElement("meta");
-      d.setAttribute("name", "description");
-      document.head.appendChild(d);
-    }
-    d.setAttribute("content", page.description);
-    let k = document.querySelector('meta[name="keywords"]');
-    if (!k) {
-      k = document.createElement("meta");
-      k.setAttribute("name", "keywords");
-      document.head.appendChild(k);
-    }
-    k.setAttribute("content", page.keywords);
-
+    setPageMeta({
+      title: trimTitle(page.title),
+      description: trimDesc(page.description),
+      path: `/${page.slug}`,
+      keywords: page.keywords,
+    });
     const id = "seo-jsonld";
     document.getElementById(id)?.remove();
     const script = document.createElement("script");
@@ -36,22 +27,14 @@ export function SeoTopicShell({ page }: { page: SeoPage }) {
       "@context": "https://schema.org",
       "@type": "WebPage",
       name: page.h1,
-      description: page.description,
+      description: trimDesc(page.description),
       url: `https://www.unity-software.online/${page.slug}`,
-      isPartOf: {
-        "@type": "WebSite",
-        name: "Unity ERP",
-        url: "https://www.unity-software.online",
-      },
+      isPartOf: { "@type": "WebSite", name: "Unity ERP", url: "https://www.unity-software.online" },
       about: {
         "@type": "SoftwareApplication",
         name: "Unity ERP",
         applicationCategory: "BusinessApplication",
-        offers: {
-          "@type": "Offer",
-          price: "3000",
-          priceCurrency: "KES",
-        },
+        offers: { "@type": "Offer", price: "3000", priceCurrency: "KES" },
       },
     });
     document.head.appendChild(script);
