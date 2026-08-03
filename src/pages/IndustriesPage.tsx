@@ -4,6 +4,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SignupWizard } from "@/components/SignupWizard";
 import { IndustryGrid } from "@/components/IndustryGrid";
 import { BottomCTA } from "@/components/BottomCTA";
+import { PageBanner } from "@/components/PageBanner";
 
 export function IndustriesPageShell() {
   const [signupOpen, setSignupOpen] = useState(false);
@@ -19,8 +20,14 @@ export function IndustriesPageShell() {
   return (
     <div className="min-h-screen overflow-x-hidden bg-white font-sans text-slate-950">
       <Header onOpenSignup={() => setSignupOpen(true)} />
-      <main className="pt-8">
-        <div className="mx-auto max-w-7xl px-6 pt-20 pb-2">
+      <main>
+        <div className="pt-16">
+          <PageBanner
+            title="Industries"
+            subtitle="Built for manufacturing, retail, healthcare, education and more."
+          />
+        </div>
+        <div className="mx-auto max-w-7xl px-6 pt-10 pb-2">
           <p className="text-xs font-bold uppercase tracking-wider text-amber-600">Solutions</p>
           <h1 className="mt-2 text-4xl font-bold tracking-tight text-slate-950 sm:text-5xl">
             Industries

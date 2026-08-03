@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SignupWizard } from "@/components/SignupWizard";
 import { Button } from "@/components/ui/button";
+import { PageBanner } from "@/components/PageBanner";
 import { supabase } from "@/lib/supabase";
 import {
   Mail,
@@ -72,8 +73,14 @@ export function ContactPageContent() {
 
   return (
     <>
+      <div className="pt-16">
+        <PageBanner
+          title="Contact Us"
+          subtitle="Tell us about your business — we respond within 24 hours."
+        />
+      </div>
       {/* Hero */}
-      <section className="bg-white pt-28 pb-6 md:pt-32">
+      <section className="bg-white pt-10 pb-6 md:pt-12">
         <div className="mx-auto max-w-6xl px-6">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
@@ -88,9 +95,9 @@ export function ContactPageContent() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.05 }}
-              className="text-5xl font-bold tracking-tight text-slate-950 sm:text-6xl"
+              className="text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl"
             >
-              Contact Us
+              Get in touch
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 16 }}

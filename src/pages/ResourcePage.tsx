@@ -5,6 +5,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SignupWizard } from "@/components/SignupWizard";
 import { Button } from "@/components/ui/button";
 import { PageSkeleton } from "@/components/PageSkeleton";
+import { PageBanner } from "@/components/PageBanner";
 import {
   ArrowRight,
   ChevronRight,
@@ -73,7 +74,10 @@ export function ResourcePageView({
 
   return (
     <article className="bg-white">
-      <section className="border-b border-slate-100 bg-slate-50/50 pt-28 pb-12 md:pt-32 md:pb-16">
+      <div className="pt-16">
+        <PageBanner title={page.hero} subtitle={page.section} />
+      </div>
+      <section className="border-b border-slate-100 bg-slate-50/50 pt-10 pb-10 md:pt-12 md:pb-12">
         <div className="mx-auto max-w-3xl px-6">
           <nav className="mb-6 flex flex-wrap items-center gap-1 text-xs font-medium text-slate-400">
             <a href="/" className="hover:text-slate-700">

@@ -4,6 +4,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SignupWizard } from "@/components/SignupWizard";
 import { useRef, useState, useEffect } from "react";
 import { PageSkeleton } from "@/components/PageSkeleton";
+import { PageBanner } from "@/components/PageBanner";
 import { Button } from "@/components/ui/button";
 import {
   ArrowRight,
@@ -172,8 +173,14 @@ export default function AboutPage({
 }) {
   return (
     <>
+      <div className="pt-16">
+        <PageBanner
+          title="About Unity ERP"
+          subtitle="Software for the people who run the business."
+        />
+      </div>
       {/* Hero story */}
-      <section className="relative overflow-hidden bg-white pt-28 pb-16 md:pt-32 md:pb-20">
+      <section className="relative overflow-hidden bg-white pt-12 pb-16 md:pt-16 md:pb-20">
         <div className="pointer-events-none absolute inset-0 -z-10">
           <div className="absolute left-1/4 top-0 h-80 w-80 rounded-full bg-amber-100/50 blur-3xl" />
           <div className="absolute right-0 top-1/3 h-96 w-96 rounded-full bg-slate-100/80 blur-3xl" />

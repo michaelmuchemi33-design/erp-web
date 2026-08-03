@@ -62,8 +62,8 @@ Build: `npm run build` · Output: `dist`
    - Set secret:
      ```bash
      supabase secrets set RESEND_API_KEY=re_xxx
-     supabase secrets set DEMO_URL=https://erp-web-chi-three.vercel.app
-     supabase secrets set SITE_URL=https://erp-web-chi-three.vercel.app
+     supabase secrets set DEMO_URL=https://www.unity-software.online
+     supabase secrets set SITE_URL=https://www.unity-software.online
      supabase secrets set FROM_EMAIL="Knight ERP <onboarding@yourdomain.com>"
      ```
 
