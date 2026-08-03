@@ -61,6 +61,66 @@ export function Features() {
           ))}
         </div>
       </div>
-    </section>
+    
+        <div className="mx-auto mt-16 max-w-7xl px-6">
+          <h3 className="text-center text-2xl font-bold text-slate-950">
+            100+ capabilities in one platform
+          </h3>
+          <p className="mx-auto mt-2 max-w-2xl text-center text-slate-600">
+            Unity ERP combines ERP, CRM and AI so you do not need a separate stack of Odoo + Salesforce + Sage + QuickBooks-style tools for day-to-day operations.
+          </p>
+          <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              "Lead & pipeline CRM",
+              "Quotes & orders",
+              "Customer history",
+              "Multi-warehouse stock",
+              "Reorder points",
+              "Stock transfers",
+              "Purchase orders",
+              "Supplier records",
+              "Invoicing & AR",
+              "Bills & AP",
+              "Payment recording",
+              "Financial reports",
+              "BOM & work orders",
+              "Retail POS",
+              "Multi-branch retail",
+              "HR records",
+              "Payroll support",
+              "AI sales summary",
+              "AI stock alerts",
+              "AI finance insights",
+              "Role-based access",
+              "Unlimited users",
+              "REST API",
+              "Webhooks",
+              "Cloud backups",
+              "Analytics dashboards",
+              "Project / job costing",
+              "Hospital & clinic ops",
+              "Education fee patterns",
+              "Agri inventory",
+              "Hospitality F&B stock",
+              "Logistics warehouse",
+              "M-Pesa-friendly payments",
+              "2-month free trial",
+              "Free custom website*",
+              "Kenya · SA · Egypt support",
+            ].map((item) => (
+              <div
+                key={item}
+                className="rounded-xl border border-slate-100 bg-white px-3 py-2.5 text-sm font-medium text-slate-700 shadow-sm"
+              >
+                {item}
+              </div>
+            ))}
+          </div>
+          <p className="mt-4 text-center text-xs text-slate-400">
+            *Free custom business website design for active Unity ERP customers.
+          </p>
+        </div>
+
+      </section>
   );
 }

@@ -48,6 +48,22 @@ const faqs = [
     answer:
       "Click the Pay Now button to complete payment securely via Swypt. You can also contact us to arrange alternative payment methods.",
   },
+
+  {
+    question: "How does Unity ERP compare to Odoo, Salesforce, Sage or QuickBooks?",
+    answer:
+      "Those products are strong in their lanes. Unity ERP is built as an affordable all-in-one ERP + CRM + AI for operators who want inventory, sales, finance and AI in one system — with simple KES pricing, unlimited users on the standard plan, a 2-month free trial, and regional support across Kenya, South Africa and Egypt. Many teams choose Unity when stacking multiple tools becomes expensive or complex.",
+  },
+  {
+    question: "What is included in the free trial?",
+    answer:
+      "A full 60 days of Unity ERP: CRM, inventory, purchasing, finance, manufacturing modules, retail POS capabilities, HR support, AI Assistant, reports and multi-user access — no credit card required to start.",
+  },
+  {
+    question: "Does Unity ERP integrate with other platforms?",
+    answer:
+      "Yes. Unity ERP supports REST API and webhooks so you can connect payments, e-commerce, SMS, BI tools and accounting exports. M-Pesa-friendly payment flows and common commerce patterns are supported for African markets.",
+  },
 ];
 
 export function FAQ() {

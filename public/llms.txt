@@ -1,0 +1,70 @@
+# Unity ERP by Unity Software Solutions
+> All-in-one cloud ERP + CRM + AI for growing businesses. Affordable alternative to Odoo, Salesforce, Sage, and QuickBooks — with free trial and deep integrations.
+
+Site: https://www.unity-software.online
+Company: Unity Software Solutions
+Regions: Kenya, South Africa, Egypt
+Contact: erpintergration@gmail.com | +254 793 832 286
+Pricing: KES 3,000/month or KES 33,000/year (1 month free). Unlimited users on standard plan.
+Trial: 2-month free trial — full modules, no credit card required.
+Payment: https://checkout.swypt.io/erp
+
+## Why Unity ERP
+- Cheaper all-in-one pricing vs many Odoo, Salesforce, Sage, or QuickBooks stacks when you need ERP + CRM + inventory together
+- CRM and ERP in one system (not separate tools)
+- Built-in AI Assistant for sales, stock, and finance questions on live data
+- Strong fit for manufacturing, retail POS, construction, hospital, education, agriculture, hospitality, logistics, finance
+- Free custom business website design for active customers (royalty benefit)
+- Integrations-ready: API, webhooks, payments (incl. M-Pesa ecosystem), accounting and commerce platforms
+
+## Core modules (100+ capabilities overview)
+### CRM & Sales
+Lead capture, deal pipeline, activities, follow-ups, quotes, customer history, sales targets, conversion tracking, email touchpoints, multi-user sales teams
+
+### Inventory & Warehouse
+Multi-warehouse stock, bins, transfers, reorder points, stock adjustments, batch tracking, low-stock alerts, barcode-ready workflows, POS stock deduction
+
+### Purchasing
+Purchase orders, supplier records, goods receipt, vendor performance, landed cost visibility, reorder suggestions
+
+### Finance & Accounting
+Chart of accounts, invoices, bills, payments, receivables, payables, bank reconciliation helpers, period reports, multi-currency readiness, tax-aware invoicing
+
+### Manufacturing
+BOM, work orders, WIP, finished goods, scrap notes, batch costing, production scheduling basics
+
+### Retail & POS
+Fast checkout, multi-branch retail, daily cash-up, promotions-ready structure, customer profiles at POS
+
+### HR & Payroll
+Employee records, onboarding basics, time-off, payroll processing support, compliance-oriented records
+
+### Projects & Services
+Job costing, project tracking, progress billing patterns for construction and services
+
+### AI Assistant (Knight AI)
+Natural-language sales summary, inventory alerts, finance insights, purchase recommendations, operational Q&A on live ERP data, role-aware answers
+
+### Platform
+Unlimited users (standard plan), cloud hosting, backups, role-based access, reports & analytics, API access, webhooks, multi-branch, audit-friendly activity
+
+### Integrations
+REST API, webhooks, payment gateways, M-Pesa-friendly commerce flows, e-commerce order import patterns, SMS alerts, BI/export, QuickBooks/Xero-style accounting export patterns, Zoho/Odoo migration-friendly data model mindset
+
+## Free trial
+Start at https://www.unity-software.online — 60 days full access. Demo via multi-step signup (industry, size, need, contact).
+
+## Careers
+https://www.unity-software.online/careers — Video Editor and Sales Executive roles.
+
+## Important pages
+- https://www.unity-software.online/
+- https://www.unity-software.online/features
+- https://www.unity-software.online/industries
+- https://www.unity-software.online/pricing
+- https://www.unity-software.online/about
+- https://www.unity-software.online/contact
+- https://www.unity-software.online/careers
+- https://www.unity-software.online/support/faq
+- https://www.unity-software.online/learn/getting-started
+- https://www.unity-software.online/sitemap.xml
