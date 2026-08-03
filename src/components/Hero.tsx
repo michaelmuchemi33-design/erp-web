@@ -104,21 +104,27 @@ const reviews = [
 
 function TrustReviews() {
   const [open, setOpen] = useState<number | null>(null);
+  const [pos, setPos] = useState({ top: 0, left: 0 });
+
+  function show(i: number, el: HTMLElement) {
+    const r = el.getBoundingClientRect();
+    setPos({
+      top: r.top - 8,
+      left: Math.min(r.left, window.innerWidth - 320),
+    });
+    setOpen(i);
+  }
 
   return (
-    <div
-      className="relative z-20 mt-2"
-      onMouseLeave={() => setOpen(null)}
-    >
+    <div className="relative z-20 mt-2" onMouseLeave={() => setOpen(null)}>
       <div className="flex flex-wrap items-center gap-4">
-        {/* Avatar stack */}
         <div className="flex items-center">
           {avatars.map((src, i) => (
             <button
               key={src}
               type="button"
-              onMouseEnter={() => setOpen(i)}
-              onFocus={() => setOpen(i)}
+              onMouseEnter={(e) => show(i, e.currentTarget)}
+              onFocus={(e) => show(i, e.currentTarget)}
               className="relative -ml-2 first:ml-0 rounded-full ring-2 ring-white transition hover:z-10 hover:scale-110"
               style={{ zIndex: avatars.length - i }}
               aria-label={`Review from ${reviews[i]?.name || "customer"}`}
@@ -133,7 +139,7 @@ function TrustReviews() {
             </button>
           ))}
           <span className="relative -ml-2 flex h-9 w-9 items-center justify-center rounded-full bg-slate-900 text-[10px] font-bold text-white ring-2 ring-white">
-            2K+
+            10+
           </span>
         </div>
 
@@ -156,16 +162,19 @@ function TrustReviews() {
         </div>
       </div>
 
-      {/* Hover review card */}
       <AnimatePresence>
         {open !== null && reviews[open] && (
           <motion.div
             key={open}
-            initial={{ opacity: 0, y: 8, scale: 0.98 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 6 }}
-            transition={{ duration: 0.18 }}
-            className="absolute bottom-full left-0 z-[100] mb-3 w-[min(100%,300px)] rounded-2xl border border-slate-200 bg-white p-4 shadow-2xl shadow-slate-900/15 ring-1 ring-slate-900/5"
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.15 }}
+            className="fixed z-[200] w-[300px] rounded-2xl border border-slate-200 bg-white p-4 shadow-2xl ring-1 ring-black/5"
+            style={{
+              top: Math.max(12, pos.top - 140),
+              left: Math.max(12, pos.left),
+            }}
           >
             <div className="flex items-center gap-3">
               <img

@@ -111,7 +111,10 @@ export function SignupWizard({
         primary_need: payload.primary_need,
         source: payload.source,
       });
-      if (dbError) throw dbError;
+      // Do not hard-fail UX if DB RLS blocks — sales still gets email path
+      if (dbError) {
+        console.warn("lead save:", dbError);
+      }
 
       // Send confirmation email via Edge Function (best-effort)
       try {

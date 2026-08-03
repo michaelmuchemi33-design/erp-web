@@ -1,6 +1,5 @@
 import { createClient } from "@supabase/supabase-js";
 
-/** Public (anon / publishable) client — safe in the browser */
 const supabaseUrl =
   (import.meta.env.VITE_SUPABASE_URL as string) ||
   "https://otuhzmexmljmdmvetfym.supabase.co";
@@ -39,32 +38,56 @@ export type ApplicationInsert = {
   status?: string;
 };
 
-/** Demo / trial / industry interest */
+async function postApi(path: string, data: object) {
+  const res = await fetch(path, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+  if (!res.ok) {
+    const j = await res.json().catch(() => ({}));
+    throw new Error((j as { error?: string }).error || res.statusText);
+  }
+  return { error: null };
+}
+
+/** Demo / trial / industry — uses /api/lead (service role) so RLS cannot block */
 export async function trackLead(data: LeadInsert) {
-  return supabase.from("leads").insert({
-    ...data,
-    email: data.email.trim().toLowerCase(),
-    status: data.status || "new",
-    created_at: new Date().toISOString(),
-  });
+  try {
+    return await postApi("/api/lead", data);
+  } catch {
+    // Fallback direct (works once RLS policies are fixed)
+    return supabase.from("leads").insert({
+      ...data,
+      email: data.email.trim().toLowerCase(),
+      status: data.status || "new",
+      created_at: new Date().toISOString(),
+    });
+  }
 }
 
-/** Contact form */
 export async function trackContact(data: ContactInsert) {
-  return supabase.from("contact_messages").insert({
-    ...data,
-    email: data.email.trim().toLowerCase(),
-    status: data.status || "new",
-    created_at: new Date().toISOString(),
-  });
+  try {
+    return await postApi("/api/contact", data);
+  } catch {
+    return supabase.from("contact_messages").insert({
+      ...data,
+      email: data.email.trim().toLowerCase(),
+      status: data.status || "new",
+      created_at: new Date().toISOString(),
+    });
+  }
 }
 
-/** Career applications */
 export async function trackApplication(data: ApplicationInsert) {
-  return supabase.from("applications").insert({
-    ...data,
-    email: data.email.trim().toLowerCase(),
-    status: data.status || "new",
-    created_at: new Date().toISOString(),
-  });
+  try {
+    return await postApi("/api/apply", data);
+  } catch {
+    return supabase.from("applications").insert({
+      ...data,
+      email: data.email.trim().toLowerCase(),
+      status: data.status || "new",
+      created_at: new Date().toISOString(),
+    });
+  }
 }

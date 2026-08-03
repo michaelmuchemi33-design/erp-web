@@ -95,3 +95,20 @@ alter table public.login_events enable row level security;
 drop policy if exists "Anyone can log login interest" on public.login_events;
 create policy "Anyone can log login interest"
   on public.login_events for insert to anon, authenticated with check (true);
+
+-- FIX: if inserts fail with RLS 42501, run this block:
+drop policy if exists "Anyone can submit lead" on public.leads;
+create policy "Anyone can submit lead"
+  on public.leads for insert to anon, authenticated with check (true);
+
+drop policy if exists "Anyone can send contact" on public.contact_messages;
+create policy "Anyone can send contact"
+  on public.contact_messages for insert to anon, authenticated with check (true);
+
+drop policy if exists "Anyone can apply" on public.applications;
+create policy "Anyone can apply"
+  on public.applications for insert to anon, authenticated with check (true);
+
+grant insert on public.leads to anon, authenticated;
+grant insert on public.contact_messages to anon, authenticated;
+grant insert on public.applications to anon, authenticated;

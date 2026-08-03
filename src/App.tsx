@@ -25,6 +25,7 @@ import { BlogPostShell } from "@/pages/BlogPostPage";
 import { LoginPageShell } from "@/pages/LoginPage";
 import { blogBySlug } from "@/content/blogPosts";
 import { applyHomeMeta, detectCountryCode, getGeoPack, refineCountryFromIp } from "@/lib/geoMeta";
+import { PromoBanners } from "@/components/PromoBanners";
 import { SeoTopicShell } from "@/pages/SeoTopicPage";
 import { seoBySlug } from "@/content/seoPages";
 import { ResourcePageShell } from "@/pages/ResourcePage";
@@ -105,7 +106,7 @@ export default function App() {
   const seoPage = seoBySlug[resourceSlug];
 
   return (
-    <div className="min-h-screen overflow-x-hidden bg-white font-sans text-slate-950 selection:bg-emerald-100 selection:text-emerald-900">
+    <div className="min-h-screen overflow-x-hidden bg-white pb-24 font-sans text-slate-950 selection:bg-emerald-100 selection:text-emerald-900">
       {isAbout ? (
         <AboutPageShell />
       ) : isContact ? (
@@ -138,6 +139,7 @@ export default function App() {
       {!isAbout && !isContact && !isFeatures && !isIndustries && !isPricing && !isCareers && !isPaymentCallback && !isJoined && !isLogin && !isBlogIndex && !blogPost && !resourcePage && !seoPage && (
         <SignupWizard open={signupOpen} onClose={() => setSignupOpen(false)} />
       )}
+      <PromoBanners />
     </div>
   );
 }

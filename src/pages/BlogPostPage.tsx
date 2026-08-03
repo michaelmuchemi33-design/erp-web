@@ -18,6 +18,34 @@ export function BlogPostShell({ post }: { post: BlogPost }) {
       document.head.appendChild(d);
     }
     d.setAttribute("content", post.description);
+    let k = document.querySelector('meta[name="keywords"]');
+    if (!k) {
+      k = document.createElement("meta");
+      k.setAttribute("name", "keywords");
+      document.head.appendChild(k);
+    }
+    k.setAttribute("content", post.keywords);
+    let ogt = document.querySelector('meta[property="og:title"]');
+    if (!ogt) {
+      ogt = document.createElement("meta");
+      ogt.setAttribute("property", "og:title");
+      document.head.appendChild(ogt);
+    }
+    ogt.setAttribute("content", post.title);
+    let ogd = document.querySelector('meta[property="og:description"]');
+    if (!ogd) {
+      ogd = document.createElement("meta");
+      ogd.setAttribute("property", "og:description");
+      document.head.appendChild(ogd);
+    }
+    ogd.setAttribute("content", post.description);
+    let can = document.querySelector('link[rel="canonical"]');
+    if (!can) {
+      can = document.createElement("link");
+      can.setAttribute("rel", "canonical");
+      document.head.appendChild(can);
+    }
+    can.setAttribute("href", `https://www.unity-software.online/blog/${post.slug}`);
     const id = "blog-jsonld";
     document.getElementById(id)?.remove();
     const s = document.createElement("script");

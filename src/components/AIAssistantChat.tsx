@@ -142,6 +142,10 @@ export function AIAssistantChat() {
   }
 
   function ask(prompt: string) {
+    try {
+      (document.activeElement as HTMLElement)?.blur?.();
+    } catch {}
+
     if (typing) return;
     const userMsg: Msg = {
       id: `u-${Date.now()}`,
@@ -184,7 +188,7 @@ export function AIAssistantChat() {
   }
 
   return (
-    <div className="flex h-[520px] max-h-[520px] flex-col overflow-hidden overscroll-contain rounded-3xl border border-slate-100 bg-white/95 p-5 shadow-2xl shadow-slate-900/10 backdrop-blur-xl md:h-[540px] md:max-h-[540px] md:p-6">
+    <div className="flex h-[520px] max-h-[520px] flex-col overflow-hidden overscroll-contain rounded-3xl border border-slate-100 bg-white/95 p-5 shadow-2xl shadow-slate-900/10 backdrop-blur-xl md:h-[540px] md:max-h-[540px] md:p-6" style={{ contain: "layout paint", touchAction: "pan-y" }}>
       {/* Header */}
       <div className="mb-4 flex shrink-0 items-center justify-between border-b border-slate-100 pb-4">
         <div className="flex items-center gap-2.5">
