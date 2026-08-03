@@ -4,7 +4,6 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SignupWizard } from "@/components/SignupWizard";
 import { Features } from "@/components/Features";
 import { BottomCTA } from "@/components/BottomCTA";
-import { PageBanner } from "@/components/PageBanner";
 
 export function FeaturesPageShell() {
   const [signupOpen, setSignupOpen] = useState(false);
@@ -20,14 +19,8 @@ export function FeaturesPageShell() {
   return (
     <div className="min-h-screen overflow-x-hidden bg-white font-sans text-slate-950">
       <Header onOpenSignup={() => setSignupOpen(true)} />
-      <main>
-        <div className="pt-16">
-          <PageBanner
-            title="Features"
-            subtitle="CRM, inventory, finance and AI — everything in one system."
-          />
-        </div>
-        <div className="mx-auto max-w-7xl px-6 pt-10 pb-4">
+      <main className="pt-8">
+        <div className="mx-auto max-w-7xl px-6 pt-20 pb-4">
           <p className="text-xs font-bold uppercase tracking-wider text-amber-600">Product</p>
           <h1 className="mt-2 text-4xl font-bold tracking-tight text-slate-950 sm:text-5xl">
             Features

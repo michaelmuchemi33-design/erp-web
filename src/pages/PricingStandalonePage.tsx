@@ -7,7 +7,6 @@ import { PricingCard } from "@/components/PricingCard";
 import { Guarantee } from "@/components/Guarantee";
 import { FAQ } from "@/components/FAQ";
 import { BottomCTA } from "@/components/BottomCTA";
-import { PageBanner } from "@/components/PageBanner";
 
 export function PricingStandaloneShell() {
   const [signupOpen, setSignupOpen] = useState(false);
@@ -23,13 +22,7 @@ export function PricingStandaloneShell() {
   return (
     <div className="min-h-screen overflow-x-hidden bg-white font-sans text-slate-950">
       <Header onOpenSignup={() => setSignupOpen(true)} />
-      <main>
-        <div className="pt-16">
-          <PageBanner
-            title="Pricing"
-            subtitle="Simple plans — KES 3,000/month or KES 33,000/year."
-          />
-        </div>
+      <main className="pt-16">
         <PricingHero />
         <PricingCard onOpenSignup={() => setSignupOpen(true)} />
         <Guarantee />

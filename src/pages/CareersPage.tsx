@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { Header } from "@/components/Header";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SignupWizard } from "@/components/SignupWizard";
-import { PageBanner } from "@/components/PageBanner";
 import { Button } from "@/components/ui/button";
 import {
   MapPin,
