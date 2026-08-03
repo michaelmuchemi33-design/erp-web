@@ -19,6 +19,7 @@ import { IndustriesPageShell } from "@/pages/IndustriesPage";
 import { PricingStandaloneShell } from "@/pages/PricingStandalonePage";
 import { CareersPageShell } from "@/pages/CareersPage";
 import { PaymentCallbackShell } from "@/pages/PaymentCallbackPage";
+import { JoinedWaitShell } from "@/pages/JoinedWaitPage";
 import { SeoTopicShell } from "@/pages/SeoTopicPage";
 import { seoBySlug } from "@/content/seoPages";
 import { ResourcePageShell } from "@/pages/ResourcePage";
@@ -89,6 +90,7 @@ export default function App() {
   const isPricing = path === "/pricing";
   const isCareers = path === "/careers";
   const isPaymentCallback = path === "/payment/callback" || path === "/payment/success";
+  const isJoined = path === "/joined";
   const resourceSlug = path.startsWith("/") ? path.slice(1) : path;
   const resourcePage = pagesBySlug[resourceSlug];
   const seoPage = seoBySlug[resourceSlug];
@@ -109,6 +111,8 @@ export default function App() {
         <CareersPageShell />
       ) : isPaymentCallback ? (
         <PaymentCallbackShell />
+      ) : isJoined ? (
+        <JoinedWaitShell />
       ) : resourcePage ? (
         <ResourcePageShell page={resourcePage} />
       ) : seoPage ? (
@@ -116,7 +120,7 @@ export default function App() {
       ) : (
         <HomePage onOpenSignup={() => setSignupOpen(true)} />
       )}
-      {!isAbout && !isContact && !isFeatures && !isIndustries && !isPricing && !isCareers && !isPaymentCallback && !resourcePage && !seoPage && (
+      {!isAbout && !isContact && !isFeatures && !isIndustries && !isPricing && !isCareers && !isPaymentCallback && !isJoined && !resourcePage && !seoPage && (
         <SignupWizard open={signupOpen} onClose={() => setSignupOpen(false)} />
       )}
     </div>

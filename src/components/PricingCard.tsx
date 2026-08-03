@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { payWithPaystack } from "@/lib/paystack";
+import { trackLead } from "@/lib/supabase";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -55,6 +57,9 @@ const coreFeatures = [
 
 export function PricingCard({ onOpenSignup }: { onOpenSignup?: () => void } = {}) {
   const [yearly, setYearly] = useState(false);
+  const [payEmail, setPayEmail] = useState("");
+  const [paying, setPaying] = useState(false);
+  const [payError, setPayError] = useState("");
 
   const monthlyPrice = 3000;
   const yearlyPrice = 33000; // 11 months = 1 month free
@@ -124,6 +129,47 @@ export function PricingCard({ onOpenSignup }: { onOpenSignup?: () => void } = {}
           </AnimatePresence>
         </motion.div>
 
+        
+        {/* Free limited plan */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-8 rounded-3xl border border-dashed border-emerald-200 bg-emerald-50/40 p-6 md:p-8"
+        >
+          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-wider text-emerald-700">
+                Free mode · Limited
+              </p>
+              <h3 className="mt-1 text-2xl font-bold text-slate-950">Free</h3>
+              <p className="mt-2 max-w-xl text-sm text-slate-600">
+                Limited use to explore Unity ERP. Sign up free — full unlock happens after
+                onboarding. You will land on a confirmation page and a sales specialist will call you.
+              </p>
+              <ul className="mt-3 flex flex-wrap gap-2 text-xs font-medium text-slate-600">
+                {["Limited modules preview", "Signup required", "Sales activation call", "Upgrade anytime"].map((x) => (
+                  <li key={x} className="rounded-full bg-white px-3 py-1 ring-1 ring-emerald-100">
+                    {x}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <Button
+              onClick={() => {
+                try {
+                  sessionStorage.setItem("unity_signup_mode", "free");
+                } catch {}
+                onOpenSignup?.();
+              }}
+              className="h-12 shrink-0 gap-2 rounded-full bg-emerald-600 px-8 font-semibold text-white hover:bg-emerald-500"
+            >
+              Start free (limited)
+              <ArrowRight className="h-4 w-4" />
+            </Button>
+          </div>
+        </motion.div>
+
         {/* Main pricing card */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -191,17 +237,62 @@ export function PricingCard({ onOpenSignup }: { onOpenSignup?: () => void } = {}
                     </div>
                   </div>
 
-                  {/* CTAs – Swypt Pay Now primary */}
+                  {/* Paystack — email collected for invoicing */}
                   <div className="mt-8 flex flex-col gap-3">
-                    <a
-                      href="https://checkout.swypt.io/erp"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-[#DD268A] text-base font-semibold text-white shadow-lg shadow-[#DD268A]/25 transition-all hover:scale-[1.02] hover:opacity-90 hover:shadow-xl hover:shadow-[#DD268A]/30"
+                    <label className="text-left text-xs font-semibold uppercase tracking-wide text-slate-500">
+                      Email for Paystack invoice / receipt
+                    </label>
+                    <input
+                      type="email"
+                      placeholder="you@company.com"
+                      value={payEmail}
+                      onChange={(e) => setPayEmail(e.target.value)}
+                      className="h-12 w-full rounded-full border border-slate-200 px-5 text-sm outline-none ring-[#0BA4DB]/25 focus:ring-2"
+                    />
+                    {payError && (
+                      <p className="text-left text-xs text-rose-600">{payError}</p>
+                    )}
+                    <Button
+                      disabled={paying}
+                      onClick={async () => {
+                        if (!payEmail.includes("@")) {
+                          setPayError("Enter a valid email for invoicing.");
+                          return;
+                        }
+                        setPaying(true);
+                        setPayError("");
+                        try {
+                          await trackLead({
+                            email: payEmail,
+                            primary_need: yearly
+                              ? "Yearly plan Paystack"
+                              : "Monthly plan Paystack",
+                            source: "paystack_checkout",
+                          });
+                          await payWithPaystack({
+                            email: payEmail,
+                            amountKes: price,
+                            planLabel: yearly
+                              ? "Unity ERP Yearly"
+                              : "Unity ERP Monthly",
+                          });
+                        } catch (err: unknown) {
+                          setPayError(
+                            err instanceof Error
+                              ? err.message
+                              : "Payment could not start"
+                          );
+                        } finally {
+                          setPaying(false);
+                        }
+                      }}
+                      className="h-12 w-full gap-2 rounded-full bg-[#0BA4DB] text-base font-semibold text-white hover:bg-[#0994c7]"
                     >
-                      Pay Now
-                      <ExternalLink className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                    </a>
+                      {paying
+                        ? "Opening Paystack…"
+                        : `Pay with Paystack — KES ${price.toLocaleString()}`}
+                      <ExternalLink className="h-4 w-4" />
+                    </Button>
 
                     <Button
                       onClick={onOpenSignup}

@@ -18,9 +18,9 @@ import {
 } from "lucide-react";
 
 const EMAIL = "erpintergration@gmail.com";
-const WHATSAPP = "+254793832286";
+const WHATSAPP = "+254778903044";
 const CALL = "+254793832286";
-const WHATSAPP_LINK = `https://wa.me/254793832286`;
+const WHATSAPP_LINK = `https://wa.me/254778903044`;
 const CALL_LINK = `tel:+254793832286`;
 const MAIL_LINK = `mailto:${EMAIL}`;
 

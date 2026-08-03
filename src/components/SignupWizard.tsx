@@ -130,6 +130,16 @@ export function SignupWizard({
       }
 
       setDone(true);
+      try {
+        const mode = sessionStorage.getItem("unity_signup_mode");
+        sessionStorage.removeItem("unity_signup_mode");
+        if (mode === "free") {
+          window.setTimeout(() => {
+            window.history.pushState({}, "", "/joined");
+            window.dispatchEvent(new PopStateEvent("popstate"));
+          }, 1200);
+        }
+      } catch {}
     } catch (e: unknown) {
       const msg = e instanceof Error ? e.message : "Something went wrong";
       setError(msg);

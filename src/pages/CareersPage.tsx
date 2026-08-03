@@ -19,9 +19,8 @@ import {
 } from "lucide-react";
 
 const EMAIL = "developerunityerp@proton.me";
-/** WhatsApp: 0744 line — update digits if needed */
-const CAREERS_PHONE_DISPLAY = "0744";
-const CAREERS_WA_LINK = "https://wa.me/254744";
+const CAREERS_PHONE_DISPLAY = "+254 778 903 044";
+const CAREERS_WA_LINK = "https://wa.me/254778903044";
 const APPLY = `mailto:${EMAIL}?subject=`;
 
 const jobs = [
