@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play, Star } from "lucide-react";
 import { AIAssistantChat } from "@/components/AIAssistantChat";
@@ -162,19 +163,17 @@ function TrustReviews() {
         </div>
       </div>
 
-      <AnimatePresence>
-        {open !== null && reviews[open] && (
-          <motion.div
-            key={open}
-            initial={{ opacity: 0, y: 6 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.15 }}
-            className="fixed z-[200] w-[300px] rounded-2xl border border-slate-200 bg-white p-4 shadow-2xl ring-1 ring-black/5"
+      {typeof document !== "undefined" &&
+        open !== null &&
+        reviews[open] &&
+        createPortal(
+          <div
+            className="fixed z-[9999] w-[300px] rounded-2xl border border-slate-200 bg-white p-4 shadow-2xl ring-1 ring-black/5"
             style={{
-              top: Math.max(12, pos.top - 140),
-              left: Math.max(12, pos.left),
+              top: Math.max(12, pos.top - 150),
+              left: Math.max(12, Math.min(pos.left, window.innerWidth - 312)),
             }}
+            onMouseEnter={() => setOpen(open)}
           >
             <div className="flex items-center gap-3">
               <img
@@ -200,9 +199,9 @@ function TrustReviews() {
             <p className="mt-2 text-sm leading-relaxed text-slate-600">
               “{reviews[open].text}”
             </p>
-          </motion.div>
+          </div>,
+          document.body
         )}
-      </AnimatePresence>
     </div>
   );
 }

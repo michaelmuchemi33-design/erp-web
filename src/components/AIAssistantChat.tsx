@@ -237,11 +237,8 @@ export function AIAssistantChat() {
       >
         <AnimatePresence initial={false}>
           {messages.map((msg) => (
-            <motion.div
+            <div
               key={msg.id}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.25 }}
               className={`flex items-start gap-2.5 ${
                 msg.role === "user" ? "justify-end" : ""
               }`}
@@ -257,22 +254,18 @@ export function AIAssistantChat() {
                 {msg.text}
                 {msg.role === "ai" && <MetricCards kind={msg.kind} />}
               </div>
-            </motion.div>
+            </div>
           ))}
         </AnimatePresence>
 
         {typing && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="flex items-center gap-2.5"
-          >
+          <div className="flex items-center gap-2.5">
             <AiAvatar size={26} />
             <div className="flex items-center gap-1.5 rounded-2xl rounded-tl-md bg-black px-4 py-3">
               <Loader2 className="h-3.5 w-3.5 animate-spin text-emerald-600" />
               <span className="text-xs text-slate-300">Knight AI is thinking…</span>
             </div>
-          </motion.div>
+          </div>
         )}
         <div ref={endRef} />
       </div>

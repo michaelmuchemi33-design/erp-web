@@ -39,14 +39,20 @@ export type ApplicationInsert = {
 };
 
 async function postApi(path: string, data: object) {
-  const res = await fetch(path, {
+  const base =
+    typeof window !== "undefined" ? window.location.origin : "https://www.unity-software.online";
+  const res = await fetch(`${base}${path}`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
   });
   if (!res.ok) {
     const j = await res.json().catch(() => ({}));
-    throw new Error((j as { error?: string }).error || res.statusText);
+    throw new Error(
+      typeof (j as { error?: string }).error === "string"
+        ? (j as { error: string }).error
+        : res.statusText || "Request failed"
+    );
   }
   return { error: null };
 }
