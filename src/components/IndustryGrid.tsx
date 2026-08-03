@@ -1,6 +1,4 @@
-import {
-  useRef,
-  useState } from "react";
+import { useRef, useState, useEffect, useMemo } from "react";
 import { motion,
   useInView,
   AnimatePresence } from "framer-motion";
