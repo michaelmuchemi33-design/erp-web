@@ -1,33 +1,60 @@
 import { useEffect } from "react";
 import { Header } from "@/components/Header";
 import { SiteFooter } from "@/components/SiteFooter";
-import { Check, Phone, MessageCircle, Mail } from "lucide-react";
+import { Check, Phone, MessageCircle, Mail, Inbox } from "lucide-react";
+
+const DASHBOARD =
+  "https://i.postimg.cc/wMGLqBvh/erp-dashboard-looks-(1).png";
 
 export function JoinedWaitShell() {
   useEffect(() => {
-    document.title = "You're in — Unity ERP | Sales will call you";
+    document.title = "Check your email — Unity ERP";
+    window.scrollTo(0, 0);
   }, []);
 
   return (
     <div className="min-h-screen bg-white font-sans text-slate-950">
       <Header />
-      <main className="mx-auto max-w-lg px-6 py-28 text-center">
-        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-emerald-50 text-emerald-600">
-          <Check className="h-8 w-8" />
+      <main className="mx-auto max-w-2xl px-6 py-28">
+        <div className="text-center">
+          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-emerald-50 text-emerald-600">
+            <Check className="h-8 w-8" />
+          </div>
+          <h1 className="mt-6 text-3xl font-bold tracking-tight sm:text-4xl">
+            You have joined Unity ERP
+          </h1>
+          <p className="mt-4 text-lg text-slate-600">
+            Your request is confirmed.{" "}
+            <strong className="text-slate-900">Check the email you submitted</strong>{" "}
+            for a welcome message with next steps, tailored benefits, and a preview of
+            your dashboard.
+          </p>
         </div>
-        <h1 className="mt-6 text-3xl font-bold tracking-tight sm:text-4xl">
-          You have joined Unity ERP
-        </h1>
-        <p className="mt-4 text-lg text-slate-600">
-          Your free / trial request is in. A sales specialist will call or message you
-          shortly to activate limited free access or your full plan.
+
+        <div className="mt-8 overflow-hidden rounded-2xl border border-slate-200 shadow-lg shadow-slate-900/5">
+          <img
+            src={DASHBOARD}
+            alt="Unity ERP dashboard preview — revenue, orders, inventory and CRM"
+            className="w-full object-cover object-top"
+            width={1200}
+            height={750}
+          />
+        </div>
+        <p className="mt-3 text-center text-xs text-slate-500">
+          Preview of the Unity ERP dashboard you will use after activation
         </p>
-        <div className="mt-8 space-y-3 rounded-2xl border border-slate-100 bg-slate-50 p-6 text-left text-sm text-slate-700">
-          <p className="font-semibold text-slate-900">What happens next</p>
-          <p>1. We review your signup details</p>
-          <p>2. Sales contacts you (call or WhatsApp)</p>
-          <p>3. You receive access instructions for Unity ERP</p>
+
+        <div className="mt-8 space-y-3 rounded-2xl border border-amber-100 bg-amber-50 p-6 text-left text-sm text-slate-800">
+          <p className="flex items-center gap-2 font-semibold text-slate-900">
+            <Inbox className="h-4 w-4 text-amber-600" />
+            What to do now
+          </p>
+          <p>1. Open the inbox for the email address you used on the form</p>
+          <p>2. Read the Unity ERP welcome email (check spam / promotions too)</p>
+          <p>3. Sales will call or WhatsApp you to activate trial access</p>
+          <p>4. Log in when you receive workspace instructions</p>
         </div>
+
         <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
           <a
             href="https://wa.me/254778903044"
@@ -53,7 +80,11 @@ export function JoinedWaitShell() {
             Email us
           </a>
         </div>
-        <a href="/" className="mt-10 inline-block text-sm font-medium text-slate-500 hover:text-slate-900">
+
+        <a
+          href="/"
+          className="mt-10 block text-center text-sm font-medium text-slate-500 hover:text-slate-900"
+        >
           ← Back to home
         </a>
       </main>

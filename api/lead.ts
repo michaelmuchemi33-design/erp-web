@@ -1,10 +1,18 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
+import { demoRequestEmail } from "./_emailTemplates";
+import { sendResendEmail } from "./_resend";
 
-const URL = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL || "https://otuhzmexmljmdmvetfym.supabase.co";
+const URL =
+  process.env.SUPABASE_URL ||
+  process.env.VITE_SUPABASE_URL ||
+  "https://otuhzmexmljmdmvetfym.supabase.co";
 const SERVICE =
-  process.env.SUPABASE_SECRET_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY || "";
+  process.env.SUPABASE_SECRET_KEY ||
+  process.env.SUPABASE_SERVICE_ROLE_KEY ||
+  "";
 const ANON =
   process.env.VITE_SUPABASE_PUBLISHABLE_KEY ||
+  process.env.SUPABASE_PUBLISHABLE_KEY ||
   "sb_publishable_TeZ72fuK0pP9UqzD9T9K-Q_cEmPRudZ";
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
@@ -30,16 +38,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     created_at: new Date().toISOString(),
   };
 
-  // Prefer service role (bypasses RLS); fall back to anon
-  if (!SERVICE && !ANON) {
-    return res.status(500).json({ error: "Server keys not configured" });
-  }
-
+  let saved = false;
   for (const key of [SERVICE, ANON].filter(Boolean)) {
     const r = await fetch(`${URL}/rest/v1/leads`, {
       method: "POST",
       headers: {
-        apikey: key,
+        apikey: key as string,
         Authorization: `Bearer ${key}`,
         "Content-Type": "application/json",
         Prefer: "return=minimal",
@@ -47,12 +51,46 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       body: JSON.stringify(row),
     });
     if (r.ok || r.status === 201) {
-      return res.status(200).json({ ok: true });
-    }
-    const err = await r.text();
-    if (key === ANON) {
-      return res.status(r.status).json({ error: err || "Insert failed" });
+      saved = true;
+      break;
     }
   }
-  return res.status(500).json({ error: "Insert failed" });
+
+  // Automated marketing + onboarding email (Monday-style)
+  const mail = demoRequestEmail({
+    name: row.name,
+    email,
+    industry: row.industry,
+    company_size: row.company_size,
+    primary_need: row.primary_need,
+  });
+  const sent = await sendResendEmail({
+    to: email,
+    subject: mail.subject,
+    html: mail.html,
+  });
+
+  // Notify sales inbox (optional)
+  const salesTo = process.env.SALES_INBOX || "erpintergration@gmail.com";
+  if (salesTo && salesTo !== email) {
+    await sendResendEmail({
+      to: salesTo,
+      subject: `New Unity ERP lead: ${email} (${row.industry || "n/a"})`,
+      html: `<p>New lead from ${row.source}</p>
+        <ul>
+          <li>Name: ${row.name || "—"}</li>
+          <li>Email: ${email}</li>
+          <li>Phone: ${row.phone || "—"}</li>
+          <li>Industry: ${row.industry || "—"}</li>
+          <li>Size: ${row.company_size || "—"}</li>
+          <li>Need: ${row.primary_need || "—"}</li>
+        </ul>`,
+    }).catch(() => null);
+  }
+
+  return res.status(200).json({
+    ok: true,
+    saved,
+    emailSent: sent.ok,
+  });
 }
