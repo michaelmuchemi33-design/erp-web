@@ -20,6 +20,11 @@ import { PricingStandaloneShell } from "@/pages/PricingStandalonePage";
 import { CareersPageShell } from "@/pages/CareersPage";
 import { PaymentCallbackShell } from "@/pages/PaymentCallbackPage";
 import { JoinedWaitShell } from "@/pages/JoinedWaitPage";
+import { BlogIndexShell } from "@/pages/BlogIndexPage";
+import { BlogPostShell } from "@/pages/BlogPostPage";
+import { LoginPageShell } from "@/pages/LoginPage";
+import { blogBySlug } from "@/content/blogPosts";
+import { applyHomeMeta, detectCountryCode, getGeoPack, refineCountryFromIp } from "@/lib/geoMeta";
 import { SeoTopicShell } from "@/pages/SeoTopicPage";
 import { seoBySlug } from "@/content/seoPages";
 import { ResourcePageShell } from "@/pages/ResourcePage";
@@ -91,6 +96,10 @@ export default function App() {
   const isCareers = path === "/careers";
   const isPaymentCallback = path === "/payment/callback" || path === "/payment/success";
   const isJoined = path === "/joined";
+  const isBlogIndex = path === "/blog";
+  const isLogin = path === "/login";
+  const blogSlug = path.startsWith("/blog/") ? path.slice("/blog/".length) : "";
+  const blogPost = blogSlug ? blogBySlug[blogSlug] : undefined;
   const resourceSlug = path.startsWith("/") ? path.slice(1) : path;
   const resourcePage = pagesBySlug[resourceSlug];
   const seoPage = seoBySlug[resourceSlug];
@@ -113,6 +122,12 @@ export default function App() {
         <PaymentCallbackShell />
       ) : isJoined ? (
         <JoinedWaitShell />
+      ) : isLogin ? (
+        <LoginPageShell />
+      ) : isBlogIndex ? (
+        <BlogIndexShell />
+      ) : blogPost ? (
+        <BlogPostShell post={blogPost} />
       ) : resourcePage ? (
         <ResourcePageShell page={resourcePage} />
       ) : seoPage ? (
@@ -120,7 +135,7 @@ export default function App() {
       ) : (
         <HomePage onOpenSignup={() => setSignupOpen(true)} />
       )}
-      {!isAbout && !isContact && !isFeatures && !isIndustries && !isPricing && !isCareers && !isPaymentCallback && !isJoined && !resourcePage && !seoPage && (
+      {!isAbout && !isContact && !isFeatures && !isIndustries && !isPricing && !isCareers && !isPaymentCallback && !isJoined && !isLogin && !isBlogIndex && !blogPost && !resourcePage && !seoPage && (
         <SignupWizard open={signupOpen} onClose={() => setSignupOpen(false)} />
       )}
     </div>

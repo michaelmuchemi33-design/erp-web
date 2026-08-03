@@ -82,3 +82,16 @@ create index if not exists leads_created_at_idx on public.leads (created_at desc
 create index if not exists leads_source_idx on public.leads (source);
 create index if not exists applications_created_at_idx on public.applications (created_at desc);
 create index if not exists contact_messages_created_at_idx on public.contact_messages (created_at desc);
+
+
+-- Optional: track login page interest (also stored in leads with source=login_page)
+create table if not exists public.login_events (
+  id uuid primary key default gen_random_uuid(),
+  email text not null,
+  method text default 'magic_link',
+  created_at timestamptz default now()
+);
+alter table public.login_events enable row level security;
+drop policy if exists "Anyone can log login interest" on public.login_events;
+create policy "Anyone can log login interest"
+  on public.login_events for insert to anon, authenticated with check (true);
