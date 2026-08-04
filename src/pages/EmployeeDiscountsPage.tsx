@@ -16,23 +16,26 @@ import {
   Search,
   Share2,
   Link2,
+  Users,
 } from "lucide-react";
 
 type SoftItem = {
   id: string;
   name: string;
   retail: string;
+  /** Employee monthly contribution USD */
   employeePays: number;
   covers: string;
   domain: string;
+  /** individual | team | enterprise seat */
+  planType: "individual" | "team" | "enterprise";
+  tierLabel: string;
 };
 
-function logoUrl(domain: string) {
-  return `https://www.google.com/s2/favicons?domain=${domain}&sz=128`;
-}
-
 function SoftLogo({ domain, name }: { domain: string; name: string }) {
-  const [src, setSrc] = useState(logoUrl(domain));
+  const [src, setSrc] = useState(
+    `https://www.google.com/s2/favicons?domain=${domain}&sz=128`
+  );
   const [failed, setFailed] = useState(0);
   return (
     <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-slate-100 bg-white">
@@ -52,14 +55,20 @@ function SoftLogo({ domain, name }: { domain: string; name: string }) {
             if (failed === 0) {
               setSrc(`https://logo.clearbit.com/${domain}`);
               setFailed(1);
-            } else {
-              setFailed(2);
-            }
+            } else setFailed(2);
           }}
         />
       )}
     </div>
   );
+}
+
+function priceBadge(pays: number) {
+  if (pays <= 12) return { label: "Entry", className: "bg-slate-100 text-slate-700" };
+  if (pays <= 17) return { label: "Standard", className: "bg-emerald-50 text-emerald-800" };
+  if (pays <= 25) return { label: "Pro", className: "bg-amber-50 text-amber-800" };
+  if (pays <= 40) return { label: "Team", className: "bg-sky-50 text-sky-800" };
+  return { label: "Premium seat", className: "bg-violet-50 text-violet-800" };
 }
 
 const s = (
@@ -68,111 +77,122 @@ const s = (
   retail: string,
   pays: number,
   covers: string,
-  domain: string
-): SoftItem => ({ id, name, retail, employeePays: pays, covers, domain });
+  domain: string,
+  planType: SoftItem["planType"] = "individual",
+  tierLabel = "Individual"
+): SoftItem => ({
+  id,
+  name,
+  retail,
+  employeePays: pays,
+  covers,
+  domain,
+  planType,
+  tierLabel,
+});
 
 const DEVELOPER: SoftItem[] = [
   s("jetbrains", "JetBrains All Products Pack", "$89/mo", 17, "$72", "jetbrains.com"),
-  s("adobe-dev", "Adobe Creative Cloud All Apps", "$69.99/mo", 17, "$52.99", "adobe.com"),
+  s("jetbrains-team", "JetBrains Team License (5 seats)", "$445/mo", 49, "Balance", "jetbrains.com", "team", "Team · 5 seats"),
   s("github", "GitHub Enterprise", "$39/user/mo", 17, "Balance", "github.com"),
-  s("postman", "Postman Enterprise", "$45+/mo", 17, "Balance", "postman.com"),
-  s("docker", "Docker Business", "$24/user/mo", 17, "Balance", "docker.com"),
-  s("mongodb", "MongoDB Atlas Professional", "$57+/mo", 17, "Balance", "mongodb.com"),
-  s("azure-devops", "Azure DevOps Premium", "$52+/mo", 17, "Balance", "azure.microsoft.com"),
-  s("gitlab", "GitLab Premium", "$29/user/mo", 17, "Balance", "gitlab.com"),
-  s("linear", "Linear Business", "$12+/user/mo", 17, "Balance", "linear.app"),
-  s("sentry", "Sentry Business", "$80+/mo", 17, "Balance", "sentry.io"),
-  s("datadog", "Datadog Pro", "$15+/host/mo", 17, "Balance", "datadoghq.com"),
-  s("aws", "AWS Support Business", "Variable", 17, "Balance", "aws.amazon.com"),
-  s("vercel", "Vercel Pro", "$20/user/mo", 17, "Balance", "vercel.com"),
-  s("figma-dev", "Figma Professional", "$15/editor/mo", 17, "Balance", "figma.com"),
-  s("notion-dev", "Notion Plus", "$10+/user/mo", 17, "Balance", "notion.so"),
-  s("cursor", "Cursor Pro", "$20/mo", 17, "Balance", "cursor.com"),
-  s("copilot", "GitHub Copilot Business", "$19/user/mo", 17, "Balance", "github.com"),
-  s("terraform", "Terraform Cloud Team", "$20+/user/mo", 17, "Balance", "hashicorp.com"),
-  s("redis", "Redis Cloud Pro", "Variable", 17, "Balance", "redis.io"),
-  s("supabase", "Supabase Pro", "$25+/mo", 17, "Balance", "supabase.com"),
-  s("cloudflare", "Cloudflare Pro", "$20+/mo", 17, "Balance", "cloudflare.com"),
-  s("npm", "npm Pro", "$7+/user/mo", 17, "Balance", "npmjs.com"),
+  s("github-team", "GitHub Team Org", "$4+/user/mo", 12, "Balance", "github.com", "team", "Team org"),
+  s("postman", "Postman Enterprise", "$45+/mo", 19, "Balance", "postman.com"),
+  s("docker", "Docker Business", "$24/user/mo", 15, "Balance", "docker.com"),
+  s("mongodb", "MongoDB Atlas Professional", "$57+/mo", 22, "Balance", "mongodb.com", "team", "Team cluster"),
+  s("azure-devops", "Azure DevOps Premium", "$52+/mo", 20, "Balance", "azure.microsoft.com"),
+  s("gitlab", "GitLab Premium", "$29/user/mo", 16, "Balance", "gitlab.com"),
+  s("linear", "Linear Business", "$12+/user/mo", 10, "Balance", "linear.app", "team", "Team"),
+  s("sentry", "Sentry Business", "$80+/mo", 28, "Balance", "sentry.io", "team", "Team"),
+  s("datadog", "Datadog Pro", "$15+/host/mo", 24, "Balance", "datadoghq.com", "team", "Team"),
+  s("vercel", "Vercel Pro", "$20/user/mo", 14, "Balance", "vercel.com"),
+  s("figma-dev", "Figma Professional", "$15/editor/mo", 12, "Balance", "figma.com"),
+  s("figma-org", "Figma Organization", "$45/editor/mo", 29, "Balance", "figma.com", "team", "Org / team"),
+  s("cursor", "Cursor Pro", "$20/mo", 14, "Balance", "cursor.com"),
+  s("cursor-biz", "Cursor Business", "$40/user/mo", 32, "Balance", "cursor.com", "team", "Business"),
+  s("copilot", "GitHub Copilot Business", "$19/user/mo", 14, "Balance", "github.com"),
+  s("supabase", "Supabase Pro", "$25+/mo", 15, "Balance", "supabase.com"),
+  s("supabase-team", "Supabase Team", "$599+/mo", 79, "Balance", "supabase.com", "enterprise", "Team plan"),
+  s("cloudflare", "Cloudflare Pro", "$20+/mo", 12, "Balance", "cloudflare.com"),
+  s("aws-support", "AWS Support Business", "Variable", 45, "Balance", "aws.amazon.com", "enterprise", "Business support"),
 ];
 
 const VIDEO: SoftItem[] = [
-  s("adobe-video", "Adobe Creative Cloud All Apps", "$69.99/mo", 17, "$52.99", "adobe.com"),
-  s("envato", "Envato Elements", "$39/mo", 17, "Balance", "envato.com"),
-  s("motionarray", "Motion Array Unlimited", "$50+/mo", 17, "Balance", "motionarray.com"),
-  s("artlist", "Artlist Max", "$59.99/mo", 17, "$42.99", "artlist.io"),
-  s("storyblocks", "Storyblocks Unlimited", "$65+/mo", 17, "Balance", "storyblocks.com"),
-  s("epidemic", "Epidemic Sound Commercial", "$49/mo", 17, "Balance", "epidemicsound.com"),
-  s("runway", "Runway AI Unlimited", "$76+/mo", 17, "Balance", "runwayml.com"),
-  s("frameio", "Frame.io Pro", "$15+/user/mo", 17, "Balance", "frame.io"),
-  s("davinci", "DaVinci Resolve Studio", "License", 17, "Balance", "blackmagicdesign.com"),
-  s("capcut", "CapCut Pro", "$8+/mo", 17, "Balance", "capcut.com"),
-  s("descript", "Descript Pro", "$24+/mo", 17, "Balance", "descript.com"),
-  s("riverside", "Riverside.fm Standard", "$15+/mo", 17, "Balance", "riverside.fm"),
-  s("vimeo", "Vimeo Premium", "$65+/mo", 17, "Balance", "vimeo.com"),
-  s("canva-video", "Canva Pro", "$15+/mo", 17, "Balance", "canva.com"),
-  s("midjourney", "Midjourney Standard", "$30/mo", 17, "Balance", "midjourney.com"),
-  s("elevenlabs", "ElevenLabs Creator", "$22+/mo", 17, "Balance", "elevenlabs.io"),
-  s("premiere-rush", "Adobe Premiere Pro", "via CC", 17, "Balance", "adobe.com"),
-  s("after-effects", "Adobe After Effects", "via CC", 17, "Balance", "adobe.com"),
-  s("audition", "Adobe Audition", "via CC", 17, "Balance", "adobe.com"),
-  s("musicbed", "Musicbed License", "Variable", 17, "Balance", "musicbed.com"),
-  s("soundstripe", "Soundstripe Unlimited", "$15+/mo", 17, "Balance", "soundstripe.com"),
-  s("loom", "Loom Business", "$15+/user/mo", 17, "Balance", "loom.com"),
+  s("adobe-cc", "Adobe Creative Cloud All Apps", "$69.99/mo", 17, "$52.99", "adobe.com"),
+  s("adobe-teams", "Adobe Creative Cloud for Teams", "$99.99/user/mo", 35, "Balance", "adobe.com", "team", "Teams"),
+  s("envato", "Envato Elements", "$39/mo", 15, "Balance", "envato.com"),
+  s("motionarray", "Motion Array Unlimited", "$50+/mo", 18, "Balance", "motionarray.com"),
+  s("artlist", "Artlist Max", "$59.99/mo", 20, "$39.99", "artlist.io"),
+  s("storyblocks", "Storyblocks Unlimited", "$65+/mo", 22, "Balance", "storyblocks.com"),
+  s("epidemic", "Epidemic Sound Commercial", "$49/mo", 18, "Balance", "epidemicsound.com"),
+  s("runway", "Runway AI Unlimited", "$76+/mo", 29, "Balance", "runwayml.com"),
+  s("runway-team", "Runway Teams", "$120+/mo", 45, "Balance", "runwayml.com", "team", "Teams"),
+  s("frameio", "Frame.io Pro", "$15+/user/mo", 12, "Balance", "frame.io"),
+  s("frameio-team", "Frame.io Team", "$25+/user/mo", 19, "Balance", "frame.io", "team", "Team"),
+  s("descript", "Descript Pro", "$24+/mo", 14, "Balance", "descript.com"),
+  s("descript-team", "Descript Enterprise", "Custom", 55, "Balance", "descript.com", "enterprise", "Enterprise"),
+  s("riverside", "Riverside.fm Standard", "$15+/mo", 12, "Balance", "riverside.fm"),
+  s("vimeo", "Vimeo Premium", "$65+/mo", 24, "Balance", "vimeo.com"),
+  s("canva", "Canva Pro", "$15+/mo", 10, "Balance", "canva.com"),
+  s("canva-teams", "Canva for Teams", "$30+/user/mo", 22, "Balance", "canva.com", "team", "Teams"),
+  s("midjourney", "Midjourney Standard", "$30/mo", 16, "Balance", "midjourney.com"),
+  s("midjourney-pro", "Midjourney Pro", "$60/mo", 28, "Balance", "midjourney.com", "individual", "Pro"),
+  s("elevenlabs", "ElevenLabs Creator", "$22+/mo", 14, "Balance", "elevenlabs.io"),
+  s("elevenlabs-scale", "ElevenLabs Scale", "$99+/mo", 39, "Balance", "elevenlabs.io", "team", "Scale"),
+  s("loom-biz", "Loom Business", "$15+/user/mo", 12, "Balance", "loom.com", "team", "Business"),
 ];
 
 const SALES: SoftItem[] = [
   s("linkedin", "LinkedIn Sales Navigator Advanced", "$99.99/mo", 20, "$79.99", "linkedin.com"),
+  s("linkedin-team", "Sales Navigator Team", "$135+/user/mo", 42, "Balance", "linkedin.com", "team", "Team seats"),
   s("apollo", "Apollo.io Professional", "$79/mo", 17, "$62", "apollo.io"),
-  s("zoom", "Zoom Workplace Business", "$50+/mo", 17, "Balance", "zoom.us"),
-  s("hubspot", "HubSpot Sales Professional", "$90+/mo", 20, "Balance", "hubspot.com"),
-  s("salesforce", "Salesforce Professional", "$100+/mo", 20, "Balance", "salesforce.com"),
-  s("calendly", "Calendly Teams", "$50+/mo", 17, "Balance", "calendly.com"),
-  s("seamless", "Seamless.AI Pro", "$147+/mo", 20, "Balance", "seamless.ai"),
-  s("pipedrive", "Pipedrive Advanced", "$49+/user/mo", 17, "Balance", "pipedrive.com"),
-  s("close", "Close CRM", "$49+/user/mo", 17, "Balance", "close.com"),
-  s("outreach", "Outreach", "Enterprise", 20, "Balance", "outreach.io"),
-  s("gong", "Gong Engage", "Enterprise", 20, "Balance", "gong.io"),
-  s("chorus", "Chorus.ai", "Enterprise", 20, "Balance", "chorus.ai"),
-  s("zoominfo", "ZoomInfo Sales", "Enterprise", 20, "Balance", "zoominfo.com"),
+  s("apollo-org", "Apollo.io Organization", "$119+/mo", 38, "Balance", "apollo.io", "team", "Organization"),
+  s("zoom", "Zoom Workplace Business", "$50+/mo", 18, "Balance", "zoom.us", "team", "Business"),
+  s("hubspot", "HubSpot Sales Professional", "$90+/mo", 25, "Balance", "hubspot.com"),
+  s("hubspot-enterprise", "HubSpot Sales Enterprise", "$150+/mo", 55, "Balance", "hubspot.com", "enterprise", "Enterprise"),
+  s("salesforce", "Salesforce Professional", "$100+/mo", 30, "Balance", "salesforce.com"),
+  s("salesforce-ee", "Salesforce Enterprise", "$175+/mo", 65, "Balance", "salesforce.com", "enterprise", "Enterprise"),
+  s("calendly", "Calendly Teams", "$50+/mo", 16, "Balance", "calendly.com", "team", "Teams"),
+  s("seamless", "Seamless.AI Pro", "$147+/mo", 45, "Balance", "seamless.ai"),
+  s("pipedrive", "Pipedrive Advanced", "$49+/user/mo", 18, "Balance", "pipedrive.com"),
+  s("close", "Close CRM", "$49+/user/mo", 19, "Balance", "close.com"),
+  s("zoominfo", "ZoomInfo Sales", "Enterprise", 75, "Balance", "zoominfo.com", "enterprise", "Enterprise"),
   s("lusha", "Lusha Pro", "$49+/mo", 17, "Balance", "lusha.com"),
-  s("hunter", "Hunter.io Business", "$49+/mo", 17, "Balance", "hunter.io"),
-  s("lemlist", "Lemlist Expert", "$59+/mo", 17, "Balance", "lemlist.com"),
-  s("instantly", "Instantly Growth", "$37+/mo", 17, "Balance", "instantly.ai"),
-  s("reply", "Reply.io", "$60+/mo", 17, "Balance", "reply.io"),
-  s("fireflies", "Fireflies.ai Pro", "$18+/mo", 17, "Balance", "fireflies.ai"),
-  s("chili", "Chili Piper", "Enterprise", 17, "Balance", "chilipiper.com"),
-  s("docsend", "DocSend Personal", "$10+/mo", 17, "Balance", "docsend.com"),
-  s("pandadoc", "PandaDoc Business", "$49+/user/mo", 17, "Balance", "pandadoc.com"),
+  s("hunter", "Hunter.io Business", "$49+/mo", 17, "Balance", "hunter.io", "team", "Business"),
+  s("lemlist", "Lemlist Expert", "$59+/mo", 20, "Balance", "lemlist.com"),
+  s("instantly", "Instantly Growth", "$37+/mo", 15, "Balance", "instantly.ai"),
+  s("fireflies", "Fireflies.ai Pro", "$18+/mo", 12, "Balance", "fireflies.ai"),
+  s("pandadoc", "PandaDoc Business", "$49+/user/mo", 19, "Balance", "pandadoc.com", "team", "Business"),
+  s("gong", "Gong Engage", "Enterprise", 89, "Balance", "gong.io", "enterprise", "Enterprise"),
 ];
 
 const AI: SoftItem[] = [
-  s("chatgpt", "ChatGPT Team", "$30/user/mo", 17, "$13", "openai.com"),
-  s("claude", "Claude Max", "$100+/mo", 20, "Balance", "anthropic.com"),
-  s("perplexity", "Perplexity Enterprise Pro", "$40+/mo", 17, "Balance", "perplexity.ai"),
-  s("notion", "Notion Enterprise", "$50+/mo", 17, "Balance", "notion.so"),
-  s("grammarly", "Grammarly Business", "$45+/mo", 17, "Balance", "grammarly.com"),
-  s("m365", "Microsoft 365 Business Premium", "$52+/mo", 17, "Balance", "microsoft.com"),
-  s("gws", "Google Workspace Enterprise", "$45+/mo", 17, "Balance", "workspace.google.com"),
-  s("gemini", "Google Gemini Advanced", "$20+/mo", 17, "Balance", "google.com"),
-  s("copilot-ms", "Microsoft Copilot", "$30+/user/mo", 17, "Balance", "microsoft.com"),
-  s("jasper", "Jasper Pro", "$49+/mo", 17, "Balance", "jasper.ai"),
-  s("copyai", "Copy.ai Pro", "$36+/mo", 17, "Balance", "copy.ai"),
-  s("miro", "Miro Business", "$16+/user/mo", 17, "Balance", "miro.com"),
-  s("slack", "Slack Business+", "$12.50+/user/mo", 17, "Balance", "slack.com"),
-  s("asana", "Asana Business", "$25+/user/mo", 17, "Balance", "asana.com"),
-  s("monday", "monday.com Pro", "$16+/seat/mo", 17, "Balance", "monday.com"),
-  s("clickup", "ClickUp Business", "$12+/user/mo", 17, "Balance", "clickup.com"),
-  s("zapier", "Zapier Professional", "$29+/mo", 17, "Balance", "zapier.com"),
-  s("make", "Make Teams", "$16+/mo", 17, "Balance", "make.com"),
-  s("airtable", "Airtable Team", "$20+/user/mo", 17, "Balance", "airtable.com"),
-  s("coda", "Coda Pro", "$10+/user/mo", 17, "Balance", "coda.io"),
-  s("otter", "Otter.ai Pro", "$17+/mo", 17, "Balance", "otter.ai"),
-  s("deepl", "DeepL Pro", "$8+/user/mo", 17, "Balance", "deepl.com"),
+  s("chatgpt", "ChatGPT Plus", "$20/mo", 12, "$8", "openai.com"),
+  s("chatgpt-team", "ChatGPT Team", "$30/user/mo", 17, "$13", "openai.com", "team", "Team"),
+  s("chatgpt-ent", "ChatGPT Enterprise", "Custom", 59, "Balance", "openai.com", "enterprise", "Enterprise"),
+  s("claude", "Claude Pro", "$20/mo", 12, "$8", "anthropic.com"),
+  s("claude-max", "Claude Max", "$100+/mo", 35, "Balance", "anthropic.com"),
+  s("claude-team", "Claude Team", "$30+/user/mo", 22, "Balance", "anthropic.com", "team", "Team"),
+  s("perplexity", "Perplexity Pro", "$20/mo", 12, "Balance", "perplexity.ai"),
+  s("perplexity-ent", "Perplexity Enterprise Pro", "$40+/mo", 24, "Balance", "perplexity.ai", "enterprise", "Enterprise"),
+  s("notion", "Notion Plus", "$10+/user/mo", 10, "Balance", "notion.so"),
+  s("notion-biz", "Notion Business", "$18+/user/mo", 14, "Balance", "notion.so", "team", "Business"),
+  s("grammarly", "Grammarly Business", "$45+/mo", 18, "Balance", "grammarly.com", "team", "Business"),
+  s("m365", "Microsoft 365 Business Premium", "$52+/mo", 20, "Balance", "microsoft.com", "team", "Business"),
+  s("gws", "Google Workspace Business Plus", "$22+/user/mo", 15, "Balance", "workspace.google.com", "team", "Business Plus"),
+  s("gws-ent", "Google Workspace Enterprise", "$45+/user/mo", 28, "Balance", "workspace.google.com", "enterprise", "Enterprise"),
+  s("gemini", "Google Gemini Advanced", "$20+/mo", 12, "Balance", "google.com"),
+  s("copilot-ms", "Microsoft 365 Copilot", "$30+/user/mo", 22, "Balance", "microsoft.com", "team", "Copilot"),
+  s("jasper", "Jasper Pro", "$49+/mo", 19, "Balance", "jasper.ai"),
+  s("miro", "Miro Business", "$16+/user/mo", 12, "Balance", "miro.com", "team", "Business"),
+  s("slack", "Slack Business+", "$12.50+/user/mo", 10, "Balance", "slack.com", "team", "Business+"),
+  s("asana", "Asana Business", "$25+/user/mo", 15, "Balance", "asana.com", "team", "Business"),
+  s("monday", "monday.com Pro", "$16+/seat/mo", 12, "Balance", "monday.com", "team", "Pro"),
+  s("zapier", "Zapier Professional", "$29+/mo", 14, "Balance", "zapier.com"),
+  s("zapier-team", "Zapier Team", "$69+/mo", 32, "Balance", "zapier.com", "team", "Team"),
 ];
 
 const CATEGORIES = [
-  { key: "all", label: "All software", icon: LayoutGrid, items: [] as SoftItem[] },
+  { key: "all", label: "All software", icon: LayoutGrid },
   { key: "developers", label: "Developers", icon: Laptop, items: DEVELOPER },
   { key: "video", label: "Video & creative", icon: Video, items: VIDEO },
   { key: "sales", label: "Sales", icon: Headset, items: SALES },
@@ -186,22 +206,31 @@ const ALL_SOFTWARE: SoftItem[] = (() => {
       if (!map.has(item.id)) map.set(item.id, item);
     }
   }
-  return Array.from(map.values()).sort((a, b) => a.name.localeCompare(b.name));
+  return Array.from(map.values()).sort((a, b) => a.employeePays - b.employeePays);
 })();
+
+const PRICE_FILTERS = [
+  { key: "all", label: "All prices" },
+  { key: "under15", label: "Under $15" },
+  { key: "15to25", label: "$15 – $25" },
+  { key: "over25", label: "Over $25" },
+  { key: "team", label: "Team / org plans" },
+];
 
 const BENEFITS = [
   "Company-sponsored premium software (role-based)",
+  "Individual, team, and enterprise seat options",
   "Access to AI-powered productivity tools",
   "Professional development resources",
   "Remote work flexibility",
   "Career growth opportunities",
   "Performance-based bonuses",
   "Modern equipment and cloud-based tools",
-  "Collaborative and innovative work environment",
 ];
 
 export function EmployeeDiscountsShell() {
-  const [tab, setTab] = useState<string>("all");
+  const [tab, setTab] = useState("all");
+  const [priceFilter, setPriceFilter] = useState("all");
   const [query, setQuery] = useState("");
   const [selected, setSelected] = useState<SoftItem | null>(ALL_SOFTWARE[0]);
   const [email, setEmail] = useState("");
@@ -214,18 +243,30 @@ export function EmployeeDiscountsShell() {
 
   const baseItems = useMemo(() => {
     if (tab === "all") return ALL_SOFTWARE;
-    return CATEGORIES.find((c) => c.key === tab)?.items || DEVELOPER;
+    const cat = CATEGORIES.find((c) => c.key === tab);
+    return (cat && "items" in cat ? cat.items : DEVELOPER) as SoftItem[];
   }, [tab]);
 
   const items = useMemo(() => {
+    let list = baseItems;
+    if (priceFilter === "under15") list = list.filter((i) => i.employeePays < 15);
+    else if (priceFilter === "15to25")
+      list = list.filter((i) => i.employeePays >= 15 && i.employeePays <= 25);
+    else if (priceFilter === "over25") list = list.filter((i) => i.employeePays > 25);
+    else if (priceFilter === "team")
+      list = list.filter((i) => i.planType === "team" || i.planType === "enterprise");
+
     const q = query.trim().toLowerCase();
-    if (!q) return baseItems;
-    return baseItems.filter(
-      (i) =>
-        i.name.toLowerCase().includes(q) ||
-        i.domain.toLowerCase().includes(q)
-    );
-  }, [baseItems, query]);
+    if (q) {
+      list = list.filter(
+        (i) =>
+          i.name.toLowerCase().includes(q) ||
+          i.domain.toLowerCase().includes(q) ||
+          i.tierLabel.toLowerCase().includes(q)
+      );
+    }
+    return list;
+  }, [baseItems, priceFilter, query]);
 
   useEffect(() => {
     try {
@@ -239,33 +280,13 @@ export function EmployeeDiscountsShell() {
       }
     } catch {}
     setPageMeta({
-      title: "Employee Software Discounts | Unity Software Solutions",
+      title: "Employee Software Discounts | $10–$89/mo share | Unity",
       description:
-        "Company-sponsored premium software for Unity employees. JetBrains, Adobe, ChatGPT, LinkedIn Sales Navigator and 80+ tools. Pay a fraction; Unity covers the rest.",
+        "Company-sponsored software for Unity employees. Individual, team and enterprise plans. Employee share from about $10 to $89/month depending on the tool.",
       path: "/employee-discounts",
       keywords:
-        "employee software discounts, company sponsored JetBrains, Adobe Creative Cloud employee, Unity Software Solutions benefits, staff software subsidy Kenya",
+        "employee software discounts, team software plans, JetBrains team license, Adobe teams, ChatGPT team, Unity Software Solutions benefits",
     });
-    // FAQ schema for SEO
-    const id = "emp-discount-jsonld";
-    document.getElementById(id)?.remove();
-    const script = document.createElement("script");
-    script.id = id;
-    script.type = "application/ld+json";
-    script.text = JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      name: "Employee Software Discounts | Unity Software Solutions",
-      description:
-        "Company-sponsored premium software subscriptions for eligible Unity Software Solutions employees.",
-      url: "https://www.unity-software.online/employee-discounts",
-      isPartOf: {
-        "@type": "WebSite",
-        name: "Unity ERP",
-        url: "https://www.unity-software.online",
-      },
-    });
-    document.head.appendChild(script);
     window.scrollTo(0, 0);
   }, []);
 
@@ -294,6 +315,8 @@ export function EmployeeDiscountsShell() {
           software: selected.name,
           software_id: selected.id,
           employee_pays_usd: selected.employeePays,
+          plan_type: selected.planType,
+          tier_label: selected.tierLabel,
           account_email: accountEmail.trim() || email.trim(),
           source: "employee_discounts_page",
         }),
@@ -323,11 +346,12 @@ export function EmployeeDiscountsShell() {
         email: email.trim().toLowerCase(),
         amount: selected.employeePays,
         currency: "USD",
-        planLabel: `Employee discount — ${selected.name}`,
+        planLabel: `Employee discount — ${selected.name} (${selected.tierLabel})`,
         metadata: {
           product: "employee_software_discount",
           software: selected.name,
           role,
+          plan_type: selected.planType,
           account_email: accountEmail || email,
         },
       });
@@ -338,12 +362,15 @@ export function EmployeeDiscountsShell() {
     }
   }
 
+  const minP = Math.min(...ALL_SOFTWARE.map((i) => i.employeePays));
+  const maxP = Math.max(...ALL_SOFTWARE.map((i) => i.employeePays));
+
   return (
     <div className="min-h-screen bg-white font-sans text-slate-950">
       <Header />
       <main className="pt-24 pb-20">
         <section className="border-b border-emerald-100 bg-gradient-to-br from-emerald-50 via-white to-slate-50">
-          <div className="mx-auto max-w-6xl px-6 py-14 md:py-18">
+          <div className="mx-auto max-w-6xl px-6 py-14">
             <span className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-white px-3 py-1 text-xs font-bold uppercase tracking-wider text-emerald-800">
               <Sparkles className="h-3.5 w-3.5" />
               Employee benefits
@@ -352,21 +379,37 @@ export function EmployeeDiscountsShell() {
               Company-sponsored premium software
             </h1>
             <p className="mt-4 max-w-2xl text-lg leading-relaxed text-slate-600">
-              Eligible Unity team members work with industry tools for a fraction of
-              retail cost. You contribute{" "}
-              <strong className="text-slate-900">$17–$20 per month</strong> toward one
-              approved subscription; Unity covers the rest.
+              Individual, <strong className="text-slate-900">team</strong>, and{" "}
+              <strong className="text-slate-900">enterprise</strong> seats. Your monthly
+              share depends on the tool — typically from about{" "}
+              <strong className="text-slate-900">
+                ${minP} to ${maxP}
+              </strong>
+              . Unity covers the rest of the retail cost.
             </p>
+            <div className="mt-6 flex flex-wrap gap-2 text-xs font-semibold">
+              <span className="rounded-full bg-slate-100 px-3 py-1 text-slate-700">
+                Entry under $15
+              </span>
+              <span className="rounded-full bg-emerald-50 px-3 py-1 text-emerald-800">
+                Standard $15–$25
+              </span>
+              <span className="rounded-full bg-sky-50 px-3 py-1 text-sky-800">
+                Team / Pro $25–$45
+              </span>
+              <span className="rounded-full bg-violet-50 px-3 py-1 text-violet-800">
+                Premium seats $45+
+              </span>
+            </div>
             <p className="mt-3 max-w-2xl text-sm text-slate-500">
-              {ALL_SOFTWARE.length}+ tools listed across development, creative, sales,
-              and AI. Availability depends on role and company policy. Retail prices change
-              over time.
+              {ALL_SOFTWARE.length}+ tools. Availability depends on role and company
+              policy. Retail prices change over time.
             </p>
           </div>
         </section>
 
         <div className="mx-auto max-w-6xl px-6 py-12">
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-col gap-4">
             <div className="flex flex-wrap gap-2">
               {CATEGORIES.map(({ key, label, icon: Icon }) => (
                 <button
@@ -384,15 +427,33 @@ export function EmployeeDiscountsShell() {
                 </button>
               ))}
             </div>
-            <label className="relative block w-full sm:max-w-xs">
-              <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
-              <input
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search software…"
-                className="w-full rounded-full border border-slate-200 py-2.5 pl-10 pr-4 text-sm outline-none focus:ring-2 focus:ring-emerald-500/30"
-              />
-            </label>
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex flex-wrap gap-2">
+                {PRICE_FILTERS.map((f) => (
+                  <button
+                    key={f.key}
+                    type="button"
+                    onClick={() => setPriceFilter(f.key)}
+                    className={`rounded-full px-3 py-1.5 text-xs font-semibold transition ${
+                      priceFilter === f.key
+                        ? "bg-emerald-600 text-white"
+                        : "border border-slate-200 bg-white text-slate-600 hover:border-emerald-200"
+                    }`}
+                  >
+                    {f.label}
+                  </button>
+                ))}
+              </div>
+              <label className="relative block w-full sm:max-w-xs">
+                <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+                <input
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  placeholder="Search software or team plan…"
+                  className="w-full rounded-full border border-slate-200 py-2.5 pl-10 pr-4 text-sm outline-none focus:ring-2 focus:ring-emerald-500/30"
+                />
+              </label>
+            </div>
           </div>
 
           <p className="mt-4 text-sm text-slate-500">
@@ -405,6 +466,7 @@ export function EmployeeDiscountsShell() {
               <div className="grid gap-3 sm:grid-cols-2">
                 {items.map((item) => {
                   const active = selected?.id === item.id;
+                  const badge = priceBadge(item.employeePays);
                   return (
                     <button
                       key={item.id}
@@ -417,15 +479,28 @@ export function EmployeeDiscountsShell() {
                       }`}
                     >
                       <SoftLogo domain={item.domain} name={item.name} />
-                      <div className="min-w-0">
-                        <p className="truncate text-sm font-bold text-slate-900">
-                          {item.name}
-                        </p>
-                        <p className="mt-1 text-xs text-slate-500">
+                      <div className="min-w-0 flex-1">
+                        <div className="flex flex-wrap items-center gap-1.5">
+                          <p className="truncate text-sm font-bold text-slate-900">
+                            {item.name}
+                          </p>
+                        </div>
+                        <div className="mt-1 flex flex-wrap gap-1.5">
+                          <span
+                            className={`rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide ${badge.className}`}
+                          >
+                            {badge.label} · ${item.employeePays}/mo
+                          </span>
+                          {(item.planType === "team" ||
+                            item.planType === "enterprise") && (
+                            <span className="inline-flex items-center gap-0.5 rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-semibold text-slate-600">
+                              <Users className="h-2.5 w-2.5" />
+                              {item.tierLabel}
+                            </span>
+                          )}
+                        </div>
+                        <p className="mt-1.5 text-xs text-slate-500">
                           Retail {item.retail}
-                        </p>
-                        <p className="mt-1 text-sm font-semibold text-emerald-700">
-                          You pay ${item.employeePays}/mo
                         </p>
                         <p className="text-xs text-slate-400">
                           Unity covers {item.covers}
@@ -437,7 +512,7 @@ export function EmployeeDiscountsShell() {
               </div>
               {items.length === 0 && (
                 <p className="rounded-2xl border border-dashed border-slate-200 p-8 text-center text-sm text-slate-500">
-                  No tools match that search. Try another keyword.
+                  No tools match that filter. Try another price range or search.
                 </p>
               )}
             </div>
@@ -452,12 +527,12 @@ export function EmployeeDiscountsShell() {
                         {selected.name}
                       </p>
                       <p className="text-xs text-slate-500">
-                        Retail {selected.retail}
+                        {selected.tierLabel} · Retail {selected.retail}
                       </p>
                       <p className="text-lg font-bold text-emerald-700">
                         ${selected.employeePays}
                         <span className="text-sm font-medium text-slate-500">
-                          /month
+                          /month employee share
                         </span>
                       </p>
                     </div>
@@ -468,8 +543,8 @@ export function EmployeeDiscountsShell() {
                   Request & pay employee share
                 </h2>
                 <p className="mt-1 text-xs text-slate-500">
-                  We activate the sponsored seat on the account email you provide after
-                  payment.
+                  Prices range by tool and plan type (individual, team, enterprise).
+                  We activate the seat on the account email you provide after payment.
                 </p>
                 {selected && (
                   <div className="mt-3 flex flex-wrap gap-2">
@@ -477,10 +552,14 @@ export function EmployeeDiscountsShell() {
                       type="button"
                       onClick={async () => {
                         const url = `${window.location.origin}/employee-discounts?tool=${encodeURIComponent(selected.id)}`;
-                        const text = `Unity employee software benefit: ${selected.name} — you pay $${selected.employeePays}/mo, Unity covers the rest.\n${url}`;
+                        const text = `Unity employee software: ${selected.name} (${selected.tierLabel}) — employee share $${selected.employeePays}/mo\n${url}`;
                         try {
                           if (navigator.share) {
-                            await navigator.share({ title: selected.name, text, url });
+                            await navigator.share({
+                              title: selected.name,
+                              text,
+                              url,
+                            });
                           } else {
                             await navigator.clipboard.writeText(text);
                             setMsg("Share link copied to clipboard");
@@ -589,7 +668,8 @@ export function EmployeeDiscountsShell() {
 
                 <div className="mt-5 flex items-start gap-2 rounded-xl bg-slate-50 p-3 text-xs text-slate-600">
                   <Shield className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" />
-                  Eligible employees only. Approval may be required before seat activation.
+                  Eligible employees only. Team and enterprise seats may need manager
+                  approval before activation.
                 </div>
               </div>
             </div>
@@ -610,8 +690,8 @@ export function EmployeeDiscountsShell() {
           </section>
 
           <p className="mt-8 text-center text-xs text-slate-400">
-            Software names and retail prices are illustrative. Final availability depends
-            on Unity Software Solutions policy and vendor agreements.
+            Software names, retail prices, and employee share amounts are illustrative.
+            Final amounts depend on Unity Software Solutions policy and vendor pricing.
           </p>
         </div>
       </main>
