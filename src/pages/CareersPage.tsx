@@ -1,245 +1,341 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Header } from "@/components/Header";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SignupWizard } from "@/components/SignupWizard";
-import { Button } from "@/components/ui/button";
-import { trackApplication } from "@/lib/supabase";
+import { setPageMeta, trimDesc, trimTitle } from "@/lib/pageMeta";
 import {
+  Sparkles,
   MapPin,
   Clock,
-  Briefcase,
-  ArrowRight,
+  MessageCircle,
+  Mail,
+  ExternalLink,
+  Check,
+  Laptop,
+  Brain,
+  Palette,
+  PenTool,
   Video,
   Headset,
-  Check,
-  Sparkles,
-  Loader2,
-  Send,
+  HeartHandshake,
+  Megaphone,
+  Search,
+  Server,
+  Bug,
+  Layout,
 } from "lucide-react";
 
-const EMAIL = "developerunityerp@proton.me";
-const CAREERS_PHONE_DISPLAY = "+254 778 903 044";
-const CAREERS_WA_LINK = "https://wa.me/254778903044";
-const APPLY = `mailto:${EMAIL}?subject=`;
+const WA = "https://wa.me/254778903044";
+const APPLY_EMAIL = "mykenyan254@gmail.com";
+const APPLY_EMAIL_2 = "developerunityerp@proton.me";
+const SITE = "https://www.unity-software.online";
+const LOGO = "https://i.postimg.cc/qBnzqpqk/blck-logo-erp.png";
 
-const jobs = [
+type Job = {
+  id: string;
+  title: string;
+  summary: string;
+  requirements: string[];
+  tool: {
+    name: string;
+    retail: string;
+    employeePays: number;
+    unityCovers: string;
+    note: string;
+  };
+  icon: typeof Laptop;
+  employmentType: "FULL_TIME";
+  occupationalCategory?: string;
+};
+
+const JOBS: Job[] = [
+  {
+    id: "full-stack-developer",
+    title: "Full Stack Developer",
+    summary:
+      "Build and maintain Unity ERP, APIs, integrations, and cloud infrastructure.",
+    requirements: [
+      "Experience with React, TypeScript, Node.js or similar",
+      "Knowledge of Git and REST APIs",
+      "Strong problem-solving skills",
+      "Good communication skills",
+    ],
+    tool: {
+      name: "JetBrains All Products Pack",
+      retail: "$89/month",
+      employeePays: 17,
+      unityCovers: "$72/month",
+      note: "Professional IDEs for software development",
+    },
+    icon: Laptop,
+    employmentType: "FULL_TIME",
+    occupationalCategory: "15-1252.00",
+  },
+  {
+    id: "ai-engineer",
+    title: "AI Engineer",
+    summary:
+      "Develop AI assistants, automation workflows, and intelligent ERP features.",
+    requirements: [
+      "Python",
+      "AI APIs",
+      "Machine learning fundamentals",
+      "Prompt engineering",
+    ],
+    tool: {
+      name: "Claude Max",
+      retail: "$100/month",
+      employeePays: 20,
+      unityCovers: "$80/month",
+      note: "Enterprise AI assistant for advanced development",
+    },
+    icon: Brain,
+    employmentType: "FULL_TIME",
+    occupationalCategory: "15-2051.00",
+  },
+  {
+    id: "ui-ux-designer",
+    title: "UI/UX Designer",
+    summary: "Design modern interfaces and improve user experience across Unity ERP.",
+    requirements: ["Figma", "Design systems", "Wireframing", "Prototyping"],
+    tool: {
+      name: "Adobe Creative Cloud",
+      retail: "$69.99/month",
+      employeePays: 17,
+      unityCovers: "$52.99/month",
+      note: "Creative suite for product design assets",
+    },
+    icon: Palette,
+    employmentType: "FULL_TIME",
+    occupationalCategory: "27-1024.00",
+  },
+  {
+    id: "graphic-designer",
+    title: "Graphic Designer",
+    summary:
+      "Create branding, marketing materials, social media graphics, and illustrations.",
+    requirements: [
+      "Portfolio required",
+      "Photoshop experience",
+      "Illustrator experience",
+    ],
+    tool: {
+      name: "Adobe Creative Cloud",
+      retail: "$69.99/month",
+      employeePays: 17,
+      unityCovers: "$52.99/month",
+      note: "Full creative suite for brand and marketing",
+    },
+    icon: PenTool,
+    employmentType: "FULL_TIME",
+    occupationalCategory: "27-1024.00",
+  },
   {
     id: "video-editor",
     title: "Video Editor",
-    type: "Full-time / Contract",
-    location: "Kenya · Remote-friendly (East Africa)",
-    icon: Video,
     summary:
-      "Create engaging videos for marketing, tutorials, product launches, and social media campaigns for Unity ERP and Unity Software Solutions.",
-    responsibilities: [
-      "Edit marketing, tutorial and product launch videos",
-      "Produce short-form content for social and ads",
-      "Color grade and sound-design to a clean SaaS standard",
-      "Collaborate with marketing on scripts and storyboards",
-      "Maintain a consistent brand look across all video assets",
-    ],
+      "Create marketing videos, tutorials, advertisements, and product demonstrations.",
     requirements: [
-      "Proven editing work (Showreel or portfolio required)",
-      "Comfortable with Premiere Pro, Final Cut, or DaVinci Resolve",
-      "Strong sense of pacing, typography on video, and motion",
-      "Ability to turn around campaign assets quickly",
+      "Adobe Premiere Pro",
+      "Storytelling skills",
+      "Motion graphics",
     ],
+    tool: {
+      name: "Adobe Creative Cloud",
+      retail: "$69.99/month",
+      employeePays: 17,
+      unityCovers: "$52.99/month",
+      note: "Editing, motion, and creative production",
+    },
+    icon: Video,
+    employmentType: "FULL_TIME",
+    occupationalCategory: "27-4032.00",
   },
   {
     id: "sales-executive",
     title: "Sales Executive",
-    type: "Full-time",
-    location: "Kenya · South Africa · Egypt (hybrid)",
-    icon: Headset,
-    summary:
-      "Help businesses discover Unity ERP, build relationships, and grow our customer base across manufacturing, retail, and services.",
-    responsibilities: [
-      "Own outbound and inbound pipeline for Unity ERP",
-      "Run demos and discovery calls with decision makers",
-      "Manage CRM deals from lead to close",
-      "Partner with support on smooth onboarding handoffs",
-      "Hit monthly acquisition and revenue targets",
-    ],
+    summary: "Sell ERP, CRM, POS, and cloud software to growing businesses.",
     requirements: [
-      "2+ years B2B or SaaS sales experience preferred",
-      "Confident on calls and in writing",
-      "Comfort explaining software value (ERP/CRM a plus)",
-      "Based in or willing to cover Kenya, South Africa or Egypt markets",
+      "Good communication",
+      "Sales skills",
+      "Computer literacy",
     ],
+    tool: {
+      name: "LinkedIn Sales Navigator Advanced",
+      retail: "$99.99/month",
+      employeePays: 20,
+      unityCovers: "$79.99/month",
+      note: "Prospecting and outreach for B2B sales",
+    },
+    icon: Headset,
+    employmentType: "FULL_TIME",
+    occupationalCategory: "41-3091.00",
+  },
+  {
+    id: "customer-success",
+    title: "Customer Success Specialist",
+    summary: "Help customers onboard and support Unity ERP users.",
+    requirements: [
+      "Customer service experience",
+      "Communication skills",
+      "Problem solving",
+    ],
+    tool: {
+      name: "Zendesk Suite Professional",
+      retail: "Approximately $115/month",
+      employeePays: 20,
+      unityCovers: "Approximately $95/month",
+      note: "Support inbox and customer success workflows",
+    },
+    icon: HeartHandshake,
+    employmentType: "FULL_TIME",
+    occupationalCategory: "43-4051.00",
+  },
+  {
+    id: "digital-marketing",
+    title: "Digital Marketing Specialist",
+    summary: "Manage advertising campaigns and grow our online presence.",
+    requirements: ["Meta Ads", "Google Ads", "Campaign management"],
+    tool: {
+      name: "Semrush Guru",
+      retail: "Approximately $250/month",
+      employeePays: 20,
+      unityCovers: "Approximately $230/month",
+      note: "SEO, competitive research, and campaign intelligence",
+    },
+    icon: Megaphone,
+    employmentType: "FULL_TIME",
+    occupationalCategory: "13-1161.00",
+  },
+  {
+    id: "seo-content-writer",
+    title: "SEO & Content Writer",
+    summary: "Write blogs, landing pages, and documentation for Unity ERP.",
+    requirements: [
+      "SEO knowledge",
+      "Excellent writing skills",
+      "Keyword research",
+    ],
+    tool: {
+      name: "Ahrefs Standard",
+      retail: "Approximately $249/month",
+      employeePays: 20,
+      unityCovers: "Approximately $229/month",
+      note: "Keyword research and content performance",
+    },
+    icon: Search,
+    employmentType: "FULL_TIME",
+    occupationalCategory: "27-3043.00",
+  },
+  {
+    id: "devops-engineer",
+    title: "DevOps Engineer",
+    summary: "Maintain servers, deployments, backups, and security.",
+    requirements: ["Linux", "Docker", "CI/CD", "Cloud platforms"],
+    tool: {
+      name: "Docker Business",
+      retail: "Approximately $24/user/month",
+      employeePays: 17,
+      unityCovers: "Approximately $7/month",
+      note: "Container tooling for reliable deployments",
+    },
+    icon: Server,
+    employmentType: "FULL_TIME",
+    occupationalCategory: "15-1244.00",
+  },
+  {
+    id: "qa-engineer",
+    title: "QA Engineer",
+    summary: "Test Unity ERP before every release.",
+    requirements: [
+      "Manual testing",
+      "API testing",
+      "Attention to detail",
+    ],
+    tool: {
+      name: "BrowserStack Team Plan",
+      retail: "Approximately $58/month",
+      employeePays: 17,
+      unityCovers: "Approximately $41/month",
+      note: "Cross-browser and device testing",
+    },
+    icon: Bug,
+    employmentType: "FULL_TIME",
+    occupationalCategory: "15-1253.00",
+  },
+  {
+    id: "product-manager",
+    title: "Product Manager",
+    summary: "Lead product strategy and feature planning for Unity ERP.",
+    requirements: ["Leadership", "Agile", "Product planning"],
+    tool: {
+      name: "Jira Premium",
+      retail: "Approximately $47/month",
+      employeePays: 17,
+      unityCovers: "Approximately $30/month",
+      note: "Roadmaps, issues, and agile delivery",
+    },
+    icon: Layout,
+    employmentType: "FULL_TIME",
+    occupationalCategory: "11-2021.00",
   },
 ];
 
-
-function ApplyForm({ role }: { role: string }) {
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    portfolio_url: "",
-    message: "",
-  });
-  const [loading, setLoading] = useState(false);
-  const [done, setDone] = useState(false);
-  const [error, setError] = useState("");
-
-  async function onSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    if (!form.email.includes("@") || !form.name.trim()) return;
-    setLoading(true);
-    setError("");
-    try {
-      const { error: dbError } = await trackApplication({
-        role,
-        name: form.name.trim(),
-        email: form.email.trim(),
-        phone: form.phone.trim() || null,
-        portfolio_url: form.portfolio_url.trim() || null,
-        message: form.message.trim() || null,
-      });
-      if (dbError) throw dbError;
-      // Also open mail client so CV reaches hiring inbox
-      const subject = encodeURIComponent(`Application — ${role} — ${form.name.trim()}`);
-      const body = encodeURIComponent(
-        `Role: ${role}\nName: ${form.name.trim()}\nEmail: ${form.email.trim()}\nPhone: ${form.phone.trim()}\nPortfolio: ${form.portfolio_url.trim()}\n\n${form.message.trim()}\n\n(Also saved in Unity ERP applications database.)`
-      );
-      window.open(`mailto:${EMAIL}?subject=${subject}&body=${body}`, "_blank");
-      setDone(true);
-      setForm({ name: "", email: "", phone: "", portfolio_url: "", message: "" });
-    } catch (err: unknown) {
-      setError(
-        err instanceof Error
-          ? err.message
-          : "Could not submit. Run supabase-schema.sql in your project, then try again."
-      );
-    } finally {
-      setLoading(false);
-    }
-  }
-
-  if (done) {
-    return (
-      <div className="mt-6 flex items-center gap-2 rounded-2xl bg-emerald-50 px-4 py-3 text-sm font-medium text-emerald-800">
-        <Check className="h-4 w-4" />
-        Application recorded. Send your CV to{" "}
-        <a href={`mailto:${EMAIL}`} className="underline">{EMAIL}</a>
-        {" "}or WhatsApp{" "}
-        <a href={CAREERS_WA_LINK} target="_blank" rel="noreferrer" className="underline">
-          {CAREERS_PHONE_DISPLAY}
-        </a>
-        .
-      </div>
-    );
-  }
-
-  return (
-    <form onSubmit={onSubmit} className="mt-6 space-y-3 rounded-2xl border border-slate-100 bg-white p-4">
-      <p className="text-sm font-semibold text-slate-900">Apply for {role}</p>
-      <p className="text-xs text-slate-500">
-        Submit here, then email your CV to{" "}
-        <a href={`mailto:${EMAIL}`} className="font-medium text-emerald-700 underline">
-          {EMAIL}
-        </a>{" "}
-        or WhatsApp{" "}
-        <a href={CAREERS_WA_LINK} target="_blank" rel="noreferrer" className="font-medium text-emerald-700 underline">
-          {CAREERS_PHONE_DISPLAY}
-        </a>
-        .
-      </p>
-      <div className="grid gap-3 sm:grid-cols-2">
-        <input
-          required
-          placeholder="Full name"
-          value={form.name}
-          onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
-          className="rounded-xl border border-slate-200 px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-emerald-500/20"
-        />
-        <input
-          required
-          type="email"
-          placeholder="Email"
-          value={form.email}
-          onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
-          className="rounded-xl border border-slate-200 px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-emerald-500/20"
-        />
-        <input
-          type="tel"
-          placeholder="Phone"
-          value={form.phone}
-          onChange={(e) => setForm((f) => ({ ...f, phone: e.target.value }))}
-          className="rounded-xl border border-slate-200 px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-emerald-500/20"
-        />
-        <input
-          type="url"
-          placeholder="Portfolio / LinkedIn (optional)"
-          value={form.portfolio_url}
-          onChange={(e) => setForm((f) => ({ ...f, portfolio_url: e.target.value }))}
-          className="rounded-xl border border-slate-200 px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-emerald-500/20"
-        />
-      </div>
-      <textarea
-        rows={3}
-        placeholder="Short note (optional)"
-        value={form.message}
-        onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))}
-        className="w-full resize-none rounded-xl border border-slate-200 px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-emerald-500/20"
-      />
-      {error && <p className="text-xs text-rose-600">{error}</p>}
-      <button
-        type="submit"
-        disabled={loading}
-        className="inline-flex h-11 items-center gap-2 rounded-full bg-slate-950 px-5 text-sm font-semibold text-white hover:bg-slate-800 disabled:opacity-50"
-      >
-        {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}
-        Submit application
-      </button>
-    </form>
+function applyMailto(role: string) {
+  const subject = encodeURIComponent(`Application — ${role} | Unity Software Solutions`);
+  const body = encodeURIComponent(
+    `Hello Unity Software Solutions,\n\nI would like to apply for the ${role} role.\n\nName:\nPhone:\nLocation:\nPortfolio / LinkedIn:\n\nBrief introduction:\n\nThank you.`
   );
+  return `mailto:${APPLY_EMAIL}?cc=${APPLY_EMAIL_2}&subject=${subject}&body=${body}`;
+}
+
+function applyWhatsApp(role: string) {
+  const text = encodeURIComponent(
+    `Hello Unity Software Solutions — I want to apply for *${role}*.\n\nName:\nEmail:\nLocation:\nPortfolio/LinkedIn:\n\nShort intro:`
+  );
+  return `${WA}?text=${text}`;
+}
+
+function jobDescriptionHtml(job: Job) {
+  const reqs = job.requirements.map((r) => `<li>${r}</li>`).join("");
+  return `<p>${job.summary}</p>
+<p><strong>Location:</strong> Remote · <strong>Employment:</strong> Full-time</p>
+<p><strong>Requirements:</strong></p><ul>${reqs}</ul>
+<p><strong>Required premium tool (company-sponsored):</strong> ${job.tool.name}. Retail ${job.tool.retail}. Employee contributes $${job.tool.employeePays}/month. Unity covers ${job.tool.unityCovers}. ${job.tool.note}</p>
+<p>Apply via WhatsApp +254 778 903 044 or email ${APPLY_EMAIL}. Careers: ${SITE}/careers#${job.id}</p>`;
 }
 
 export function CareersPageShell() {
   const [signupOpen, setSignupOpen] = useState(false);
 
   useEffect(() => {
-    document.title =
-      "Careers — Now Hiring Video Editor & Sales Executive | Unity Software Solutions";
-    let desc = document.querySelector('meta[name="description"]');
-    if (!desc) {
-      desc = document.createElement("meta");
-      desc.setAttribute("name", "description");
-      document.head.appendChild(desc);
-    }
-    desc.setAttribute(
-      "content",
-      "Unity Software Solutions is hiring. Apply for Video Editor and Sales Executive roles. Build the future of Unity ERP across Kenya, South Africa and Egypt. Now hiring."
-    );
-    let keywords = document.querySelector('meta[name="keywords"]');
-    if (!keywords) {
-      keywords = document.createElement("meta");
-      keywords.setAttribute("name", "keywords");
-      document.head.appendChild(keywords);
-    }
-    keywords.setAttribute(
-      "content",
-      "Unity Software Solutions careers, now hiring, video editor job Kenya, sales executive ERP jobs, Unity ERP jobs, SaaS jobs East Africa, hiring video editor, hiring sales executive"
-    );
+    setPageMeta({
+      title: trimTitle(
+        "Careers — Now Hiring | Unity Software Solutions Jobs Kenya"
+      ),
+      description: trimDesc(
+        "Unity Software Solutions is hiring Full Stack Developer, AI Engineer, UI/UX, Video Editor, Sales, SEO, DevOps and more. Remote full-time. Apply WhatsApp +254778903044."
+      ),
+      path: "/careers",
+      keywords:
+        "Unity Software Solutions careers, jobs Kenya, hiring developer Kenya, ERP jobs, remote SaaS jobs East Africa, video editor job, sales executive job, AI engineer Kenya, now hiring",
+    });
+    window.scrollTo(0, 0);
 
-    // JSON-LD JobPosting — Google for Jobs / Google Search
     const existing = document.getElementById("job-jsonld");
     if (existing) existing.remove();
-    const script = document.createElement("script");
-    script.id = "job-jsonld";
-    script.type = "application/ld+json";
+
     const org = {
       "@type": "Organization",
       name: "Unity Software Solutions",
-      sameAs: "https://www.unity-software.online",
-      logo: "https://i.postimg.cc/qBnzqpqk/blck-logo-erp.png",
-      url: "https://www.unity-software.online",
-      email: "developerunityerp@proton.me",
+      sameAs: SITE,
+      logo: LOGO,
+      url: SITE,
+      email: APPLY_EMAIL,
       telephone: "+254778903044",
     };
-    const kenyaPlace = {
+    const place = {
       "@type": "Place",
       address: {
         "@type": "PostalAddress",
@@ -248,81 +344,49 @@ export function CareersPageShell() {
         addressCountry: "KE",
       },
     };
+
+    const graph = JOBS.map((job) => ({
+      "@type": "JobPosting",
+      title: job.title,
+      description: jobDescriptionHtml(job),
+      identifier: {
+        "@type": "PropertyValue",
+        name: "Unity Software Solutions",
+        value: `USS-${job.id.toUpperCase()}`,
+      },
+      datePosted: "2026-08-04",
+      validThrough: "2026-12-31T23:59:59+03:00",
+      employmentType: job.employmentType,
+      hiringOrganization: org,
+      jobLocation: place,
+      jobLocationType: "TELECOMMUTE",
+      applicantLocationRequirements: {
+        "@type": "Country",
+        name: "Kenya",
+      },
+      baseSalary: {
+        "@type": "MonetaryAmount",
+        currency: "USD",
+        value: {
+          "@type": "QuantitativeValue",
+          value: job.tool.employeePays,
+          unitText: "MONTH",
+        },
+      },
+      // Note: baseSalary above is the employee tool contribution signal;
+      // role compensation is discussed during hiring.
+      directApply: true,
+      url: `${SITE}/careers#${job.id}`,
+      industry: "Software",
+      occupationalCategory: job.occupationalCategory,
+    }));
+
+    const script = document.createElement("script");
+    script.id = "job-jsonld";
+    script.type = "application/ld+json";
     script.text = JSON.stringify({
       "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "JobPosting",
-          title: "Video Editor",
-          description:
-            "<p>Unity Software Solutions is hiring a <strong>Video Editor</strong> to create engaging videos for marketing, tutorials, product launches, and social media campaigns for Unity ERP.</p><p><strong>Responsibilities:</strong></p><ul><li>Edit marketing, tutorial and product launch videos</li><li>Produce short-form content for social and ads</li><li>Color grade and sound-design to a clean SaaS standard</li><li>Collaborate with marketing on scripts and storyboards</li><li>Maintain a consistent brand look across all video assets</li></ul><p><strong>Requirements:</strong></p><ul><li>Proven editing work (showreel or portfolio required)</li><li>Comfortable with Premiere Pro, Final Cut, or DaVinci Resolve</li><li>Strong sense of pacing, typography on video, and motion</li><li>Ability to turn around campaign assets quickly</li></ul><p>Apply on <a href=\"https://www.unity-software.online/careers\">unity-software.online/careers</a> or email developerunityerp@proton.me / WhatsApp +254 778 903 044.</p>",
-          identifier: {
-            "@type": "PropertyValue",
-            name: "Unity Software Solutions",
-            value: "USS-VIDEO-EDITOR-001",
-          },
-          datePosted: "2026-08-04",
-          validThrough: "2026-12-31T23:59:59+03:00",
-          employmentType: "FULL_TIME",
-          hiringOrganization: org,
-          jobLocation: kenyaPlace,
-          jobLocationType: "TELECOMMUTE",
-          applicantLocationRequirements: {
-            "@type": "Country",
-            name: "Kenya",
-          },
-          baseSalary: {
-            "@type": "MonetaryAmount",
-            currency: "KES",
-            value: {
-              "@type": "QuantitativeValue",
-              minValue: 40000,
-              maxValue: 120000,
-              unitText: "MONTH",
-            },
-          },
-          directApply: true,
-          url: "https://www.unity-software.online/careers#video-editor",
-          industry: "Software",
-          occupationalCategory: "27-4032.00",
-        },
-        {
-          "@type": "JobPosting",
-          title: "Sales Executive",
-          description:
-            "<p>Unity Software Solutions is hiring a <strong>Sales Executive</strong> to help businesses discover Unity ERP, build relationships, and grow our customer base across Kenya, South Africa and Egypt.</p><p><strong>Responsibilities:</strong></p><ul><li>Own outbound and inbound pipeline for Unity ERP</li><li>Run demos and discovery calls with decision makers</li><li>Manage CRM deals from lead to close</li><li>Partner with support on smooth onboarding handoffs</li><li>Hit monthly acquisition and revenue targets</li></ul><p><strong>Requirements:</strong></p><ul><li>2+ years B2B or SaaS sales experience preferred</li><li>Confident on calls and in writing</li><li>Comfort explaining software value (ERP/CRM a plus)</li><li>Based in or willing to cover Kenya, South Africa or Egypt markets</li></ul><p>Apply on <a href=\"https://www.unity-software.online/careers\">unity-software.online/careers</a> or email developerunityerp@proton.me / WhatsApp +254 778 903 044.</p>",
-          identifier: {
-            "@type": "PropertyValue",
-            name: "Unity Software Solutions",
-            value: "USS-SALES-EXEC-001",
-          },
-          datePosted: "2026-08-04",
-          validThrough: "2026-12-31T23:59:59+03:00",
-          employmentType: "FULL_TIME",
-          hiringOrganization: org,
-          jobLocation: kenyaPlace,
-          jobLocationType: "TELECOMMUTE",
-          applicantLocationRequirements: [
-            { "@type": "Country", name: "Kenya" },
-            { "@type": "Country", name: "South Africa" },
-            { "@type": "Country", name: "Egypt" },
-          ],
-          baseSalary: {
-            "@type": "MonetaryAmount",
-            currency: "KES",
-            value: {
-              "@type": "QuantitativeValue",
-              minValue: 50000,
-              maxValue: 150000,
-              unitText: "MONTH",
-            },
-          },
-          directApply: true,
-          url: "https://www.unity-software.online/careers#sales-executive",
-          industry: "Software",
-          occupationalCategory: "41-3091.00",
-        },
-      ],
+      "@graph": graph,
     });
     document.head.appendChild(script);
   }, []);
@@ -332,11 +396,8 @@ export function CareersPageShell() {
       <Header onOpenSignup={() => setSignupOpen(true)} />
       <main>
         <div className="pt-16">
-          {/* Premium hero — image generated + fallback gradient */}
           <section className="relative overflow-hidden border-b border-slate-100 bg-gradient-to-br from-white via-emerald-50/40 to-white">
             <div className="pointer-events-none absolute -left-20 top-10 h-72 w-72 rounded-full bg-emerald-200/30 blur-3xl" />
-            <div className="pointer-events-none absolute -right-10 bottom-0 h-80 w-80 rounded-full bg-emerald-100/50 blur-3xl" />
-
             <div className="relative mx-auto max-w-6xl px-6 py-16 md:py-24">
               <motion.div
                 initial={{ opacity: 0, y: 16 }}
@@ -345,139 +406,204 @@ export function CareersPageShell() {
               >
                 <span className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-emerald-800">
                   <Sparkles className="h-3.5 w-3.5" />
-                  Now hiring
+                  Now hiring · {JOBS.length} open roles
                 </span>
                 <h1 className="mt-6 text-4xl font-bold tracking-tight text-slate-950 sm:text-5xl md:text-6xl">
-                  Join Our Team
+                  Careers at Unity Software Solutions
                 </h1>
                 <p className="mt-3 text-lg text-slate-600 md:text-xl">
-                  Build the Future With Us
+                  Build the future of Unity ERP — remote full-time roles
                 </p>
                 <p className="mx-auto mt-4 max-w-2xl text-slate-500">
-                  Unity Software Solutions is hiring talent to grow Unity ERP —
-                  creative storytellers and sales leaders across Kenya, South Africa and Egypt.
+                  Apply by WhatsApp or email. Every full-time role includes one
+                  company-sponsored premium tool — you contribute only $17–$20/month.
                 </p>
-              </motion.div>
-
-              {/* Two hiring cards in hero */}
-              <div className="mt-12 grid gap-5 md:grid-cols-2">
-                {jobs.map((job, i) => (
-                  <motion.a
-                    key={job.id}
-                    href={`#${job.id}`}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.1 + i * 0.08 }}
-                    className="group rounded-3xl border border-slate-100 bg-white/80 p-6 shadow-sm backdrop-blur transition hover:-translate-y-1 hover:border-emerald-200 hover:shadow-lg md:p-8"
+                <div className="mt-8 flex flex-wrap justify-center gap-3">
+                  <a
+                    href={WA}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex h-12 items-center gap-2 rounded-full bg-emerald-600 px-6 text-sm font-semibold text-white hover:bg-emerald-500"
                   >
-                    <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-700">
-                      <job.icon className="h-6 w-6" />
+                    <MessageCircle className="h-4 w-4" />
+                    WhatsApp +254 778 903 044
+                  </a>
+                  <a
+                    href={`mailto:${APPLY_EMAIL}`}
+                    className="inline-flex h-12 items-center gap-2 rounded-full border border-slate-200 bg-white px-6 text-sm font-semibold text-slate-900 hover:bg-slate-50"
+                  >
+                    <Mail className="h-4 w-4" />
+                    {APPLY_EMAIL}
+                  </a>
+                </div>
+              </motion.div>
+            </div>
+          </section>
+
+          {/* Premium benefit callout */}
+          <section className="border-b border-slate-100 bg-slate-950 text-white">
+            <div className="mx-auto max-w-6xl px-6 py-10 md:py-12">
+              <h2 className="text-xl font-bold md:text-2xl">
+                Premium software benefit
+              </h2>
+              <p className="mt-3 max-w-3xl text-sm leading-relaxed text-slate-300 md:text-base">
+                Every full-time employee receives access to professional software
+                sponsored by Unity. Employees contribute only{" "}
+                <strong className="text-white">$17–$20 per month</strong> toward one
+                role-specific premium subscription, while Unity covers the remaining
+                cost — the same model used by established technology teams.
+              </p>
+              <a
+                href="/employee-discounts"
+                className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-emerald-400 hover:text-emerald-300"
+              >
+                See employee discounts
+                <ExternalLink className="h-3.5 w-3.5" />
+              </a>
+            </div>
+          </section>
+
+          {/* Role grid */}
+          <section className="mx-auto max-w-6xl px-6 py-14 md:py-20">
+            <h2 className="text-2xl font-bold tracking-tight text-slate-950 md:text-3xl">
+              Open positions
+            </h2>
+            <p className="mt-2 text-slate-600">
+              Remote · Full-time · Apply via WhatsApp or email
+            </p>
+
+            <div className="mt-10 space-y-8">
+              {JOBS.map((job) => {
+                const Icon = job.icon;
+                return (
+                  <article
+                    key={job.id}
+                    id={job.id}
+                    className="scroll-mt-28 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm md:p-8"
+                  >
+                    <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
+                      <div className="min-w-0 flex-1">
+                        <div className="flex items-start gap-3">
+                          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-700">
+                            <Icon className="h-5 w-5" />
+                          </div>
+                          <div>
+                            <h3 className="text-xl font-bold text-slate-950">
+                              {job.title}
+                            </h3>
+                            <div className="mt-1 flex flex-wrap gap-3 text-xs font-medium text-slate-500">
+                              <span className="inline-flex items-center gap-1">
+                                <MapPin className="h-3.5 w-3.5" /> Remote
+                              </span>
+                              <span className="inline-flex items-center gap-1">
+                                <Clock className="h-3.5 w-3.5" /> Full-time
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                        <p className="mt-4 text-slate-600">{job.summary}</p>
+                        <p className="mt-4 text-xs font-bold uppercase tracking-wider text-slate-400">
+                          Requirements
+                        </p>
+                        <ul className="mt-2 space-y-1.5">
+                          {job.requirements.map((r) => (
+                            <li
+                              key={r}
+                              className="flex gap-2 text-sm text-slate-700"
+                            >
+                              <Check className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" />
+                              {r}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      <div className="w-full shrink-0 rounded-2xl border border-emerald-100 bg-emerald-50/50 p-5 md:w-72">
+                        <p className="text-xs font-bold uppercase tracking-wider text-emerald-800">
+                          Required premium tool
+                        </p>
+                        <p className="mt-2 text-base font-bold text-slate-950">
+                          {job.tool.name}
+                        </p>
+                        <p className="mt-1 text-xs text-slate-500">{job.tool.note}</p>
+                        <dl className="mt-4 space-y-1.5 text-sm">
+                          <div className="flex justify-between gap-2">
+                            <dt className="text-slate-500">Retail</dt>
+                            <dd className="font-medium text-slate-800">
+                              {job.tool.retail}
+                            </dd>
+                          </div>
+                          <div className="flex justify-between gap-2">
+                            <dt className="text-slate-500">You pay</dt>
+                            <dd className="font-bold text-emerald-700">
+                              ${job.tool.employeePays}/mo
+                            </dd>
+                          </div>
+                          <div className="flex justify-between gap-2">
+                            <dt className="text-slate-500">Unity covers</dt>
+                            <dd className="font-medium text-slate-800">
+                              {job.tool.unityCovers}
+                            </dd>
+                          </div>
+                        </dl>
+                      </div>
                     </div>
-                    <h2 className="text-xl font-bold text-slate-950">{job.title}</h2>
-                    <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                      {job.summary}
-                    </p>
-                    <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-emerald-700 group-hover:gap-2">
-                      View role <ArrowRight className="h-4 w-4" />
-                    </span>
-                  </motion.a>
-                ))}
+
+                    <div className="mt-6 flex flex-wrap gap-3 border-t border-slate-100 pt-6">
+                      <a
+                        href={applyWhatsApp(job.title)}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex h-11 items-center gap-2 rounded-full bg-emerald-600 px-5 text-sm font-semibold text-white hover:bg-emerald-500"
+                      >
+                        <MessageCircle className="h-4 w-4" />
+                        Apply on WhatsApp
+                      </a>
+                      <a
+                        href={applyMailto(job.title)}
+                        className="inline-flex h-11 items-center gap-2 rounded-full border border-slate-200 bg-white px-5 text-sm font-semibold text-slate-900 hover:bg-slate-50"
+                      >
+                        <Mail className="h-4 w-4" />
+                        Email {APPLY_EMAIL}
+                      </a>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          </section>
+
+          <section className="border-t border-slate-100 bg-slate-50">
+            <div className="mx-auto max-w-3xl px-6 py-14 text-center">
+              <h2 className="text-2xl font-bold text-slate-950">How to apply</h2>
+              <p className="mt-3 text-slate-600">
+                Send your name, role, CV or portfolio link, and a short intro on
+                WhatsApp or email. No long form required — we reply quickly.
+              </p>
+              <div className="mt-6 flex flex-wrap justify-center gap-3">
+                <a
+                  href={WA}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex h-12 items-center gap-2 rounded-full bg-slate-950 px-6 text-sm font-semibold text-white hover:bg-slate-800"
+                >
+                  <MessageCircle className="h-4 w-4" />
+                  +254 778 903 044
+                </a>
+                <a
+                  href={`mailto:${APPLY_EMAIL}`}
+                  className="inline-flex h-12 items-center gap-2 rounded-full border border-slate-200 bg-white px-6 text-sm font-semibold"
+                >
+                  <Mail className="h-4 w-4" />
+                  {APPLY_EMAIL}
+                </a>
               </div>
+              <p className="mt-4 text-xs text-slate-400">
+                Also: {APPLY_EMAIL_2}
+              </p>
             </div>
           </section>
         </div>
-
-        {/* Open roles detail */}
-        <section className="bg-white py-16 md:py-20">
-          <div className="mx-auto max-w-3xl space-y-14 px-6">
-            <div>
-              <h2 className="text-3xl font-bold tracking-tight text-slate-950">
-                Open positions
-              </h2>
-              <p className="mt-2 text-slate-600">
-                Apply by email with your CV and a short note. We reply to every serious application.
-              </p>
-            </div>
-
-            {jobs.map((job) => (
-              <article
-                key={job.id}
-                id={job.id}
-                className="scroll-mt-28 rounded-3xl border border-slate-100 bg-slate-50/50 p-6 md:p-8"
-              >
-                <div className="flex flex-wrap items-start justify-between gap-4">
-                  <div>
-                    <h3 className="text-2xl font-bold text-slate-950">{job.title}</h3>
-                    <div className="mt-3 flex flex-wrap gap-3 text-xs font-medium text-slate-500">
-                      <span className="inline-flex items-center gap-1 rounded-full bg-white px-3 py-1 ring-1 ring-slate-100">
-                        <Briefcase className="h-3.5 w-3.5" />
-                        {job.type}
-                      </span>
-                      <span className="inline-flex items-center gap-1 rounded-full bg-white px-3 py-1 ring-1 ring-slate-100">
-                        <MapPin className="h-3.5 w-3.5" />
-                        {job.location}
-                      </span>
-                      <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-3 py-1 text-emerald-800 ring-1 ring-emerald-100">
-                        <Clock className="h-3.5 w-3.5" />
-                        Now hiring
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                <p className="mt-5 text-slate-600 leading-relaxed">{job.summary}</p>
-                <ApplyForm role={job.title} />
-
-                <h4 className="mt-6 text-sm font-bold uppercase tracking-wider text-slate-400">
-                  Responsibilities
-                </h4>
-                <ul className="mt-3 space-y-2">
-                  {job.responsibilities.map((r) => (
-                    <li key={r} className="flex gap-2 text-sm text-slate-700">
-                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" />
-                      {r}
-                    </li>
-                  ))}
-                </ul>
-
-                <h4 className="mt-6 text-sm font-bold uppercase tracking-wider text-slate-400">
-                  Requirements
-                </h4>
-                <ul className="mt-3 space-y-2">
-                  {job.requirements.map((r) => (
-                    <li key={r} className="flex gap-2 text-sm text-slate-700">
-                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-amber-600" />
-                      {r}
-                    </li>
-                  ))}
-                </ul>
-              </article>
-            ))}
-
-            <div className="rounded-3xl bg-slate-950 p-8 text-center text-white">
-              <h3 className="text-xl font-bold">Don&apos;t see your role?</h3>
-              <p className="mx-auto mt-2 max-w-md text-sm text-slate-300">
-                Send your CV to{" "}
-                <a
-                  href={`mailto:${EMAIL}`}
-                  className="text-amber-300 underline-offset-2 hover:underline"
-                >
-                  {EMAIL}
-                </a>{" "}
-                or WhatsApp{" "}
-                <a
-                  href={CAREERS_WA_LINK}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-amber-300 underline-offset-2 hover:underline"
-                >
-                  {CAREERS_PHONE_DISPLAY}
-                </a>
-                . We hire exceptional people year-round.
-              </p>
-            </div>
-          </div>
-        </section>
       </main>
       <SiteFooter />
       <SignupWizard open={signupOpen} onClose={() => setSignupOpen(false)} />
