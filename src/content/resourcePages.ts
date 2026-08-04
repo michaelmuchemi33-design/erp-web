@@ -873,6 +873,7 @@ export function slugFromLabel(section: string, label: string): string {
     "Feature Comparison": "downloads/feature-comparison",
     "API Documentation": section === "Developers" ? "developers/api-documentation" : "downloads/api-documentation",
     "Release Notes": "downloads/release-notes",
+    "Employee Discounts": "employee-discounts",
     "Help Center": "support/help-center",
     "Knowledge Base": "support/knowledge-base",
     "Frequently Asked Questions": "support/faq",

@@ -25,20 +25,29 @@ function loadScript(): Promise<void> {
   });
 }
 
-/** Amount in major units (KES). Paystack expects subunit * 100 for most currencies. */
+/** Amount in major units. Default KES. Use currency USD for employee software ($17 / $20). */
 export async function payWithPaystack(opts: {
   email: string;
-  amountKes: number;
+  amountKes?: number;
+  amount?: number;
+  currency?: "KES" | "USD";
   planLabel: string;
+  metadata?: Record<string, string>;
 }) {
   await loadScript();
   if (!window.PaystackPop) throw new Error("Paystack not available");
 
+  const currency = opts.currency || "KES";
+  const major =
+    currency === "USD"
+      ? opts.amount ?? 17
+      : opts.amountKes ?? opts.amount ?? 3000;
+
   const handler = window.PaystackPop.setup({
     key: PAYSTACK_PUBLIC_KEY,
     email: opts.email.trim().toLowerCase(),
-    amount: Math.round(opts.amountKes * 100),
-    currency: "KES",
+    amount: Math.round(major * 100),
+    currency,
     ref: `unity_${Date.now()}_${Math.floor(Math.random() * 1e6)}`,
     metadata: {
       custom_fields: [
@@ -50,14 +59,33 @@ export async function payWithPaystack(opts: {
         {
           display_name: "Product",
           variable_name: "product",
-          value: "Unity ERP",
+          value: opts.metadata?.product || "Unity ERP",
         },
+        ...(opts.metadata?.software
+          ? [
+              {
+                display_name: "Software",
+                variable_name: "software",
+                value: opts.metadata.software,
+              },
+            ]
+          : []),
+        ...(opts.metadata?.role
+          ? [
+              {
+                display_name: "Role",
+                variable_name: "role",
+                value: opts.metadata.role,
+              },
+            ]
+          : []),
       ],
+      ...opts.metadata,
     },
     callback: (response: { reference: string }) => {
       window.location.href = `/payment/callback?reference=${encodeURIComponent(
         response.reference
-      )}&email=${encodeURIComponent(opts.email)}`;
+      )}&email=${encodeURIComponent(opts.email)}&type=employee_discount`;
     },
     onClose: () => {
       /* user closed */

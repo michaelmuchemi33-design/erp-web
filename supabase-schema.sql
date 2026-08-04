@@ -112,3 +112,35 @@ create policy "Anyone can apply"
 grant insert on public.leads to anon, authenticated;
 grant insert on public.contact_messages to anon, authenticated;
 grant insert on public.applications to anon, authenticated;
+
+-- ============================================================
+-- Employee software discounts ($17–$20 / month share)
+-- ============================================================
+create table if not exists public.employee_discounts (
+  id uuid primary key default gen_random_uuid(),
+  email text not null,
+  name text,
+  role text,
+  software text not null,
+  software_id text,
+  employee_pays_usd numeric default 17,
+  account_email text,
+  source text default 'employee_discounts_page',
+  status text default 'pending_payment',
+  paystack_reference text,
+  notes text,
+  created_at timestamptz default now()
+);
+
+create index if not exists employee_discounts_created_at_idx
+  on public.employee_discounts (created_at desc);
+create index if not exists employee_discounts_email_idx
+  on public.employee_discounts (lower(email));
+
+alter table public.employee_discounts enable row level security;
+
+drop policy if exists "Anyone can request employee discount" on public.employee_discounts;
+create policy "Anyone can request employee discount"
+  on public.employee_discounts for insert to anon, authenticated with check (true);
+
+grant insert on public.employee_discounts to anon, authenticated;

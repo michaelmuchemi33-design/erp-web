@@ -1,6 +1,43 @@
 import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Globe, ChevronDown, ArrowRight, Menu, X, BookOpen, Rocket, Video, Lightbulb, Bot, FileText, Building2, Code2, Webhook, Boxes, FileStack, Newspaper, HelpCircle, Headphones, MessageCircle, Activity, Users, Calculator, BarChart3, TrendingUp, Leaf, ShoppingCart, GraduationCap, Truck, Utensils, Landmark, Home, HardHat, Factory, HeartHandshake } from "lucide-react";
+import {
+  Globe,
+  ChevronDown,
+  ArrowRight,
+  Menu,
+  X,
+  BookOpen,
+  Rocket,
+  Video,
+  Lightbulb,
+  Bot,
+  FileText,
+  Building2,
+  Code2,
+  Webhook,
+  Boxes,
+  FileStack,
+  Newspaper,
+  HelpCircle,
+  Headphones,
+  MessageCircle,
+  Activity,
+  Users,
+  Calculator,
+  BarChart3,
+  TrendingUp,
+  Leaf,
+  ShoppingCart,
+  GraduationCap,
+  Truck,
+  Utensils,
+  Landmark,
+  Home,
+  HardHat,
+  Factory,
+  HeartHandshake,
+  Sparkles,
+} from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { slugFromLabel } from "@/content/resourcePages";
 
@@ -49,6 +86,7 @@ const resourcesMenu = {
       { label: "Feature Comparison", icon: BarChart3 },
       { label: "API Documentation", icon: Code2 },
       { label: "Release Notes", icon: Newspaper },
+      { label: "Employee Discounts", icon: Sparkles },
     ],
   },
   Support: {
