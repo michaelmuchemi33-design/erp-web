@@ -382,10 +382,10 @@ export function EmployeeDiscountsShell() {
             </h1>
             <p className="mt-4 max-w-2xl text-lg leading-relaxed text-slate-600">
               Individual, <strong className="text-slate-900">team</strong>, and{" "}
-              <strong className="text-slate-900">enterprise</strong> seats. Shares are
-              shown in USD for reference and <strong className="text-slate-900">charged in KES</strong> via
-              Paystack (about ${minP}–${maxP} USD ≈ KES {usdToKes(minP).toLocaleString()}–
-              {usdToKes(maxP).toLocaleString()}). Unity covers the rest of the retail cost.
+              <strong className="text-slate-900">enterprise</strong> seats. Employee share is
+              shown in <strong className="text-slate-900">USD (${minP}–${maxP}/mo)</strong> and
+              charged in <strong className="text-slate-900">KES</strong> on Paystack. Unity covers
+              the rest of the retail cost.
             </p>
             <div className="mt-6 flex flex-wrap gap-2 text-xs font-semibold">
               <span className="rounded-full bg-slate-100 px-3 py-1 text-slate-700">
@@ -489,7 +489,7 @@ export function EmployeeDiscountsShell() {
                           <span
                             className={`rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide ${badge.className}`}
                           >
-                            {badge.label} · ${item.employeePays} ≈ KES {usdToKes(item.employeePays).toLocaleString()}/mo
+                            {badge.label} · ${item.employeePays}/mo
                           </span>
                           {(item.planType === "team" ||
                             item.planType === "enterprise") && (
@@ -530,13 +530,14 @@ export function EmployeeDiscountsShell() {
                         {selected.tierLabel} · Retail {selected.retail}
                       </p>
                       <p className="text-lg font-bold text-emerald-700">
-                        KES {usdToKes(selected.employeePays).toLocaleString()}
+                        ${selected.employeePays}
                         <span className="text-sm font-medium text-slate-500">
-                          /mo
+                          /month
                         </span>
                       </p>
                       <p className="text-xs text-slate-500">
-                        Display ~${selected.employeePays} USD · charged in Kenyan Shillings
+                        Charged in KES via Paystack (≈ KES{" "}
+                        {usdToKes(selected.employeePays).toLocaleString()})
                       </p>
                     </div>
                   </div>
@@ -658,11 +659,7 @@ export function EmployeeDiscountsShell() {
                     <Loader2 className="h-4 w-4 animate-spin" />
                   ) : (
                     <>
-                      Pay KES{" "}
-                      {selected
-                        ? usdToKes(selected.employeePays).toLocaleString()
-                        : "—"}{" "}
-                      with Paystack
+                      Pay ${selected?.employeePays ?? 17}/mo with Paystack
                     </>
                   )}
                 </button>

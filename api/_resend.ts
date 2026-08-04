@@ -4,7 +4,6 @@ export async function sendResendEmail(opts: {
   html: string;
   from?: string;
 }) {
-  // Prefer Vercel env; fallback so demo emails work when env was not set
   const key = process.env.RESEND_API_KEY || process.env.RESEND_KEY || "";
 
   if (!key) {
@@ -16,6 +15,11 @@ export async function sendResendEmail(opts: {
     opts.from ||
     process.env.RESEND_FROM ||
     "Unity ERP <hello@unity-software.online>";
+
+  const replyTo =
+    process.env.RESEND_REPLY_TO ||
+    process.env.SALES_INBOX ||
+    "michaelmuchemi33@gmail.com";
 
   try {
     const res = await fetch("https://api.resend.com/emails", {
@@ -29,13 +33,13 @@ export async function sendResendEmail(opts: {
         to: [opts.to],
         subject: opts.subject,
         html: opts.html,
-        reply_to: process.env.SALES_INBOX || "erpintergration@gmail.com",
+        reply_to: replyTo,
       }),
     });
     const data = await res.json().catch(() => ({}));
     if (!res.ok) {
       console.error("Resend error", res.status, data);
-      // Retry once from onboarding domain if domain reject
+      // Fallback if custom domain not accepted yet
       if (res.status === 403 || res.status === 422) {
         const retry = await fetch("https://api.resend.com/emails", {
           method: "POST",
@@ -48,6 +52,7 @@ export async function sendResendEmail(opts: {
             to: [opts.to],
             subject: opts.subject,
             html: opts.html,
+            reply_to: replyTo,
           }),
         });
         const data2 = await retry.json().catch(() => ({}));
