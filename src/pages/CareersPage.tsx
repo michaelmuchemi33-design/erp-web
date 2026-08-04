@@ -413,6 +413,12 @@ export function CareersPageShell() {
                     <Mail className="h-4 w-4" />
                     {APPLY_EMAIL}
                   </a>
+                  <a
+                    href="/employee-discounts"
+                    className="inline-flex h-12 items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-6 text-sm font-semibold text-emerald-900 hover:bg-emerald-100"
+                  >
+                    Employee benefits & software
+                  </a>
                 </div>
               </motion.div>
             </div>
@@ -450,13 +456,21 @@ export function CareersPageShell() {
                   </li>
                 ))}
               </ul>
-              <a
-                href="/employee-discounts"
-                className="mt-8 inline-flex items-center gap-1 text-sm font-semibold text-emerald-400 hover:text-emerald-300"
-              >
-                Browse all sponsored software
-                <ExternalLink className="h-3.5 w-3.5" />
-              </a>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <a
+                  href="/employee-discounts"
+                  className="inline-flex h-11 items-center gap-2 rounded-full bg-emerald-500 px-6 text-sm font-semibold text-slate-950 hover:bg-emerald-400"
+                >
+                  View all employee benefits
+                  <ExternalLink className="h-3.5 w-3.5" />
+                </a>
+                <a
+                  href="/employee-discounts"
+                  className="inline-flex h-11 items-center gap-2 rounded-full border border-white/20 px-6 text-sm font-semibold text-white hover:bg-white/10"
+                >
+                  Sponsored software catalog
+                </a>
+              </div>
             </div>
           </section>
 

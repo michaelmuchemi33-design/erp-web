@@ -102,34 +102,37 @@ export function SignupWizard({
         source: "signup_wizard",
         created_at: new Date().toISOString(),
       };
-      const { error: dbError } = await trackLead({
-        name: payload.name,
-        email: payload.email,
-        phone: payload.phone,
-        industry: payload.industry,
-        company_size: payload.company_size,
-        primary_need: payload.primary_need,
-        source: payload.source,
+      // /api/lead saves Supabase + sends Resend welcome email
+      const leadRes = await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: payload.name,
+          email: payload.email,
+          phone: payload.phone,
+          industry: payload.industry,
+          company_size: payload.company_size,
+          primary_need: payload.primary_need,
+          source: payload.source,
+        }),
       });
-      // Do not hard-fail UX if DB RLS blocks — sales still gets email path
-      if (dbError) {
-        console.warn("lead save:", dbError);
-      }
-
-      // Send confirmation email via Edge Function (best-effort)
-      try {
-        await supabase.functions.invoke("send-demo-email", {
-          body: {
-            name: payload.name,
-            email: payload.email,
-            phone: payload.phone,
-            industry: payload.industry,
-            company_size: payload.company_size,
-            primary_need: payload.primary_need,
-          },
+      if (!leadRes.ok) {
+        // Fallback helper (may skip email if API is down)
+        const { error: dbError } = await trackLead({
+          name: payload.name,
+          email: payload.email,
+          phone: payload.phone,
+          industry: payload.industry,
+          company_size: payload.company_size,
+          primary_need: payload.primary_need,
+          source: payload.source,
         });
-      } catch (mailErr) {
-        console.warn("Demo email function:", mailErr);
+        if (dbError) console.warn("lead save:", dbError);
+      } else {
+        const j = await leadRes.json().catch(() => ({}));
+        if (!(j as { emailSent?: boolean }).emailSent) {
+          console.warn("Lead saved but emailSent=false — check RESEND_API_KEY / domain on Vercel");
+        }
       }
 
       setDone(true);

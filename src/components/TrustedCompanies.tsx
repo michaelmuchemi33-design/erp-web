@@ -3,42 +3,48 @@ import { motion, useInView } from "framer-motion";
 
 type Brand = {
   name: string;
-  /** Simple recognizable mark using styled text + optional symbol */
-  mark: string;
-  color: string;
+  domain: string;
 };
 
-/** Integration / platform brands (wordmarks) */
+/** Platforms teams integrate with via API / payments / accounting */
 const brands: Brand[] = [
-  { name: "QuickBooks", mark: "qb", color: "#2CA01C" },
-  { name: "Zoho", mark: "zoho", color: "#E42527" },
-  { name: "Odoo", mark: "odoo", color: "#714B67" },
-  { name: "M-Pesa", mark: "M-PESA", color: "#4CAF50" },
-  { name: "SAP", mark: "SAP", color: "#0FAAFF" },
-  { name: "Salesforce", mark: "salesforce", color: "#00A1E0" },
-  { name: "Xero", mark: "xero", color: "#13B5EA" },
-  { name: "NetSuite", mark: "NETSUITE", color: "#1B4F72" },
-  { name: "Sage", mark: "sage", color: "#00DC00" },
-  { name: "Shopify", mark: "shopify", color: "#96BF48" },
-  { name: "Stripe", mark: "stripe", color: "#635BFF" },
-  { name: "Paystack", mark: "paystack", color: "#0BA4DB" },
-  { name: "Microsoft", mark: "Dynamics", color: "#00A4EF" },
-  { name: "API", mark: "{ API }", color: "#0F172A" },
+  { name: "QuickBooks", domain: "quickbooks.intuit.com" },
+  { name: "Zoho", domain: "zoho.com" },
+  { name: "Odoo", domain: "odoo.com" },
+  { name: "M-Pesa", domain: "safaricom.co.ke" },
+  { name: "SAP", domain: "sap.com" },
+  { name: "Salesforce", domain: "salesforce.com" },
+  { name: "Xero", domain: "xero.com" },
+  { name: "NetSuite", domain: "netsuite.com" },
+  { name: "Sage", domain: "sage.com" },
+  { name: "Shopify", domain: "shopify.com" },
+  { name: "Stripe", domain: "stripe.com" },
+  { name: "Paystack", domain: "paystack.com" },
+  { name: "Microsoft", domain: "microsoft.com" },
+  { name: "Google", domain: "google.com" },
+  { name: "Slack", domain: "slack.com" },
+  { name: "HubSpot", domain: "hubspot.com" },
 ];
 
 function BrandLogo({ brand }: { brand: Brand }) {
   return (
     <div
-      className="mx-6 flex h-14 shrink-0 items-center justify-center gap-2 md:mx-10"
+      className="mx-5 flex h-16 w-[9.5rem] shrink-0 items-center justify-center gap-2.5 rounded-2xl border border-slate-100 bg-white px-4 shadow-sm md:mx-7 md:w-44"
       title={brand.name}
     >
-      <span
-        className="flex h-9 min-w-[2.25rem] items-center justify-center rounded-lg px-2 text-xs font-extrabold tracking-tight text-white shadow-sm"
-        style={{ backgroundColor: brand.color }}
-      >
-        {brand.mark.slice(0, 3).toUpperCase()}
-      </span>
-      <span className="whitespace-nowrap text-base font-bold tracking-tight text-slate-400 md:text-lg">
+      <img
+        src={`https://www.google.com/s2/favicons?domain=${brand.domain}&sz=128`}
+        alt={`${brand.name} logo`}
+        width={36}
+        height={36}
+        className="h-9 w-9 object-contain"
+        loading="lazy"
+        onError={(e) => {
+          const el = e.target as HTMLImageElement;
+          el.src = `https://logo.clearbit.com/${brand.domain}`;
+        }}
+      />
+      <span className="truncate text-sm font-bold tracking-tight text-slate-600">
         {brand.name}
       </span>
     </div>
@@ -51,46 +57,44 @@ export function TrustedCompanies() {
   const row = [...brands, ...brands];
 
   return (
-    <section className="overflow-hidden border-y border-slate-100 bg-white py-12 md:py-14">
+    <section className="overflow-hidden border-y border-slate-100 bg-slate-50/80 py-12 md:py-14">
       <div className="mx-auto max-w-7xl px-6">
         <motion.p
           ref={ref}
           initial={{ opacity: 0, y: 16 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          className="mb-10 text-center text-sm font-semibold uppercase tracking-widest text-slate-400"
+          className="mb-10 text-center text-sm font-semibold uppercase tracking-widest text-slate-500"
         >
           Trusted by fast-moving teams · Integrates via API
         </motion.p>
       </div>
 
       <div className="relative">
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-white to-transparent md:w-28" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-white to-transparent md:w-28" />
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-slate-50 to-transparent md:w-24" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-slate-50 to-transparent md:w-24" />
 
         <div className="flex overflow-hidden">
-          <motion.div
-            className="flex min-w-max items-center"
-            animate={{ x: ["-50%", "0%"] }}
-            transition={{
-              x: {
-                duration: 50,
-                repeat: Infinity,
-                ease: "linear",
-                repeatType: "loop",
-              },
-            }}
-          >
-            {row.map((b, i) => (
-              <BrandLogo key={`${b.name}-${i}`} brand={b} />
+          <div className="flex animate-marquee items-center py-1">
+            {row.map((brand, i) => (
+              <BrandLogo key={`${brand.name}-${i}`} brand={brand} />
             ))}
-          </motion.div>
+          </div>
         </div>
       </div>
 
-      <p className="mx-auto mt-8 max-w-xl px-6 text-center text-xs text-slate-400">
-        Connect payments, accounting and commerce through REST API & webhooks —
-        including M-Pesa-friendly and Paystack flows.
-      </p>
+      <style>{`
+        @keyframes marquee {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+          animation: marquee 45s linear infinite;
+          width: max-content;
+        }
+        .animate-marquee:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
     </section>
   );
 }
