@@ -73,25 +73,34 @@ export function BlogPostShell({ post }: { post: BlogPost }) {
     <div className="min-h-screen bg-white font-sans text-slate-950">
       <Header onOpenSignup={() => setSignupOpen(true)} />
       <main className="pt-20">
-        <article className="mx-auto max-w-3xl px-6 py-10 md:py-14">
+        <article className="mx-auto max-w-4xl px-6 py-10 md:py-14">
           <p className="text-xs font-bold uppercase tracking-wider text-emerald-700">
             {post.category} · {post.readMinutes} min read
           </p>
-          <h1 className="mt-3 text-3xl font-bold tracking-tight text-slate-950 md:text-4xl">
+          <h1 className="mt-3 text-3xl font-bold tracking-tight text-slate-950 md:text-5xl md:leading-tight">
             {post.h1}
           </h1>
           <p className="mt-2 text-sm text-slate-500">{post.date}</p>
 
           {post.imageUrl && (
-            <figure className="mt-8 overflow-hidden rounded-2xl border border-slate-100 shadow-sm">
+            <figure className="mt-8 overflow-hidden rounded-3xl border border-slate-100 shadow-md">
               <img
                 src={post.imageUrl}
-                alt={post.imageAlt || "Team using business software"}
-                className="aspect-[16/9] w-full object-cover"
+                alt={post.imageAlt || "Black professional using business software in Kenya"}
+                className="aspect-[2/1] w-full object-cover object-top md:aspect-[21/9]"
                 loading="eager"
-                width={1400}
-                height={788}
+                decoding="async"
+                width={1600}
+                height={900}
+                onError={(e) => {
+                  (e.target as HTMLImageElement).style.display = "none";
+                }}
               />
+              {post.imageAlt && (
+                <figcaption className="border-t border-slate-100 bg-slate-50 px-4 py-2 text-xs text-slate-500">
+                  {post.imageAlt}
+                </figcaption>
+              )}
             </figure>
           )}
 

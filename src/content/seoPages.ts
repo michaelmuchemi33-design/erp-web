@@ -1827,7 +1827,50 @@ export const seoPages: SeoPage[] = [
         body: "Book a demo and describe your payment mix \u2014 M-Pesa, card, bank \u2014 so onboarding matches how you collect cash.",
       }
     ],
-  }
+  },
+
+  {
+    slug: "sap-alternative-kenya",
+    title: "SAP Alternative for SMEs in Kenya | Unity ERP",
+    h1: "SAP Alternative for Growing Companies in Kenya",
+    description: "Comparing SAP Business One / S/4HANA with cloud ERP for Kenyan SMEs. When SAP fits, when a lighter ERP+CRM like Unity ERP is the practical path.",
+    keywords: "SAP alternative Kenya, SAP Business One Kenya, SAP vs cloud ERP, ERP for SME Kenya, Unity ERP, cheaper than SAP",
+    intro: "SAP is a global standard for complex enterprise resource planning. Many Kenyan manufacturers and multinationals evaluate SAP Business One or S/4HANA. Growing SMEs often need the same core outcomes — accurate stock, clean invoices, visible sales — without a multi-year enterprise programme. This guide explains where SAP shines, where it is heavy for SMEs, and how Unity ERP fits as a practical cloud alternative.",
+    sections: [
+      {
+        h2: "What SAP is known for",
+        body: "SAP systems support deep process control, manufacturing integration and multi-country finance for large organisations. Implementations are typically led by specialised partners, with structured blueprints, testing cycles and change management. That depth is valuable when complexity is real.",
+      },
+      {
+        h2: "Why SMEs shortlist alternatives",
+        body: "License models, partner fees and project length can exceed the budget and timeline of a 20–200 person business. Teams still need inventory, CRM, POS and accounting that staff will actually use. Cloud ERP products with transparent monthly KES pricing and faster onboarding close that gap.",
+      },
+      {
+        h2: "Unity ERP as a practical path",
+        body: "Unity ERP combines ERP and CRM with AI assistance, multi-branch stock and payment-friendly operations for African SMEs. Pricing starts at KES 3,000 per month with a free trial path. It is not a drop-in replacement for a global SAP landscape — it is built so Kenyan operators can get a single system of record without an enterprise programme.",
+      },
+      {
+        h2: "How to decide",
+        body: "Choose SAP-class suites when you have multi-entity manufacturing complexity and a funded transformation office. Choose Unity ERP when you need operational ERP+CRM this quarter, unlimited users on the standard plan, and clear local pricing. Many buyers run a Unity trial while they continue enterprise discussions — proof beats slides.",
+      },
+      {
+        h2: "Next step",
+        body: "Book a Unity ERP demo or start free limited access. Compare time-to-first-invoice and stock accuracy against your current tools — whether spreadsheets, Sage modules or a longer SAP evaluation.",
+      }
+    ],
+    relatedSlugs: [
+      "erp-system-kenya",
+      "best-erp-software-kenya",
+      "odoo-alternative-kenya",
+      "cloud-erp",
+      "what-is-erp"
+    ],
+    faqs: [
+      { q: "Is Unity ERP a full SAP replacement?", a: "No. SAP serves large, complex enterprises. Unity ERP is a cloud ERP+CRM for SMEs and mid-market teams in Kenya and Africa that need faster go-live and KES pricing." },
+      { q: "Who should still evaluate SAP in Kenya?", a: "Large manufacturers, multinationals and groups with complex multi-company requirements and budget for partner-led implementation." },
+      { q: "Can I try Unity ERP before deciding?", a: "Yes. Start free limited access or request a demo at unity-software.online." }
+    ],
+  },
 ];
 
 export const seoBySlug: Record<string, any> = Object.fromEntries(

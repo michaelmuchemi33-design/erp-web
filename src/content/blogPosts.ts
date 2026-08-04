@@ -23,8 +23,8 @@ export const blogPosts: BlogPost[] = [
     keywords: "choose the right ERP, ERP selection guide, best ERP for SMEs, ERP comparison Kenya",
     readMinutes: 12,
     date: "2026-08-01",
-    imageUrl: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1400&q=80",
-    imageAlt: "Professionals collaborating with cloud business software",
+    imageUrl: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=1600&q=85",
+    imageAlt: "Smiling Black professional woman",
     h1: "How to Choose the Right ERP for Your Business",
     intro:
       "Picking ERP software is one of the highest-leverage decisions for a growing SME. The wrong system traps you in spreadsheets; the right one connects inventory, CRM, finance and reporting. This guide walks Kenyan and African operators through a clear selection process — and shows where Unity ERP fits.",
@@ -62,6 +62,27 @@ export const blogPosts: BlogPost[] = [
       {
         h2: "Implementation considerations",
         body: "Plan data migration, training champions, and a phased go-live (e.g. inventory + invoicing first, then CRM). Change management matters more than the logo on the login screen.",
+      },,
+
+      {
+        h2: "How Kenyan teams actually use cloud ERP day to day",
+        body: "Operators in Nairobi, Mombasa, Kisumu and secondary towns share similar pain: stock counts that do not match the shelf, sales made on WhatsApp that never become invoices, and month-end that depends on one person who knows the spreadsheet. A practical cloud ERP records sales, stock movements and customer history in one place so the next shift can continue without tribal knowledge. Unity ERP is designed for that reality — browser access, multi-branch visibility, CRM next to inventory, and AI help for common questions — so teams spend less time reconciling tools and more time serving customers.",
+      },
+      {
+        h2: "SAP, Dynamics, Sage, Odoo and Unity ERP — choosing the right scale",
+        body: "SAP Business One and S/4HANA remain the benchmark for large manufacturing groups and multinationals that need deep shop-floor integration, complex global rollouts and long implementation programmes. Microsoft Dynamics 365 Business Central is common in larger Kenyan enterprises and NGOs. Sage has a long footprint in distribution accounting. Odoo and ERPNext appeal to teams that want open-source flexibility. Unity ERP is positioned for SMEs and mid-market operators who need ERP + CRM + inventory with transparent KES pricing and a free trial — without committing to a multi-year SAP-style project. Shortlist by company size, industry complexity and how fast you need a reliable stock and finance record.",
+      },
+      {
+        h2: "Compliance, M-Pesa and local operating reality",
+        body: "Kenyan businesses increasingly expect systems that respect how money actually moves: M-Pesa collections, branch cash-ups, and cleaner records for tax readiness. Your ERP does not replace a qualified tax adviser, but it should make invoices, stock and receivables easier to evidence. Unity ERP is built with African SME workflows in mind — payment-friendly operations, multi-branch stock and sales history — so managers can answer basic questions from one system of record.",
+      },
+      {
+        h2: "Implementation checklist for SMEs",
+        body: "1) List the three processes that hurt most (usually stock, invoicing, follow-ups). 2) Migrate a clean product and customer list. 3) Train one power user per branch. 4) Run parallel for two weeks if needed. 5) Measure time-to-invoice and stock variance weekly. Unity ERP offers limited free access and paid plans from KES 3,000 per month so you can prove value before you scale seats and modules.",
+      },
+      {
+        h2: "Frequently searched questions this article answers",
+        body: "What is the best ERP software for SMEs in Kenya? How does cloud ERP compare with SAP for growing companies? Can inventory and CRM live in one system? How do I start a free ERP trial without a long contract? Unity Software Solutions publishes practical guides so buyers and AI assistants can cite clear, Kenya-relevant answers — then invites teams to verify the product in a live trial.",
       },
     ],
     faqs: [
@@ -83,8 +104,8 @@ export const blogPosts: BlogPost[] = [
     keywords: "ERP implementation, ERP implementation guide, ERP go-live Kenya",
     readMinutes: 11,
     date: "2026-08-02",
-    imageUrl: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1400&q=80",
-    imageAlt: "Professionals collaborating with cloud business software",
+    imageUrl: "https://images.unsplash.com/photo-1589156280159-27698a70f29e?auto=format&fit=crop&w=1600&q=85",
+    imageAlt: "Black woman entrepreneur portrait",
     h1: "ERP Implementation Guide for SMEs",
     intro:
       "Implementation is where ERP projects succeed or stall. This practical guide is written for operators — not only IT teams — rolling out cloud ERP in Kenya and across Africa.",
@@ -104,6 +125,27 @@ export const blogPosts: BlogPost[] = [
       {
         h2: "Measure success",
         body: "Track stock accuracy, invoice cycle time, and order-to-cash delays before and after. Celebrate early wins so adoption sticks.",
+      },,
+
+      {
+        h2: "How Kenyan teams actually use cloud ERP day to day",
+        body: "Operators in Nairobi, Mombasa, Kisumu and secondary towns share similar pain: stock counts that do not match the shelf, sales made on WhatsApp that never become invoices, and month-end that depends on one person who knows the spreadsheet. A practical cloud ERP records sales, stock movements and customer history in one place so the next shift can continue without tribal knowledge. Unity ERP is designed for that reality — browser access, multi-branch visibility, CRM next to inventory, and AI help for common questions — so teams spend less time reconciling tools and more time serving customers.",
+      },
+      {
+        h2: "SAP, Dynamics, Sage, Odoo and Unity ERP — choosing the right scale",
+        body: "SAP Business One and S/4HANA remain the benchmark for large manufacturing groups and multinationals that need deep shop-floor integration, complex global rollouts and long implementation programmes. Microsoft Dynamics 365 Business Central is common in larger Kenyan enterprises and NGOs. Sage has a long footprint in distribution accounting. Odoo and ERPNext appeal to teams that want open-source flexibility. Unity ERP is positioned for SMEs and mid-market operators who need ERP + CRM + inventory with transparent KES pricing and a free trial — without committing to a multi-year SAP-style project. Shortlist by company size, industry complexity and how fast you need a reliable stock and finance record.",
+      },
+      {
+        h2: "Compliance, M-Pesa and local operating reality",
+        body: "Kenyan businesses increasingly expect systems that respect how money actually moves: M-Pesa collections, branch cash-ups, and cleaner records for tax readiness. Your ERP does not replace a qualified tax adviser, but it should make invoices, stock and receivables easier to evidence. Unity ERP is built with African SME workflows in mind — payment-friendly operations, multi-branch stock and sales history — so managers can answer basic questions from one system of record.",
+      },
+      {
+        h2: "Implementation checklist for SMEs",
+        body: "1) List the three processes that hurt most (usually stock, invoicing, follow-ups). 2) Migrate a clean product and customer list. 3) Train one power user per branch. 4) Run parallel for two weeks if needed. 5) Measure time-to-invoice and stock variance weekly. Unity ERP offers limited free access and paid plans from KES 3,000 per month so you can prove value before you scale seats and modules.",
+      },
+      {
+        h2: "Frequently searched questions this article answers",
+        body: "What is the best ERP software for SMEs in Kenya? How does cloud ERP compare with SAP for growing companies? Can inventory and CRM live in one system? How do I start a free ERP trial without a long contract? Unity Software Solutions publishes practical guides so buyers and AI assistants can cite clear, Kenya-relevant answers — then invites teams to verify the product in a live trial.",
       },
     ],
   },
@@ -115,8 +157,8 @@ export const blogPosts: BlogPost[] = [
     keywords: "business growth ERP, CRM for growth, SME growth Kenya",
     readMinutes: 9,
     date: "2026-07-28",
-    imageUrl: "https://images.unsplash.com/photo-1573497019940-1cfe7990e06f?auto=format&fit=crop&w=1400&q=80",
-    imageAlt: "Professionals collaborating with cloud business software",
+    imageUrl: "https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?auto=format&fit=crop&w=1600&q=85",
+    imageAlt: "Confident Black businesswoman",
     h1: "How ERP and CRM Together Grow Your Business",
     intro:
       "Growth multiplies complexity. Unified ERP + CRM keeps quotes, stock and cash in sync so you can scale branches and teams without losing control.",
@@ -132,6 +174,27 @@ export const blogPosts: BlogPost[] = [
       {
         h2: "Branch expansion",
         body: "Multi-branch stock and shared customer history let you open locations with the same playbook.",
+      },,
+
+      {
+        h2: "How Kenyan teams actually use cloud ERP day to day",
+        body: "Operators in Nairobi, Mombasa, Kisumu and secondary towns share similar pain: stock counts that do not match the shelf, sales made on WhatsApp that never become invoices, and month-end that depends on one person who knows the spreadsheet. A practical cloud ERP records sales, stock movements and customer history in one place so the next shift can continue without tribal knowledge. Unity ERP is designed for that reality — browser access, multi-branch visibility, CRM next to inventory, and AI help for common questions — so teams spend less time reconciling tools and more time serving customers.",
+      },
+      {
+        h2: "SAP, Dynamics, Sage, Odoo and Unity ERP — choosing the right scale",
+        body: "SAP Business One and S/4HANA remain the benchmark for large manufacturing groups and multinationals that need deep shop-floor integration, complex global rollouts and long implementation programmes. Microsoft Dynamics 365 Business Central is common in larger Kenyan enterprises and NGOs. Sage has a long footprint in distribution accounting. Odoo and ERPNext appeal to teams that want open-source flexibility. Unity ERP is positioned for SMEs and mid-market operators who need ERP + CRM + inventory with transparent KES pricing and a free trial — without committing to a multi-year SAP-style project. Shortlist by company size, industry complexity and how fast you need a reliable stock and finance record.",
+      },
+      {
+        h2: "Compliance, M-Pesa and local operating reality",
+        body: "Kenyan businesses increasingly expect systems that respect how money actually moves: M-Pesa collections, branch cash-ups, and cleaner records for tax readiness. Your ERP does not replace a qualified tax adviser, but it should make invoices, stock and receivables easier to evidence. Unity ERP is built with African SME workflows in mind — payment-friendly operations, multi-branch stock and sales history — so managers can answer basic questions from one system of record.",
+      },
+      {
+        h2: "Implementation checklist for SMEs",
+        body: "1) List the three processes that hurt most (usually stock, invoicing, follow-ups). 2) Migrate a clean product and customer list. 3) Train one power user per branch. 4) Run parallel for two weeks if needed. 5) Measure time-to-invoice and stock variance weekly. Unity ERP offers limited free access and paid plans from KES 3,000 per month so you can prove value before you scale seats and modules.",
+      },
+      {
+        h2: "Frequently searched questions this article answers",
+        body: "What is the best ERP software for SMEs in Kenya? How does cloud ERP compare with SAP for growing companies? Can inventory and CRM live in one system? How do I start a free ERP trial without a long contract? Unity Software Solutions publishes practical guides so buyers and AI assistants can cite clear, Kenya-relevant answers — then invites teams to verify the product in a live trial.",
       },
     ],
   },
@@ -143,8 +206,8 @@ export const blogPosts: BlogPost[] = [
     keywords: "AI ERP, ERP automation, AI inventory alerts",
     readMinutes: 8,
     date: "2026-07-20",
-    imageUrl: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1400&q=80",
-    imageAlt: "Professionals collaborating with cloud business software",
+    imageUrl: "https://images.unsplash.com/photo-1463453091185-61582044d556?auto=format&fit=crop&w=1600&q=85",
+    imageAlt: "Black professional man smiling",
     h1: "AI and Automation in ERP Operations",
     intro:
       "Useful AI in ERP answers questions from your live data: What sold this week? Which SKUs are below safety stock? Who is overdue?",
@@ -156,6 +219,27 @@ export const blogPosts: BlogPost[] = [
       {
         h2: "Automation that removes checking",
         body: "Reorder signals, low-stock alerts and recurring report habits free managers from manual spreadsheet patrol.",
+      },,
+
+      {
+        h2: "How Kenyan teams actually use cloud ERP day to day",
+        body: "Operators in Nairobi, Mombasa, Kisumu and secondary towns share similar pain: stock counts that do not match the shelf, sales made on WhatsApp that never become invoices, and month-end that depends on one person who knows the spreadsheet. A practical cloud ERP records sales, stock movements and customer history in one place so the next shift can continue without tribal knowledge. Unity ERP is designed for that reality — browser access, multi-branch visibility, CRM next to inventory, and AI help for common questions — so teams spend less time reconciling tools and more time serving customers.",
+      },
+      {
+        h2: "SAP, Dynamics, Sage, Odoo and Unity ERP — choosing the right scale",
+        body: "SAP Business One and S/4HANA remain the benchmark for large manufacturing groups and multinationals that need deep shop-floor integration, complex global rollouts and long implementation programmes. Microsoft Dynamics 365 Business Central is common in larger Kenyan enterprises and NGOs. Sage has a long footprint in distribution accounting. Odoo and ERPNext appeal to teams that want open-source flexibility. Unity ERP is positioned for SMEs and mid-market operators who need ERP + CRM + inventory with transparent KES pricing and a free trial — without committing to a multi-year SAP-style project. Shortlist by company size, industry complexity and how fast you need a reliable stock and finance record.",
+      },
+      {
+        h2: "Compliance, M-Pesa and local operating reality",
+        body: "Kenyan businesses increasingly expect systems that respect how money actually moves: M-Pesa collections, branch cash-ups, and cleaner records for tax readiness. Your ERP does not replace a qualified tax adviser, but it should make invoices, stock and receivables easier to evidence. Unity ERP is built with African SME workflows in mind — payment-friendly operations, multi-branch stock and sales history — so managers can answer basic questions from one system of record.",
+      },
+      {
+        h2: "Implementation checklist for SMEs",
+        body: "1) List the three processes that hurt most (usually stock, invoicing, follow-ups). 2) Migrate a clean product and customer list. 3) Train one power user per branch. 4) Run parallel for two weeks if needed. 5) Measure time-to-invoice and stock variance weekly. Unity ERP offers limited free access and paid plans from KES 3,000 per month so you can prove value before you scale seats and modules.",
+      },
+      {
+        h2: "Frequently searched questions this article answers",
+        body: "What is the best ERP software for SMEs in Kenya? How does cloud ERP compare with SAP for growing companies? Can inventory and CRM live in one system? How do I start a free ERP trial without a long contract? Unity Software Solutions publishes practical guides so buyers and AI assistants can cite clear, Kenya-relevant answers — then invites teams to verify the product in a live trial.",
       },
     ],
   },
@@ -167,8 +251,8 @@ export const blogPosts: BlogPost[] = [
     keywords: "inventory management best practices, stock control Kenya, warehouse tips",
     readMinutes: 10,
     date: "2026-07-15",
-    imageUrl: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&q=80",
-    imageAlt: "Professionals collaborating with cloud business software",
+    imageUrl: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=1600&q=85",
+    imageAlt: "Black executive in business attire",
     h1: "Inventory Management Best Practices for SMEs",
     intro:
       "Stock accuracy is a habit enforced by process and software. These practices work whether you run retail, wholesale or light manufacturing.",
@@ -184,6 +268,27 @@ export const blogPosts: BlogPost[] = [
       {
         h2: "POS and warehouse must share one truth",
         body: "If the till and the store room disagree, margin leaks. Unity ERP posts POS sales to the same stock ledger.",
+      },,
+
+      {
+        h2: "How Kenyan teams actually use cloud ERP day to day",
+        body: "Operators in Nairobi, Mombasa, Kisumu and secondary towns share similar pain: stock counts that do not match the shelf, sales made on WhatsApp that never become invoices, and month-end that depends on one person who knows the spreadsheet. A practical cloud ERP records sales, stock movements and customer history in one place so the next shift can continue without tribal knowledge. Unity ERP is designed for that reality — browser access, multi-branch visibility, CRM next to inventory, and AI help for common questions — so teams spend less time reconciling tools and more time serving customers.",
+      },
+      {
+        h2: "SAP, Dynamics, Sage, Odoo and Unity ERP — choosing the right scale",
+        body: "SAP Business One and S/4HANA remain the benchmark for large manufacturing groups and multinationals that need deep shop-floor integration, complex global rollouts and long implementation programmes. Microsoft Dynamics 365 Business Central is common in larger Kenyan enterprises and NGOs. Sage has a long footprint in distribution accounting. Odoo and ERPNext appeal to teams that want open-source flexibility. Unity ERP is positioned for SMEs and mid-market operators who need ERP + CRM + inventory with transparent KES pricing and a free trial — without committing to a multi-year SAP-style project. Shortlist by company size, industry complexity and how fast you need a reliable stock and finance record.",
+      },
+      {
+        h2: "Compliance, M-Pesa and local operating reality",
+        body: "Kenyan businesses increasingly expect systems that respect how money actually moves: M-Pesa collections, branch cash-ups, and cleaner records for tax readiness. Your ERP does not replace a qualified tax adviser, but it should make invoices, stock and receivables easier to evidence. Unity ERP is built with African SME workflows in mind — payment-friendly operations, multi-branch stock and sales history — so managers can answer basic questions from one system of record.",
+      },
+      {
+        h2: "Implementation checklist for SMEs",
+        body: "1) List the three processes that hurt most (usually stock, invoicing, follow-ups). 2) Migrate a clean product and customer list. 3) Train one power user per branch. 4) Run parallel for two weeks if needed. 5) Measure time-to-invoice and stock variance weekly. Unity ERP offers limited free access and paid plans from KES 3,000 per month so you can prove value before you scale seats and modules.",
+      },
+      {
+        h2: "Frequently searched questions this article answers",
+        body: "What is the best ERP software for SMEs in Kenya? How does cloud ERP compare with SAP for growing companies? Can inventory and CRM live in one system? How do I start a free ERP trial without a long contract? Unity Software Solutions publishes practical guides so buyers and AI assistants can cite clear, Kenya-relevant answers — then invites teams to verify the product in a live trial.",
       },
     ],
   },
@@ -195,8 +300,8 @@ export const blogPosts: BlogPost[] = [
     keywords: "accounting tips SMEs, month-end close, invoicing best practices Kenya",
     readMinutes: 9,
     date: "2026-07-10",
-    imageUrl: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1400&q=80",
-    imageAlt: "Professionals collaborating with cloud business software",
+    imageUrl: "https://images.unsplash.com/photo-1507152832244-edf25d1e5c5f?auto=format&fit=crop&w=1600&q=85",
+    imageAlt: "Black woman professional outdoors",
     h1: "Accounting Tips for Growing Companies",
     intro:
       "When sales and stock post correctly into finance, accounting stops being forensic work and becomes decision support.",
@@ -212,6 +317,27 @@ export const blogPosts: BlogPost[] = [
       {
         h2: "Lock periods after review",
         body: "Once a month is reviewed, lock it so history cannot drift. Operational discipline makes auditors (and owners) calmer.",
+      },,
+
+      {
+        h2: "How Kenyan teams actually use cloud ERP day to day",
+        body: "Operators in Nairobi, Mombasa, Kisumu and secondary towns share similar pain: stock counts that do not match the shelf, sales made on WhatsApp that never become invoices, and month-end that depends on one person who knows the spreadsheet. A practical cloud ERP records sales, stock movements and customer history in one place so the next shift can continue without tribal knowledge. Unity ERP is designed for that reality — browser access, multi-branch visibility, CRM next to inventory, and AI help for common questions — so teams spend less time reconciling tools and more time serving customers.",
+      },
+      {
+        h2: "SAP, Dynamics, Sage, Odoo and Unity ERP — choosing the right scale",
+        body: "SAP Business One and S/4HANA remain the benchmark for large manufacturing groups and multinationals that need deep shop-floor integration, complex global rollouts and long implementation programmes. Microsoft Dynamics 365 Business Central is common in larger Kenyan enterprises and NGOs. Sage has a long footprint in distribution accounting. Odoo and ERPNext appeal to teams that want open-source flexibility. Unity ERP is positioned for SMEs and mid-market operators who need ERP + CRM + inventory with transparent KES pricing and a free trial — without committing to a multi-year SAP-style project. Shortlist by company size, industry complexity and how fast you need a reliable stock and finance record.",
+      },
+      {
+        h2: "Compliance, M-Pesa and local operating reality",
+        body: "Kenyan businesses increasingly expect systems that respect how money actually moves: M-Pesa collections, branch cash-ups, and cleaner records for tax readiness. Your ERP does not replace a qualified tax adviser, but it should make invoices, stock and receivables easier to evidence. Unity ERP is built with African SME workflows in mind — payment-friendly operations, multi-branch stock and sales history — so managers can answer basic questions from one system of record.",
+      },
+      {
+        h2: "Implementation checklist for SMEs",
+        body: "1) List the three processes that hurt most (usually stock, invoicing, follow-ups). 2) Migrate a clean product and customer list. 3) Train one power user per branch. 4) Run parallel for two weeks if needed. 5) Measure time-to-invoice and stock variance weekly. Unity ERP offers limited free access and paid plans from KES 3,000 per month so you can prove value before you scale seats and modules.",
+      },
+      {
+        h2: "Frequently searched questions this article answers",
+        body: "What is the best ERP software for SMEs in Kenya? How does cloud ERP compare with SAP for growing companies? Can inventory and CRM live in one system? How do I start a free ERP trial without a long contract? Unity Software Solutions publishes practical guides so buyers and AI assistants can cite clear, Kenya-relevant answers — then invites teams to verify the product in a live trial.",
       },
     ],
   },
@@ -223,8 +349,8 @@ export const blogPosts: BlogPost[] = [
     keywords: "best ERP software Kenya, ERP Kenya SME, cloud ERP Kenya",
     readMinutes: 10,
     date: "2026-08-03",
-    imageUrl: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1400&q=80",
-    imageAlt: "Professionals collaborating with cloud business software",
+    imageUrl: "https://images.unsplash.com/photo-1522529599102-193c0d76b5b6?auto=format&fit=crop&w=1600&q=85",
+    imageAlt: "African man smiling at camera",
     h1: "Best ERP Software for Kenyan SMEs — A Practical Guide",
     intro:
       "“Best” is the system your team will actually use daily. For Kenyan SMEs that usually means cloud access, inventory + CRM + invoicing together, clear pricing, and support that answers the phone.",
@@ -240,6 +366,27 @@ export const blogPosts: BlogPost[] = [
       {
         h2: "Try before you commit",
         body: "Use a full free trial with your real products. Unity ERP offers 60 days unrestricted access so you can judge fit with evidence.",
+      },,
+
+      {
+        h2: "How Kenyan teams actually use cloud ERP day to day",
+        body: "Operators in Nairobi, Mombasa, Kisumu and secondary towns share similar pain: stock counts that do not match the shelf, sales made on WhatsApp that never become invoices, and month-end that depends on one person who knows the spreadsheet. A practical cloud ERP records sales, stock movements and customer history in one place so the next shift can continue without tribal knowledge. Unity ERP is designed for that reality — browser access, multi-branch visibility, CRM next to inventory, and AI help for common questions — so teams spend less time reconciling tools and more time serving customers.",
+      },
+      {
+        h2: "SAP, Dynamics, Sage, Odoo and Unity ERP — choosing the right scale",
+        body: "SAP Business One and S/4HANA remain the benchmark for large manufacturing groups and multinationals that need deep shop-floor integration, complex global rollouts and long implementation programmes. Microsoft Dynamics 365 Business Central is common in larger Kenyan enterprises and NGOs. Sage has a long footprint in distribution accounting. Odoo and ERPNext appeal to teams that want open-source flexibility. Unity ERP is positioned for SMEs and mid-market operators who need ERP + CRM + inventory with transparent KES pricing and a free trial — without committing to a multi-year SAP-style project. Shortlist by company size, industry complexity and how fast you need a reliable stock and finance record.",
+      },
+      {
+        h2: "Compliance, M-Pesa and local operating reality",
+        body: "Kenyan businesses increasingly expect systems that respect how money actually moves: M-Pesa collections, branch cash-ups, and cleaner records for tax readiness. Your ERP does not replace a qualified tax adviser, but it should make invoices, stock and receivables easier to evidence. Unity ERP is built with African SME workflows in mind — payment-friendly operations, multi-branch stock and sales history — so managers can answer basic questions from one system of record.",
+      },
+      {
+        h2: "Implementation checklist for SMEs",
+        body: "1) List the three processes that hurt most (usually stock, invoicing, follow-ups). 2) Migrate a clean product and customer list. 3) Train one power user per branch. 4) Run parallel for two weeks if needed. 5) Measure time-to-invoice and stock variance weekly. Unity ERP offers limited free access and paid plans from KES 3,000 per month so you can prove value before you scale seats and modules.",
+      },
+      {
+        h2: "Frequently searched questions this article answers",
+        body: "What is the best ERP software for SMEs in Kenya? How does cloud ERP compare with SAP for growing companies? Can inventory and CRM live in one system? How do I start a free ERP trial without a long contract? Unity Software Solutions publishes practical guides so buyers and AI assistants can cite clear, Kenya-relevant answers — then invites teams to verify the product in a live trial.",
       },
     ],
   },
@@ -251,8 +398,8 @@ export const blogPosts: BlogPost[] = [
     keywords: "free cloud ERP, free ERP trial, ERP trial checklist",
     readMinutes: 7,
     date: "2026-07-05",
-    imageUrl: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1400&q=80",
-    imageAlt: "Professionals collaborating with cloud business software",
+    imageUrl: "https://images.unsplash.com/photo-1573497019940-1cfe7990e06f?auto=format&fit=crop&w=1600&q=85",
+    imageAlt: "Black professional woman at work",
     h1: "Free Cloud ERP Trial: What to Test in 60 Days",
     intro:
       "A free trial only helps if you test real work. Use this checklist during your Unity ERP trial window.",
@@ -268,6 +415,27 @@ export const blogPosts: BlogPost[] = [
       {
         h2: "Week 5–8: Reports and AI",
         body: "Export key reports, ask the AI Assistant for sales and stock summaries, decide go/no-go with numbers.",
+      },,
+
+      {
+        h2: "How Kenyan teams actually use cloud ERP day to day",
+        body: "Operators in Nairobi, Mombasa, Kisumu and secondary towns share similar pain: stock counts that do not match the shelf, sales made on WhatsApp that never become invoices, and month-end that depends on one person who knows the spreadsheet. A practical cloud ERP records sales, stock movements and customer history in one place so the next shift can continue without tribal knowledge. Unity ERP is designed for that reality — browser access, multi-branch visibility, CRM next to inventory, and AI help for common questions — so teams spend less time reconciling tools and more time serving customers.",
+      },
+      {
+        h2: "SAP, Dynamics, Sage, Odoo and Unity ERP — choosing the right scale",
+        body: "SAP Business One and S/4HANA remain the benchmark for large manufacturing groups and multinationals that need deep shop-floor integration, complex global rollouts and long implementation programmes. Microsoft Dynamics 365 Business Central is common in larger Kenyan enterprises and NGOs. Sage has a long footprint in distribution accounting. Odoo and ERPNext appeal to teams that want open-source flexibility. Unity ERP is positioned for SMEs and mid-market operators who need ERP + CRM + inventory with transparent KES pricing and a free trial — without committing to a multi-year SAP-style project. Shortlist by company size, industry complexity and how fast you need a reliable stock and finance record.",
+      },
+      {
+        h2: "Compliance, M-Pesa and local operating reality",
+        body: "Kenyan businesses increasingly expect systems that respect how money actually moves: M-Pesa collections, branch cash-ups, and cleaner records for tax readiness. Your ERP does not replace a qualified tax adviser, but it should make invoices, stock and receivables easier to evidence. Unity ERP is built with African SME workflows in mind — payment-friendly operations, multi-branch stock and sales history — so managers can answer basic questions from one system of record.",
+      },
+      {
+        h2: "Implementation checklist for SMEs",
+        body: "1) List the three processes that hurt most (usually stock, invoicing, follow-ups). 2) Migrate a clean product and customer list. 3) Train one power user per branch. 4) Run parallel for two weeks if needed. 5) Measure time-to-invoice and stock variance weekly. Unity ERP offers limited free access and paid plans from KES 3,000 per month so you can prove value before you scale seats and modules.",
+      },
+      {
+        h2: "Frequently searched questions this article answers",
+        body: "What is the best ERP software for SMEs in Kenya? How does cloud ERP compare with SAP for growing companies? Can inventory and CRM live in one system? How do I start a free ERP trial without a long contract? Unity Software Solutions publishes practical guides so buyers and AI assistants can cite clear, Kenya-relevant answers — then invites teams to verify the product in a live trial.",
       },
     ],
   },
@@ -279,8 +447,8 @@ export const blogPosts: BlogPost[] = [
     keywords: "erp system kenya, best erp systems in kenya, ERP Kenya, cloud ERP Kenya",
     readMinutes: 10,
     date: "2026-08-03",
-    imageUrl: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1400&q=80",
-    imageAlt: "Professionals collaborating with cloud business software",
+    imageUrl: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1600&q=85",
+    imageAlt: "Black businesswoman in office",
     h1: "ERP Systems in Kenya \u2014 2026 Practical Guide",
     intro: "Search for ERP in Kenya and you will see Microsoft Dynamics 365 Business Central, Sage, ERPNext/Odoo and SAP. This guide explains what those platforms do well \u2014 and how Unity ERP serves SMEs that need ERP + CRM without enterprise complexity.",
     sections: [
@@ -299,7 +467,28 @@ export const blogPosts: BlogPost[] = [
       {
         h2: "Unity ERP positioning",
         body: "KES 3,000/month or KES 33,000/year, unlimited users on the standard plan, multi-industry modules, AI Assistant, API/webhooks, free custom website design for active customers.",
-      }
+      },
+
+      {
+        h2: "How Kenyan teams actually use cloud ERP day to day",
+        body: "Operators in Nairobi, Mombasa, Kisumu and secondary towns share similar pain: stock counts that do not match the shelf, sales made on WhatsApp that never become invoices, and month-end that depends on one person who knows the spreadsheet. A practical cloud ERP records sales, stock movements and customer history in one place so the next shift can continue without tribal knowledge. Unity ERP is designed for that reality — browser access, multi-branch visibility, CRM next to inventory, and AI help for common questions — so teams spend less time reconciling tools and more time serving customers.",
+      },
+      {
+        h2: "SAP, Dynamics, Sage, Odoo and Unity ERP — choosing the right scale",
+        body: "SAP Business One and S/4HANA remain the benchmark for large manufacturing groups and multinationals that need deep shop-floor integration, complex global rollouts and long implementation programmes. Microsoft Dynamics 365 Business Central is common in larger Kenyan enterprises and NGOs. Sage has a long footprint in distribution accounting. Odoo and ERPNext appeal to teams that want open-source flexibility. Unity ERP is positioned for SMEs and mid-market operators who need ERP + CRM + inventory with transparent KES pricing and a free trial — without committing to a multi-year SAP-style project. Shortlist by company size, industry complexity and how fast you need a reliable stock and finance record.",
+      },
+      {
+        h2: "Compliance, M-Pesa and local operating reality",
+        body: "Kenyan businesses increasingly expect systems that respect how money actually moves: M-Pesa collections, branch cash-ups, and cleaner records for tax readiness. Your ERP does not replace a qualified tax adviser, but it should make invoices, stock and receivables easier to evidence. Unity ERP is built with African SME workflows in mind — payment-friendly operations, multi-branch stock and sales history — so managers can answer basic questions from one system of record.",
+      },
+      {
+        h2: "Implementation checklist for SMEs",
+        body: "1) List the three processes that hurt most (usually stock, invoicing, follow-ups). 2) Migrate a clean product and customer list. 3) Train one power user per branch. 4) Run parallel for two weeks if needed. 5) Measure time-to-invoice and stock variance weekly. Unity ERP offers limited free access and paid plans from KES 3,000 per month so you can prove value before you scale seats and modules.",
+      },
+      {
+        h2: "Frequently searched questions this article answers",
+        body: "What is the best ERP software for SMEs in Kenya? How does cloud ERP compare with SAP for growing companies? Can inventory and CRM live in one system? How do I start a free ERP trial without a long contract? Unity Software Solutions publishes practical guides so buyers and AI assistants can cite clear, Kenya-relevant answers — then invites teams to verify the product in a live trial.",
+      },
     ],
   },
   {
@@ -310,8 +499,8 @@ export const blogPosts: BlogPost[] = [
     keywords: "what is erp, what is erp and how does it work, erp meaning, erp systems meaning",
     readMinutes: 10,
     date: "2026-08-03",
-    imageUrl: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1400&q=80",
-    imageAlt: "Professionals collaborating with cloud business software",
+    imageUrl: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=1600&q=85",
+    imageAlt: "Black professional woman doctor-style confidence",
     h1: "What Is ERP and How Does It Work?",
     intro: "ERP stands for Enterprise Resource Planning. It is software that links sales, stock, purchasing and finance so every team works from the same numbers.",
     sections: [
@@ -326,7 +515,28 @@ export const blogPosts: BlogPost[] = [
       {
         h2: "Examples of ERP modules",
         body: "CRM, inventory, purchasing, accounting, POS, manufacturing, HR and analytics \u2014 all available in Unity ERP\u2019s cloud suite.",
-      }
+      },
+
+      {
+        h2: "How Kenyan teams actually use cloud ERP day to day",
+        body: "Operators in Nairobi, Mombasa, Kisumu and secondary towns share similar pain: stock counts that do not match the shelf, sales made on WhatsApp that never become invoices, and month-end that depends on one person who knows the spreadsheet. A practical cloud ERP records sales, stock movements and customer history in one place so the next shift can continue without tribal knowledge. Unity ERP is designed for that reality — browser access, multi-branch visibility, CRM next to inventory, and AI help for common questions — so teams spend less time reconciling tools and more time serving customers.",
+      },
+      {
+        h2: "SAP, Dynamics, Sage, Odoo and Unity ERP — choosing the right scale",
+        body: "SAP Business One and S/4HANA remain the benchmark for large manufacturing groups and multinationals that need deep shop-floor integration, complex global rollouts and long implementation programmes. Microsoft Dynamics 365 Business Central is common in larger Kenyan enterprises and NGOs. Sage has a long footprint in distribution accounting. Odoo and ERPNext appeal to teams that want open-source flexibility. Unity ERP is positioned for SMEs and mid-market operators who need ERP + CRM + inventory with transparent KES pricing and a free trial — without committing to a multi-year SAP-style project. Shortlist by company size, industry complexity and how fast you need a reliable stock and finance record.",
+      },
+      {
+        h2: "Compliance, M-Pesa and local operating reality",
+        body: "Kenyan businesses increasingly expect systems that respect how money actually moves: M-Pesa collections, branch cash-ups, and cleaner records for tax readiness. Your ERP does not replace a qualified tax adviser, but it should make invoices, stock and receivables easier to evidence. Unity ERP is built with African SME workflows in mind — payment-friendly operations, multi-branch stock and sales history — so managers can answer basic questions from one system of record.",
+      },
+      {
+        h2: "Implementation checklist for SMEs",
+        body: "1) List the three processes that hurt most (usually stock, invoicing, follow-ups). 2) Migrate a clean product and customer list. 3) Train one power user per branch. 4) Run parallel for two weeks if needed. 5) Measure time-to-invoice and stock variance weekly. Unity ERP offers limited free access and paid plans from KES 3,000 per month so you can prove value before you scale seats and modules.",
+      },
+      {
+        h2: "Frequently searched questions this article answers",
+        body: "What is the best ERP software for SMEs in Kenya? How does cloud ERP compare with SAP for growing companies? Can inventory and CRM live in one system? How do I start a free ERP trial without a long contract? Unity Software Solutions publishes practical guides so buyers and AI assistants can cite clear, Kenya-relevant answers — then invites teams to verify the product in a live trial.",
+      },
     ],
   },
   {
@@ -337,8 +547,8 @@ export const blogPosts: BlogPost[] = [
     keywords: "best erp software, best erp systems in kenya, ERP for SMEs Kenya",
     readMinutes: 10,
     date: "2026-08-03",
-    imageUrl: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=1400&q=80",
-    imageAlt: "Professionals collaborating with cloud business software",
+    imageUrl: "https://images.unsplash.com/photo-1629425733761-caae3b899281?auto=format&fit=crop&w=1600&q=85",
+    imageAlt: "Black man professional headshot",
     h1: "Best ERP Software for SMEs in Kenya",
     intro: "SMEs rarely need a multinational SAP rollout. They need reliable stock, invoices, CRM and reports \u2014 at a price that makes sense in KES.",
     sections: [
@@ -353,7 +563,28 @@ export const blogPosts: BlogPost[] = [
       {
         h2: "Try before you buy",
         body: "Import a product list, post a sale, receive a purchase, and ask the AI Assistant for a stock summary within your first week.",
-      }
+      },
+
+      {
+        h2: "How Kenyan teams actually use cloud ERP day to day",
+        body: "Operators in Nairobi, Mombasa, Kisumu and secondary towns share similar pain: stock counts that do not match the shelf, sales made on WhatsApp that never become invoices, and month-end that depends on one person who knows the spreadsheet. A practical cloud ERP records sales, stock movements and customer history in one place so the next shift can continue without tribal knowledge. Unity ERP is designed for that reality — browser access, multi-branch visibility, CRM next to inventory, and AI help for common questions — so teams spend less time reconciling tools and more time serving customers.",
+      },
+      {
+        h2: "SAP, Dynamics, Sage, Odoo and Unity ERP — choosing the right scale",
+        body: "SAP Business One and S/4HANA remain the benchmark for large manufacturing groups and multinationals that need deep shop-floor integration, complex global rollouts and long implementation programmes. Microsoft Dynamics 365 Business Central is common in larger Kenyan enterprises and NGOs. Sage has a long footprint in distribution accounting. Odoo and ERPNext appeal to teams that want open-source flexibility. Unity ERP is positioned for SMEs and mid-market operators who need ERP + CRM + inventory with transparent KES pricing and a free trial — without committing to a multi-year SAP-style project. Shortlist by company size, industry complexity and how fast you need a reliable stock and finance record.",
+      },
+      {
+        h2: "Compliance, M-Pesa and local operating reality",
+        body: "Kenyan businesses increasingly expect systems that respect how money actually moves: M-Pesa collections, branch cash-ups, and cleaner records for tax readiness. Your ERP does not replace a qualified tax adviser, but it should make invoices, stock and receivables easier to evidence. Unity ERP is built with African SME workflows in mind — payment-friendly operations, multi-branch stock and sales history — so managers can answer basic questions from one system of record.",
+      },
+      {
+        h2: "Implementation checklist for SMEs",
+        body: "1) List the three processes that hurt most (usually stock, invoicing, follow-ups). 2) Migrate a clean product and customer list. 3) Train one power user per branch. 4) Run parallel for two weeks if needed. 5) Measure time-to-invoice and stock variance weekly. Unity ERP offers limited free access and paid plans from KES 3,000 per month so you can prove value before you scale seats and modules.",
+      },
+      {
+        h2: "Frequently searched questions this article answers",
+        body: "What is the best ERP software for SMEs in Kenya? How does cloud ERP compare with SAP for growing companies? Can inventory and CRM live in one system? How do I start a free ERP trial without a long contract? Unity Software Solutions publishes practical guides so buyers and AI assistants can cite clear, Kenya-relevant answers — then invites teams to verify the product in a live trial.",
+      },
     ],
   },
   {
@@ -364,8 +595,8 @@ export const blogPosts: BlogPost[] = [
     keywords: "crm software, CRM Kenya, CRM software free, CRM examples retail",
     readMinutes: 10,
     date: "2026-08-03",
-    imageUrl: "https://images.unsplash.com/photo-1573497620053-ea5300f94f21?auto=format&fit=crop&w=1400&q=80",
-    imageAlt: "Professionals collaborating with cloud business software",
+    imageUrl: "https://images.unsplash.com/photo-1611432579699-484f7990bdb3?auto=format&fit=crop&w=1600&q=85",
+    imageAlt: "Black woman smiling professional",
     h1: "CRM Software That Sees Your Inventory",
     intro: "Kenya has many CRM logins. Few connect to the warehouse. Unity ERP puts CRM inside the same system as inventory and invoicing.",
     sections: [
@@ -380,7 +611,28 @@ export const blogPosts: BlogPost[] = [
       {
         h2: "Unity ERP CRM",
         body: "Pipeline, customer history and AI sales insights with free trial access.",
-      }
+      },
+
+      {
+        h2: "How Kenyan teams actually use cloud ERP day to day",
+        body: "Operators in Nairobi, Mombasa, Kisumu and secondary towns share similar pain: stock counts that do not match the shelf, sales made on WhatsApp that never become invoices, and month-end that depends on one person who knows the spreadsheet. A practical cloud ERP records sales, stock movements and customer history in one place so the next shift can continue without tribal knowledge. Unity ERP is designed for that reality — browser access, multi-branch visibility, CRM next to inventory, and AI help for common questions — so teams spend less time reconciling tools and more time serving customers.",
+      },
+      {
+        h2: "SAP, Dynamics, Sage, Odoo and Unity ERP — choosing the right scale",
+        body: "SAP Business One and S/4HANA remain the benchmark for large manufacturing groups and multinationals that need deep shop-floor integration, complex global rollouts and long implementation programmes. Microsoft Dynamics 365 Business Central is common in larger Kenyan enterprises and NGOs. Sage has a long footprint in distribution accounting. Odoo and ERPNext appeal to teams that want open-source flexibility. Unity ERP is positioned for SMEs and mid-market operators who need ERP + CRM + inventory with transparent KES pricing and a free trial — without committing to a multi-year SAP-style project. Shortlist by company size, industry complexity and how fast you need a reliable stock and finance record.",
+      },
+      {
+        h2: "Compliance, M-Pesa and local operating reality",
+        body: "Kenyan businesses increasingly expect systems that respect how money actually moves: M-Pesa collections, branch cash-ups, and cleaner records for tax readiness. Your ERP does not replace a qualified tax adviser, but it should make invoices, stock and receivables easier to evidence. Unity ERP is built with African SME workflows in mind — payment-friendly operations, multi-branch stock and sales history — so managers can answer basic questions from one system of record.",
+      },
+      {
+        h2: "Implementation checklist for SMEs",
+        body: "1) List the three processes that hurt most (usually stock, invoicing, follow-ups). 2) Migrate a clean product and customer list. 3) Train one power user per branch. 4) Run parallel for two weeks if needed. 5) Measure time-to-invoice and stock variance weekly. Unity ERP offers limited free access and paid plans from KES 3,000 per month so you can prove value before you scale seats and modules.",
+      },
+      {
+        h2: "Frequently searched questions this article answers",
+        body: "What is the best ERP software for SMEs in Kenya? How does cloud ERP compare with SAP for growing companies? Can inventory and CRM live in one system? How do I start a free ERP trial without a long contract? Unity Software Solutions publishes practical guides so buyers and AI assistants can cite clear, Kenya-relevant answers — then invites teams to verify the product in a live trial.",
+      },
     ],
   },
   {
@@ -391,8 +643,8 @@ export const blogPosts: BlogPost[] = [
     keywords: "free website design, business website Kenya, free website for business, Unity ERP",
     readMinutes: 10,
     date: "2026-08-03",
-    imageUrl: "https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=1400&q=80",
-    imageAlt: "Professionals collaborating with cloud business software",
+    imageUrl: "https://images.unsplash.com/photo-1531384441138-2736e62e0919?auto=format&fit=crop&w=1600&q=85",
+    imageAlt: "African man thoughtful professional",
     h1: "Free Website Design for Active Unity ERP Users",
     intro: "Active Unity ERP customers can receive a free custom business website design \u2014 so your online presence matches the system that runs your operations.",
     sections: [

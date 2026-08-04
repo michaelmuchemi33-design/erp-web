@@ -31,7 +31,7 @@ export function BlogIndexShell() {
     <div className="min-h-screen bg-white font-sans text-slate-950">
       <Header onOpenSignup={() => setSignupOpen(true)} />
       <main className="pt-28 pb-16">
-        <div className="mx-auto max-w-5xl px-6">
+        <div className="mx-auto max-w-6xl px-6">
           <p className="text-xs font-bold uppercase tracking-wider text-emerald-700">
             Blog
           </p>
@@ -85,7 +85,7 @@ export function BlogIndexShell() {
                 className="group overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm transition hover:border-emerald-200 hover:shadow-md"
               >
                 {post.imageUrl && (
-                  <div className="aspect-[16/10] overflow-hidden bg-slate-100">
+                  <div className="aspect-[16/11] overflow-hidden bg-slate-100">
                     <img
                       src={post.imageUrl}
                       alt={post.imageAlt || post.h1}
@@ -100,7 +100,7 @@ export function BlogIndexShell() {
                   <p className="text-xs font-bold uppercase tracking-wider text-emerald-700">
                     {post.category}
                   </p>
-                  <h2 className="mt-1 text-lg font-bold leading-snug text-slate-950">
+                  <h2 className="mt-1 text-xl font-bold leading-snug text-slate-950">
                     {post.title.split("|")[0].trim()}
                   </h2>
                   <p className="mt-2 line-clamp-2 text-sm text-slate-600">

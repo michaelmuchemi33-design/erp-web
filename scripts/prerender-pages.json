@@ -572,5 +572,12 @@
     "h1": "Employee discounts on world-class software",
     "description": "Unity sponsors premium software. Eligible employees pay $17\u2013$20/month.",
     "intro": "Company-sponsored JetBrains, Adobe, ChatGPT, LinkedIn Sales Navigator and more for eligible Unity team members."
+  },
+  {
+    "path": "/sap-alternative-kenya",
+    "title": "SAP Alternative for SMEs in Kenya | Unity ERP",
+    "h1": "SAP Alternative for Growing Companies in Kenya",
+    "description": "SAP vs cloud ERP for Kenyan SMEs. When to choose Unity ERP instead of a long SAP programme.",
+    "intro": "Practical guide comparing SAP Business One / S/4HANA with Unity ERP for growing Kenyan companies."
   }
 ]
