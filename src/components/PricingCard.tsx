@@ -175,7 +175,7 @@ export function PricingCard({ onOpenSignup }: { onOpenSignup?: () => void } = {}
                 } catch {}
                 onOpenSignup?.();
               }}
-              className="h-12 gap-2 rounded-full border border-slate-900 bg-white font-semibold text-slate-950 hover:bg-slate-50"
+              className="h-12 gap-2 rounded-full bg-slate-950 font-semibold text-white shadow-md shadow-slate-900/20 hover:bg-slate-800"
             >
               Create free account
               <ArrowRight className="h-4 w-4" />

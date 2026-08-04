@@ -14,6 +14,8 @@ import {
   Brain,
   LayoutGrid,
   Search,
+  Share2,
+  Link2,
 } from "lucide-react";
 
 type SoftItem = {
@@ -226,6 +228,16 @@ export function EmployeeDiscountsShell() {
   }, [baseItems, query]);
 
   useEffect(() => {
+    try {
+      const id = new URLSearchParams(window.location.search).get("tool");
+      if (id) {
+        const found = ALL_SOFTWARE.find((x) => x.id === id);
+        if (found) {
+          setSelected(found);
+          setTab("all");
+        }
+      }
+    } catch {}
     setPageMeta({
       title: "Employee Software Discounts | Unity Software Solutions",
       description:
@@ -388,7 +400,7 @@ export function EmployeeDiscountsShell() {
             {query ? ` for “${query}”` : ""}
           </p>
 
-          <div className="mt-8 grid gap-10 lg:grid-cols-5">
+          <div className="mt-8 grid items-start gap-10 lg:grid-cols-5">
             <div className="lg:col-span-3">
               <div className="grid gap-3 sm:grid-cols-2">
                 {items.map((item) => {
@@ -431,7 +443,7 @@ export function EmployeeDiscountsShell() {
             </div>
 
             <div className="lg:col-span-2">
-              <div className="sticky top-24 rounded-3xl border border-slate-200 bg-white p-6 shadow-xl shadow-slate-900/5">
+              <div className="lg:sticky lg:top-24 lg:self-start rounded-3xl border border-slate-200 bg-white p-6 shadow-xl shadow-slate-900/5">
                 {selected && (
                   <div className="mb-5 flex items-center gap-3 rounded-2xl bg-slate-50 p-3">
                     <SoftLogo domain={selected.domain} name={selected.name} />
@@ -459,6 +471,52 @@ export function EmployeeDiscountsShell() {
                   We activate the sponsored seat on the account email you provide after
                   payment.
                 </p>
+                {selected && (
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    <button
+                      type="button"
+                      onClick={async () => {
+                        const url = `${window.location.origin}/employee-discounts?tool=${encodeURIComponent(selected.id)}`;
+                        const text = `Unity employee software benefit: ${selected.name} — you pay $${selected.employeePays}/mo, Unity covers the rest.\n${url}`;
+                        try {
+                          if (navigator.share) {
+                            await navigator.share({ title: selected.name, text, url });
+                          } else {
+                            await navigator.clipboard.writeText(text);
+                            setMsg("Share link copied to clipboard");
+                          }
+                        } catch {
+                          try {
+                            await navigator.clipboard.writeText(url);
+                            setMsg("Share link copied");
+                          } catch {
+                            setErr("Could not copy link");
+                          }
+                        }
+                      }}
+                      className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-semibold text-slate-700 hover:bg-slate-100"
+                    >
+                      <Share2 className="h-3.5 w-3.5" />
+                      Share this tool
+                    </button>
+                    <button
+                      type="button"
+                      onClick={async () => {
+                        const url = `${window.location.origin}/employee-discounts?tool=${encodeURIComponent(selected.id)}`;
+                        try {
+                          await navigator.clipboard.writeText(url);
+                          setMsg("Link copied — send it to a teammate");
+                        } catch {
+                          setErr("Could not copy link");
+                        }
+                      }}
+                      className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-semibold text-slate-600 hover:bg-slate-50"
+                    >
+                      <Link2 className="h-3.5 w-3.5" />
+                      Copy link
+                    </button>
+                  </div>
+                )}
 
                 <label className="mt-4 block text-xs font-semibold text-slate-600">
                   Your name

@@ -290,7 +290,7 @@ function jobDescriptionHtml(job: Job) {
   return `<p>${job.summary}</p>
 <p><strong>Location:</strong> Remote · <strong>Employment:</strong> Full-time</p>
 <p><strong>Requirements:</strong></p><ul>${reqs}</ul>
-<p><strong>Required premium tool (company-sponsored):</strong> ${job.tool.name}. Employee contributes about ${job.tool.employeeSharePct}% of the subscription cost; Unity covers about ${job.tool.companySharePct}%. ${job.tool.note}</p>
+<p><strong>Required premium tool (company-sponsored):</strong> ${job.tool.name}. Unity covers most of the subscription cost; employees contribute a small share. ${job.tool.note}</p>
 <p>Apply via WhatsApp +254 778 903 044 or email ${APPLY_EMAIL}. Careers: ${SITE}/careers#${job.id}</p>`;
 }
 
@@ -437,7 +437,7 @@ export function CareersPageShell() {
               </p>
               <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 {[
-                  "Company-sponsored premium software (see % share on each role)",
+                  "Company-sponsored premium software (Unity covers most of the cost)",
                   "Medical insurance support for eligible full-time staff",
                   "Group accident / life cover where policy applies",
                   "Remote-first work with flexible hours",
@@ -537,22 +537,9 @@ export function CareersPageShell() {
                           {job.tool.name}
                         </p>
                         <p className="mt-1 text-xs text-slate-500">{job.tool.note}</p>
-                        <dl className="mt-4 space-y-1.5 text-sm">
-                          <div className="flex justify-between gap-2">
-                            <dt className="text-slate-500">Your share</dt>
-                            <dd className="font-bold text-emerald-700">
-                              ~{job.tool.employeeSharePct}%
-                            </dd>
-                          </div>
-                          <div className="flex justify-between gap-2">
-                            <dt className="text-slate-500">Unity covers</dt>
-                            <dd className="font-medium text-slate-800">
-                              ~{job.tool.companySharePct}%
-                            </dd>
-                          </div>
-                        </dl>
-                        <p className="mt-3 text-[11px] leading-snug text-slate-400">
-                          Overview only — final contribution confirmed at offer stage.
+                        <p className="mt-4 text-sm leading-relaxed text-slate-600">
+                          <span className="font-semibold text-emerald-800">Unity covers most of the subscription cost.</span>{" "}
+                          You contribute a small employee share for this role tool. Details confirmed when you join.
                         </p>
                       </div>
                     </div>
