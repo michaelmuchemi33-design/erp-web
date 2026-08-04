@@ -1,4 +1,4 @@
-import { sendResendEmail } from "./_resend.js";
+const { sendResendEmail } = require("./_resend");
 
 const SUPABASE_URL =
   process.env.SUPABASE_URL ||
@@ -13,18 +13,17 @@ const ANON =
   process.env.SUPABASE_PUBLISHABLE_KEY ||
   "sb_publishable_TeZ72fuK0pP9UqzD9T9K-Q_cEmPRudZ";
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "Method not allowed" });
+  }
   try {
-    if (req.method !== "POST") {
-      return res.status(405).json({ error: "Method not allowed" });
-    }
     const body = typeof req.body === "string" ? JSON.parse(req.body) : req.body || {};
     const email = String(body.email || "").trim().toLowerCase();
     const message = String(body.message || "").trim();
     if (!email.includes("@") || !message) {
       return res.status(400).json({ error: "Email and message required" });
     }
-
     const row = {
       name: body.name || null,
       email,
@@ -32,7 +31,7 @@ export default async function handler(req, res) {
       status: "new",
       created_at: new Date().toISOString(),
     };
-
+    let saved = false;
     for (const key of [SERVICE, ANON].filter(Boolean)) {
       const r = await fetch(`${SUPABASE_URL}/rest/v1/contact_messages`, {
         method: "POST",
@@ -44,26 +43,33 @@ export default async function handler(req, res) {
         },
         body: JSON.stringify(row),
       });
-      if (r.ok || r.status === 201) break;
+      if (r.ok || r.status === 201) {
+        saved = true;
+        break;
+      }
     }
 
     const salesTo = process.env.SALES_INBOX || "michaelmuchemi33@gmail.com";
-    await sendResendEmail({
+    const sentSales = await sendResendEmail({
       to: salesTo,
       subject: `Contact form: ${email}`,
-      html: `<p>${message}</p><p>From: ${body.name || ""} &lt;${email}&gt;</p>`,
+      html: `<p>From: ${row.name || "—"} &lt;${email}&gt;</p><p>${message}</p>`,
     });
-
-    await sendResendEmail({
+    const sentUser = await sendResendEmail({
       to: email,
       subject: "We received your message — Unity Software Solutions",
-      html: `<p>Thanks for contacting Unity Software Solutions. We will reply soon.</p>
-        <p>WhatsApp: +254 778 903 044</p>`,
+      html: `<p>Hi${row.name ? " " + row.name : ""},</p>
+        <p>Thanks for contacting Unity Software Solutions. We will reply soon.</p>
+        <p>WhatsApp: +254 778 903 044</p>
+        <p><a href="https://www.unity-software.online">unity-software.online</a></p>`,
     });
 
-    return res.status(200).json({ ok: true });
+    return res.status(200).json({
+      ok: true,
+      saved,
+      emailSent: !!(sentUser.ok || sentSales.ok),
+    });
   } catch (e) {
-    console.error("contact handler", e);
     return res.status(500).json({ error: String(e && e.message ? e.message : e) });
   }
-}
+};

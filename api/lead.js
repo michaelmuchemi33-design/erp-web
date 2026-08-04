@@ -1,5 +1,5 @@
-import { demoRequestEmail } from "./_emailTemplates.js";
-import { sendResendEmail } from "./_resend.js";
+const { demoRequestEmail } = require("./_emailTemplates");
+const { sendResendEmail } = require("./_resend");
 
 const SUPABASE_URL =
   process.env.SUPABASE_URL ||
@@ -14,12 +14,12 @@ const ANON =
   process.env.SUPABASE_PUBLISHABLE_KEY ||
   "sb_publishable_TeZ72fuK0pP9UqzD9T9K-Q_cEmPRudZ";
 
-export default async function handler(req, res) {
-  try {
-    if (req.method !== "POST") {
-      return res.status(405).json({ error: "Method not allowed" });
-    }
+module.exports = async function handler(req, res) {
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "Method not allowed" });
+  }
 
+  try {
     const body = typeof req.body === "string" ? JSON.parse(req.body) : req.body || {};
     const email = String(body.email || "").trim().toLowerCase();
     if (!email.includes("@")) {
@@ -78,18 +78,20 @@ export default async function handler(req, res) {
 
     const salesTo = process.env.SALES_INBOX || "michaelmuchemi33@gmail.com";
     if (salesTo && salesTo !== email) {
-      await sendResendEmail({
-        to: salesTo,
-        subject: `New Unity ERP lead: ${email}`,
-        html: `<p>Lead from ${row.source}</p>
-          <ul>
-            <li>Name: ${row.name || "—"}</li>
-            <li>Email: ${email}</li>
-            <li>Phone: ${row.phone || "—"}</li>
-            <li>Industry: ${row.industry || "—"}</li>
-            <li>Need: ${row.primary_need || "—"}</li>
-          </ul>`,
-      }).catch(() => null);
+      try {
+        await sendResendEmail({
+          to: salesTo,
+          subject: `New Unity ERP lead: ${email}`,
+          html: `<p>Lead from ${row.source}</p>
+            <ul>
+              <li>Name: ${row.name || "—"}</li>
+              <li>Email: ${email}</li>
+              <li>Phone: ${row.phone || "—"}</li>
+              <li>Industry: ${row.industry || "—"}</li>
+              <li>Need: ${row.primary_need || "—"}</li>
+            </ul>`,
+        });
+      } catch (_) {}
     }
 
     return res.status(200).json({
@@ -101,6 +103,8 @@ export default async function handler(req, res) {
     });
   } catch (e) {
     console.error("lead handler", e);
-    return res.status(500).json({ error: String(e && e.message ? e.message : e) });
+    return res.status(500).json({
+      error: String(e && e.message ? e.message : e),
+    });
   }
-}
+};

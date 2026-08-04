@@ -1,4 +1,4 @@
-export async function sendResendEmail(opts) {
+async function sendResendEmail(opts) {
   const key = process.env.RESEND_API_KEY || process.env.RESEND_KEY || "";
   if (!key) {
     console.error("RESEND_API_KEY missing");
@@ -37,15 +37,13 @@ export async function sendResendEmail(opts) {
     let { res, data } = await post(from);
     if (!res.ok) {
       console.error("Resend error", res.status, JSON.stringify(data));
-      if (res.status === 403 || res.status === 422) {
-        ({ res, data } = await post("Unity ERP <onboarding@resend.dev>"));
-        if (!res.ok) {
-          console.error("Resend retry failed", res.status, JSON.stringify(data));
-          return { ok: false, error: data };
-        }
-        return { ok: true, data };
+      // Domain not verified yet — fall back to Resend test sender
+      ({ res, data } = await post("Unity ERP <onboarding@resend.dev>"));
+      if (!res.ok) {
+        console.error("Resend retry failed", res.status, JSON.stringify(data));
+        return { ok: false, error: data };
       }
-      return { ok: false, error: data };
+      return { ok: true, data };
     }
     return { ok: true, data };
   } catch (e) {
@@ -53,3 +51,5 @@ export async function sendResendEmail(opts) {
     return { ok: false, error: String(e) };
   }
 }
+
+module.exports = { sendResendEmail };

@@ -1,5 +1,3 @@
-import { sendResendEmail } from "./_resend.js";
-
 const SUPABASE_URL =
   process.env.SUPABASE_URL ||
   process.env.VITE_SUPABASE_URL ||
@@ -13,17 +11,16 @@ const ANON =
   process.env.SUPABASE_PUBLISHABLE_KEY ||
   "sb_publishable_TeZ72fuK0pP9UqzD9T9K-Q_cEmPRudZ";
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "Method not allowed" });
+  }
   try {
-    if (req.method !== "POST") {
-      return res.status(405).json({ error: "Method not allowed" });
-    }
     const body = typeof req.body === "string" ? JSON.parse(req.body) : req.body || {};
     const email = String(body.email || "").trim().toLowerCase();
     if (!email.includes("@")) {
       return res.status(400).json({ error: "Valid email required" });
     }
-
     const row = {
       email,
       name: body.name || null,
@@ -33,10 +30,11 @@ export default async function handler(req, res) {
       employee_pays_usd: body.employee_pays_usd || null,
       account_email: body.account_email || email,
       source: body.source || "employee_discounts_page",
-      status: "pending_payment",
+      status: body.status || "pending_payment",
       created_at: new Date().toISOString(),
     };
-
+    let saved = false;
+    let err = null;
     for (const key of [SERVICE, ANON].filter(Boolean)) {
       const r = await fetch(`${SUPABASE_URL}/rest/v1/employee_discounts`, {
         method: "POST",
@@ -48,19 +46,17 @@ export default async function handler(req, res) {
         },
         body: JSON.stringify(row),
       });
-      if (r.ok || r.status === 201) break;
+      if (r.ok || r.status === 201) {
+        saved = true;
+        break;
+      }
+      err = await r.text().catch(() => String(r.status));
     }
-
-    const salesTo = process.env.SALES_INBOX || "michaelmuchemi33@gmail.com";
-    await sendResendEmail({
-      to: salesTo,
-      subject: `Employee software request: ${body.software || ""}`,
-      html: `<p>${email} requested ${body.software}</p><p>Role: ${body.role}</p>`,
-    }).catch(() => null);
-
-    return res.status(200).json({ ok: true });
+    if (!saved) {
+      return res.status(500).json({ error: err || "Could not save" });
+    }
+    return res.status(200).json({ ok: true, saved: true });
   } catch (e) {
-    console.error("employee-discount", e);
     return res.status(500).json({ error: String(e && e.message ? e.message : e) });
   }
-}
+};

@@ -1,11 +1,11 @@
-import { paymentInvoiceEmail } from "./_emailTemplates.js";
-import { sendResendEmail } from "./_resend.js";
+const { paymentInvoiceEmail } = require("./_emailTemplates");
+const { sendResendEmail } = require("./_resend");
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "Method not allowed" });
+  }
   try {
-    if (req.method !== "POST") {
-      return res.status(405).json({ error: "Method not allowed" });
-    }
     const body = typeof req.body === "string" ? JSON.parse(req.body) : req.body || {};
     const event = body.event || body.type;
     const data = body.data || {};
@@ -18,9 +18,11 @@ export default async function handler(req, res) {
       const plan =
         (data.metadata && (data.metadata.plan || data.metadata.product)) ||
         "Unity ERP";
-      const name = (data.customer && data.customer.first_name) || "";
+      const name =
+        (data.customer && (data.customer.first_name || data.customer.last_name)) ||
+        "";
 
-      if (email) {
+      if (email && email.includes("@")) {
         const mail = paymentInvoiceEmail({
           name,
           email,
@@ -35,11 +37,13 @@ export default async function handler(req, res) {
           html: mail.html,
         });
         const salesTo = process.env.SALES_INBOX || "michaelmuchemi33@gmail.com";
-        await sendResendEmail({
-          to: salesTo,
-          subject: `Paystack payment: ${reference} ${currency} ${amount}`,
-          html: `<p>Payment from ${email}</p><p>${plan}</p><p>Ref ${reference}</p>`,
-        }).catch(() => null);
+        if (salesTo !== email) {
+          await sendResendEmail({
+            to: salesTo,
+            subject: `Payment received: ${reference} ${currency} ${amount}`,
+            html: `<p>Paystack success</p><ul><li>${email}</li><li>${currency} ${amount}</li><li>${reference}</li><li>${plan}</li></ul>`,
+          }).catch(() => null);
+        }
       }
     }
 
@@ -48,4 +52,4 @@ export default async function handler(req, res) {
     console.error("paystack webhook", e);
     return res.status(200).json({ received: true, error: String(e) });
   }
-}
+};
