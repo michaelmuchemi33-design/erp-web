@@ -24,12 +24,14 @@ const shell = fs.readFileSync(path.join(dist, "index.html"), "utf8");
 const headExtras = [];
 const m = shell.match(/<head>([\s\S]*)<\/head>/i);
 const headInner = m ? m[1] : "";
-const assetTags = (headInner.match(/<(?:script|link)[^>]*>/gi) || [])
-  .filter((t) => /src=|href=/.test(t) && !/canonical|preconnect|fonts\.google/.test(t))
-  .join("\n    ");
-const bodyScripts = (shell.match(/<script[^>]*src=[^>]*><\/script>/gi) || []).join(
-  "\n    "
-);
+const assetTags = (headInner.match(/<link[^>]*>/gi) || [])
+  .filter((t) => /stylesheet|modulepreload|icon|assets\//i.test(t))
+  .join("
+    ");
+const bodyScripts = [
+  ...new Set(shell.match(/<script[^>]*type="module"[^>]*><\/script>/gi) || []),
+].join("
+    ");
 
 function pageHtml(p) {
   const url =
