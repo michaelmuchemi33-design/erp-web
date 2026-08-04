@@ -2,6 +2,13 @@ const PAYSTACK_PUBLIC_KEY =
   (import.meta.env.VITE_PAYSTACK_PUBLIC_KEY as string) ||
   "pk_live_25326faa1eb18c409d00036d4cc673d2820eb2ac";
 
+/** Approximate USD→KES for employee software shares (display USD, charge KES) */
+export const USD_TO_KES = 130;
+
+export function usdToKes(usd: number) {
+  return Math.round(usd * USD_TO_KES);
+}
+
 declare global {
   interface Window {
     PaystackPop?: {
@@ -25,29 +32,38 @@ function loadScript(): Promise<void> {
   });
 }
 
-/** Amount in major units. Default KES. Use currency USD for employee software ($17 / $20). */
+/**
+ * Charge via Paystack in KES (Kenya).
+ * Prefer amountKes. If only USD amount is passed, convert with USD_TO_KES.
+ */
 export async function payWithPaystack(opts: {
   email: string;
   amountKes?: number;
+  /** USD display amount — converted to KES unless amountKes is set */
+  amountUsd?: number;
   amount?: number;
-  currency?: "KES" | "USD";
   planLabel: string;
   metadata?: Record<string, string>;
 }) {
   await loadScript();
   if (!window.PaystackPop) throw new Error("Paystack not available");
 
-  const currency = opts.currency || "KES";
-  const major =
-    currency === "USD"
-      ? opts.amount ?? 17
-      : opts.amountKes ?? opts.amount ?? 3000;
+  let kes =
+    opts.amountKes ??
+    (opts.amountUsd != null ? usdToKes(opts.amountUsd) : null) ??
+    opts.amount ??
+    3000;
+
+  // Safety: never send tiny "dollar" amounts as KES by mistake
+  if (kes < 100) {
+    kes = usdToKes(kes);
+  }
 
   const handler = window.PaystackPop.setup({
     key: PAYSTACK_PUBLIC_KEY,
     email: opts.email.trim().toLowerCase(),
-    amount: Math.round(major * 100),
-    currency,
+    amount: Math.round(kes * 100),
+    currency: "KES",
     ref: `unity_${Date.now()}_${Math.floor(Math.random() * 1e6)}`,
     metadata: {
       custom_fields: [
@@ -81,15 +97,16 @@ export async function payWithPaystack(opts: {
           : []),
       ],
       ...opts.metadata,
+      amount_kes: String(kes),
     },
     callback: (response: { reference: string }) => {
       window.location.href = `/payment/callback?reference=${encodeURIComponent(
         response.reference
-      )}&email=${encodeURIComponent(opts.email)}&type=employee_discount`;
+      )}&email=${encodeURIComponent(opts.email)}&type=${encodeURIComponent(
+        opts.metadata?.product || "unity_erp"
+      )}`;
     },
-    onClose: () => {
-      /* user closed */
-    },
+    onClose: () => {},
   });
   handler.openIframe();
 }

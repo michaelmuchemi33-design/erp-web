@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Header } from "@/components/Header";
 import { SiteFooter } from "@/components/SiteFooter";
-import { payWithPaystack } from "@/lib/paystack";
+import { payWithPaystack, usdToKes } from "@/lib/paystack";
 import { setPageMeta } from "@/lib/pageMeta";
 import {
   Check,
@@ -342,10 +342,11 @@ export function EmployeeDiscountsShell() {
     setLoading(true);
     try {
       await submitInterest();
+      const kes = usdToKes(selected.employeePays);
       await payWithPaystack({
         email: email.trim().toLowerCase(),
-        amount: selected.employeePays,
-        currency: "USD",
+        amountKes: kes,
+        amountUsd: selected.employeePays,
         planLabel: `Employee discount — ${selected.name} (${selected.tierLabel})`,
         metadata: {
           product: "employee_software_discount",
@@ -353,6 +354,7 @@ export function EmployeeDiscountsShell() {
           role,
           plan_type: selected.planType,
           account_email: accountEmail || email,
+          display_usd: String(selected.employeePays),
         },
       });
     } catch (e: unknown) {
@@ -380,12 +382,10 @@ export function EmployeeDiscountsShell() {
             </h1>
             <p className="mt-4 max-w-2xl text-lg leading-relaxed text-slate-600">
               Individual, <strong className="text-slate-900">team</strong>, and{" "}
-              <strong className="text-slate-900">enterprise</strong> seats. Your monthly
-              share depends on the tool — typically from about{" "}
-              <strong className="text-slate-900">
-                ${minP} to ${maxP}
-              </strong>
-              . Unity covers the rest of the retail cost.
+              <strong className="text-slate-900">enterprise</strong> seats. Shares are
+              shown in USD for reference and <strong className="text-slate-900">charged in KES</strong> via
+              Paystack (about ${minP}–${maxP} USD ≈ KES {usdToKes(minP).toLocaleString()}–
+              {usdToKes(maxP).toLocaleString()}). Unity covers the rest of the retail cost.
             </p>
             <div className="mt-6 flex flex-wrap gap-2 text-xs font-semibold">
               <span className="rounded-full bg-slate-100 px-3 py-1 text-slate-700">
@@ -489,7 +489,7 @@ export function EmployeeDiscountsShell() {
                           <span
                             className={`rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide ${badge.className}`}
                           >
-                            {badge.label} · ${item.employeePays}/mo
+                            {badge.label} · ${item.employeePays} ≈ KES {usdToKes(item.employeePays).toLocaleString()}/mo
                           </span>
                           {(item.planType === "team" ||
                             item.planType === "enterprise") && (
@@ -530,10 +530,13 @@ export function EmployeeDiscountsShell() {
                         {selected.tierLabel} · Retail {selected.retail}
                       </p>
                       <p className="text-lg font-bold text-emerald-700">
-                        ${selected.employeePays}
+                        KES {usdToKes(selected.employeePays).toLocaleString()}
                         <span className="text-sm font-medium text-slate-500">
-                          /month employee share
+                          /mo
                         </span>
+                      </p>
+                      <p className="text-xs text-slate-500">
+                        Display ~${selected.employeePays} USD · charged in Kenyan Shillings
                       </p>
                     </div>
                   </div>
@@ -654,7 +657,13 @@ export function EmployeeDiscountsShell() {
                   {loading ? (
                     <Loader2 className="h-4 w-4 animate-spin" />
                   ) : (
-                    <>Pay ${selected?.employeePays ?? 17} with Paystack</>
+                    <>
+                      Pay KES{" "}
+                      {selected
+                        ? usdToKes(selected.employeePays).toLocaleString()
+                        : "—"}{" "}
+                      with Paystack
+                    </>
                   )}
                 </button>
                 <button

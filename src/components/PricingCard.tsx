@@ -265,6 +265,16 @@ export function PricingCard({ onOpenSignup }: { onOpenSignup?: () => void } = {}
                       onChange={(e) => setPayEmail(e.target.value)}
                       className="h-12 w-full rounded-full border border-slate-200 px-5 text-sm outline-none ring-[#0BA4DB]/25 focus:ring-2"
                     />
+                    {!yearly && (
+                      <a
+                        href="https://paystack.shop/pay/85bilm11n3"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="mt-3 block text-center text-sm font-semibold text-emerald-700 underline hover:text-emerald-600"
+                      >
+                        Or pay KES 3,000 monthly via Paystack Shop →
+                      </a>
+                    )}
                     {payError && (
                       <p className="text-left text-xs text-rose-600">{payError}</p>
                     )}
