@@ -209,14 +209,6 @@ const ALL_SOFTWARE: SoftItem[] = (() => {
   return Array.from(map.values()).sort((a, b) => a.employeePays - b.employeePays);
 })();
 
-const PRICE_FILTERS = [
-  { key: "all", label: "All prices" },
-  { key: "under15", label: "Under $15" },
-  { key: "15to25", label: "$15 – $25" },
-  { key: "over25", label: "Over $25" },
-  { key: "team", label: "Team / org plans" },
-];
-
 const BENEFITS = [
   "Company-sponsored premium software (role-based)",
   "Individual, team, and enterprise seat options",
@@ -230,7 +222,6 @@ const BENEFITS = [
 
 export function EmployeeDiscountsShell() {
   const [tab, setTab] = useState("all");
-  const [priceFilter, setPriceFilter] = useState("all");
   const [query, setQuery] = useState("");
   const [selected, setSelected] = useState<SoftItem | null>(ALL_SOFTWARE[0]);
   const [email, setEmail] = useState("");
@@ -249,13 +240,6 @@ export function EmployeeDiscountsShell() {
 
   const items = useMemo(() => {
     let list = baseItems;
-    if (priceFilter === "under15") list = list.filter((i) => i.employeePays < 15);
-    else if (priceFilter === "15to25")
-      list = list.filter((i) => i.employeePays >= 15 && i.employeePays <= 25);
-    else if (priceFilter === "over25") list = list.filter((i) => i.employeePays > 25);
-    else if (priceFilter === "team")
-      list = list.filter((i) => i.planType === "team" || i.planType === "enterprise");
-
     const q = query.trim().toLowerCase();
     if (q) {
       list = list.filter(
@@ -266,7 +250,7 @@ export function EmployeeDiscountsShell() {
       );
     }
     return list;
-  }, [baseItems, priceFilter, query]);
+  }, [baseItems, query]);
 
   useEffect(() => {
     try {
@@ -387,20 +371,6 @@ export function EmployeeDiscountsShell() {
               charged in <strong className="text-slate-900">KES</strong> on Paystack. Unity covers
               the rest of the retail cost.
             </p>
-            <div className="mt-6 flex flex-wrap gap-2 text-xs font-semibold">
-              <span className="rounded-full bg-slate-100 px-3 py-1 text-slate-700">
-                Entry under $15
-              </span>
-              <span className="rounded-full bg-emerald-50 px-3 py-1 text-emerald-800">
-                Standard $15–$25
-              </span>
-              <span className="rounded-full bg-sky-50 px-3 py-1 text-sky-800">
-                Team / Pro $25–$45
-              </span>
-              <span className="rounded-full bg-violet-50 px-3 py-1 text-violet-800">
-                Premium seats $45+
-              </span>
-            </div>
             <p className="mt-3 max-w-2xl text-sm text-slate-500">
               {ALL_SOFTWARE.length}+ tools. Availability depends on role and company
               policy. Retail prices change over time.
@@ -427,33 +397,15 @@ export function EmployeeDiscountsShell() {
                 </button>
               ))}
             </div>
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-              <div className="flex flex-wrap gap-2">
-                {PRICE_FILTERS.map((f) => (
-                  <button
-                    key={f.key}
-                    type="button"
-                    onClick={() => setPriceFilter(f.key)}
-                    className={`rounded-full px-3 py-1.5 text-xs font-semibold transition ${
-                      priceFilter === f.key
-                        ? "bg-emerald-600 text-white"
-                        : "border border-slate-200 bg-white text-slate-600 hover:border-emerald-200"
-                    }`}
-                  >
-                    {f.label}
-                  </button>
-                ))}
-              </div>
-              <label className="relative block w-full sm:max-w-xs">
-                <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
-                <input
-                  value={query}
-                  onChange={(e) => setQuery(e.target.value)}
-                  placeholder="Search software or team plan…"
-                  className="w-full rounded-full border border-slate-200 py-2.5 pl-10 pr-4 text-sm outline-none focus:ring-2 focus:ring-emerald-500/30"
-                />
-              </label>
-            </div>
+            <label className="relative block w-full max-w-md">
+              <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+              <input
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Search software or team plan…"
+                className="w-full rounded-full border border-slate-200 py-2.5 pl-10 pr-4 text-sm outline-none focus:ring-2 focus:ring-emerald-500/30"
+              />
+            </label>
           </div>
 
           <p className="mt-4 text-sm text-slate-500">

@@ -4,48 +4,47 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SignupWizard } from "@/components/SignupWizard";
 import { Button } from "@/components/ui/button";
 import type { BlogPost } from "@/content/blogPosts";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
+import { setPageMeta, trimDesc, trimTitle } from "@/lib/pageMeta";
+
+function TrialCta({ onOpen }: { onOpen: () => void }) {
+  return (
+    <div className="my-10 overflow-hidden rounded-2xl border border-emerald-200 bg-gradient-to-r from-emerald-50 to-white p-6 shadow-sm md:p-8">
+      <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <div>
+          <p className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-emerald-800">
+            <Sparkles className="h-3.5 w-3.5" />
+            Unity ERP
+          </p>
+          <p className="mt-2 text-lg font-bold text-slate-950 md:text-xl">
+            Ready to run inventory, CRM and finance in one system?
+          </p>
+          <p className="mt-1 text-sm text-slate-600">
+            Start a free limited account or unlock full modules on a paid plan. No credit card for free signup.
+          </p>
+        </div>
+        <Button
+          onClick={onOpen}
+          className="h-12 shrink-0 gap-2 rounded-full bg-emerald-600 px-8 text-sm font-semibold text-white shadow-md shadow-emerald-600/25 hover:bg-emerald-500"
+        >
+          Start free trial
+          <ArrowRight className="h-4 w-4" />
+        </Button>
+      </div>
+    </div>
+  );
+}
 
 export function BlogPostShell({ post }: { post: BlogPost }) {
   const [signupOpen, setSignupOpen] = useState(false);
 
   useEffect(() => {
-    document.title = post.title;
-    let d = document.querySelector('meta[name="description"]');
-    if (!d) {
-      d = document.createElement("meta");
-      d.setAttribute("name", "description");
-      document.head.appendChild(d);
-    }
-    d.setAttribute("content", post.description);
-    let k = document.querySelector('meta[name="keywords"]');
-    if (!k) {
-      k = document.createElement("meta");
-      k.setAttribute("name", "keywords");
-      document.head.appendChild(k);
-    }
-    k.setAttribute("content", post.keywords);
-    let ogt = document.querySelector('meta[property="og:title"]');
-    if (!ogt) {
-      ogt = document.createElement("meta");
-      ogt.setAttribute("property", "og:title");
-      document.head.appendChild(ogt);
-    }
-    ogt.setAttribute("content", post.title);
-    let ogd = document.querySelector('meta[property="og:description"]');
-    if (!ogd) {
-      ogd = document.createElement("meta");
-      ogd.setAttribute("property", "og:description");
-      document.head.appendChild(ogd);
-    }
-    ogd.setAttribute("content", post.description);
-    let can = document.querySelector('link[rel="canonical"]');
-    if (!can) {
-      can = document.createElement("link");
-      can.setAttribute("rel", "canonical");
-      document.head.appendChild(can);
-    }
-    can.setAttribute("href", `https://www.unity-software.online/blog/${post.slug}`);
+    setPageMeta({
+      title: trimTitle(post.title),
+      description: trimDesc(post.description),
+      path: `/blog/${post.slug}`,
+      keywords: post.keywords,
+    });
     const id = "blog-jsonld";
     document.getElementById(id)?.remove();
     const s = document.createElement("script");
@@ -57,6 +56,7 @@ export function BlogPostShell({ post }: { post: BlogPost }) {
       headline: post.h1,
       datePublished: post.date,
       description: post.description,
+      image: post.imageUrl || undefined,
       author: { "@type": "Organization", name: "Unity Software Solutions" },
       publisher: {
         "@type": "Organization",
@@ -66,28 +66,62 @@ export function BlogPostShell({ post }: { post: BlogPost }) {
       mainEntityOfPage: `https://www.unity-software.online/blog/${post.slug}`,
     });
     document.head.appendChild(s);
+    window.scrollTo(0, 0);
   }, [post]);
 
   return (
     <div className="min-h-screen bg-white font-sans text-slate-950">
       <Header onOpenSignup={() => setSignupOpen(true)} />
-      <main className="pt-28 pb-16">
-        <article className="mx-auto max-w-3xl px-6">
+      <main className="pt-20">
+        <article className="mx-auto max-w-3xl px-6 py-10 md:py-14">
           <p className="text-xs font-bold uppercase tracking-wider text-emerald-700">
             {post.category} · {post.readMinutes} min read
           </p>
-          <h1 className="mt-2 text-4xl font-bold tracking-tight">{post.h1}</h1>
-          <p className="mt-4 text-lg text-slate-600">{post.intro}</p>
+          <h1 className="mt-3 text-3xl font-bold tracking-tight text-slate-950 md:text-4xl">
+            {post.h1}
+          </h1>
+          <p className="mt-2 text-sm text-slate-500">{post.date}</p>
 
-          <div className="mt-10 space-y-10">
+          {post.imageUrl && (
+            <figure className="mt-8 overflow-hidden rounded-2xl border border-slate-100 shadow-sm">
+              <img
+                src={post.imageUrl}
+                alt={post.imageAlt || "Team using business software"}
+                className="aspect-[16/9] w-full object-cover"
+                loading="eager"
+                width={1400}
+                height={788}
+              />
+            </figure>
+          )}
+
+          <div className="mt-6">
+            <Button
+              onClick={() => setSignupOpen(true)}
+              className="h-11 gap-2 rounded-full bg-emerald-600 px-6 text-sm font-semibold text-white hover:bg-emerald-500"
+            >
+              Start free trial
+              <ArrowRight className="h-4 w-4" />
+            </Button>
+          </div>
+
+          <p className="mt-8 text-lg leading-relaxed text-slate-700">{post.intro}</p>
+
+          <TrialCta onOpen={() => setSignupOpen(true)} />
+
+          <div className="prose prose-slate mt-2 max-w-none">
             {post.sections.map((sec) => (
-              <section key={sec.h2}>
-                <h2 className="text-2xl font-bold">{sec.h2}</h2>
-                <p className="mt-3 leading-relaxed text-slate-600">{sec.body}</p>
+              <section key={sec.h2} className="mt-10">
+                <h2 className="text-xl font-bold text-slate-950 md:text-2xl">
+                  {sec.h2}
+                </h2>
+                <p className="mt-3 leading-relaxed text-slate-700">{sec.body}</p>
                 {sec.h3?.map((h) => (
-                  <div key={h.title} className="mt-4">
-                    <h3 className="text-lg font-semibold text-slate-900">{h.title}</h3>
-                    <p className="mt-2 text-slate-600">{h.body}</p>
+                  <div key={h.title} className="mt-5">
+                    <h3 className="text-lg font-semibold text-slate-900">
+                      {h.title}
+                    </h3>
+                    <p className="mt-2 text-slate-700">{h.body}</p>
                   </div>
                 ))}
               </section>
@@ -95,47 +129,35 @@ export function BlogPostShell({ post }: { post: BlogPost }) {
           </div>
 
           {post.faqs && post.faqs.length > 0 && (
-            <section className="mt-12">
-              <h2 className="text-2xl font-bold">Frequently asked questions</h2>
-              <div className="mt-4 space-y-4">
+            <section className="mt-12 border-t border-slate-100 pt-10">
+              <h2 className="text-xl font-bold text-slate-950">FAQs</h2>
+              <ul className="mt-6 space-y-5">
                 {post.faqs.map((f) => (
-                  <div key={f.q} className="rounded-2xl border border-slate-100 bg-slate-50 p-4">
+                  <li key={f.q}>
                     <p className="font-semibold text-slate-900">{f.q}</p>
-                    <p className="mt-2 text-sm text-slate-600">{f.a}</p>
-                  </div>
+                    <p className="mt-1 text-slate-600">{f.a}</p>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </section>
           )}
 
-          <div className="mt-12 rounded-3xl bg-slate-950 p-8 text-white">
-            <h2 className="text-xl font-bold">Try Unity ERP free for 60 days</h2>
-            <p className="mt-2 text-sm text-slate-300">
-              Full modules — CRM, inventory, accounting, POS, manufacturing and AI.
-            </p>
-            <Button
-              onClick={() => setSignupOpen(true)}
-              className="mt-6 h-11 gap-2 rounded-full bg-white px-6 font-semibold text-slate-950"
+          <TrialCta onOpen={() => setSignupOpen(true)} />
+
+          <div className="mt-4 flex flex-wrap gap-3">
+            <a
+              href="/pricing"
+              className="inline-flex h-11 items-center rounded-full border border-slate-200 px-5 text-sm font-semibold text-slate-800 hover:bg-slate-50"
             >
-              Start free trial <ArrowRight className="h-4 w-4" />
-            </Button>
+              View pricing
+            </a>
+            <a
+              href="/blog"
+              className="inline-flex h-11 items-center rounded-full border border-slate-200 px-5 text-sm font-semibold text-slate-800 hover:bg-slate-50"
+            >
+              More articles
+            </a>
           </div>
-
-          <a href="/blog" className="mt-8 inline-block text-sm font-medium text-slate-500 hover:text-slate-900">
-            ← All articles
-          </a>
-        
-          <nav className="mt-12 rounded-2xl border border-slate-100 bg-slate-50 p-5">
-            <p className="text-xs font-bold uppercase tracking-wider text-slate-500">Related ERP topics</p>
-            <ul className="mt-3 flex flex-wrap gap-2">
-              <li><a className="text-sm font-medium text-emerald-700 underline" href="/erp-system-kenya">ERP system Kenya</a></li>
-              <li><a className="text-sm font-medium text-emerald-700 underline" href="/best-erp-systems-kenya">Best ERP systems in Kenya</a></li>
-              <li><a className="text-sm font-medium text-emerald-700 underline" href="/what-is-erp">What is ERP</a></li>
-              <li><a className="text-sm font-medium text-emerald-700 underline" href="/mpesa-erp-integration">M-Pesa ERP</a></li>
-              <li><a className="text-sm font-medium text-emerald-700 underline" href="/pricing">Pricing</a></li>
-            </ul>
-          </nav>
-
         </article>
       </main>
       <SiteFooter />
