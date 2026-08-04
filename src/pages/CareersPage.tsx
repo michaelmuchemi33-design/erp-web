@@ -224,66 +224,106 @@ export function CareersPageShell() {
       "Unity Software Solutions careers, now hiring, video editor job Kenya, sales executive ERP jobs, Unity ERP jobs, SaaS jobs East Africa, hiring video editor, hiring sales executive"
     );
 
-    // JSON-LD JobPosting for Google Jobs
+    // JSON-LD JobPosting — Google for Jobs / Google Search
     const existing = document.getElementById("job-jsonld");
     if (existing) existing.remove();
     const script = document.createElement("script");
     script.id = "job-jsonld";
     script.type = "application/ld+json";
-    script.text = JSON.stringify([
-      {
-        "@context": "https://schema.org",
-        "@type": "JobPosting",
-        title: "Video Editor",
-        description:
-          "Create engaging videos for marketing, tutorials, product launches, and social media campaigns for Unity ERP.",
-        datePosted: "2026-08-03",
-        employmentType: "FULL_TIME",
-        hiringOrganization: {
-          "@type": "Organization",
-          name: "Unity Software Solutions",
-          sameAs: "https://www.unity-software.online",
-        },
-        jobLocation: {
-          "@type": "Place",
-          address: {
-            "@type": "PostalAddress",
-            addressCountry: "KE",
-            addressRegion: "Kenya",
-          },
-        },
-        applicantLocationRequirements: {
-          "@type": "Country",
-          name: "Kenya",
-        },
-        directApply: true,
-        url: "https://www.unity-software.online/careers#video-editor",
+    const org = {
+      "@type": "Organization",
+      name: "Unity Software Solutions",
+      sameAs: "https://www.unity-software.online",
+      logo: "https://i.postimg.cc/qBnzqpqk/blck-logo-erp.png",
+      url: "https://www.unity-software.online",
+      email: "developerunityerp@proton.me",
+      telephone: "+254778903044",
+    };
+    const kenyaPlace = {
+      "@type": "Place",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Nairobi",
+        addressRegion: "Nairobi",
+        addressCountry: "KE",
       },
-      {
-        "@context": "https://schema.org",
-        "@type": "JobPosting",
-        title: "Sales Executive",
-        description:
-          "Help businesses discover Unity ERP, build relationships, and grow our customer base.",
-        datePosted: "2026-08-03",
-        employmentType: "FULL_TIME",
-        hiringOrganization: {
-          "@type": "Organization",
-          name: "Unity Software Solutions",
-          sameAs: "https://www.unity-software.online",
-        },
-        jobLocation: {
-          "@type": "Place",
-          address: {
-            "@type": "PostalAddress",
-            addressCountry: "KE",
-            addressRegion: "Kenya",
+    };
+    script.text = JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "JobPosting",
+          title: "Video Editor",
+          description:
+            "<p>Unity Software Solutions is hiring a <strong>Video Editor</strong> to create engaging videos for marketing, tutorials, product launches, and social media campaigns for Unity ERP.</p><p><strong>Responsibilities:</strong></p><ul><li>Edit marketing, tutorial and product launch videos</li><li>Produce short-form content for social and ads</li><li>Color grade and sound-design to a clean SaaS standard</li><li>Collaborate with marketing on scripts and storyboards</li><li>Maintain a consistent brand look across all video assets</li></ul><p><strong>Requirements:</strong></p><ul><li>Proven editing work (showreel or portfolio required)</li><li>Comfortable with Premiere Pro, Final Cut, or DaVinci Resolve</li><li>Strong sense of pacing, typography on video, and motion</li><li>Ability to turn around campaign assets quickly</li></ul><p>Apply on <a href=\"https://www.unity-software.online/careers\">unity-software.online/careers</a> or email developerunityerp@proton.me / WhatsApp +254 778 903 044.</p>",
+          identifier: {
+            "@type": "PropertyValue",
+            name: "Unity Software Solutions",
+            value: "USS-VIDEO-EDITOR-001",
           },
+          datePosted: "2026-08-04",
+          validThrough: "2026-12-31T23:59:59+03:00",
+          employmentType: "FULL_TIME",
+          hiringOrganization: org,
+          jobLocation: kenyaPlace,
+          jobLocationType: "TELECOMMUTE",
+          applicantLocationRequirements: {
+            "@type": "Country",
+            name: "Kenya",
+          },
+          baseSalary: {
+            "@type": "MonetaryAmount",
+            currency: "KES",
+            value: {
+              "@type": "QuantitativeValue",
+              minValue: 40000,
+              maxValue: 120000,
+              unitText: "MONTH",
+            },
+          },
+          directApply: true,
+          url: "https://www.unity-software.online/careers#video-editor",
+          industry: "Software",
+          occupationalCategory: "27-4032.00",
         },
-        url: "https://www.unity-software.online/careers#sales-executive",
-        directApply: true,
-      },
-    ]);
+        {
+          "@type": "JobPosting",
+          title: "Sales Executive",
+          description:
+            "<p>Unity Software Solutions is hiring a <strong>Sales Executive</strong> to help businesses discover Unity ERP, build relationships, and grow our customer base across Kenya, South Africa and Egypt.</p><p><strong>Responsibilities:</strong></p><ul><li>Own outbound and inbound pipeline for Unity ERP</li><li>Run demos and discovery calls with decision makers</li><li>Manage CRM deals from lead to close</li><li>Partner with support on smooth onboarding handoffs</li><li>Hit monthly acquisition and revenue targets</li></ul><p><strong>Requirements:</strong></p><ul><li>2+ years B2B or SaaS sales experience preferred</li><li>Confident on calls and in writing</li><li>Comfort explaining software value (ERP/CRM a plus)</li><li>Based in or willing to cover Kenya, South Africa or Egypt markets</li></ul><p>Apply on <a href=\"https://www.unity-software.online/careers\">unity-software.online/careers</a> or email developerunityerp@proton.me / WhatsApp +254 778 903 044.</p>",
+          identifier: {
+            "@type": "PropertyValue",
+            name: "Unity Software Solutions",
+            value: "USS-SALES-EXEC-001",
+          },
+          datePosted: "2026-08-04",
+          validThrough: "2026-12-31T23:59:59+03:00",
+          employmentType: "FULL_TIME",
+          hiringOrganization: org,
+          jobLocation: kenyaPlace,
+          jobLocationType: "TELECOMMUTE",
+          applicantLocationRequirements: [
+            { "@type": "Country", name: "Kenya" },
+            { "@type": "Country", name: "South Africa" },
+            { "@type": "Country", name: "Egypt" },
+          ],
+          baseSalary: {
+            "@type": "MonetaryAmount",
+            currency: "KES",
+            value: {
+              "@type": "QuantitativeValue",
+              minValue: 50000,
+              maxValue: 150000,
+              unitText: "MONTH",
+            },
+          },
+          directApply: true,
+          url: "https://www.unity-software.online/careers#sales-executive",
+          industry: "Software",
+          occupationalCategory: "41-3091.00",
+        },
+      ],
+    });
     document.head.appendChild(script);
   }, []);
 
