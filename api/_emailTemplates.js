@@ -42,30 +42,54 @@ function benefitsFor(industry, need) {
 function demoRequestEmail({ name, email, industry, company_size, primary_need }) {
   const first = (name || "there").split(" ")[0];
   const benefits = benefitsFor(industry, primary_need)
-    .map((b) => `<li style="margin:0 0 8px;color:#334155;font-size:14px;line-height:1.5;">${b}</li>`)
+    .map((b) => `<li style="margin:0 0 10px;color:#334155;font-size:14px;line-height:1.55;">${b}</li>`)
     .join("");
+  const sizeLine = company_size ? ` Team size noted: <strong>${company_size}</strong>.` : "";
+  const needLine = primary_need ? ` Priority: <strong>${primary_need}</strong>.` : "";
   const html = shell(
     `
     <h1 style="margin:0 0 12px;font-size:24px;line-height:1.25;color:#0f172a;">Welcome to Unity ERP, ${first}</h1>
-    <p style="margin:0 0 16px;font-size:15px;line-height:1.6;color:#475569;">
-      Thanks for requesting access. We received <strong>${email}</strong>
-      ${industry ? ` for <strong>${industry}</strong>` : ""}.
-      Our team will follow up shortly. Meanwhile, here is what you can expect.
+    <p style="margin:0 0 14px;font-size:15px;line-height:1.65;color:#475569;">
+      Thanks for requesting a demo / trial. We received <strong>${email}</strong>
+      ${industry ? ` for <strong>${industry}</strong>` : ""}.${sizeLine}${needLine}
+      Our team will contact you soon. Below is a preview of the product and what you get.
     </p>
-    <img src="${DASHBOARD}" alt="Unity ERP dashboard" width="504" style="width:100%;max-width:504px;border-radius:12px;margin:8px 0 20px;border:1px solid #e2e8f0;"/>
+
+    <p style="margin:0 0 6px;font-size:12px;font-weight:700;color:#059669;text-transform:uppercase;letter-spacing:0.05em;">
+      Unity ERP — product preview
+    </p>
+    <img src="${DASHBOARD}" alt="Unity ERP cloud dashboard — inventory, CRM and finance in one system" width="504" style="display:block;width:100%;max-width:504px;height:auto;border-radius:12px;margin:0 0 8px;border:1px solid #e2e8f0;"/>
+    <p style="margin:0 0 18px;font-size:12px;line-height:1.5;color:#94a3b8;text-align:center;">
+      Live cloud dashboard: stock, sales, customers and finance in one place
+    </p>
+
+    <p style="margin:0 0 12px;font-size:15px;line-height:1.65;color:#334155;">
+      <strong style="color:#0f172a;">What is Unity ERP?</strong>
+      Unity ERP by Unity Software Solutions is a cloud ERP and CRM for Kenyan and African SMEs.
+      Run inventory, invoicing, POS, purchasing, CRM pipeline and reporting in one system —
+      with M-Pesa-friendly operations, multi-branch stock visibility and AI assistance for common questions.
+      Pricing from <strong>KES 3,000/month</strong> or <strong>KES 33,000/year</strong> (one month free on yearly).
+      Free limited access is available so you can explore before you upgrade.
+    </p>
+
     <p style="margin:0 0 8px;font-size:13px;font-weight:700;color:#0f172a;text-transform:uppercase;letter-spacing:0.04em;">Benefits for your team</p>
     <ul style="margin:0 0 20px;padding-left:18px;">${benefits}</ul>
-    <table role="presentation" width="100%" style="margin:0 0 16px;"><tr><td align="center">
-      <a href="${SITE}/pricing" style="display:inline-block;background:#059669;color:#fff;font-weight:700;font-size:14px;padding:14px 28px;border-radius:999px;text-decoration:none;">View pricing &amp; start</a>
+
+    <table role="presentation" width="100%" style="margin:0 0 12px;"><tr><td align="center">
+      <a href="${SITE}/pricing" style="display:inline-block;background:#059669;color:#ffffff;font-weight:700;font-size:14px;padding:14px 28px;border-radius:999px;text-decoration:none;">View pricing &amp; plans</a>
     </td></tr></table>
+    <table role="presentation" width="100%" style="margin:0 0 16px;"><tr><td align="center">
+      <a href="${SITE}" style="display:inline-block;color:#059669;font-weight:600;font-size:13px;text-decoration:underline;">Open unity-software.online</a>
+    </td></tr></table>
+
     <p style="margin:0;font-size:13px;line-height:1.55;color:#64748b;">
       Prefer WhatsApp? Message us on <a href="${WA}" style="color:#059669;">+254 778 903 044</a>.
-      Questions: reply to this email.
+      Reply to this email anytime — we read every message.
     </p>`,
-    `Welcome to Unity ERP — your demo request is confirmed`
+    `Welcome to Unity ERP — demo request confirmed. See your product preview inside.`
   );
   return {
-    subject: "Welcome to Unity ERP — your request is confirmed",
+    subject: "Welcome to Unity ERP — your demo request + product preview",
     html,
   };
 }

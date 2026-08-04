@@ -4,10 +4,12 @@ async function sendResendEmail(opts) {
     console.error("RESEND_API_KEY missing");
     return { ok: false, error: "RESEND_API_KEY not configured" };
   }
-  const from =
+
+  const fromPrimary =
     opts.from ||
     process.env.RESEND_FROM ||
     "Unity ERP <hello@unity-software.online>";
+  const fromFallback = "Unity ERP <onboarding@resend.dev>";
   const replyTo =
     process.env.RESEND_REPLY_TO ||
     process.env.SALES_INBOX ||
@@ -33,17 +35,22 @@ async function sendResendEmail(opts) {
   }
 
   try {
-    let { res, data } = await post(from);
-    if (!res.ok) {
-      console.error("Resend error", res.status, JSON.stringify(data));
-      ({ res, data } = await post("Unity ERP <onboarding@resend.dev>"));
-      if (!res.ok) {
-        return { ok: false, error: data };
-      }
+    let { res, data } = await post(fromPrimary);
+    if (res.ok) {
+      console.log("Resend sent", opts.to, data.id || data);
       return { ok: true, data };
     }
-    return { ok: true, data };
+    console.error("Resend primary failed", res.status, JSON.stringify(data));
+    // Always retry with Resend onboarding sender so clients still receive mail
+    ({ res, data } = await post(fromFallback));
+    if (res.ok) {
+      console.log("Resend sent via fallback", opts.to, data.id || data);
+      return { ok: true, data };
+    }
+    console.error("Resend fallback failed", res.status, JSON.stringify(data));
+    return { ok: false, error: data };
   } catch (e) {
+    console.error("Resend fetch failed", e);
     return { ok: false, error: String(e) };
   }
 }

@@ -53,7 +53,6 @@ export function BlogPostShell({ post }: { post: BlogPost }) {
       headline: post.h1,
       datePublished: post.date,
       description: post.description,
-      image: post.imageUrl || undefined,
       author: { "@type": "Organization", name: "Unity Software Solutions" },
       publisher: {
         "@type": "Organization",
@@ -78,28 +77,6 @@ export function BlogPostShell({ post }: { post: BlogPost }) {
             {post.h1}
           </h1>
           <p className="mt-2 text-sm text-slate-500">{post.date}</p>
-
-          {post.imageUrl && (
-            <figure className="mt-8 overflow-hidden rounded-3xl border border-slate-100 shadow-md">
-              <img
-                src={post.imageUrl}
-                alt={post.imageAlt || "Black professional using business software in Kenya"}
-                className="aspect-[2/1] w-full object-cover object-top md:aspect-[21/9]"
-                loading="eager"
-                decoding="async"
-                width={1600}
-                height={900}
-                onError={(e) => {
-                  (e.target as HTMLImageElement).style.display = "none";
-                }}
-              />
-              {post.imageAlt && (
-                <figcaption className="border-t border-slate-100 bg-slate-50 px-4 py-2 text-xs text-slate-500">
-                  {post.imageAlt}
-                </figcaption>
-              )}
-            </figure>
-          )}
 
           <div className="mt-6">
             <Button
