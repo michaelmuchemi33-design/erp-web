@@ -418,25 +418,43 @@ export function CareersPageShell() {
             </div>
           </section>
 
-          {/* Premium benefit callout */}
+          {/* Benefits overview */}
           <section className="border-b border-slate-100 bg-slate-950 text-white">
-            <div className="mx-auto max-w-6xl px-6 py-10 md:py-12">
+            <div className="mx-auto max-w-6xl px-6 py-10 md:py-14">
               <h2 className="text-xl font-bold md:text-2xl">
-                Premium software benefit
+                Why people join Unity
               </h2>
               <p className="mt-3 max-w-3xl text-sm leading-relaxed text-slate-300 md:text-base">
-                Every full-time employee receives access to professional software
-                sponsored by Unity. You contribute a{" "}
-                <strong className="text-white">small percentage</strong> of one
-                role-specific premium subscription; Unity covers the majority of the
-                cost — the same model used by established technology teams. Exact
-                shares are confirmed when you join.
+                Full-time roles include company-sponsored software (you pay a small
+                share of one role tool; Unity covers most of it), plus practical benefits
+                for a distributed team across Kenya and beyond.
               </p>
+              <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                {[
+                  "Company-sponsored premium software (see % share on each role)",
+                  "Medical insurance support for eligible full-time staff",
+                  "Group accident / life cover where policy applies",
+                  "Remote-first work with flexible hours",
+                  "Learning budget for courses and certifications",
+                  "Performance bonuses tied to clear goals",
+                  "Modern laptop and cloud tools provided as needed",
+                  "Career paths across product, sales, and creative",
+                  "Collaborative culture — WhatsApp-friendly, low bureaucracy",
+                ].map((b) => (
+                  <li
+                    key={b}
+                    className="flex gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-slate-200"
+                  >
+                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-emerald-400" />
+                    {b}
+                  </li>
+                ))}
+              </ul>
               <a
                 href="/employee-discounts"
-                className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-emerald-400 hover:text-emerald-300"
+                className="mt-8 inline-flex items-center gap-1 text-sm font-semibold text-emerald-400 hover:text-emerald-300"
               >
-                See employee discounts
+                Browse all sponsored software
                 <ExternalLink className="h-3.5 w-3.5" />
               </a>
             </div>

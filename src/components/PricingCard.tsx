@@ -130,31 +130,44 @@ export function PricingCard({ onOpenSignup }: { onOpenSignup?: () => void } = {}
         </motion.div>
 
         
-        {/* Free limited plan */}
+        {/* Free plan */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-8 rounded-3xl border border-dashed border-emerald-200 bg-emerald-50/40 p-6 md:p-8"
+          className="mb-10 grid gap-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm md:grid-cols-[1fr_auto] md:items-center md:p-8"
         >
-          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-            <div>
-              <p className="text-xs font-bold uppercase tracking-wider text-emerald-700">
-                Free mode · Limited
-              </p>
-              <h3 className="mt-1 text-2xl font-bold text-slate-950">Free</h3>
-              <p className="mt-2 max-w-xl text-sm text-slate-600">
-                Limited use to explore Unity ERP. Sign up free — full unlock happens after
-                onboarding. You will land on a confirmation page and a sales specialist will call you.
-              </p>
-              <ul className="mt-3 flex flex-wrap gap-2 text-xs font-medium text-slate-600">
-                {["Limited modules preview", "Signup required", "Sales activation call", "Upgrade anytime"].map((x) => (
-                  <li key={x} className="rounded-full bg-white px-3 py-1 ring-1 ring-emerald-100">
-                    {x}
-                  </li>
-                ))}
-              </ul>
+          <div>
+            <div className="flex flex-wrap items-center gap-2">
+              <h3 className="text-xl font-bold text-slate-950">Free</h3>
+              <span className="rounded-full bg-slate-100 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-slate-600">
+                Limited access
+              </span>
             </div>
+            <p className="mt-1 text-3xl font-bold tracking-tight text-slate-950">
+              KES 0
+              <span className="text-base font-medium text-slate-500"> / month</span>
+            </p>
+            <p className="mt-3 max-w-lg text-sm leading-relaxed text-slate-600">
+              Try Unity ERP with limited features at no cost. After signup you get a
+              confirmation page; our team contacts you to activate access and answer
+              questions. Upgrade to monthly or yearly when you need full modules.
+            </p>
+            <ul className="mt-4 grid gap-2 text-sm text-slate-700 sm:grid-cols-2">
+              {[
+                "No payment card required",
+                "Core screens to explore the product",
+                "Guided activation by phone or WhatsApp",
+                "Move to a paid plan anytime",
+              ].map((x) => (
+                <li key={x} className="flex gap-2">
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" />
+                  {x}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="flex flex-col items-stretch gap-2 md:w-52">
             <Button
               onClick={() => {
                 try {
@@ -162,11 +175,14 @@ export function PricingCard({ onOpenSignup }: { onOpenSignup?: () => void } = {}
                 } catch {}
                 onOpenSignup?.();
               }}
-              className="h-12 shrink-0 gap-2 rounded-full bg-emerald-600 px-8 font-semibold text-white hover:bg-emerald-500"
+              className="h-12 gap-2 rounded-full border border-slate-900 bg-white font-semibold text-slate-950 hover:bg-slate-50"
             >
-              Start free (limited)
+              Create free account
               <ArrowRight className="h-4 w-4" />
             </Button>
+            <p className="text-center text-[11px] text-slate-400">
+              Sales follow-up · not full production use
+            </p>
           </div>
         </motion.div>
 
@@ -193,7 +209,7 @@ export function PricingCard({ onOpenSignup }: { onOpenSignup?: () => void } = {}
                     Knight ERP Enterprise
                   </h2>
                   <p className="mt-2 text-slate-500">
-                    One plan. Every industry module. Unlimited growth.
+                    All modules included — CRM, inventory, finance, POS, and more.
                   </p>
 
                   <div className="mt-8">
@@ -231,7 +247,7 @@ export function PricingCard({ onOpenSignup }: { onOpenSignup?: () => void } = {}
                         2-Month Free Trial Included
                       </p>
                       <p className="mt-1 text-sm leading-relaxed text-amber-800/90">
-                        Full access to every module for 60 days. Active plans include a free custom website design for your business (royalty benefit). No credit card
+                        Full module access for 60 days on trial. Paid customers can request free custom website design. No credit card
                         required to start.
                       </p>
                     </div>
