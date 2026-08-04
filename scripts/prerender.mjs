@@ -26,13 +26,10 @@ const m = shell.match(/<head>([\s\S]*)<\/head>/i);
 const headInner = m ? m[1] : "";
 const assetTags = (headInner.match(/<link[^>]*>/gi) || [])
   .filter((t) => /stylesheet|modulepreload|icon|assets\//i.test(t))
-  .join("
-    ");
+  .join("\n    ");
 const bodyScripts = [
   ...new Set(shell.match(/<script[^>]*type="module"[^>]*><\/script>/gi) || []),
-].join("
-    ");
-
+].join("\n    ");
 function pageHtml(p) {
   const url =
     p.path === "/"
