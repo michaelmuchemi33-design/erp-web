@@ -1691,7 +1691,7 @@ export const seoPages: SeoPage[] = [
         h2: "Next step",
         body: "Shortlist two systems, run parallel demos, and measure time-to-first-invoice and stock accuracy. Start Unity ERP free at unity-software.online.",
       }
-    ],,
+    ],
     relatedSlugs: [
       "erp-system-kenya",
       "what-is-erp",
@@ -1728,7 +1728,7 @@ export const seoPages: SeoPage[] = [
         h2: "How ERP works day to day",
         body: "A sale reduces stock, updates the customer record and creates an invoice. A purchase order receives goods into inventory. Reports and AI answers use the same live data.",
       }
-    ],,
+    ],
     relatedSlugs: [
       "erp-system-kenya",
       "cloud-erp",
