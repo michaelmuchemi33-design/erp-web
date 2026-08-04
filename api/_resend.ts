@@ -12,7 +12,7 @@ export async function sendResendEmail(opts: {
   const from =
     opts.from ||
     process.env.RESEND_FROM ||
-    "Unity ERP <onboarding@resend.dev>";
+    "Unity ERP <hello@unity-software.online>";
 
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
@@ -25,6 +25,7 @@ export async function sendResendEmail(opts: {
       to: [opts.to],
       subject: opts.subject,
       html: opts.html,
+      reply_to: process.env.SALES_INBOX || "erpintergration@gmail.com",
     }),
   });
   const data = await res.json().catch(() => ({}));
