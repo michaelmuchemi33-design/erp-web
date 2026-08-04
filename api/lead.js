@@ -1,5 +1,5 @@
-import { demoRequestEmail } from "./_emailTemplates.js";
-import { sendResendEmail } from "./_resend.js";
+const { demoRequestEmail } = require("./_emailTemplates");
+const { sendResendEmail } = require("./_resend");
 
 const SUPABASE_URL =
   process.env.SUPABASE_URL ||
@@ -14,7 +14,7 @@ const ANON =
   process.env.SUPABASE_PUBLISHABLE_KEY ||
   "sb_publishable_TeZ72fuK0pP9UqzD9T9K-Q_cEmPRudZ";
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
