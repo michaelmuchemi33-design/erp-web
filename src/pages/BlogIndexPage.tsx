@@ -6,6 +6,7 @@ import { blogPosts, blogCategories } from "@/content/blogPosts";
 import { setPageMeta, trimDesc, trimTitle } from "@/lib/pageMeta";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { SeoInternalLinks } from "@/components/SeoInternalLinks";
 
 export function BlogIndexShell() {
   const [signupOpen, setSignupOpen] = useState(false);
@@ -119,6 +120,7 @@ export function BlogIndexShell() {
             </Button>
           </div>
         </div>
+        <SeoInternalLinks title="More Unity ERP topic pages" />
       </main>
       <SiteFooter />
       <SignupWizard open={signupOpen} onClose={() => setSignupOpen(false)} />

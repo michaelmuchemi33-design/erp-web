@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import type { BlogPost } from "@/content/blogPosts";
 import { ArrowRight } from "lucide-react";
 import { setPageMeta, trimDesc, trimTitle } from "@/lib/pageMeta";
+import { SeoInternalLinks } from "@/components/SeoInternalLinks";
 
 function TrialCta({ onOpen }: { onOpen: () => void }) {
   return (
@@ -142,6 +143,7 @@ export function BlogPostShell({ post }: { post: BlogPost }) {
             </a>
           </div>
         </article>
+        <SeoInternalLinks title="Related ERP guides" />
       </main>
       <SiteFooter />
       <SignupWizard open={signupOpen} onClose={() => setSignupOpen(false)} />

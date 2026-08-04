@@ -62,6 +62,7 @@ module.exports = async function handler(req, res) {
       }
     }
 
+    // 1) ALWAYS email the CLIENT at the address they typed
     const mail = demoRequestEmail({
       name: row.name,
       email,
@@ -70,35 +71,39 @@ module.exports = async function handler(req, res) {
       primary_need: row.primary_need,
     });
 
-    const sent = await sendResendEmail({
+    const sentToClient = await sendResendEmail({
       to: email,
       subject: mail.subject,
       html: mail.html,
     });
 
+    // 2) Notify sales inbox separately (does not replace client email)
     const salesTo = process.env.SALES_INBOX || "michaelmuchemi33@gmail.com";
-    if (salesTo && salesTo !== email) {
-      try {
-        await sendResendEmail({
-          to: salesTo,
-          subject: `New Unity ERP lead: ${email}`,
-          html: `<p>Lead from ${row.source}</p>
-            <ul>
-              <li>Name: ${row.name || "—"}</li>
-              <li>Email: ${email}</li>
-              <li>Phone: ${row.phone || "—"}</li>
-              <li>Industry: ${row.industry || "—"}</li>
-              <li>Need: ${row.primary_need || "—"}</li>
-            </ul>`,
-        });
-      } catch (_) {}
+    let sentToSales = { ok: false };
+    if (salesTo && salesTo.toLowerCase() !== email) {
+      sentToSales = await sendResendEmail({
+        to: salesTo,
+        subject: `New Unity ERP lead: ${email}`,
+        html: `<p>New demo/trial request (client was emailed at <strong>${email}</strong>)</p>
+          <ul>
+            <li>Name: ${row.name || "—"}</li>
+            <li>Client email: ${email}</li>
+            <li>Phone: ${row.phone || "—"}</li>
+            <li>Industry: ${row.industry || "—"}</li>
+            <li>Need: ${row.primary_need || "—"}</li>
+            <li>Source: ${row.source}</li>
+          </ul>
+          <p>Client welcome email sent: ${sentToClient.ok ? "yes" : "NO — check Resend"}</p>`,
+      }).catch((e) => ({ ok: false, error: String(e) }));
     }
 
     return res.status(200).json({
       ok: true,
       saved,
-      emailSent: !!sent.ok,
-      emailError: sent.ok ? null : sent.error || "send_failed",
+      emailSent: !!sentToClient.ok,
+      emailedTo: email,
+      emailError: sentToClient.ok ? null : sentToClient.error || "client_email_failed",
+      salesNotified: !!sentToSales.ok,
       saveError: saved ? null : saveError,
     });
   } catch (e) {
@@ -107,4 +112,4 @@ module.exports = async function handler(req, res) {
       error: String(e && e.message ? e.message : e),
     });
   }
-}
+};

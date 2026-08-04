@@ -11,6 +11,7 @@ import { Guarantee } from "@/components/Guarantee";
 import { FAQ } from "@/components/FAQ";
 import { BottomCTA } from "@/components/BottomCTA";
 import { SiteFooter } from "@/components/SiteFooter";
+import { SeoInternalLinks } from "@/components/SeoInternalLinks";
 import { SignupWizard } from "@/components/SignupWizard";
 import { AboutPageShell } from "@/pages/AboutPage";
 import { ContactPageShell } from "@/pages/ContactPage";
@@ -48,6 +49,7 @@ function HomePage({ onOpenSignup }: { onOpenSignup: () => void }) {
         <Guarantee />
         <FAQ />
         <BottomCTA onOpenSignup={onOpenSignup} />
+        <SeoInternalLinks title="ERP guides for Kenya — compare Sage, SAP, cost & more" />
       </main>
       <div id="contact">
         <SiteFooter />

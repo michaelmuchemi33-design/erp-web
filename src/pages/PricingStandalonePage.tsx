@@ -7,6 +7,7 @@ import { PricingCard } from "@/components/PricingCard";
 import { Guarantee } from "@/components/Guarantee";
 import { FAQ } from "@/components/FAQ";
 import { BottomCTA } from "@/components/BottomCTA";
+import { SeoInternalLinks } from "@/components/SeoInternalLinks";
 
 export function PricingStandaloneShell() {
   const [signupOpen, setSignupOpen] = useState(false);
@@ -28,6 +29,7 @@ export function PricingStandaloneShell() {
         <Guarantee />
         <FAQ />
         <BottomCTA onOpenSignup={() => setSignupOpen(true)} />
+        <SeoInternalLinks title="Related ERP guides" />
       </main>
       <SiteFooter />
       <SignupWizard open={signupOpen} onClose={() => setSignupOpen(false)} />
