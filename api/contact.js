@@ -1,4 +1,4 @@
-const { sendResendEmail } = require("./_resend");
+import { sendResendEmail } from "./_resend.js";
 
 const SUPABASE_URL =
   process.env.SUPABASE_URL ||
@@ -13,7 +13,7 @@ const ANON =
   process.env.SUPABASE_PUBLISHABLE_KEY ||
   "sb_publishable_TeZ72fuK0pP9UqzD9T9K-Q_cEmPRudZ";
 
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
@@ -50,12 +50,12 @@ module.exports = async function handler(req, res) {
     }
 
     const salesTo = process.env.SALES_INBOX || "michaelmuchemi33@gmail.com";
-    const sentSales = await sendResendEmail({
+    await sendResendEmail({
       to: salesTo,
       subject: `Contact form: ${email}`,
       html: `<p>From: ${row.name || "—"} &lt;${email}&gt;</p><p>${message}</p>`,
     });
-    const sentUser = await sendResendEmail({
+    await sendResendEmail({
       to: email,
       subject: "We received your message — Unity Software Solutions",
       html: `<p>Hi${row.name ? " " + row.name : ""},</p>
@@ -64,12 +64,8 @@ module.exports = async function handler(req, res) {
         <p><a href="https://www.unity-software.online">unity-software.online</a></p>`,
     });
 
-    return res.status(200).json({
-      ok: true,
-      saved,
-      emailSent: !!(sentUser.ok || sentSales.ok),
-    });
+    return res.status(200).json({ ok: true, saved });
   } catch (e) {
     return res.status(500).json({ error: String(e && e.message ? e.message : e) });
   }
-};
+}

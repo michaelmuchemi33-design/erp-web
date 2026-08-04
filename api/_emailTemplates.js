@@ -97,5 +97,5 @@ function paymentInvoiceEmail({ name, email, amount, currency, reference, plan })
   };
 }
 
-module.exports = { demoRequestEmail, paymentInvoiceEmail };
+export { demoRequestEmail, paymentInvoiceEmail };
 

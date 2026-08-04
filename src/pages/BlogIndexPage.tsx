@@ -49,7 +49,7 @@ export function BlogIndexShell() {
               onClick={() => setSignupOpen(true)}
               className="h-11 gap-2 rounded-full bg-emerald-600 px-6 text-sm font-semibold text-white hover:bg-emerald-500"
             >
-              < className="h-4 w-4" />
+              
               Start free trial
             </Button>
             <a
