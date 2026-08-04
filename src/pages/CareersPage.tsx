@@ -27,7 +27,7 @@ import {
 } from "lucide-react";
 
 const WA = "https://wa.me/254778903044";
-const APPLY_EMAIL = "mykenyan254@gmail.com";
+const APPLY_EMAIL = "mykenyan255@gmail.com";
 const APPLY_EMAIL_2 = "developerunityerp@proton.me";
 const SITE = "https://www.unity-software.online";
 const LOGO = "https://i.postimg.cc/qBnzqpqk/blck-logo-erp.png";
@@ -39,9 +39,9 @@ type Job = {
   requirements: string[];
   tool: {
     name: string;
-    retail: string;
-    employeePays: number;
-    unityCovers: string;
+    /** Employee share of the sponsored subscription (overview only) */
+    employeeSharePct: number;
+    companySharePct: number;
     note: string;
   };
   icon: typeof Laptop;
@@ -63,9 +63,8 @@ const JOBS: Job[] = [
     ],
     tool: {
       name: "JetBrains All Products Pack",
-      retail: "$89/month",
-      employeePays: 17,
-      unityCovers: "$72/month",
+      employeeSharePct: 19,
+      companySharePct: 81,
       note: "Professional IDEs for software development",
     },
     icon: Laptop,
@@ -85,9 +84,8 @@ const JOBS: Job[] = [
     ],
     tool: {
       name: "Claude Max",
-      retail: "$100/month",
-      employeePays: 20,
-      unityCovers: "$80/month",
+      employeeSharePct: 20,
+      companySharePct: 80,
       note: "Enterprise AI assistant for advanced development",
     },
     icon: Brain,
@@ -101,9 +99,8 @@ const JOBS: Job[] = [
     requirements: ["Figma", "Design systems", "Wireframing", "Prototyping"],
     tool: {
       name: "Adobe Creative Cloud",
-      retail: "$69.99/month",
-      employeePays: 17,
-      unityCovers: "$52.99/month",
+      employeeSharePct: 24,
+      companySharePct: 76,
       note: "Creative suite for product design assets",
     },
     icon: Palette,
@@ -122,9 +119,8 @@ const JOBS: Job[] = [
     ],
     tool: {
       name: "Adobe Creative Cloud",
-      retail: "$69.99/month",
-      employeePays: 17,
-      unityCovers: "$52.99/month",
+      employeeSharePct: 24,
+      companySharePct: 76,
       note: "Full creative suite for brand and marketing",
     },
     icon: PenTool,
@@ -143,9 +139,8 @@ const JOBS: Job[] = [
     ],
     tool: {
       name: "Adobe Creative Cloud",
-      retail: "$69.99/month",
-      employeePays: 17,
-      unityCovers: "$52.99/month",
+      employeeSharePct: 24,
+      companySharePct: 76,
       note: "Editing, motion, and creative production",
     },
     icon: Video,
@@ -163,9 +158,8 @@ const JOBS: Job[] = [
     ],
     tool: {
       name: "LinkedIn Sales Navigator Advanced",
-      retail: "$99.99/month",
-      employeePays: 20,
-      unityCovers: "$79.99/month",
+      employeeSharePct: 20,
+      companySharePct: 80,
       note: "Prospecting and outreach for B2B sales",
     },
     icon: Headset,
@@ -183,9 +177,8 @@ const JOBS: Job[] = [
     ],
     tool: {
       name: "Zendesk Suite Professional",
-      retail: "Approximately $115/month",
-      employeePays: 20,
-      unityCovers: "Approximately $95/month",
+      employeeSharePct: 17,
+      companySharePct: 83,
       note: "Support inbox and customer success workflows",
     },
     icon: HeartHandshake,
@@ -199,9 +192,8 @@ const JOBS: Job[] = [
     requirements: ["Meta Ads", "Google Ads", "Campaign management"],
     tool: {
       name: "Semrush Guru",
-      retail: "Approximately $250/month",
-      employeePays: 20,
-      unityCovers: "Approximately $230/month",
+      employeeSharePct: 8,
+      companySharePct: 92,
       note: "SEO, competitive research, and campaign intelligence",
     },
     icon: Megaphone,
@@ -219,9 +211,8 @@ const JOBS: Job[] = [
     ],
     tool: {
       name: "Ahrefs Standard",
-      retail: "Approximately $249/month",
-      employeePays: 20,
-      unityCovers: "Approximately $229/month",
+      employeeSharePct: 8,
+      companySharePct: 92,
       note: "Keyword research and content performance",
     },
     icon: Search,
@@ -235,9 +226,8 @@ const JOBS: Job[] = [
     requirements: ["Linux", "Docker", "CI/CD", "Cloud platforms"],
     tool: {
       name: "Docker Business",
-      retail: "Approximately $24/user/month",
-      employeePays: 17,
-      unityCovers: "Approximately $7/month",
+      employeeSharePct: 70,
+      companySharePct: 30,
       note: "Container tooling for reliable deployments",
     },
     icon: Server,
@@ -255,9 +245,8 @@ const JOBS: Job[] = [
     ],
     tool: {
       name: "BrowserStack Team Plan",
-      retail: "Approximately $58/month",
-      employeePays: 17,
-      unityCovers: "Approximately $41/month",
+      employeeSharePct: 29,
+      companySharePct: 71,
       note: "Cross-browser and device testing",
     },
     icon: Bug,
@@ -271,9 +260,8 @@ const JOBS: Job[] = [
     requirements: ["Leadership", "Agile", "Product planning"],
     tool: {
       name: "Jira Premium",
-      retail: "Approximately $47/month",
-      employeePays: 17,
-      unityCovers: "Approximately $30/month",
+      employeeSharePct: 36,
+      companySharePct: 64,
       note: "Roadmaps, issues, and agile delivery",
     },
     icon: Layout,
@@ -302,7 +290,7 @@ function jobDescriptionHtml(job: Job) {
   return `<p>${job.summary}</p>
 <p><strong>Location:</strong> Remote · <strong>Employment:</strong> Full-time</p>
 <p><strong>Requirements:</strong></p><ul>${reqs}</ul>
-<p><strong>Required premium tool (company-sponsored):</strong> ${job.tool.name}. Retail ${job.tool.retail}. Employee contributes $${job.tool.employeePays}/month. Unity covers ${job.tool.unityCovers}. ${job.tool.note}</p>
+<p><strong>Required premium tool (company-sponsored):</strong> ${job.tool.name}. Employee contributes about ${job.tool.employeeSharePct}% of the subscription cost; Unity covers about ${job.tool.companySharePct}%. ${job.tool.note}</p>
 <p>Apply via WhatsApp +254 778 903 044 or email ${APPLY_EMAIL}. Careers: ${SITE}/careers#${job.id}</p>`;
 }
 
@@ -364,17 +352,7 @@ export function CareersPageShell() {
         "@type": "Country",
         name: "Kenya",
       },
-      baseSalary: {
-        "@type": "MonetaryAmount",
-        currency: "USD",
-        value: {
-          "@type": "QuantitativeValue",
-          value: job.tool.employeePays,
-          unitText: "MONTH",
-        },
-      },
-      // Note: baseSalary above is the employee tool contribution signal;
-      // role compensation is discussed during hiring.
+      // Compensation discussed in hiring; tool benefit is separate company-sponsored software
       directApply: true,
       url: `${SITE}/careers#${job.id}`,
       industry: "Software",
@@ -416,7 +394,7 @@ export function CareersPageShell() {
                 </p>
                 <p className="mx-auto mt-4 max-w-2xl text-slate-500">
                   Apply by WhatsApp or email. Every full-time role includes one
-                  company-sponsored premium tool — you contribute only $17–$20/month.
+                  company-sponsored premium tool — you pay a small share of the cost; Unity covers most of it.
                 </p>
                 <div className="mt-8 flex flex-wrap justify-center gap-3">
                   <a
@@ -448,10 +426,11 @@ export function CareersPageShell() {
               </h2>
               <p className="mt-3 max-w-3xl text-sm leading-relaxed text-slate-300 md:text-base">
                 Every full-time employee receives access to professional software
-                sponsored by Unity. Employees contribute only{" "}
-                <strong className="text-white">$17–$20 per month</strong> toward one
-                role-specific premium subscription, while Unity covers the remaining
-                cost — the same model used by established technology teams.
+                sponsored by Unity. You contribute a{" "}
+                <strong className="text-white">small percentage</strong> of one
+                role-specific premium subscription; Unity covers the majority of the
+                cost — the same model used by established technology teams. Exact
+                shares are confirmed when you join.
               </p>
               <a
                 href="/employee-discounts"
@@ -528,24 +507,21 @@ export function CareersPageShell() {
                         <p className="mt-1 text-xs text-slate-500">{job.tool.note}</p>
                         <dl className="mt-4 space-y-1.5 text-sm">
                           <div className="flex justify-between gap-2">
-                            <dt className="text-slate-500">Retail</dt>
-                            <dd className="font-medium text-slate-800">
-                              {job.tool.retail}
-                            </dd>
-                          </div>
-                          <div className="flex justify-between gap-2">
-                            <dt className="text-slate-500">You pay</dt>
+                            <dt className="text-slate-500">Your share</dt>
                             <dd className="font-bold text-emerald-700">
-                              ${job.tool.employeePays}/mo
+                              ~{job.tool.employeeSharePct}%
                             </dd>
                           </div>
                           <div className="flex justify-between gap-2">
                             <dt className="text-slate-500">Unity covers</dt>
                             <dd className="font-medium text-slate-800">
-                              {job.tool.unityCovers}
+                              ~{job.tool.companySharePct}%
                             </dd>
                           </div>
                         </dl>
+                        <p className="mt-3 text-[11px] leading-snug text-slate-400">
+                          Overview only — final contribution confirmed at offer stage.
+                        </p>
                       </div>
                     </div>
 
