@@ -117,4 +117,3 @@ for (const p of pages) {
 }
 
 console.log(`Prerendered ${n} HTML pages for crawlers`);
-# deploy 2026-08-03T12:54:09Z
