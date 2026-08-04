@@ -167,7 +167,6 @@ export function AIAssistantChat() {
       "I can help with sales, inventory, finance, and purchase recommendations. Try one of the suggestions below.";
     const kind = preset?.kind;
 
-    const y = window.scrollY;
     window.setTimeout(() => {
       setMessages((m) => [
         ...m,
