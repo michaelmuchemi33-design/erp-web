@@ -1,5 +1,5 @@
-const { demoRequestEmail } = require("./_emailTemplates");
-const { sendResendEmail } = require("./_resend");
+import { demoRequestEmail } from "./_emailTemplates.js";
+import { sendResendEmail } from "./_resend.js";
 
 const SUPABASE_URL =
   process.env.SUPABASE_URL ||
@@ -14,7 +14,7 @@ const ANON =
   process.env.SUPABASE_PUBLISHABLE_KEY ||
   "sb_publishable_TeZ72fuK0pP9UqzD9T9K-Q_cEmPRudZ";
 
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
   try {
     if (req.method !== "POST") {
       return res.status(405).json({ error: "Method not allowed" });
@@ -76,8 +76,7 @@ module.exports = async function handler(req, res) {
       html: mail.html,
     });
 
-    const salesTo =
-      process.env.SALES_INBOX || "michaelmuchemi33@gmail.com";
+    const salesTo = process.env.SALES_INBOX || "michaelmuchemi33@gmail.com";
     if (salesTo && salesTo !== email) {
       await sendResendEmail({
         to: salesTo,
@@ -104,4 +103,4 @@ module.exports = async function handler(req, res) {
     console.error("lead handler", e);
     return res.status(500).json({ error: String(e && e.message ? e.message : e) });
   }
-};
+}

@@ -1,7 +1,7 @@
-const { paymentInvoiceEmail } = require("./_emailTemplates");
-const { sendResendEmail } = require("./_resend");
+import { paymentInvoiceEmail } from "./_emailTemplates.js";
+import { sendResendEmail } from "./_resend.js";
 
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
   try {
     if (req.method !== "POST") {
       return res.status(405).json({ error: "Method not allowed" });
@@ -48,4 +48,4 @@ module.exports = async function handler(req, res) {
     console.error("paystack webhook", e);
     return res.status(200).json({ received: true, error: String(e) });
   }
-};
+}

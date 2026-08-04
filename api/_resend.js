@@ -1,4 +1,4 @@
-async function sendResendEmail(opts) {
+export async function sendResendEmail(opts) {
   const key = process.env.RESEND_API_KEY || process.env.RESEND_KEY || "";
   if (!key) {
     console.error("RESEND_API_KEY missing");
@@ -53,5 +53,3 @@ async function sendResendEmail(opts) {
     return { ok: false, error: String(e) };
   }
 }
-
-module.exports = { sendResendEmail };
