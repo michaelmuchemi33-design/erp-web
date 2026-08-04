@@ -4,7 +4,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SignupWizard } from "@/components/SignupWizard";
 import { blogPosts, blogCategories } from "@/content/blogPosts";
 import { setPageMeta, trimDesc, trimTitle } from "@/lib/pageMeta";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export function BlogIndexShell() {
@@ -49,7 +49,7 @@ export function BlogIndexShell() {
               onClick={() => setSignupOpen(true)}
               className="h-11 gap-2 rounded-full bg-emerald-600 px-6 text-sm font-semibold text-white hover:bg-emerald-500"
             >
-              <Sparkles className="h-4 w-4" />
+              < className="h-4 w-4" />
               Start free trial
             </Button>
             <a

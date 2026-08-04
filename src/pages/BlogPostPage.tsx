@@ -4,7 +4,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SignupWizard } from "@/components/SignupWizard";
 import { Button } from "@/components/ui/button";
 import type { BlogPost } from "@/content/blogPosts";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { setPageMeta, trimDesc, trimTitle } from "@/lib/pageMeta";
 
 function TrialCta({ onOpen }: { onOpen: () => void }) {
@@ -12,10 +12,7 @@ function TrialCta({ onOpen }: { onOpen: () => void }) {
     <div className="my-10 overflow-hidden rounded-2xl border border-emerald-200 bg-gradient-to-r from-emerald-50 to-white p-6 shadow-sm md:p-8">
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div>
-          <p className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-emerald-800">
-            <Sparkles className="h-3.5 w-3.5" />
-            Unity ERP
-          </p>
+          <p className="text-xs font-bold uppercase tracking-wider text-emerald-800">Unity ERP</p>
           <p className="mt-2 text-lg font-bold text-slate-950 md:text-xl">
             Ready to run inventory, CRM and finance in one system?
           </p>
