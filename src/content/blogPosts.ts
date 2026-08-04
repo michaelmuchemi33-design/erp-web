@@ -252,7 +252,7 @@ export const blogPosts: BlogPost[] = [
         body: "Export key reports, ask the AI Assistant for sales and stock summaries, decide go/no-go with numbers.",
       },
     ],
-  },,
+  },
   {
     slug: "erp-systems-in-kenya-2026",
     category: "ERP Guides",
@@ -384,8 +384,8 @@ export const blogPosts: BlogPost[] = [
   }
 ];
 
-export const blogBySlug: Record<string, BlogPost> = Object.fromEntries(
-  blogPosts.map((p) => [p.slug, p])
+export const blogBySlug: Record<string, any> = Object.fromEntries(
+  blogPosts.filter((p): p is NonNullable<typeof p> => Boolean(p?.slug)).map((p) => [p.slug, p])
 );
 
 export const blogCategories = [

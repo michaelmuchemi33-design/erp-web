@@ -848,8 +848,8 @@ export const resourcePages: ResourcePage[] = [
   }),
 ];
 
-export const pagesBySlug: Record<string, ResourcePage> = Object.fromEntries(
-  resourcePages.map((p) => [p.slug, p])
+export const pagesBySlug: Record<string, any> = Object.fromEntries(
+  resourcePages.filter((p): p is NonNullable<typeof p> => Boolean(p?.slug)).map((p) => [p.slug, p])
 );
 
 export function slugFromLabel(section: string, label: string): string {

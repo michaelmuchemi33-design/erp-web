@@ -1830,6 +1830,6 @@ export const seoPages: SeoPage[] = [
   }
 ];
 
-export const seoBySlug: Record<string, SeoPage> = Object.fromEntries(
-  seoPages.map((p) => [p.slug, p])
+export const seoBySlug: Record<string, any> = Object.fromEntries(
+  seoPages.filter((p): p is NonNullable<typeof p> => Boolean(p?.slug)).map((p) => [p.slug, p])
 );
