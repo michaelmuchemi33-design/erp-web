@@ -84,7 +84,7 @@ export function FAQ() {
           <div className="mx-auto mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-100 text-slate-700">
             <HelpCircle className="h-6 w-6" />
           </div>
-          <h2 className="text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
+          <h2 className="section-title text-3xl font-bold text-slate-950 sm:text-4xl">
             Frequently Asked Questions
           </h2>
           <p className="mt-3 text-slate-600">

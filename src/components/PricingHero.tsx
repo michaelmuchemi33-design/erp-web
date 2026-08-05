@@ -17,7 +17,7 @@ export function PricingHero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.05 }}
-          className="mt-3 text-4xl font-bold tracking-tight text-slate-950 sm:text-5xl"
+          className="mt-3 section-title text-4xl font-bold text-slate-950 sm:text-5xl"
         >
           Clear KES pricing for Unity ERP
         </motion.h1>

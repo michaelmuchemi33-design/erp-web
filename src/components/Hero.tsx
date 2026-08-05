@@ -14,17 +14,18 @@ const container = {
 };
 
 const item = {
-  hidden: { opacity: 0, y: 24 },
+  hidden: { opacity: 0, y: 12 },
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+    transition: { type: "spring", stiffness: 380, damping: 32, mass: 0.9 },
   },
 };
 
+/* Subtle drift only if motion is allowed — short amplitude, slow, not decorative bounce */
 const float = {
-  y: [0, -10, 0],
-  transition: { duration: 5, repeat: Infinity, ease: "easeInOut" },
+  y: [0, -6, 0],
+  transition: { duration: 7, repeat: Infinity, ease: "easeInOut" },
 };
 
 /** SEO-optimised rotating lines under the main H1 */

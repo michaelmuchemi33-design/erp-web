@@ -31,7 +31,7 @@ export function Features() {
           transition={{ duration: 0.7 }}
           className="mb-14 max-w-2xl"
         >
-          <h2 className="text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
+          <h2 className="section-title text-3xl font-bold text-slate-950 sm:text-4xl">
             Powerful features, one platform
           </h2>
           <p className="mt-4 text-lg text-slate-600">

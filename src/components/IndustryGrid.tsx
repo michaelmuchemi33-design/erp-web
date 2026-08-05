@@ -640,7 +640,7 @@ function IndustryOverlay({
         <div className={`mb-4 flex h-12 w-12 items-center justify-center rounded-2xl ${industry.light} ${industry.accent}`}>
           <Icon className="h-6 w-6" />
         </div>
-        <h3 className="text-3xl font-bold tracking-tight text-slate-950">{industry.name}</h3>
+        <h3 className="section-title text-3xl font-bold text-slate-950">{industry.name}</h3>
         <p className="mt-3 text-base leading-relaxed text-slate-600">{industry.summary}</p>
 
         <div className="mt-5">
@@ -755,7 +755,7 @@ export function IndustryGrid() {
           transition={{ duration: 0.7 }}
           className="mb-14 max-w-2xl"
         >
-          <h2 className="text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
+          <h2 className="section-title text-3xl font-bold text-slate-950 sm:text-4xl">
             Built for every industry
           </h2>
           <p className="mt-4 text-lg text-slate-600">

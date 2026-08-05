@@ -26,7 +26,7 @@ export function BottomCTA({ onOpenSignup }: { onOpenSignup?: () => void } = {}) 
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl"
+          className="section-title text-3xl font-bold text-white sm:text-4xl md:text-5xl"
         >
           Ready to Transform
           <br />

@@ -2,13 +2,106 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  color-scheme: light;
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --spring-duration: 0.4s;
+}
+
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 body {
   margin: 0;
-  font-family: Inter, system-ui, -apple-system, sans-serif;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-feature-settings: "kern" 1, "liga" 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  background: #ffffff;
+  color: #0f172a;
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+
+/* Display / marketing headings — optical tightening at large sizes */
+.display-title {
+  line-height: 1.05;
+  letter-spacing: -0.022em;
+  font-weight: 700;
+}
+
+.section-title {
+  line-height: 1.15;
+  letter-spacing: -0.018em;
+  font-weight: 700;
+}
+
+/* Instant press feedback (pointer-down, not only hover) */
+@layer utilities {
+  .pressable {
+    transition: transform 100ms var(--ease-out-quart), opacity 100ms ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .pressable:active:not(:disabled) {
+    transform: scale(0.97);
+  }
+
+  .glass-nav {
+    background: rgba(255, 255, 255, 0.72);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+  }
+
+  @media (prefers-reduced-transparency: reduce) {
+    .glass-nav {
+      background: #ffffff;
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+    }
+  }
+
+  .focus-ring {
+    outline: none;
+  }
+  .focus-ring:focus-visible {
+    outline: 2px solid #0f172a;
+    outline-offset: 2px;
+  }
+}
+
+/* Selection */
+::selection {
+  background: rgba(16, 185, 129, 0.18);
+  color: #0f172a;
+}
+
+/* Images never drag-select awkwardly */
+img {
+  -webkit-user-drag: none;
+}
+
+/* Respect compositor-friendly motion defaults for Framer */
+@media (prefers-reduced-motion: reduce) {
+  .motion-safe-only {
+    display: none !important;
+  }
 }

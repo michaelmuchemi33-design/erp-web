@@ -150,7 +150,7 @@ export function Header({ onOpenSignup }: { onOpenSignup?: () => void } = {}) {
   }, []);
 
   return (
-    <header className="fixed top-0 z-50 w-full border-b border-slate-100 bg-white/80 backdrop-blur-md">
+    <header className="glass-nav fixed inset-x-0 top-0 z-50">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
         <a href="/" className="flex items-center gap-2.5">
           <img
@@ -198,10 +198,10 @@ export function Header({ onOpenSignup }: { onOpenSignup?: () => void } = {}) {
                     onClick={() => setResourcesOpen(false)}
                   />
                   <motion.div
-                    initial={{ opacity: 0, y: 10, scale: 0.98 }}
+                    initial={{ opacity: 0, y: 8, scale: 0.985 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 8, scale: 0.98 }}
-                    transition={{ duration: 0.2 }}
+                    exit={{ opacity: 0, y: 6, scale: 0.985 }}
+                    transition={{ type: "spring", stiffness: 420, damping: 34 }}
                     className="fixed left-1/2 top-20 z-[100] w-[min(920px,calc(100vw-2rem))] -translate-x-1/2 rounded-[24px] border border-slate-200 bg-white p-6 shadow-[0_32px_100px_rgba(0,0,0,0.18)] md:p-8"
                   >
                     <div className="mb-5 flex items-center justify-between border-b border-slate-100 pb-4">
