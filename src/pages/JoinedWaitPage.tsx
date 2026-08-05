@@ -21,13 +21,13 @@ export function JoinedWaitShell() {
             <Check className="h-8 w-8" />
           </div>
           <h1 className="mt-6 text-3xl font-bold tracking-tight sm:text-4xl">
-            You have joined Unity ERP
+            Check your email now
           </h1>
           <p className="mt-4 text-lg text-slate-600">
-            Your request is confirmed.{" "}
-            <strong className="text-slate-900">Check the email you submitted</strong>{" "}
-            for a welcome message with next steps, tailored benefits, and a preview of
-            your dashboard.
+            We have sent a welcome email with the Unity ERP dashboard preview and next
+            steps to the address you entered.{" "}
+            <strong className="text-slate-900">Open your inbox now</strong> — also check
+            spam or promotions if you do not see it within a few minutes.
           </p>
         </div>
 

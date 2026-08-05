@@ -187,10 +187,16 @@ export function SignupWizard({
             <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-600">
               <Check className="h-7 w-7" />
             </div>
-            <h3 className="text-2xl font-bold text-slate-950">You are on the list</h3>
+            <h3 className="text-2xl font-bold text-slate-950">Check your email now</h3>
             <p className="mt-3 text-slate-600 leading-relaxed">
-              We received your request. A confirmation email with your demo access link
-              will be sent to <span className="font-semibold text-slate-900">{answers.email}</span> shortly.
+              We have sent a welcome email with your product preview and next steps to
+            </p>
+            <p className="mt-2 break-all text-base font-semibold text-emerald-700">
+              {answers.email}
+            </p>
+            <p className="mt-4 text-sm leading-relaxed text-slate-500">
+              Open that inbox (and spam/promotions if you do not see it). Our team may also
+              call or WhatsApp you to activate access.
             </p>
             <Button
               onClick={reset}
