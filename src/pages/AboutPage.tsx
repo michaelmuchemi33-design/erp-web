@@ -15,7 +15,6 @@ import {
   Shield,
   Rocket,
   Building2,
-  Sparkles,
 } from "lucide-react";
 
 const timeline = [
@@ -108,8 +107,7 @@ function TimelineItem({
         transition={{ duration: 0.45, delay: 0.05, ease: "easeOut" }}
         className="mb-10 rounded-2xl border border-slate-100 bg-white p-5 shadow-sm md:mb-12 md:p-7"
       >
-        <div className="mb-2 inline-flex items-center gap-2 rounded-full bg-amber-50 px-3 py-1 text-xs font-bold uppercase tracking-wider text-amber-700">
-          <Sparkles className="h-3.5 w-3.5" />
+        <div className="mb-2 inline-flex items-center rounded-full bg-amber-50 px-3 py-1 text-xs font-bold uppercase tracking-wider text-amber-800">
           {item.year}
         </div>
         <h3 className="text-xl font-bold text-slate-950 md:text-2xl">{item.title}</h3>
@@ -265,7 +263,7 @@ export default function AboutPage({
               { icon: Users, label: "Unlimited users", sub: "No seat tax on growth" },
               { icon: Shield, label: "Cloud & secure", sub: "Backups and access control" },
               { icon: Rocket, label: "Fast to value", sub: "Live in weeks, not years" },
-              { icon: Sparkles, label: "AI assistant", sub: "Answers from your data" },
+              { icon:  label: "AI assistant", sub: "Answers from your data" },
             ].map(({ icon: Icon, label, sub }) => (
               <div
                 key={label}
@@ -354,6 +352,30 @@ export function AboutPageShell() {
           <PageSkeleton />
         )}
       </main>
+      
+      <section className="border-t border-slate-100 bg-slate-50/80 py-16" aria-label="Life around Unity ERP">
+        <div className="mx-auto max-w-6xl px-6">
+          <h2 className="section-title text-2xl text-slate-950 md:text-3xl">People and places behind the work</h2>
+          <p className="mt-2 max-w-2xl text-sm text-slate-600">
+            From shop floors to offices — the environments Unity ERP is built for.
+          </p>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <figure className="about-photo-strip overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm">
+              <img src="https://www.unity-software.online/blog/office-team.webp" alt="Unity team collaboration" className="aspect-[4/5] w-full object-cover" loading="lazy" decoding="async" width=480 height=600 />
+            </figure>
+            <figure className="about-photo-strip overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm">
+              <img src="https://www.unity-software.online/blog/team-happy.webp" alt="Customers succeeding with Unity ERP" className="aspect-[4/5] w-full object-cover" loading="lazy" decoding="async" width=480 height=600 />
+            </figure>
+            <figure className="about-photo-strip overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm">
+              <img src="https://www.unity-software.online/blog/team-listening.webp" alt="Training and onboarding" className="aspect-[4/5] w-full object-cover" loading="lazy" decoding="async" width=480 height=600 />
+            </figure>
+            <figure className="about-photo-strip overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm">
+              <img src="https://www.unity-software.online/blog/team-women.webp" alt="Operators using Unity ERP" className="aspect-[4/5] w-full object-cover" loading="lazy" decoding="async" width=480 height=600 />
+            </figure>
+          </div>
+        </div>
+      </section>
+
       <SiteFooter />
       <SignupWizard open={signupOpen} onClose={() => setSignupOpen(false)} />
     </div>

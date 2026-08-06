@@ -108,36 +108,43 @@ export function BlogPostShell({ post }: { post: BlogPost }) {
             </figure>
           )}
 
-          {post.secondImageUrl && (
-            <figure className="mt-6 overflow-hidden rounded-2xl border border-slate-100 bg-slate-50">
-              <img
-                src={post.secondImageUrl}
-                alt={post.secondImageAlt || "Unity ERP in use"}
-                className="h-auto w-full object-cover"
-                loading="lazy"
-                decoding="async"
-                width={1200}
-                height={675}
-              />
-              {post.secondImageAlt && (
-                <figcaption className="border-t border-slate-100 px-4 py-2 text-xs text-slate-500">
-                  {post.secondImageAlt}
-                </figcaption>
-              )}
-            </figure>
-          )}
-
           <p className="mt-8 text-lg leading-relaxed text-slate-700">{post.intro}</p>
 
           <TrialCta onOpen={() => setSignupOpen(true)} />
 
           <div className="prose prose-slate mt-2 max-w-none">
-            {post.sections.map((sec) => (
+            {post.sections.map((sec, idx) => (
               <section key={sec.h2} className="mt-10">
-                <h2 className="text-xl font-bold text-slate-950 md:text-2xl">
-                  {sec.h2}
-                </h2>
-                <p className="mt-3 leading-relaxed text-slate-700">{sec.body}</p>
+                {idx === 0 && post.secondImageUrl ? (
+                  <div className="mb-4 flex flex-col gap-4 sm:flex-row sm:items-start">
+                    <div className="min-w-0 flex-1">
+                      <h2 className="text-xl font-bold text-slate-950 md:text-2xl">
+                        {sec.h2}
+                      </h2>
+                      <p className="mt-3 line-clamp-4 leading-relaxed text-slate-700 md:line-clamp-none">
+                        {sec.body}
+                      </p>
+                    </div>
+                    <figure className="mx-auto w-28 shrink-0 overflow-hidden rounded-xl border border-slate-100 bg-slate-50 sm:mx-0 sm:w-32 md:w-36">
+                      <img
+                        src={post.secondImageUrl}
+                        alt={post.secondImageAlt || "Unity ERP in use"}
+                        className="aspect-[3/4] h-auto w-full object-cover"
+                        loading="lazy"
+                        decoding="async"
+                        width={144}
+                        height={192}
+                      />
+                    </figure>
+                  </div>
+                ) : (
+                  <>
+                    <h2 className="text-xl font-bold text-slate-950 md:text-2xl">
+                      {sec.h2}
+                    </h2>
+                    <p className="mt-3 leading-relaxed text-slate-700">{sec.body}</p>
+                  </>
+                )}
                 {sec.h3?.map((h) => (
                   <div key={h.title} className="mt-5">
                     <h3 className="text-lg font-semibold text-slate-900">
