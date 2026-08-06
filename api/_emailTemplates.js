@@ -1,6 +1,7 @@
 const LOGO = "https://i.postimg.cc/qBnzqpqk/blck-logo-erp.png";
 const DASHBOARD = "https://i.postimg.cc/wMGLqBvh/erp-dashboard-looks-(1).png";
 const SITE = "https://www.unity-software.online";
+const DEMO = "https://demo.unity-software.online";
 const WA = "https://wa.me/254778903044";
 
 function shell(inner, preheader) {
@@ -75,6 +76,13 @@ function demoRequestEmail({ name, email, industry, company_size, primary_need })
     <p style="margin:0 0 8px;font-size:13px;font-weight:700;color:#0f172a;text-transform:uppercase;letter-spacing:0.04em;">Benefits for your team</p>
     <ul style="margin:0 0 20px;padding-left:18px;">${benefits}</ul>
 
+    <table role="presentation" width="100%" style="margin:0 0 12px;"><tr><td align="center">
+      <a href="${DEMO}" style="display:inline-block;background:#4f46e5;color:#ffffff;font-weight:700;font-size:14px;padding:14px 28px;border-radius:999px;text-decoration:none;">Open demo workspace →</a>
+    </td></tr></table>
+    <p style="margin:0 0 16px;font-size:13px;line-height:1.55;color:#475569;text-align:center;">
+      Demo: <a href="${DEMO}" style="color:#4f46e5;font-weight:600;">demo.unity-software.online</a>
+      ${industry ? ` · Tailored for <strong>${industry}</strong>` : ""}
+    </p>
     <table role="presentation" width="100%" style="margin:0 0 12px;"><tr><td align="center">
       <a href="${SITE}/pricing" style="display:inline-block;background:#059669;color:#ffffff;font-weight:700;font-size:14px;padding:14px 28px;border-radius:999px;text-decoration:none;">View pricing &amp; plans</a>
     </td></tr></table>

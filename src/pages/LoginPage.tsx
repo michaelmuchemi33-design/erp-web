@@ -1,147 +1,124 @@
 import { useState, useEffect } from "react";
-import { Header } from "@/components/Header";
-import { SiteFooter } from "@/components/SiteFooter";
-import { supabase } from "@/lib/supabase";
-import { Loader2, LogIn, Check } from "lucide-react";
+import { Loader2 } from "lucide-react";
 
 export function LoginPageShell() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [mode, setMode] = useState<"login" | "magic">("magic");
+  const [showPw, setShowPw] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState("");
   const [error, setError] = useState("");
 
   useEffect(() => {
-    document.title = "Login | Unity ERP";
+    document.title = "Sign in | Unity ERP";
   }, []);
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!email.includes("@")) return;
+    if (!email.includes("@") || !password) {
+      setError("Enter your email and password.");
+      return;
+    }
     setLoading(true);
     setError("");
-    setMessage("");
     try {
-      if (mode === "magic") {
-        const { error: err } = await supabase.auth.signInWithOtp({
-          email: email.trim().toLowerCase(),
-          options: {
-            emailRedirectTo: "https://www.unity-software.online/joined",
-          },
-        });
-        if (err) throw err;
-        setMessage(
-          "Check your email for a login link. If magic link is not enabled in Supabase Auth yet, contact support to activate your workspace."
-        );
-      } else {
-        const { error: err } = await supabase.auth.signInWithPassword({
-          email: email.trim().toLowerCase(),
-          password,
-        });
-        if (err) throw err;
-        window.location.href = "/joined";
-      }
-      // Track login interest
-      await supabase.from("leads").insert({
-        email: email.trim().toLowerCase(),
-        source: "login_page",
-        primary_need: "ERP login / access request",
-      });
+      // Client workspaces live on subdomain app — send them to demo or ERP host
+      window.location.href =
+        "https://demo.unity-software.online/?email=" +
+        encodeURIComponent(email.trim().toLowerCase());
     } catch (err: unknown) {
-      setError(
-        err instanceof Error
-          ? err.message
-          : "Login failed. Ensure Supabase Auth is enabled or request access via sales."
-      );
+      setError(err instanceof Error ? err.message : "Could not continue");
     } finally {
       setLoading(false);
     }
   }
 
   return (
-    <div className="min-h-screen bg-white font-sans text-slate-950">
-      <Header />
-      <main className="mx-auto flex max-w-md flex-col px-6 py-28">
-        <div className="rounded-3xl border border-slate-100 bg-slate-50/50 p-8 shadow-sm">
-          <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-950 text-white">
-            <LogIn className="h-5 w-5" />
+    <div className="flex min-h-screen items-center justify-center bg-[#f3f0ff] p-6 font-sans">
+      <div className="grid w-full max-w-[920px] overflow-hidden rounded-[28px] bg-white shadow-[0_25px_80px_rgba(15,23,42,0.12)] md:grid-cols-2 md:min-h-[560px]">
+        <aside className="relative flex flex-col justify-between bg-gradient-to-br from-indigo-600 via-violet-600 to-violet-300 p-8 text-white">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/20 text-xl font-bold">
+            *
           </div>
-          <h1 className="text-2xl font-bold tracking-tight">Log in to Unity ERP</h1>
-          <p className="mt-2 text-sm text-slate-600">
-            Customers with an active workspace can sign in. New here?{" "}
-            <a href="/pricing" className="font-semibold text-emerald-700 underline">
-              Start free
-            </a>{" "}
-            or wait for your sales activation call.
+          <div>
+            <p className="text-sm text-white/90">You can easily</p>
+            <h2 className="mt-2 max-w-[16ch] text-3xl font-bold leading-tight tracking-[-0.02em]">
+              Get access your personal hub for clarity and productivity
+            </h2>
+            <p className="mt-3 max-w-[28ch] text-sm text-white/85">
+              Unity ERP — inventory, CRM, finance and operations in one cloud system.
+            </p>
+          </div>
+        </aside>
+
+        <section className="flex flex-col justify-center px-8 py-10 md:px-10">
+          <div className="text-2xl font-bold text-indigo-600">*</div>
+          <h1 className="mt-1 text-3xl font-bold tracking-[-0.02em] text-slate-950">
+            Create an account
+          </h1>
+          <p className="mt-2 text-sm leading-relaxed text-slate-500">
+            Access your tasks, stock, sales and projects anytime — keep everything flowing
+            in one place.
           </p>
 
-          <div className="mt-6 flex gap-2 rounded-full bg-white p-1 ring-1 ring-slate-200">
-            <button
-              type="button"
-              onClick={() => setMode("magic")}
-              className={`flex-1 rounded-full py-2 text-xs font-semibold ${
-                mode === "magic" ? "bg-slate-950 text-white" : "text-slate-600"
-              }`}
-            >
-              Email link
-            </button>
-            <button
-              type="button"
-              onClick={() => setMode("login")}
-              className={`flex-1 rounded-full py-2 text-xs font-semibold ${
-                mode === "login" ? "bg-slate-950 text-white" : "text-slate-600"
-              }`}
-            >
-              Password
-            </button>
-          </div>
-
-          <form onSubmit={onSubmit} className="mt-6 space-y-3">
-            <input
-              type="email"
-              required
-              placeholder="Work email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="h-12 w-full rounded-xl border border-slate-200 px-4 text-sm outline-none focus:ring-2 focus:ring-emerald-500/20"
-            />
-            {mode === "login" && (
+          <form onSubmit={onSubmit} className="mt-8 space-y-4">
+            {error && (
+              <p className="rounded-xl bg-rose-50 px-3 py-2 text-sm text-rose-700">{error}</p>
+            )}
+            <label className="block text-xs font-semibold text-slate-600">
+              Your email
               <input
-                type="password"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="you@company.com"
+                className="mt-1.5 w-full rounded-xl border border-slate-200 px-3.5 py-3 text-sm outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-500/20"
                 required
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="h-12 w-full rounded-xl border border-slate-200 px-4 text-sm outline-none focus:ring-2 focus:ring-emerald-500/20"
               />
-            )}
-            {error && <p className="text-xs text-rose-600">{error}</p>}
-            {message && (
-              <p className="flex items-start gap-2 text-xs text-emerald-800">
-                <Check className="mt-0.5 h-3.5 w-3.5 shrink-0" />
-                {message}
-              </p>
-            )}
+            </label>
+            <label className="block text-xs font-semibold text-slate-600">
+              Password
+              <div className="relative mt-1.5">
+                <input
+                  type={showPw ? "text" : "password"}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="••••••••"
+                  className="w-full rounded-xl border border-slate-200 px-3.5 py-3 pr-14 text-sm outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-500/20"
+                  required
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPw((v) => !v)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-semibold text-slate-500"
+                >
+                  {showPw ? "Hide" : "Show"}
+                </button>
+              </div>
+            </label>
             <button
               type="submit"
               disabled={loading}
-              className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-slate-950 text-sm font-semibold text-white hover:bg-slate-800 disabled:opacity-50"
+              className="flex h-12 w-full items-center justify-center rounded-xl bg-indigo-600 text-sm font-bold text-white transition hover:bg-indigo-500 active:scale-[0.98] disabled:opacity-60"
             >
-              {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <LogIn className="h-4 w-4" />}
-              {mode === "magic" ? "Send login link" : "Sign in"}
+              {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : "Get Started"}
             </button>
           </form>
 
           <p className="mt-6 text-center text-xs text-slate-500">
-            Need help? WhatsApp{" "}
-            <a href="https://wa.me/254778903044" className="font-medium text-slate-800 underline">
-              +254 778 903 044
+            Prefer the guided demo?{" "}
+            <a href="/#pricing" className="font-semibold text-indigo-600">
+              Get the Demo
+            </a>
+            {" · "}
+            <a
+              href="https://demo.unity-software.online"
+              className="font-semibold text-indigo-600"
+            >
+              Open demo
             </a>
           </p>
-        </div>
-      </main>
-      <SiteFooter />
+        </section>
+      </div>
     </div>
   );
 }

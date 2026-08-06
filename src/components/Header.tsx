@@ -265,7 +265,7 @@ export function Header({ onOpenSignup }: { onOpenSignup?: () => void } = {}) {
             <Globe className="h-5 w-5" />
           </button>
           <Button onClick={onOpenSignup} className="group gap-2 rounded-full bg-slate-950 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:scale-105 hover:shadow-lg hover:shadow-slate-900/20">
-            Book a Demo
+            Get the Demo
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Button>
         </div>
@@ -308,7 +308,7 @@ export function Header({ onOpenSignup }: { onOpenSignup?: () => void } = {}) {
               </div>
 
               <Button onClick={() => { setMobileOpen(false); onOpenSignup?.(); }} className="w-full gap-2 rounded-full bg-slate-950 text-white">
-                Book a Demo <ArrowRight className="h-4 w-4" />
+                Get the Demo <ArrowRight className="h-4 w-4" />
               </Button>
             </div>
           </motion.div>

@@ -281,7 +281,7 @@ export function Hero({ onOpenSignup }: { onOpenSignup?: () => void } = {}) {
               onClick={onOpenSignup}
               className="group relative overflow-hidden rounded-full bg-slate-950 px-7 py-6 text-base font-semibold text-white shadow-lg shadow-slate-900/20 transition-all hover:scale-105 hover:shadow-xl hover:shadow-slate-900/30"
             >
-              Book a Free Demo
+              Get the Demo
               <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Button>
             <Button

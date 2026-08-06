@@ -1,0 +1,26 @@
+{
+  "Retail & POS": {
+    "products": ["Maize flour 2kg", "Cooking oil 1L", "Soap bar", "Soda 500ml", "Rice 5kg"],
+    "customers": ["Walk-in Retail", "Kiosk Westlands", "Supermarket Branch A"]
+  },
+  "Manufacturing": {
+    "products": ["Raw polymer resin", "Finished casing SKU-A", "Packaging carton", "Label roll"],
+    "customers": ["Distributor Nairobi", "Export client Mombasa"]
+  },
+  "Agriculture": {
+    "products": ["Fertilizer NPK 50kg", "Seed maize 10kg", "Pesticide 1L", "Animal feed 25kg"],
+    "customers": ["Co-op Society", "Farm Gate Buyer"]
+  },
+  "Construction": {
+    "products": ["Cement 50kg", "Steel bar 12mm", "Sand ton", "Paint 20L"],
+    "customers": ["Site Contractor", "Hardware Partner"]
+  },
+  "Hospital / Healthcare": {
+    "products": ["Syringe pack", "Gloves box", "Paracetamol 500mg", "Bandage roll"],
+    "customers": ["Clinic Walk-in", "Ward Supply"]
+  },
+  "default": {
+    "products": ["Service item", "Standard SKU", "Consultation"],
+    "customers": ["Demo Customer", "Sample Client"]
+  }
+}

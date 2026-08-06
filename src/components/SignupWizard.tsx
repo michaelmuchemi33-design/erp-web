@@ -1,19 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import {
   ArrowRight,
   ArrowLeft,
   Check,
-  Building2,
-  Users,
-  Target,
   Mail,
   X,
   Loader2,
-  Sparkles,
 } from "lucide-react";
-import { supabase, trackLead } from "@/lib/supabase";
+import { trackLead } from "@/lib/supabase";
 
 const industries = [
   "Manufacturing",
@@ -28,39 +24,20 @@ const industries = [
   "Other",
 ];
 
-const companySizes = [
-  "1–10 employees",
-  "11–50 employees",
-  "51–200 employees",
-  "201–500 employees",
-  "500+ employees",
-];
-
-const needs = [
-  "Inventory & warehouse",
-  "Accounting & finance",
-  "CRM & sales",
-  "HR & payroll",
-  "Manufacturing / production",
-  "Full ERP (everything)",
-];
-
 type Answers = {
   industry: string;
-  companySize: string;
-  need: string;
   email: string;
   name: string;
   phone: string;
+  company: string;
 };
 
 const initial: Answers = {
   industry: "",
-  companySize: "",
-  need: "",
   email: "",
   name: "",
   phone: "",
+  company: "",
 };
 
 export function SignupWizard({
@@ -75,80 +52,78 @@ export function SignupWizard({
   const [loading, setLoading] = useState(false);
   const [done, setDone] = useState(false);
   const [error, setError] = useState("");
+  /** demo = low friction (industry + email). paid = company details */
+  const [mode, setMode] = useState<"demo" | "paid">("demo");
 
-  const totalSteps = 4;
+  useEffect(() => {
+    if (!open) return;
+    try {
+      const m = sessionStorage.getItem("unity_signup_mode");
+      if (m === "paid" || m === "free") setMode(m === "paid" ? "paid" : "demo");
+      else setMode("demo");
+    } catch {
+      setMode("demo");
+    }
+    setStep(0);
+    setDone(false);
+    setError("");
+  }, [open]);
+
+  const totalSteps = mode === "demo" ? 2 : 3;
 
   const canNext =
-    (step === 0 && answers.industry) ||
-    (step === 1 && answers.companySize) ||
-    (step === 2 && answers.need) ||
-    (step === 3 &&
+    (step === 0 && !!answers.industry) ||
+    (mode === "demo" &&
+      step === 1 &&
       answers.email.includes("@") &&
-      answers.email.includes(".") &&
-      answers.name.trim().length > 1 &&
-      answers.phone.replace(/\D/g, "").length >= 9);
+      answers.email.includes(".")) ||
+    (mode === "paid" &&
+      step === 1 &&
+      answers.company.trim().length > 1 &&
+      answers.name.trim().length > 1) ||
+    (mode === "paid" &&
+      step === 2 &&
+      answers.email.includes("@") &&
+      answers.email.includes("."));
 
   async function submit() {
     setLoading(true);
     setError("");
     try {
       const payload = {
-        name: answers.name.trim(),
+        name: answers.name.trim() || answers.email.split("@")[0],
         email: answers.email.trim().toLowerCase(),
-        phone: answers.phone.trim(),
+        phone: answers.phone.trim() || null,
         industry: answers.industry,
-        company_size: answers.companySize,
-        primary_need: answers.need,
-        source: "signup_wizard",
-        created_at: new Date().toISOString(),
+        company_size: answers.company.trim() || null,
+        primary_need: mode === "demo" ? "demo_access" : "paid_signup",
+        source: mode === "demo" ? "get_the_demo" : "signup_paid",
       };
-      // /api/lead saves Supabase + sends Resend welcome email
+
       const leadRes = await fetch("/api/lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: payload.name,
-          email: payload.email,
-          phone: payload.phone,
-          industry: payload.industry,
-          company_size: payload.company_size,
-          primary_need: payload.primary_need,
-          source: payload.source,
-        }),
+        body: JSON.stringify(payload),
       });
       if (!leadRes.ok) {
-        // Fallback helper (may skip email if API is down)
-        const { error: dbError } = await trackLead({
-          name: payload.name,
-          email: payload.email,
-          phone: payload.phone,
-          industry: payload.industry,
-          company_size: payload.company_size,
-          primary_need: payload.primary_need,
-          source: payload.source,
-        });
-        if (dbError) console.warn("lead save:", dbError);
+        await trackLead(payload as any);
       } else {
         const j = await leadRes.json().catch(() => ({}));
         if (!(j as { emailSent?: boolean }).emailSent) {
-          console.warn("Lead saved but emailSent=false — check RESEND_API_KEY / domain on Vercel");
+          console.warn("emailSent=false — check Resend on Vercel");
         }
       }
 
       setDone(true);
       try {
-        const mode = sessionStorage.getItem("unity_signup_mode");
         sessionStorage.removeItem("unity_signup_mode");
-        if (mode === "free") {
-          window.setTimeout(() => {
-            window.history.pushState({}, "", "/joined");
-            window.dispatchEvent(new PopStateEvent("popstate"));
-          }, 1200);
-        }
       } catch {}
+      window.setTimeout(() => {
+        window.history.pushState({}, "", "/joined");
+        window.dispatchEvent(new PopStateEvent("popstate"));
+      }, 1600);
     } catch (e: unknown) {
-      const msg = e instanceof Error ? e.message : "Something went wrong";
-      setError(msg);
+      setError(e instanceof Error ? e.message : "Something went wrong");
     } finally {
       setLoading(false);
     }
@@ -190,31 +165,29 @@ export function SignupWizard({
             </div>
             <h3 className="text-2xl font-bold text-slate-950">Check your email now</h3>
             <p className="mt-3 text-slate-600 leading-relaxed">
-              We have sent a welcome email with your product preview and next steps to
+              We sent your demo access link and next steps to
             </p>
             <p className="mt-2 break-all text-base font-semibold text-emerald-700">
               {answers.email}
             </p>
-            <p className="mt-4 text-sm leading-relaxed text-slate-500">
-              Open that inbox (and spam/promotions if you do not see it). Our team may also
-              call or WhatsApp you to activate access.
+            <p className="mt-4 text-sm text-slate-500">
+              Industry: <strong className="text-slate-800">{answers.industry}</strong>
+              <br />
+              Open the inbox (and spam) for the link to{" "}
+              <span className="font-medium text-slate-800">demo.unity-software.online</span>
             </p>
-            <Button
-              onClick={reset}
-              className="mt-8 h-11 rounded-full bg-slate-950 px-8 text-white"
-            >
+            <Button onClick={reset} className="mt-8 h-11 rounded-full bg-slate-950 px-8 text-white">
               Close
             </Button>
           </div>
         ) : (
           <div className="p-8 md:p-10">
-            {/* Progress */}
             <div className="mb-8 flex items-center gap-2">
               {Array.from({ length: totalSteps }).map((_, i) => (
                 <div
                   key={i}
                   className={`h-1.5 flex-1 rounded-full transition-colors ${
-                    i <= step ? "bg-amber-500" : "bg-slate-100"
+                    i <= step ? "bg-emerald-500" : "bg-slate-100"
                   }`}
                 />
               ))}
@@ -223,29 +196,27 @@ export function SignupWizard({
             <AnimatePresence mode="wait">
               {step === 0 && (
                 <motion.div
-                  key="s0"
-                  initial={{ opacity: 0, x: 16 }}
+                  key="industry"
+                  initial={{ opacity: 0, x: 12 }}
                   animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -16 }}
+                  exit={{ opacity: 0, x: -12 }}
                 >
-                  <div className="mb-2 flex items-center gap-2 text-amber-600">
-                    <Building2 className="h-5 w-5" />
-                    <span className="text-xs font-bold uppercase tracking-wider">
-                      Step 1 of 4
-                    </span>
-                  </div>
                   <h3 className="text-xl font-bold text-slate-950">
                     What industry are you in?
                   </h3>
-                  <div className="mt-5 grid grid-cols-2 gap-2">
+                  <p className="mt-1 text-sm text-slate-500">
+                    We tailor the demo data to your sector.
+                  </p>
+                  <div className="mt-5 grid grid-cols-1 gap-2 sm:grid-cols-2">
                     {industries.map((ind) => (
                       <button
                         key={ind}
+                        type="button"
                         onClick={() => setAnswers((a) => ({ ...a, industry: ind }))}
-                        className={`rounded-xl border px-3 py-3 text-left text-sm font-medium transition-all ${
+                        className={`rounded-xl border px-3 py-3 text-left text-sm font-semibold transition ${
                           answers.industry === ind
-                            ? "border-amber-400 bg-amber-50 text-amber-900"
-                            : "border-slate-100 bg-slate-50 text-slate-700 hover:border-slate-200"
+                            ? "border-emerald-500 bg-emerald-50 text-emerald-900"
+                            : "border-slate-200 bg-white text-slate-700 hover:border-slate-300"
                         }`}
                       >
                         {ind}
@@ -255,167 +226,128 @@ export function SignupWizard({
                 </motion.div>
               )}
 
-              {step === 1 && (
+              {mode === "paid" && step === 1 && (
                 <motion.div
-                  key="s1"
-                  initial={{ opacity: 0, x: 16 }}
+                  key="company"
+                  initial={{ opacity: 0, x: 12 }}
                   animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -16 }}
+                  exit={{ opacity: 0, x: -12 }}
                 >
-                  <div className="mb-2 flex items-center gap-2 text-amber-600">
-                    <Users className="h-5 w-5" />
-                    <span className="text-xs font-bold uppercase tracking-wider">
-                      Step 2 of 4
-                    </span>
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-950">
-                    How large is your company?
-                  </h3>
-                  <div className="mt-5 space-y-2">
-                    {companySizes.map((size) => (
-                      <button
-                        key={size}
-                        onClick={() =>
-                          setAnswers((a) => ({ ...a, companySize: size }))
-                        }
-                        className={`flex w-full items-center justify-between rounded-xl border px-4 py-3.5 text-left text-sm font-medium transition-all ${
-                          answers.companySize === size
-                            ? "border-amber-400 bg-amber-50 text-amber-900"
-                            : "border-slate-100 bg-slate-50 text-slate-700 hover:border-slate-200"
-                        }`}
-                      >
-                        {size}
-                        {answers.companySize === size && (
-                          <Check className="h-4 w-4 text-amber-600" />
-                        )}
-                      </button>
-                    ))}
-                  </div>
-                </motion.div>
-              )}
-
-              {step === 2 && (
-                <motion.div
-                  key="s2"
-                  initial={{ opacity: 0, x: 16 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -16 }}
-                >
-                  <div className="mb-2 flex items-center gap-2 text-amber-600">
-                    <Target className="h-5 w-5" />
-                    <span className="text-xs font-bold uppercase tracking-wider">
-                      Step 3 of 4
-                    </span>
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-950">
-                    What do you need most?
-                  </h3>
-                  <div className="mt-5 space-y-2">
-                    {needs.map((n) => (
-                      <button
-                        key={n}
-                        onClick={() => setAnswers((a) => ({ ...a, need: n }))}
-                        className={`flex w-full items-center justify-between rounded-xl border px-4 py-3.5 text-left text-sm font-medium transition-all ${
-                          answers.need === n
-                            ? "border-amber-400 bg-amber-50 text-amber-900"
-                            : "border-slate-100 bg-slate-50 text-slate-700 hover:border-slate-200"
-                        }`}
-                      >
-                        {n}
-                        {answers.need === n && (
-                          <Check className="h-4 w-4 text-amber-600" />
-                        )}
-                      </button>
-                    ))}
-                  </div>
-                </motion.div>
-              )}
-
-              {step === 3 && (
-                <motion.div
-                  key="s3"
-                  initial={{ opacity: 0, x: 16 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -16 }}
-                >
-                  <div className="mb-2 flex items-center gap-2 text-amber-600">
-                    <Mail className="h-5 w-5" />
-                    <span className="text-xs font-bold uppercase tracking-wider">
-                      Step 4 of 4
-                    </span>
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-950">
-                    Where should we send your demo?
-                  </h3>
+                  <h3 className="text-xl font-bold text-slate-950">Company details</h3>
                   <p className="mt-1 text-sm text-slate-500">
-                    You will receive a confirmation email with demo access.
+                    For a paid workspace we need your company and contact name.
                   </p>
-                  <div className="mt-5 space-y-3">
+                  <label className="mt-5 block text-xs font-semibold text-slate-600">
+                    Company name
                     <input
-                      type="text"
-                      placeholder="Your name"
+                      className="mt-1 w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-emerald-500/30"
+                      value={answers.company}
+                      onChange={(e) =>
+                        setAnswers((a) => ({ ...a, company: e.target.value }))
+                      }
+                      placeholder="Acme Traders Ltd"
+                    />
+                  </label>
+                  <label className="mt-3 block text-xs font-semibold text-slate-600">
+                    Your name
+                    <input
+                      className="mt-1 w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-emerald-500/30"
                       value={answers.name}
                       onChange={(e) =>
                         setAnswers((a) => ({ ...a, name: e.target.value }))
                       }
-                      className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none ring-amber-500/20 focus:ring-2"
+                      placeholder="Jane Wanjiku"
                     />
+                  </label>
+                  <label className="mt-3 block text-xs font-semibold text-slate-600">
+                    Phone (optional)
                     <input
-                      type="email"
-                      placeholder="Work email"
-                      value={answers.email}
-                      onChange={(e) =>
-                        setAnswers((a) => ({ ...a, email: e.target.value }))
-                      }
-                      className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none ring-amber-500/20 focus:ring-2"
-                    />
-                    <input
-                      type="tel"
-                      placeholder="Phone number (e.g. +254 7XX XXX XXX)"
+                      className="mt-1 w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-emerald-500/30"
                       value={answers.phone}
                       onChange={(e) =>
                         setAnswers((a) => ({ ...a, phone: e.target.value }))
                       }
-                      className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none ring-amber-500/20 focus:ring-2"
+                      placeholder="+254…"
                     />
-                  </div>
-                  {error && (
-                    <p className="mt-3 text-sm text-rose-600">{error}</p>
+                  </label>
+                </motion.div>
+              )}
+
+              {((mode === "demo" && step === 1) || (mode === "paid" && step === 2)) && (
+                <motion.div
+                  key="email"
+                  initial={{ opacity: 0, x: 12 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -12 }}
+                >
+                  <h3 className="text-xl font-bold text-slate-950">
+                    {mode === "demo" ? "Get the demo in your inbox" : "Work email"}
+                  </h3>
+                  <p className="mt-1 text-sm text-slate-500">
+                    {mode === "demo"
+                      ? "Enter your email — we send the demo link straight to you. No long form."
+                      : "We will send workspace instructions to this address."}
+                  </p>
+                  <label className="mt-5 block text-xs font-semibold text-slate-600">
+                    <span className="inline-flex items-center gap-1">
+                      <Mail className="h-3.5 w-3.5" /> Email
+                    </span>
+                    <input
+                      type="email"
+                      className="mt-1 w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-emerald-500/30"
+                      value={answers.email}
+                      onChange={(e) =>
+                        setAnswers((a) => ({ ...a, email: e.target.value }))
+                      }
+                      placeholder="you@company.com"
+                      required
+                    />
+                  </label>
+                  {mode === "demo" && (
+                    <p className="mt-3 text-xs text-slate-500">
+                      Selected industry:{" "}
+                      <strong className="text-slate-800">{answers.industry}</strong>
+                    </p>
                   )}
                 </motion.div>
               )}
             </AnimatePresence>
 
+            {error && <p className="mt-4 text-sm text-rose-600">{error}</p>}
+
             <div className="mt-8 flex items-center justify-between gap-3">
-              <button
+              <Button
+                type="button"
+                variant="ghost"
+                disabled={step === 0 || loading}
                 onClick={() => setStep((s) => Math.max(0, s - 1))}
-                disabled={step === 0}
-                className="inline-flex items-center gap-1.5 rounded-full px-4 py-2.5 text-sm font-medium text-slate-600 disabled:opacity-30"
+                className="h-11 px-4"
               >
-                <ArrowLeft className="h-4 w-4" />
-                Back
-              </button>
+                <ArrowLeft className="h-4 w-4" /> Back
+              </Button>
               {step < totalSteps - 1 ? (
                 <Button
+                  type="button"
                   disabled={!canNext}
                   onClick={() => setStep((s) => s + 1)}
-                  className="h-11 gap-2 rounded-full bg-slate-950 px-6 text-white disabled:opacity-40"
+                  className="h-11 rounded-full bg-slate-950 px-6 text-white"
                 >
-                  Continue
-                  <ArrowRight className="h-4 w-4" />
+                  Continue <ArrowRight className="h-4 w-4" />
                 </Button>
               ) : (
                 <Button
+                  type="button"
                   disabled={!canNext || loading}
                   onClick={submit}
-                  className="h-11 gap-2 rounded-full bg-[#DD268A] px-6 text-white disabled:opacity-40"
+                  className="h-11 rounded-full bg-emerald-600 px-6 text-white hover:bg-emerald-500"
                 >
                   {loading ? (
                     <Loader2 className="h-4 w-4 animate-spin" />
+                  ) : mode === "demo" ? (
+                    <>Get the Demo <ArrowRight className="h-4 w-4" /></>
                   ) : (
-                    <Sparkles className="h-4 w-4" />
+                    <>Create account <ArrowRight className="h-4 w-4" /></>
                   )}
-                  Get demo access
                 </Button>
               )}
             </div>

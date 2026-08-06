@@ -66,7 +66,7 @@ export function BottomCTA({ onOpenSignup }: { onOpenSignup?: () => void } = {}) 
             variant="outline"
             className="h-13 gap-2 rounded-full border-slate-600 bg-transparent px-8 py-6 text-base font-semibold text-white transition-all hover:border-slate-400 hover:bg-white/5"
           >
-            Book a Live Demo
+            Get the Demo
             <ArrowRight className="h-4 w-4" />
           </Button>
         </motion.div>
