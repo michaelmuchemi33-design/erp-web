@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { X } from "lucide-react";
 
 const STORAGE_KEY = "unity_promo_card_dismissed_v1";
-const PORTRAIT = "/promo-sales-portrait.png";
+const PORTRAIT = "https://www.unity-software.online/promo-sales-portrait.png";
 
 export function PromoBanners() {
   const [open, setOpen] = useState(false);
@@ -98,21 +98,29 @@ export function PromoBanners() {
             POS — set up around how your business actually runs.
           </p>
 
-          <a
-            href="https://wa.me/254778903044"
-            target="_blank"
-            rel="noreferrer"
-            className="mt-4 flex h-11 w-full items-center justify-center rounded-full bg-emerald-600 text-sm font-semibold text-white transition hover:bg-emerald-500 active:scale-[0.98]"
-          >
-            WhatsApp +254 778 903 044
-          </a>
+          <div className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-2">
+            <a
+              href="https://wa.me/254793832286"
+              target="_blank"
+              rel="noreferrer"
+              className="flex h-11 items-center justify-center rounded-full bg-emerald-600 text-sm font-semibold text-white transition hover:bg-emerald-500 active:scale-[0.98]"
+            >
+              WhatsApp
+            </a>
+            <a
+              href="tel:+254793832286"
+              className="flex h-11 items-center justify-center rounded-full border border-slate-200 text-sm font-semibold text-slate-800 transition hover:bg-slate-50 active:scale-[0.98]"
+            >
+              Call +254 793 832 286
+            </a>
+          </div>
 
           <div className="mt-4 rounded-xl border border-slate-100 bg-slate-50 px-3.5 py-3">
             <p className="text-xs font-semibold text-slate-800">
               Free website design for active Unity ERP users
             </p>
             <p className="mt-1 text-xs leading-relaxed text-slate-500">
-              Custom pages for your business can be included with your plan.
+              Custom pages for your business can be included with your plan. Free mode available — no credit card needed to start.
             </p>
             <a
               href="/pricing"

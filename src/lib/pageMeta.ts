@@ -97,6 +97,75 @@ export const routeMeta: Record<
   { title: string; description: string; keywords?: string }
 > = {
   "/": {
+    title: "Unity ERP Kenya | Free Cloud ERP & CRM — No Credit Card",
+    description:
+      "Free cloud ERP & CRM for Kenya: inventory, POS, accounting, manufacturing. Free mode — no credit card. From KES 3,000/mo.",
+    keywords: "ERP Kenya, free ERP, cloud ERP, CRM Kenya, Unity ERP, inventory software Kenya",
+  },
+  "/pricing": {
+    title: "Unity ERP Pricing | Free Mode & KES Plans",
+    description:
+      "Free mode with no credit card. Then KES 3,000/month or KES 33,000/year. Unlimited users, CRM, AI and free website design.",
+    keywords: "ERP pricing Kenya, cheap ERP Kenya, Unity ERP cost, free ERP trial",
+  },
+  "/features": {
+    title: "Unity ERP Features | Inventory CRM Finance POS AI",
+    description:
+      "Inventory, CRM, finance, POS, manufacturing, HR and AI assistant in one cloud ERP. Free mode to explore — no card needed.",
+    keywords: "ERP features, inventory CRM, POS Kenya, Unity ERP modules",
+  },
+  "/industries": {
+    title: "Industry ERP Kenya | Manufacturing Retail Hospitality",
+    description:
+      "Unity ERP for manufacturing, retail, construction, hospitals, agriculture, logistics and more. Free mode available.",
+    keywords: "manufacturing ERP Kenya, retail POS, industry ERP",
+  },
+  "/about": {
+    title: "About Unity Software Solutions | Unity ERP",
+    description:
+      "Unity Software Solutions builds Unity ERP for African SMEs — Kenya, South Africa and Egypt. Cloud ERP with free mode.",
+    keywords: "Unity Software Solutions, about Unity ERP",
+  },
+  "/contact": {
+    title: "Contact Unity ERP | WhatsApp & Call Kenya",
+    description:
+      "Contact Unity ERP sales: WhatsApp +254 778 903 044 or call +254 793 832 286. Kenya, South Africa, Egypt.",
+    keywords: "contact Unity ERP, WhatsApp ERP Kenya",
+  },
+  "/careers": {
+    title: "Careers at Unity ERP | Jobs Kenya",
+    description:
+      "Join Unity Software Solutions. Careers in software, sales and design. Employee software benefits available.",
+    keywords: "Unity ERP careers, jobs Kenya tech",
+  },
+  "/blog": {
+    title: "Unity ERP Blog | ERP CRM Guides for Kenya SMEs",
+    description:
+      "Practical ERP, CRM, inventory and accounting guides for Kenyan and African SMEs. Free mode and trial tips.",
+    keywords: "ERP blog Kenya, CRM guides, inventory management",
+  },
+  "/login": {
+    title: "Sign in | Unity ERP",
+    description:
+      "Sign in with Google or email. Demo users open the shared demo; paid companies open their subdomain workspace.",
+    keywords: "Unity ERP login, sign in ERP",
+  },
+  "/joined": {
+    title: "Check your email | Unity ERP Demo",
+    description:
+      "Your demo request is in. Open the welcome email and start free mode — no credit card required.",
+    keywords: "Unity ERP demo, free mode",
+  },
+  "/employee-discounts": {
+    title: "Employee Software Benefits | Unity ERP",
+    description:
+      "Company-sponsored premium software for Unity team roles. Employee contribution plans and benefits overview.",
+    keywords: "employee discounts, software benefits Unity",
+  },
+};
+
+> = {
+  "/": {
     title: "Unity ERP Kenya | Free Cloud ERP & CRM",
     description:
       "Unity ERP: cloud ERP + CRM + AI for inventory, accounting, POS and manufacturing. Free trial. KES 3,000/mo. Kenya & Africa.",

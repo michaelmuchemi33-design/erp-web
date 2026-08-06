@@ -247,7 +247,7 @@ export function PricingCard({ onOpenSignup }: { onOpenSignup?: () => void } = {}
                         2-Month Free Trial Included
                       </p>
                       <p className="mt-1 text-sm leading-relaxed text-amber-800/90">
-                        Full module access for 60 days on trial. Paid customers can request free custom website design. No credit card
+                        Free mode to explore with no credit card required. Full module access for 60 days on trial. Paid customers can request free custom website design. No credit card
                         required to start.
                       </p>
                     </div>

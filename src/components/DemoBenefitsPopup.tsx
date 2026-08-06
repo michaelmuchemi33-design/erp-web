@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 import { X, Check } from "lucide-react";
 
 const KEY = "unity_demo_benefits_dismissed_v1";
-const DASH = "/erp-dashboard.jpg";
+const DASH = "https://www.unity-software.online/erp-dashboard.jpg";
 
 const benefits = [
   "Live demo workspace with sample inventory, sales and CRM data",
   "Free onboarding training for your team (remote)",
+  "Free mode to explore — no credit card required",
   "M-Pesa-friendly operations and clear KES pricing",
   "Free website design benefit for active paying users",
   "Unlimited users on the standard plan",
@@ -90,10 +91,10 @@ export function DemoBenefitsPopup({ force = false }: { force?: boolean }) {
             Open demo workspace
           </a>
           <a
-            href="https://wa.me/254778903044"
+            href="https://wa.me/254793832286"
             className="mt-2 flex h-10 w-full items-center justify-center text-sm font-semibold text-slate-600 hover:text-slate-900"
           >
-            WhatsApp sales · +254 778 903 044
+            WhatsApp sales · +254 793 832 286
           </a>
         </div>
       </div>

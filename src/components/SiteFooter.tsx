@@ -106,9 +106,14 @@ export function SiteFooter() {
                     erpintergration@gmail.com
                   </a>
                 </li>
-                <li>
+                                <li>
                   <a href="tel:+254793832286" className="transition hover:text-slate-950">
-                    +254 793 832 286
+                    Call +254 793 832 286
+                  </a>
+                </li>
+                <li>
+                  <a href="https://wa.me/254778903044" target="_blank" rel="noopener noreferrer" className="transition hover:text-slate-950">
+                    WhatsApp +254 778 903 044
                   </a>
                 </li>
                 <li>
