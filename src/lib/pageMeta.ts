@@ -1,15 +1,14 @@
 /** Per-route title, short description (≤155), self-canonical */
-
-export function trimDesc(text: string, max = 155): string {
-  const t = text.replace(/\s+/g, " ").trim();
+export function trimTitle(s: string, max = 58) {
+  const t = String(s || "").trim();
   if (t.length <= max) return t;
-  return t.slice(0, max - 1).replace(/\s+\S*$/, "") + "…";
+  return t.slice(0, max - 1).trimEnd() + "…";
 }
 
-export function trimTitle(text: string, max = 58): string {
-  const t = text.replace(/\s+/g, " ").trim();
+export function trimDesc(s: string, max = 155) {
+  const t = String(s || "").trim();
   if (t.length <= max) return t;
-  return t.slice(0, max - 1).replace(/\s+\S*$/, "") + "…";
+  return t.slice(0, max - 1).trimEnd() + "…";
 }
 
 export function setPageMeta(opts: {
@@ -18,25 +17,41 @@ export function setPageMeta(opts: {
   path?: string;
   keywords?: string;
 }) {
-  const path = opts.path ?? (typeof window !== "undefined" ? window.location.pathname : "/");
-  const url = `https://www.unity-software.online${path === "/" ? "/" : path.replace(/\/$/, "") || ""}`;
+  if (typeof document === "undefined") return;
   const title = trimTitle(opts.title);
   const description = trimDesc(opts.description);
+  const path = opts.path || "/";
+  const url =
+    path === "/"
+      ? "https://www.unity-software.online/"
+      : `https://www.unity-software.online${path.startsWith("/") ? path : "/" + path}`;
 
   document.title = title;
 
-  const ensure = (sel: string, attr: string, create: "meta" | "link", nameAttr: string, nameVal: string) => {
-    let el = document.querySelector(sel) as HTMLElement | null;
-    if (!el) {
+  const setAttr = (
+    selector: string,
+    attr: string,
+    value: string,
+    create?: "meta" | "link"
+  ) => {
+    let el = document.querySelector(selector) as HTMLElement | null;
+    if (!el && create) {
       el = document.createElement(create);
-      el.setAttribute(nameAttr, nameVal);
+      if (create === "meta") {
+        const name = selector.match(/name="([^"]+)"/)?.[1];
+        const prop = selector.match(/property="([^"]+)"/)?.[1];
+        if (name) el.setAttribute("name", name);
+        if (prop) el.setAttribute("property", prop);
+      }
+      if (create === "link") {
+        const rel = selector.match(/rel="([^"]+)"/)?.[1];
+        if (rel) el.setAttribute("rel", rel);
+      }
       document.head.appendChild(el);
     }
-    el.setAttribute(attr, create === "link" ? url : description);
-    return el;
+    if (el) el.setAttribute(attr, value);
   };
 
-  // description
   let d = document.querySelector('meta[name="description"]');
   if (!d) {
     d = document.createElement("meta");
@@ -55,16 +70,8 @@ export function setPageMeta(opts: {
     k.setAttribute("content", opts.keywords);
   }
 
-  // self-canonical (fixes audit: all pages pointed at /)
-  let can = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
-  if (!can) {
-    can = document.createElement("link");
-    can.setAttribute("rel", "canonical");
-    document.head.appendChild(can);
-  }
-  can.href = url;
+  setAttr('link[rel="canonical"]', "href", url, "link");
 
-  // OG
   const setProp = (property: string, content: string) => {
     let el = document.querySelector(`meta[property="${property}"]`);
     if (!el) {
@@ -77,6 +84,7 @@ export function setPageMeta(opts: {
   setProp("og:title", title);
   setProp("og:description", description);
   setProp("og:url", url);
+  setProp("og:type", "website");
 
   const setName = (name: string, content: string) => {
     let el = document.querySelector(`meta[name="${name}"]`);
@@ -161,57 +169,5 @@ export const routeMeta: Record<
     description:
       "Company-sponsored premium software for Unity team roles. Employee contribution plans and benefits overview.",
     keywords: "employee discounts, software benefits Unity",
-  },
-};
-
-> = {
-  "/": {
-    title: "Unity ERP Kenya | Free Cloud ERP & CRM",
-    description:
-      "Unity ERP: cloud ERP + CRM + AI for inventory, accounting, POS and manufacturing. Free trial. KES 3,000/mo. Kenya & Africa.",
-    keywords: "Unity ERP, ERP Kenya, free ERP trial, cloud ERP, CRM software Kenya",
-  },
-  "/pricing": {
-    title: "Unity ERP Pricing | Free Trial",
-    description:
-      "Unity ERP pricing: KES 3,000/month or KES 33,000/year. Free limited mode and 60-day trial. Pay with Paystack.",
-  },
-  "/features": {
-    title: "Unity ERP Features | CRM Inventory AI",
-    description:
-      "Explore Unity ERP features: CRM, inventory, purchasing, finance, POS, manufacturing, HR and AI Assistant.",
-  },
-  "/industries": {
-    title: "Unity ERP Industries | Retail & More",
-    description:
-      "Unity ERP for manufacturing, retail POS, construction, hospitals, schools, agriculture, logistics and finance.",
-  },
-  "/about": {
-    title: "About Unity Software Solutions",
-    description:
-      "Unity Software Solutions builds Unity ERP for African SMEs — Kenya, South Africa and Egypt. Our story and timeline.",
-  },
-  "/contact": {
-    title: "Contact Unity ERP | Sales & Support",
-    description:
-      "Contact Unity ERP: erpintergration@gmail.com, WhatsApp +254 778 903 044, call +254 793 832 286.",
-  },
-  "/careers": {
-    title: "Careers at Unity Software Solutions",
-    description:
-      "Join Unity Software Solutions. Open roles: Video Editor and Sales Executive. Apply by email or WhatsApp.",
-  },
-  "/blog": {
-    title: "Unity ERP Blog | Guides for SMEs",
-    description:
-      "ERP guides for Kenyan SMEs: choose ERP, implementation, inventory, accounting, CRM and AI automation.",
-  },
-  "/login": {
-    title: "Login | Unity ERP",
-    description: "Log in to your Unity ERP workspace or request access from sales.",
-  },
-  "/joined": {
-    title: "You're In | Unity ERP",
-    description: "Your Unity ERP request is received. Sales will contact you to activate access.",
   },
 };
