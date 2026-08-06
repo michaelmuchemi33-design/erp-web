@@ -55,6 +55,7 @@ function pageHtml(p) {
   </head>
   <body>
     <main id="prerender-content" style="max-width:48rem;margin:0 auto;padding:2rem 1.25rem;font-family:system-ui,sans-serif;color:#0f172a">
+      <p id="prerender-loading" style="margin:0 0 1rem;font-size:0.85rem;color:#64748b">Loading Unity ERP…</p>
       <p style="font-size:0.75rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#059669">Unity ERP</p>
       <h1 style="font-size:2rem;line-height:1.2;margin:0.5rem 0 1rem">${escapeHtml(p.h1 || title)}</h1>
       <p style="font-size:1.05rem;line-height:1.65;color:#475569">${escapeHtml(p.intro || desc)}</p>
@@ -76,18 +77,71 @@ function pageHtml(p) {
     </main>
     <div id="root"></div>
     <script>
-      // When SPA boots, remove static prerender block to avoid duplicate UI
-      window.addEventListener("DOMContentLoaded", function () {
-        var obs = new MutationObserver(function () {
+      (function () {
+        function hidePrerender() {
+          var pr = document.getElementById("prerender-content");
+          if (pr) {
+            pr.style.display = "none";
+            pr.setAttribute("aria-hidden", "true");
+          }
+        }
+        function spaReady() {
           var root = document.getElementById("root");
-          if (root && root.childNodes.length) {
+          return !!(root && root.childNodes && root.childNodes.length);
+        }
+        function watch() {
+          if (spaReady()) {
+            hidePrerender();
+            try { sessionStorage.removeItem("unity_spa_reload"); } catch (e) {}
+            return true;
+          }
+          return false;
+        }
+        var obs = new MutationObserver(function () {
+          if (watch()) obs.disconnect();
+        });
+        function start() {
+          if (watch()) return;
+          obs.observe(document.getElementById("root") || document.body, {
+            childList: true,
+            subtree: true,
+          });
+          // If the SPA never boots (idle tab, failed JS, bfcache), recover once
+          setTimeout(function () {
+            if (watch()) return;
+            try {
+              if (!sessionStorage.getItem("unity_spa_reload")) {
+                sessionStorage.setItem("unity_spa_reload", "1");
+                window.location.reload();
+                return;
+              }
+            } catch (e) {}
             var pr = document.getElementById("prerender-content");
-            if (pr) pr.style.display = "none";
-            obs.disconnect();
+            if (pr) {
+              var bar = document.createElement("p");
+              bar.setAttribute("role", "status");
+              bar.style.cssText =
+                "margin:0 0 1rem;padding:0.75rem 1rem;border-radius:0.75rem;background:#ecfdf5;color:#065f46;font-size:0.9rem;font-weight:600";
+              bar.innerHTML =
+                'Full app did not load. <a href="' +
+                window.location.pathname +
+                '" style="color:#047857;text-decoration:underline">Tap to reload</a> or open <a href="https://www.unity-software.online/" style="color:#047857;text-decoration:underline">home</a>.';
+              pr.insertBefore(bar, pr.firstChild);
+            }
+          }, 3500);
+        }
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", start);
+        } else {
+          start();
+        }
+        // Back-forward cache: force a fresh load so React mounts again
+        window.addEventListener("pageshow", function (e) {
+          if (e.persisted) {
+            window.location.reload();
           }
         });
-        obs.observe(document.getElementById("root") || document.body, { childList: true, subtree: true });
-      });
+      })();
     </script>
     ${bodyScripts}
   </body>
