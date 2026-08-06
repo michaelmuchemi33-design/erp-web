@@ -33,7 +33,7 @@ export default function PricingPage() {
           </div>
           <figure className="overflow-hidden rounded-3xl border border-slate-100 bg-white shadow-sm">
             <img
-              src="https://www.unity-software.online/trust-thumbs-up.webp"
+              src="/trust-thumbs-up.webp"
               alt="Happy professional recommending Unity ERP"
               className="aspect-[4/3] w-full object-cover object-top"
               loading="lazy"

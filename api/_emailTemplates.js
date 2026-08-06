@@ -1,5 +1,5 @@
 const LOGO = "https://i.postimg.cc/qBnzqpqk/blck-logo-erp.png";
-const DASHBOARD = "https://www.unity-software.online/erp-dashboard.jpg";
+const DASHBOARD = "https://www.unity-software.online/erp-dashboard.webp";
 const SITE = "https://www.unity-software.online";
 const DEMO = "https://demo.unity-software.online";
 function demoUrl(industry) {

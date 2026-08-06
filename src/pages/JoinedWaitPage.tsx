@@ -4,8 +4,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { Check, Phone, MessageCircle, Mail, Inbox } from "lucide-react";
 import { DemoBenefitsPopup } from "@/components/DemoBenefitsPopup";
 
-const DASHBOARD =
-  "https://www.unity-software.online/erp-dashboard.jpg";
+const DASHBOARD = "/erp-dashboard.webp";
 
 export function JoinedWaitShell() {
   useEffect(() => {
