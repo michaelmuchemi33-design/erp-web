@@ -140,11 +140,20 @@ function demoRequestEmail({ name, email, industry, company_size, primary_need })
     <ul style="margin:0 0 20px;padding-left:18px;">${benefits}</ul>
 
     <table role="presentation" width="100%" style="margin:0 0 12px;"><tr><td align="center">
-      <a href="${demoUrl(industry)}" style="display:inline-block;background:#4f46e5;color:#ffffff;font-weight:700;font-size:14px;padding:14px 28px;border-radius:999px;text-decoration:none;">Open demo workspace →</a>
+      <a href="${demoUrl(industry)}" style="display:inline-block;background:#4f46e5;color:#ffffff;font-weight:700;font-size:14px;padding:14px 28px;border-radius:999px;text-decoration:none;">
+        ${industry ? `Open ${industry} demo →` : "Open Unity ERP demo →"}
+      </a>
     </td></tr></table>
-    <p style="margin:0 0 16px;font-size:13px;line-height:1.55;color:#475569;text-align:center;">
-      Demo: <a href="${demoUrl(industry)}" style="color:#4f46e5;font-weight:600;">demo.unity-software.online</a>
-      ${industry ? ` · Tailored for <strong>${industry}</strong>` : ""}
+    <p style="margin:0 0 8px;font-size:13px;line-height:1.55;color:#475569;text-align:center;">
+      One link — opens your industry workspace automatically (no long form).
+    </p>
+    <p style="margin:0 0 16px;font-size:12px;line-height:1.5;color:#64748b;text-align:center;">
+      <a href="${demoUrl(industry)}" style="color:#4f46e5;font-weight:600;">demo.unity-software.online</a>
+      ${industry ? ` · <strong>${industry}</strong>` : ""}
+      · Shared demo · Resets daily
+    </p>
+    <p style="margin:0 0 16px;font-size:12px;line-height:1.5;color:#94a3b8;text-align:center;">
+      Optional staff login: demo@unity-software.online
     </p>
     <table role="presentation" width="100%" style="margin:0 0 12px;"><tr><td align="center">
       <a href="${SITE}/pricing" style="display:inline-block;background:#059669;color:#ffffff;font-weight:700;font-size:14px;padding:14px 28px;border-radius:999px;text-decoration:none;">View pricing &amp; plans</a>
