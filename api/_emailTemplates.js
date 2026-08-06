@@ -3,8 +3,8 @@ const DASHBOARD = "https://www.unity-software.online/erp-dashboard.jpg";
 const SITE = "https://www.unity-software.online";
 const DEMO = "https://demo.unity-software.online";
 function demoUrl(industry) {
-  if (!industry) return DEMO;
-  return DEMO + "/?industry=" + encodeURIComponent(industry);
+  if (!industry) return DEMO + "/?auto=1";
+  return DEMO + "/?auto=1&industry=" + encodeURIComponent(industry);
 }
 
 const WA = "https://wa.me/254778903044";
