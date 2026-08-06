@@ -24,6 +24,7 @@ import { JoinedWaitShell } from "@/pages/JoinedWaitPage";
 import { BlogIndexShell } from "@/pages/BlogIndexPage";
 import { BlogPostShell } from "@/pages/BlogPostPage";
 import { LoginPageShell } from "@/pages/LoginPage";
+import { AuthCallbackShell } from "@/pages/AuthCallbackPage";
 import { blogBySlug } from "@/content/blogPosts";
 import { applyHomeMeta, detectCountryCode, getGeoPack, refineCountryFromIp } from "@/lib/geoMeta";
 import { setPageMeta, routeMeta, trimDesc, trimTitle } from "@/lib/pageMeta";
@@ -127,6 +128,7 @@ export default function App() {
   const isJoined = path === "/joined";
   const isBlogIndex = path === "/blog";
   const isLogin = path === "/login";
+  const isAuthCallback = path === "/auth/callback";
   const isEmployeeDiscounts = path === "/employee-discounts" || path === "/downloads/employee-discounts";
   const blogSlug = path.startsWith("/blog/") ? path.slice("/blog/".length) : "";
   const blogPost = blogSlug ? blogBySlug[blogSlug] : undefined;
@@ -189,6 +191,8 @@ export default function App() {
         <PaymentCallbackShell />
       ) : isJoined ? (
         <JoinedWaitShell />
+      ) : isAuthCallback ? (
+        <AuthCallbackShell />
       ) : isLogin ? (
         <LoginPageShell />
       ) : isBlogIndex ? (
@@ -202,7 +206,7 @@ export default function App() {
       ) : (
         <HomePage onOpenSignup={() => setSignupOpen(true)} />
       )}
-      {!isAbout && !isContact && !isFeatures && !isIndustries && !isPricing && !isCareers && !isPaymentCallback && !isJoined && !isLogin && !isEmployeeDiscounts && !isBlogIndex && !blogPost && !resourcePage && !seoPage && (
+      {!isAbout && !isContact && !isFeatures && !isIndustries && !isPricing && !isCareers && !isPaymentCallback && !isJoined && !isLogin && !isAuthCallback && !isEmployeeDiscounts && !isBlogIndex && !blogPost && !resourcePage && !seoPage && (
         <SignupWizard open={signupOpen} onClose={() => setSignupOpen(false)} />
       )}
       <PromoBanners />

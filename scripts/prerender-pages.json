@@ -621,5 +621,11 @@
     "h1": "Top ERP Software in Kenya (2026 Guide)",
     "description": "Compare top ERP software Kenya 2026 including Unity ERP.",
     "intro": "Compare top ERP software Kenya 2026 including Unity ERP."
+  },
+  {
+    "path": "/auth/callback",
+    "title": "Signing in | Unity ERP",
+    "h1": "Signing in",
+    "description": "Completing Google or email sign-in for Unity ERP."
   }
 ]
