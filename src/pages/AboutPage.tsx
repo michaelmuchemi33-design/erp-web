@@ -263,7 +263,7 @@ export default function AboutPage({
               { icon: Users, label: "Unlimited users", sub: "No seat tax on growth" },
               { icon: Shield, label: "Cloud & secure", sub: "Backups and access control" },
               { icon: Rocket, label: "Fast to value", sub: "Live in weeks, not years" },
-              { icon:  label: "AI assistant", sub: "Answers from your data" },
+              { icon: Lightbulb, label: "AI assistant", sub: "Answers from your data" },
             ].map(({ icon: Icon, label, sub }) => (
               <div
                 key={label}
