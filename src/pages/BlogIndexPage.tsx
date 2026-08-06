@@ -85,6 +85,19 @@ export function BlogIndexShell() {
                 href={`/blog/${post.slug}`}
                 className="group overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm transition hover:border-emerald-200 hover:shadow-md"
               >
+                {post.imageUrl && (
+                  <div className="aspect-[16/10] overflow-hidden bg-slate-100">
+                    <img
+                      src={post.imageUrl}
+                      alt={post.imageAlt || post.h1}
+                      className="h-full w-full object-cover transition duration-300 group-hover:scale-[1.02]"
+                      loading="lazy"
+                      decoding="async"
+                      width={640}
+                      height={400}
+                    />
+                  </div>
+                )}
                 <div className="p-5">
                   <p className="text-xs font-bold uppercase tracking-wider text-emerald-700">
                     {post.category}

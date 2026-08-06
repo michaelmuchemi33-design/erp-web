@@ -89,6 +89,44 @@ export function BlogPostShell({ post }: { post: BlogPost }) {
             </Button>
           </div>
 
+          {post.imageUrl && (
+            <figure className="mt-8 overflow-hidden rounded-2xl border border-slate-100 bg-slate-50">
+              <img
+                src={post.imageUrl}
+                alt={post.imageAlt || post.h1}
+                className="h-auto w-full object-cover"
+                loading="lazy"
+                decoding="async"
+                width={1200}
+                height={675}
+              />
+              {post.imageAlt && (
+                <figcaption className="border-t border-slate-100 px-4 py-2 text-xs text-slate-500">
+                  {post.imageAlt}
+                </figcaption>
+              )}
+            </figure>
+          )}
+
+          {post.secondImageUrl && (
+            <figure className="mt-6 overflow-hidden rounded-2xl border border-slate-100 bg-slate-50">
+              <img
+                src={post.secondImageUrl}
+                alt={post.secondImageAlt || "Unity ERP in use"}
+                className="h-auto w-full object-cover"
+                loading="lazy"
+                decoding="async"
+                width={1200}
+                height={675}
+              />
+              {post.secondImageAlt && (
+                <figcaption className="border-t border-slate-100 px-4 py-2 text-xs text-slate-500">
+                  {post.secondImageAlt}
+                </figcaption>
+              )}
+            </figure>
+          )}
+
           <p className="mt-8 text-lg leading-relaxed text-slate-700">{post.intro}</p>
 
           <TrialCta onOpen={() => setSignupOpen(true)} />

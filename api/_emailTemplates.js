@@ -1,5 +1,5 @@
 const LOGO = "https://i.postimg.cc/qBnzqpqk/blck-logo-erp.png";
-const DASHBOARD = "https://i.postimg.cc/wMGLqBvh/erp-dashboard-looks-(1).png";
+const DASHBOARD = "https://www.unity-software.online/erp-dashboard.jpg";
 const SITE = "https://www.unity-software.online";
 const DEMO = "https://demo.unity-software.online";
 const WA = "https://wa.me/254778903044";
@@ -59,7 +59,7 @@ function demoRequestEmail({ name, email, industry, company_size, primary_need })
     <p style="margin:0 0 6px;font-size:12px;font-weight:700;color:#059669;text-transform:uppercase;letter-spacing:0.05em;">
       Unity ERP — product preview
     </p>
-    <img src="${DASHBOARD}" alt="Unity ERP cloud dashboard — inventory, CRM and finance in one system" width="504" style="display:block;width:100%;max-width:504px;height:auto;border-radius:12px;margin:0 0 8px;border:1px solid #e2e8f0;"/>
+    <a href="${DEMO}" style="display:block;text-decoration:none;"><img src="${DASHBOARD}" alt="Unity ERP dashboard — click to open demo" width="504" style="display:block;width:100%;max-width:504px;height:auto;border-radius:12px;margin:0 0 8px;border:1px solid #e2e8f0;" /></a>
     <p style="margin:0 0 18px;font-size:12px;line-height:1.5;color:#94a3b8;text-align:center;">
       Live cloud dashboard: stock, sales, customers and finance in one place
     </p>

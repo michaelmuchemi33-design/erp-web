@@ -13,8 +13,28 @@ export function PromoBanners() {
     } catch {
       /* ignore */
     }
-    const t = window.setTimeout(() => setOpen(true), 1200);
-    return () => window.clearTimeout(t);
+
+    let armed = false;
+    let timer: number | undefined;
+
+    const arm = () => {
+      if (armed) return;
+      armed = true;
+      timer = window.setTimeout(() => setOpen(true), 4000);
+    };
+
+    const events: (keyof WindowEventMap)[] = [
+      "scroll",
+      "pointerdown",
+      "keydown",
+      "touchstart",
+    ];
+    events.forEach((ev) => window.addEventListener(ev, arm, { passive: true, once: true }));
+
+    return () => {
+      if (timer) window.clearTimeout(timer);
+      events.forEach((ev) => window.removeEventListener(ev, arm));
+    };
   }, []);
 
   function dismiss() {
@@ -45,10 +65,12 @@ export function PromoBanners() {
         <div className="relative hidden bg-slate-100 sm:block">
           <img
             src={PORTRAIT}
-            alt="Unity ERP sales specialist"
+            alt="Unity ERP sales specialist ready to help clients"
             className="h-full w-full object-cover object-top"
             width={400}
             height={500}
+            loading="lazy"
+            decoding="async"
           />
         </div>
 

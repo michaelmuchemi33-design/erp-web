@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Header } from "@/components/Header";
 import { SiteFooter } from "@/components/SiteFooter";
 import { Check, Phone, MessageCircle, Mail, Inbox } from "lucide-react";
+import { DemoBenefitsPopup } from "@/components/DemoBenefitsPopup";
 
 const DASHBOARD =
   "https://i.postimg.cc/wMGLqBvh/erp-dashboard-looks-(1).png";
@@ -15,6 +16,7 @@ export function JoinedWaitShell() {
   return (
     <div className="min-h-screen bg-white font-sans text-slate-950">
       <Header />
+      <DemoBenefitsPopup force />
       <main className="mx-auto max-w-2xl px-6 py-28">
         <div className="text-center">
           <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-emerald-50 text-emerald-600">
