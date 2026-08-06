@@ -46,11 +46,13 @@ type Industry = {
   data: number[];
   summary: string;
   helps: string[];
+  imageUrl?: string;
 };
 
 const industries: Industry[] = [
   {
     name: "Manufacturing",
+    imageUrl: "https://www.unity-software.online/blog/office-team.webp",
     icon: Factory,
     kpi: "2,450",
     kpiLabel: "Total Production",
@@ -73,6 +75,7 @@ const industries: Industry[] = [
   },
   {
     name: "Construction",
+    imageUrl: "https://www.unity-software.online/blog/team-happy.webp",
     icon: HardHat,
     kpi: "42",
     kpiLabel: "Active Projects",
@@ -95,6 +98,7 @@ const industries: Industry[] = [
   },
   {
     name: "Hospital",
+    imageUrl: "https://www.unity-software.online/blog/team-listening.webp",
     icon: Building2,
     kpi: "92%",
     kpiLabel: "Bed Utilization",
@@ -117,6 +121,7 @@ const industries: Industry[] = [
   },
   {
     name: "Retail & POS",
+    imageUrl: "https://www.unity-software.online/blog/team-women.webp",
     icon: ShoppingCart,
     kpi: "$1.2M",
     kpiLabel: "Monthly Sales",
@@ -139,6 +144,7 @@ const industries: Industry[] = [
   },
   {
     name: "Education",
+    imageUrl: "https://www.unity-software.online/blog/team-pair.webp",
     icon: GraduationCap,
     kpi: "3.4K",
     kpiLabel: "Enrollments",
@@ -161,6 +167,7 @@ const industries: Industry[] = [
   },
   {
     name: "Logistics",
+    imageUrl: "https://www.unity-software.online/blog/team-resource.webp",
     icon: Truck,
     kpi: "96%",
     kpiLabel: "On-Time Delivery",
@@ -183,6 +190,7 @@ const industries: Industry[] = [
   },
   {
     name: "Real Estate",
+    imageUrl: "https://www.unity-software.online/blog/team-desk.webp",
     icon: Home,
     kpi: "840",
     kpiLabel: "Managed Units",
@@ -205,6 +213,7 @@ const industries: Industry[] = [
   },
   {
     name: "Agriculture",
+    imageUrl: "https://www.unity-software.online/blog/team-portrait.webp",
     icon: Leaf,
     kpi: "+12%",
     kpiLabel: "Yield Growth",
@@ -227,6 +236,7 @@ const industries: Industry[] = [
   },
   {
     name: "Hospitality",
+    imageUrl: "https://www.unity-software.online/blog/team-resource-2.webp",
     icon: Utensils,
     kpi: "81%",
     kpiLabel: "Occupancy Rate",
@@ -249,6 +259,7 @@ const industries: Industry[] = [
   },
   {
     name: "Finance",
+    imageUrl: "https://www.unity-software.online/blog/team-desk-2.webp",
     icon: Landmark,
     kpi: "$4.8M",
     kpiLabel: "Revenue Tracked",
@@ -272,6 +283,7 @@ const industries: Industry[] = [
   // Row 3
   {
     name: "Automotive",
+    imageUrl: "https://www.unity-software.online/blog/office-team.webp",
     icon: Car,
     kpi: "318",
     kpiLabel: "Jobs This Month",
@@ -294,6 +306,7 @@ const industries: Industry[] = [
   },
   {
     name: "Professional Services",
+    imageUrl: "https://www.unity-software.online/blog/team-happy.webp",
     icon: Briefcase,
     kpi: "126",
     kpiLabel: "Open Engagements",
@@ -643,20 +656,36 @@ function IndustryOverlay({
         <h3 className="section-title text-3xl font-bold text-slate-950">{industry.name}</h3>
         <p className="mt-3 text-base leading-relaxed text-slate-600">{industry.summary}</p>
 
-        <div className="mt-5">
-          <p className="text-xs font-bold uppercase tracking-wider text-slate-400">
-            How Knight ERP helps
-          </p>
-          <ul className="mt-3 space-y-2">
-            {industry.helps.map((h) => (
-              <li key={h} className="flex items-start gap-2.5 text-sm text-slate-700">
-                <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-600">
-                  <Check className="h-3 w-3" />
-                </span>
-                {h}
-              </li>
-            ))}
-          </ul>
+        <div className="mt-5 grid gap-5 md:grid-cols-[1fr_160px] md:items-start">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-wider text-slate-400">
+              How Unity ERP helps
+            </p>
+            <ul className="mt-3 space-y-2">
+              {industry.helps.map((h) => (
+                <li key={h} className="flex items-start gap-2.5 text-sm text-slate-700">
+                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-600">
+                    <Check className="h-3 w-3" />
+                  </span>
+                  {h}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <figure className="hidden overflow-hidden rounded-2xl border border-slate-100 bg-slate-50 md:block">
+            <img
+              src={
+                industry.imageUrl ||
+                "https://www.unity-software.online/blog/office-team.webp"
+              }
+              alt={`${industry.name} teams using Unity ERP`}
+              className="aspect-[3/4] h-full w-full object-cover"
+              loading="lazy"
+              decoding="async"
+              width={160}
+              height={214}
+            />
+          </figure>
         </div>
 
         <div className="mt-6 grid gap-4 sm:grid-cols-2">

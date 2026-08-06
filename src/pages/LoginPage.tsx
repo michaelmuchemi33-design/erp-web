@@ -25,12 +25,15 @@ export function LoginPageShell() {
     if (err) setError(err);
 
     // Already signed in?
-    supabase.auth.getSession().then(({ data }) => {
-      if (data.session?.user) {
-        setInfo("Session found — opening your workspace…");
-        redirectAfterAuth().catch(() => {});
-      }
-    });
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("continue") === "1") {
+      supabase.auth.getSession().then(({ data }) => {
+        if (data.session?.user) {
+          setInfo("Session found — opening your workspace…");
+          redirectAfterAuth().catch(() => {});
+        }
+      });
+    }
   }, []);
 
   async function onGoogle() {

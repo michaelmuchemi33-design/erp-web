@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play, Star } from "lucide-react";
@@ -57,12 +57,17 @@ const rotatingLines = [
 ];
 
 const avatars = [
-  "https://randomuser.me/api/portraits/women/44.jpg",
-  "https://randomuser.me/api/portraits/men/32.jpg",
-  "https://randomuser.me/api/portraits/women/68.jpg",
-  "https://randomuser.me/api/portraits/men/75.jpg",
-  "https://randomuser.me/api/portraits/women/90.jpg",
-  "https://randomuser.me/api/portraits/men/86.jpg",
+  "https://www.unity-software.online/reviews/face-1.webp",
+  "https://www.unity-software.online/reviews/face-2.webp",
+  "https://www.unity-software.online/reviews/face-3.webp",
+  "https://www.unity-software.online/reviews/face-4.webp",
+  "https://www.unity-software.online/reviews/face-5.webp",
+  "https://www.unity-software.online/reviews/face-6.webp",
+  "https://www.unity-software.online/reviews/face-7.webp",
+  "https://www.unity-software.online/reviews/face-8.webp",
+  "https://www.unity-software.online/reviews/face-9.webp",
+  "https://www.unity-software.online/reviews/face-10.webp",
+  "https://www.unity-software.online/reviews/face-11.webp",
 ];
 
 const reviews = [
@@ -102,11 +107,63 @@ const reviews = [
     text: "Affordable compared to bigger foreign suites. Support understands Kenyan business hours.",
     rating: 5,
   },
+  {
+    name: "Mercy Achieng",
+    role: "Manager · Eldoret Retail",
+    text: "Branches stay in sync. Reordering is clearer and less guesswork.",
+    rating: 5,
+  },
+  {
+    name: "Samuel Kariuki",
+    role: "COO · Nakuru Logistics",
+    text: "Warehouse transfers and orders in one place. Team adopted it fast.",
+    rating: 5,
+  },
+  {
+    name: "Lucy Muthoni",
+    role: "Owner · Nyeri Hospitality",
+    text: "Kitchen stock and purchasing finally match what we sell each day.",
+    rating: 5,
+  },
+  {
+    name: "Peter Mwangi",
+    role: "CFO · Nairobi Services",
+    text: "Invoicing and expenses are easier to report. Great for our size.",
+    rating: 5,
+  },
+  {
+    name: "Esther Chebet",
+    role: "Lead · Kericho Agriculture",
+    text: "Inputs and co-op sales tracked without another spreadsheet stack.",
+    rating: 5,
+  },
 ];
 
 function TrustReviews() {
-  const [open, setOpen] = useState<number | null>(null);
-  const [pos, setPos] = useState({ top: 0, left: 0 });
+  const [open, setOpen] = useState<number | null>(0);
+  const [pos, setPos] = useState({ top: 120, left: 24 });
+  const rowRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const id = window.setInterval(() => {
+      setOpen((i) => {
+        const next = ((i ?? 0) + 1) % avatars.length;
+        const row = rowRef.current;
+        if (row) {
+          const btn = row.querySelectorAll("button")[next] as HTMLElement | undefined;
+          if (btn) {
+            const r = btn.getBoundingClientRect();
+            setPos({
+              top: r.top - 8,
+              left: Math.min(r.left, window.innerWidth - 320),
+            });
+          }
+        }
+        return next;
+      });
+    }, 3000);
+    return () => window.clearInterval(id);
+  }, []);
 
   function show(i: number, el: HTMLElement) {
     const r = el.getBoundingClientRect();
@@ -120,7 +177,7 @@ function TrustReviews() {
   return (
     <div className="relative z-20 mt-2" onMouseLeave={() => setOpen(null)}>
       <div className="flex flex-wrap items-center gap-4">
-        <div className="flex items-center">
+        <div className="flex items-center" ref={rowRef}>
           {avatars.map((src, i) => (
             <button
               key={src}

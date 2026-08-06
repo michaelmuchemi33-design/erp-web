@@ -5,7 +5,7 @@ import { Check, Phone, MessageCircle, Mail, Inbox } from "lucide-react";
 import { DemoBenefitsPopup } from "@/components/DemoBenefitsPopup";
 
 const DASHBOARD =
-  "https://i.postimg.cc/wMGLqBvh/erp-dashboard-looks-(1).png";
+  "https://www.unity-software.online/erp-dashboard.jpg";
 
 export function JoinedWaitShell() {
   useEffect(() => {
