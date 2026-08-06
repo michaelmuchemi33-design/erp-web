@@ -2,6 +2,11 @@ const LOGO = "https://i.postimg.cc/qBnzqpqk/blck-logo-erp.png";
 const DASHBOARD = "https://www.unity-software.online/erp-dashboard.jpg";
 const SITE = "https://www.unity-software.online";
 const DEMO = "https://demo.unity-software.online";
+function demoUrl(industry) {
+  if (!industry) return DEMO;
+  return DEMO + "/?industry=" + encodeURIComponent(industry);
+}
+
 const WA = "https://wa.me/254778903044";
 
 function shell(inner, preheader) {
@@ -28,16 +33,74 @@ Kenya · South Africa · Egypt<br/>
 }
 
 function benefitsFor(industry, need) {
-  const base = [
-    "Inventory, CRM, finance and POS in one cloud system",
-    "Multi-branch stock visibility without spreadsheet chaos",
-    "Transparent KES pricing — from KES 3,000 per month",
-    "Free limited access to explore before you upgrade",
-    "Built for Kenyan and African SME workflows including M-Pesa-friendly operations",
-  ];
-  if (industry) base.unshift(`Tailored onboarding focus for ${industry} teams`);
-  if (need) base.push(`Priority setup around: ${need}`);
-  return base;
+  const packs = {
+    "Manufacturing": [
+      "BOM / formulas, work orders and WIP visibility",
+      "Raw materials, finished goods and waste tracking",
+      "Shop-floor inventory linked to sales and purchasing",
+      "Production cost views and quality checkpoints",
+    ],
+    "Construction": [
+      "Job costing by site and project",
+      "Materials, suppliers and site stock movement",
+      "Progress billing and purchase controls",
+      "Multi-site visibility for contractors and owners",
+    ],
+    "Hospital / Healthcare": [
+      "Pharmacy and consumables stock control",
+      "Patient/customer records linked to billing",
+      "Expiry-aware inventory for clinical supplies",
+      "Clear invoicing for services and packages",
+    ],
+    "Retail & POS": [
+      "POS-ready stock and multi-branch visibility",
+      "Fast sales, receipts and daily cash-up style reports",
+      "Reorder points to cut stockouts",
+      "CRM history on walk-in and account customers",
+    ],
+    "Education": [
+      "Fee-related invoicing and receivables tracking",
+      "Inventory for books, uniforms and lab supplies",
+      "Staff and department records in one place",
+      "Reporting for administrators and finance teams",
+    ],
+    "Agriculture": [
+      "Farm inputs, fertilizer and seed stock control",
+      "Seasonal purchasing and supplier scorecards",
+      "Batch-friendly inventory for produce and inputs",
+      "Sales and customer records for co-ops and buyers",
+    ],
+    "Hospitality": [
+      "F&B and room-service style inventory",
+      "Purchasing for kitchens and outlets",
+      "Guest/customer CRM and repeat visits",
+      "Daily sales and expense visibility",
+    ],
+    "Logistics": [
+      "Warehouse locations and stock transfers",
+      "Fleet-adjacent cost and order tracking",
+      "Delivery-oriented order status",
+      "Supplier and customer master data in one ERP",
+    ],
+    "Finance & Accounting": [
+      "Invoicing, receivables and payables in one ledger view",
+      "Expense and revenue tracking for SMEs",
+      "Inventory valuation support alongside books",
+      "Reports for management and auditors",
+    ],
+    "Other": [
+      "Inventory, CRM, finance and POS in one cloud system",
+      "Multi-branch stock visibility where you need it",
+      "AI assistant for everyday operational questions",
+      "Clear KES pricing with free mode to explore",
+    ],
+  };
+  const base = packs[industry] || packs["Other"];
+  const extra = [];
+  if (need) extra.push(`Priority noted: ${need}`);
+  extra.push("Free mode available — no credit card required");
+  extra.push("Open the shared demo workspace and explore with sample data");
+  return [...base, ...extra];
 }
 
 function demoRequestEmail({ name, email, industry, company_size, primary_need }) {
@@ -59,7 +122,7 @@ function demoRequestEmail({ name, email, industry, company_size, primary_need })
     <p style="margin:0 0 6px;font-size:12px;font-weight:700;color:#059669;text-transform:uppercase;letter-spacing:0.05em;">
       Unity ERP — product preview
     </p>
-    <a href="${DEMO}" style="display:block;text-decoration:none;"><img src="${DASHBOARD}" alt="Unity ERP dashboard — click to open demo" width="504" style="display:block;width:100%;max-width:504px;height:auto;border-radius:12px;margin:0 0 8px;border:1px solid #e2e8f0;" /></a>
+    <a href="${demoUrl(industry)}" style="display:block;text-decoration:none;"><img src="${DASHBOARD}" alt="Unity ERP dashboard — click to open demo" width="504" style="display:block;width:100%;max-width:504px;height:auto;border-radius:12px;margin:0 0 8px;border:1px solid #e2e8f0;" /></a>
     <p style="margin:0 0 18px;font-size:12px;line-height:1.5;color:#94a3b8;text-align:center;">
       Live cloud dashboard: stock, sales, customers and finance in one place
     </p>
@@ -77,10 +140,10 @@ function demoRequestEmail({ name, email, industry, company_size, primary_need })
     <ul style="margin:0 0 20px;padding-left:18px;">${benefits}</ul>
 
     <table role="presentation" width="100%" style="margin:0 0 12px;"><tr><td align="center">
-      <a href="${DEMO}" style="display:inline-block;background:#4f46e5;color:#ffffff;font-weight:700;font-size:14px;padding:14px 28px;border-radius:999px;text-decoration:none;">Open demo workspace →</a>
+      <a href="${demoUrl(industry)}" style="display:inline-block;background:#4f46e5;color:#ffffff;font-weight:700;font-size:14px;padding:14px 28px;border-radius:999px;text-decoration:none;">Open demo workspace →</a>
     </td></tr></table>
     <p style="margin:0 0 16px;font-size:13px;line-height:1.55;color:#475569;text-align:center;">
-      Demo: <a href="${DEMO}" style="color:#4f46e5;font-weight:600;">demo.unity-software.online</a>
+      Demo: <a href="${demoUrl(industry)}" style="color:#4f46e5;font-weight:600;">demo.unity-software.online</a>
       ${industry ? ` · Tailored for <strong>${industry}</strong>` : ""}
     </p>
     <table role="presentation" width="100%" style="margin:0 0 12px;"><tr><td align="center">
