@@ -361,16 +361,16 @@ export function AboutPageShell() {
           </p>
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <figure className="about-photo-strip overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm">
-              <img src="https://www.unity-software.online/blog/office-team.webp" alt="Unity team collaboration" className="aspect-[4/5] w-full object-cover" loading="lazy" decoding="async" width=480 height=600 />
+              <img src="https://www.unity-software.online/blog/office-team.webp" alt="Unity team collaboration" className="aspect-[4/5] w-full object-cover" loading="lazy" decoding="async" width={480} height={600} />
             </figure>
             <figure className="about-photo-strip overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm">
-              <img src="https://www.unity-software.online/blog/team-happy.webp" alt="Customers succeeding with Unity ERP" className="aspect-[4/5] w-full object-cover" loading="lazy" decoding="async" width=480 height=600 />
+              <img src="https://www.unity-software.online/blog/team-happy.webp" alt="Customers succeeding with Unity ERP" className="aspect-[4/5] w-full object-cover" loading="lazy" decoding="async" width={480} height={600} />
             </figure>
             <figure className="about-photo-strip overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm">
-              <img src="https://www.unity-software.online/blog/team-listening.webp" alt="Training and onboarding" className="aspect-[4/5] w-full object-cover" loading="lazy" decoding="async" width=480 height=600 />
+              <img src="https://www.unity-software.online/blog/team-listening.webp" alt="Training and onboarding" className="aspect-[4/5] w-full object-cover" loading="lazy" decoding="async" width={480} height={600} />
             </figure>
             <figure className="about-photo-strip overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm">
-              <img src="https://www.unity-software.online/blog/team-women.webp" alt="Operators using Unity ERP" className="aspect-[4/5] w-full object-cover" loading="lazy" decoding="async" width=480 height=600 />
+              <img src="https://www.unity-software.online/blog/team-women.webp" alt="Operators using Unity ERP" className="aspect-[4/5] w-full object-cover" loading="lazy" decoding="async" width={480} height={600} />
             </figure>
           </div>
         </div>
