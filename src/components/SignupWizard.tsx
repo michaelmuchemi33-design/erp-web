@@ -10,7 +10,6 @@ import {
   Loader2,
 } from "lucide-react";
 import { trackLead } from "@/lib/supabase";
-import { signInWithGoogle } from "@/lib/auth";
 
 const industries = [
   "Manufacturing",
@@ -310,24 +309,6 @@ export function SignupWizard({
                       <strong className="text-slate-800">{answers.industry}</strong>
                     </p>
                   )}
-
-                  <button
-                    type="button"
-                    onClick={async () => {
-                      try {
-                        sessionStorage.setItem("unity_demo_industry", answers.industry);
-                        await signInWithGoogle();
-                      } catch (e) {
-                        setError(e instanceof Error ? e.message : "Google sign-in failed");
-                      }
-                    }}
-                    className="mt-3 flex h-11 w-full items-center justify-center gap-2 rounded-full border border-slate-200 text-sm font-semibold text-slate-800 hover:bg-slate-50"
-                  >
-                    Continue with Google
-                  </button>
-                  <p className="mt-2 text-center text-[11px] text-slate-400">
-                    Google opens sign-in on this site, then the industry demo link is in your account flow.
-                  </p>
 
                 </motion.div>
               )}
