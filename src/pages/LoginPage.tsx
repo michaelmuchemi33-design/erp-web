@@ -24,8 +24,7 @@ export function LoginPageShell() {
     const err = params.get("error");
     if (err) setError(err);
 
-    // Already signed in?
-    const params = new URLSearchParams(window.location.search);
+    // Already signed in — only continue when explicitly requested
     if (params.get("continue") === "1") {
       supabase.auth.getSession().then(({ data }) => {
         if (data.session?.user) {
